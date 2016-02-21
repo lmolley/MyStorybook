@@ -52,11 +52,11 @@
 		B262EAE11C761C8A001008AD /* MyStorybookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyStorybookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B262EAE51C761C8A001008AD /* MyStorybookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStorybookUITests.swift; sourceTree = "<group>"; };
 		B262EAE71C761C8A001008AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2BA3C551C761ECA00D7342D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = ../../../../../../Users/dquesada/Desktop/MyStorybook/MyStorybook/Protocols/Database.swift; sourceTree = "<group>"; };
-		B2BA3C571C761EEC00D7342D /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = ../../../../../../Users/dquesada/Desktop/MyStorybook/MyStorybook/Classes/Page.swift; sourceTree = "<group>"; };
-		B2BA3C591C761F3E00D7342D /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Story.swift; path = ../../../../../../Users/dquesada/Desktop/MyStorybook/MyStorybook/Classes/Story.swift; sourceTree = "<group>"; };
-		B2BA3C5B1C76215200D7342D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = App.swift; path = ../../../../../../Users/dquesada/Desktop/MyStorybook/MyStorybook/Classes/App.swift; sourceTree = "<group>"; };
-		B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DumbMockDatabase.swift; path = ../../../../../../Users/dquesada/Desktop/MyStorybook/MyStorybook/Classes/DumbMockDatabase.swift; sourceTree = "<group>"; };
+		B2BA3C551C761ECA00D7342D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		B2BA3C571C761EEC00D7342D /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		B2BA3C591C761F3E00D7342D /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		B2BA3C5B1C76215200D7342D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumbMockDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
