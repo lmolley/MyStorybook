@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */; };
+		894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */; };
+		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
 		B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC51C761C8A001008AD /* AppDelegate.swift */; };
 		B262EAC81C761C8A001008AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC71C761C8A001008AD /* ViewController.swift */; };
 		B262EACB1C761C8A001008AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B262EAC91C761C8A001008AD /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesViewController.swift; sourceTree = "<group>"; };
+		894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHelpers.swift; sourceTree = "<group>"; };
 		B262EAC21C761C8A001008AD /* MyStorybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStorybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B262EAC51C761C8A001008AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B262EAC71C761C8A001008AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
 				B262EAC71C761C8A001008AD /* ViewController.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
+				894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */,
+				894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */,
+				894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */,
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
 				B262EAD11C761C8A001008AD /* Info.plist */,
@@ -290,9 +299,12 @@
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
+				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
+				894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
+				894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

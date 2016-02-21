@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H7J-In-WYK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T7A-0L-uoR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Bookshelf-->
@@ -37,12 +38,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eop-Pr-MPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="399"/>
+            <point key="canvasLocation" x="163" y="453"/>
         </scene>
         <!--GoProImages-->
         <scene sceneID="Ggy-5f-A6L">
             <objects>
-                <collectionViewController title="GoProImages" id="T7A-0L-uoR" sceneMemberID="viewController">
+                <collectionViewController title="GoProImages" id="T7A-0L-uoR" customClass="GoProImagesViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l6R-Xe-iif">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,14 +54,48 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Qp-98-UYd">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoProImageCell" id="0Qp-98-UYd" customClass="GoProImageCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OmT-1z-PAO">
+                                            <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="OmT-1z-PAO" secondAttribute="bottom" id="0Id-xf-n4g"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="OmT-1z-PAO" secondAttribute="trailing" id="1fG-Ni-zCH"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="OmT-1z-PAO" secondAttribute="bottom" id="BXw-94-o70"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="OmT-1z-PAO" secondAttribute="trailing" id="DNh-g9-fil"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" id="RAI-S3-PE2"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" id="Rbn-fG-Nvw"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="OmT-1z-PAO" secondAttribute="trailing" id="UIn-1a-dLe"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" id="XTR-gt-2fd"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="OmT-1z-PAO" secondAttribute="bottom" id="dvy-Cw-iT7"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" id="gJB-Tb-op6"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" id="hsu-12-Jep"/>
+                                    <constraint firstItem="OmT-1z-PAO" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" id="nfx-kW-q54"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Id-xf-n4g"/>
+                                        <exclude reference="BXw-94-o70"/>
+                                        <exclude reference="DNh-g9-fil"/>
+                                        <exclude reference="RAI-S3-PE2"/>
+                                        <exclude reference="UIn-1a-dLe"/>
+                                        <exclude reference="XTR-gt-2fd"/>
+                                        <exclude reference="hsu-12-Jep"/>
+                                        <exclude reference="nfx-kW-q54"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="imageView" destination="OmT-1z-PAO" id="l8o-XF-dHs"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
