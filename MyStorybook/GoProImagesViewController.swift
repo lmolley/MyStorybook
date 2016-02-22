@@ -1,0 +1,164 @@
+//
+//  GoProImagesViewController.swift
+//  MyStorybook
+//
+//  Created by Lauren Molley on 2/21/16.
+//  Copyright © 2016 The My Storybook Team. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import Photos
+
+let GoPro_reuseIdentifier = "GoProImageCell"
+let getThumbnailCommand = "http://10.5.5.9/gp/gpMediaMetadata?p="
+let getMediaListCommand = "http://10.5.5.9:8080/gp/gpMediaList"
+let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
+
+class GoProImagesViewController : UICollectionViewController {
+    
+    var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
+    var totalImageCountNeeded:Int! // <-- The number of images to fetch
+    var gopro_images:[String] = [String]()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        //TODO: Get list of GoPro images from the camera here
+        //hardcoded for now
+        getGoProImageList()
+        //saveImages()
+        fetchPhotosFromCameraRoll()
+        
+    }
+    
+    private func getGoProImageList() -> Void {
+        HTTPGet(getMediaListCommand){
+            (data: String, error: String?) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString)
+                    for (_,library)in json["media"] {
+                        print(library)
+                        let prefix:String = library["d"].string! + "/"
+                        for (_, file) in library["fs"] {
+                            print(file)
+                            self.gopro_images.append(prefix + file["n"].string!)
+                        }
+                        
+                    }
+                }
+            }
+            print(self.gopro_images)
+        }
+    }
+    
+    private func getImage(path: String) -> Void {
+        HTTPImageGet(getImageCommand + path){
+            (data: UIImage, error: String?) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                print("saving data")
+                //Save data to camera roll here!!
+                UIImageWriteToSavedPhotosAlbum(data, nil, nil, nil)
+            }
+        }
+    }
+    
+    private func fetchPhotosFromCameraRoll () {
+        camera_roll_images = NSMutableArray()
+        totalImageCountNeeded = 3
+        fetchPhotoAtIndexFromEnd(0)
+    }
+    
+    // Repeatedly call the following method while incrementing
+    // the index until all the photos are fetched
+    private func fetchPhotoAtIndexFromEnd(index:Int) {
+        
+        let imgManager = PHImageManager.defaultManager()
+        
+        // Note that if the request is not set to synchronous
+        // the requestImageForAsset will return both the image
+        // and thumbnail; by setting synchronous to true it
+        // will return just the thumbnail
+        var requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        
+        // Sort the images by creation date
+        var fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
+        
+        if let fetchResult: PHFetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
+            
+            // If the fetch result isn't empty,
+            // proceed with the image request
+            if fetchResult.count > 0 {
+                // Perform the image request
+                imgManager.requestImageForAsset(fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
+                    
+                    // Add the returned image to your array
+                    self.camera_roll_images.addObject(image!)
+                    
+                    // If you haven't already reached the first
+                    // index of the fetch result and if you haven't
+                    // already stored all of the images you need,
+                    // perform the fetch request again with an
+                    // incremented index
+                    if index + 1 < fetchResult.count && self.camera_roll_images.count < self.totalImageCountNeeded {
+                        self.fetchPhotoAtIndexFromEnd(index + 1)
+                    } else {
+                        // Else you have completed creating your array
+                        print("Completed array: \(self.camera_roll_images)")
+                    }
+                })
+            }
+        }
+    }
+
+    
+    
+//********OVERRIDES FOR COLLECTION VIEW TO WORK***************
+    override func numberOfSectionsInCollectionView(collectionView:
+        UICollectionView!) -> Int {
+            //only one section so we just return 1
+            return 1
+    }
+    
+    override func collectionView(collectionView: UICollectionView!,
+        numberOfItemsInSection section: Int) -> Int {
+            //return number of images in our 1 section
+            return camera_roll_images.count
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
+            
+            // Configure the cell
+            cell.imageView.image = camera_roll_images[indexPath.row] as! UIImage
+            return cell
+    }
+    
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        var header: GoProImagesHeaderViewController?
+        
+        if kind == UICollectionElementKindSectionHeader {
+            header =
+                collectionView.dequeueReusableSupplementaryViewOfKind(kind,
+                    withReuseIdentifier: "SelectImageHeader", forIndexPath: indexPath)
+                as? GoProImagesHeaderViewController
+            
+            header?.headerLabel.text = "Select Image Folder"
+        }
+        return header!
+    }
+    
+}
