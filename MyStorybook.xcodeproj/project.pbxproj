@@ -188,6 +188,8 @@
 		B262EAC41C761C8A001008AD /* MyStorybook */ = {
 			isa = PBXGroup;
 			children = (
+				89E9F54B1C7B643000C812F2 /* GoProController */,
+				89E9F54A1C7B641200C812F2 /* Images */,
 				B2E93F5D1C7A77EB00A5C80E /* ViewControllers */,
 				B2BA3C541C761D6500D7342D /* Classes */,
 				B2BA3C531C761D5000D7342D /* Protocols */,
@@ -361,6 +363,7 @@
 				B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */,
 				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
+				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
 				B2E93F611C7A785300A5C80E /* DavidTest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
