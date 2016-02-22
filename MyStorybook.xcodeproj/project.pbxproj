@@ -70,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549A9C631C7A8BE700F27ED0 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,9 +91,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		549A9C641C7A8BEF00F27ED0 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				549A9C661C7A8C5700F27ED0 /* FMDB.h */,
+				549A9C671C7A8C5700F27ED0 /* FMDatabase.h */,
+				549A9C681C7A8C5700F27ED0 /* FMDatabase.m */,
+				549A9C691C7A8C5700F27ED0 /* FMResultSet.h */,
+				549A9C6A1C7A8C5700F27ED0 /* FMResultSet.m */,
+				549A9C6B1C7A8C5700F27ED0 /* FMDatabaseQueue.h */,
+				549A9C6C1C7A8C5700F27ED0 /* FMDatabaseQueue.m */,
+				549A9C6D1C7A8C5700F27ED0 /* FMDatabaseAdditions.h */,
+				549A9C6E1C7A8C5700F27ED0 /* FMDatabaseAdditions.m */,
+				549A9C6F1C7A8C5700F27ED0 /* FMDatabasePool.h */,
+				549A9C701C7A8C5700F27ED0 /* FMDatabasePool.m */,
+				549A9C651C7A8C5600F27ED0 /* MyStorybook-Bridging-Header.h */,
+			);
+			name = "Third Party";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B262EAB91C761C8A001008AD = {
 			isa = PBXGroup;
 			children = (
+				549A9C621C7A8BE700F27ED0 /* libsqlite3.0.tbd */,
 				B262EAC41C761C8A001008AD /* MyStorybook */,
 				B262EAD91C761C8A001008AD /* MyStorybookTests */,
 				B262EAE41C761C8A001008AD /* MyStorybookUITests */,
@@ -115,6 +137,7 @@
 			children = (
 				B2BA3C541C761D6500D7342D /* Classes */,
 				B2BA3C531C761D5000D7342D /* Protocols */,
+				549A9C641C7A8BEF00F27ED0 /* Third Party */,
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
 				B262EAC71C761C8A001008AD /* ViewController.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
@@ -297,15 +320,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
+				549A9C751C7A8C5700F27ED0 /* FMDatabasePool.m in Sources */,
 				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
 				894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
+				549A9C731C7A8C5700F27ED0 /* FMDatabaseQueue.m in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
+				549A9C711C7A8C5700F27ED0 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +473,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyStorybook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.eecs481.w16.MyStorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyStorybook-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -458,10 +487,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyStorybook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.eecs481.w16.MyStorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyStorybook-Bridging-Header.h";
 			};
 			name = Release;
 		};
