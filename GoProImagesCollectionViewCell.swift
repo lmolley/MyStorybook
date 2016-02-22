@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class GoProImageCollectionViewCell : UICollectionViewCell {
+
     @IBOutlet weak var imageView: UIImageView!
     
 }
