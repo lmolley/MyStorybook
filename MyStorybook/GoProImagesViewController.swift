@@ -32,19 +32,18 @@ class GoProImagesViewController : UICollectionViewController {
         
     }
     
-    private func getImage(path: String) -> UIImage? {
+    private func getImage(path: String, cell:GoProImageCollectionViewCell) -> Void {
         print("attempting to get thumbnail for \(path)")
-        var imageLoad : UIImage?
         HTTPImageGet(getThumbnailCommand + path){
             (data: UIImage, error: String?) -> Void in
             if error != nil {
-                imageLoad = nil
-            } else {
-                imageLoad = data
+                print(error)
+            }
+            else {
+                print("setting data")
+                cell.imageView.image = data
             }
         }
-        
-        return imageLoad
     }
 
 //********OVERRIDES FOR COLLECTION VIEW TO WORK***************
@@ -65,9 +64,7 @@ class GoProImagesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
             
             // Configure the cell
-            let image = getImage(images[indexPath.row])
-            cell.imageView.image = image
-            
+            getImage(images[indexPath.row], cell: cell)
             return cell
     }
     

@@ -35,11 +35,14 @@ func HTTPsendImageRequest(request: NSMutableURLRequest,callback: (UIImage, Strin
     let task = NSURLSession.sharedSession().dataTaskWithRequest(request,completionHandler :
         {
             data, response, error in
-            if error != nil {
-                callback(UIImage(), (error!.localizedDescription) as String)
-            } else {
-                callback(UIImage(data: data!)!,nil)
-            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if error != nil {
+                    callback(UIImage(), (error!.localizedDescription) as String)
+                } else {
+                    callback(UIImage(data: data!)!,nil)
+                }
+            })
     })
     
     task.resume() //Tasks are called with .resume()
