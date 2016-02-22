@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */; };
-		894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */; };
-		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
-		549A9C631C7A8BE700F27ED0 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 549A9C621C7A8BE700F27ED0 /* libsqlite3.0.tbd */; };
-		549A9C711C7A8C5700F27ED0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A9C681C7A8C5700F27ED0 /* FMDatabase.m */; };
-		549A9C721C7A8C5700F27ED0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A9C6A1C7A8C5700F27ED0 /* FMResultSet.m */; };
-		549A9C731C7A8C5700F27ED0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A9C6C1C7A8C5700F27ED0 /* FMDatabaseQueue.m */; };
-		549A9C741C7A8C5700F27ED0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A9C6E1C7A8C5700F27ED0 /* FMDatabaseAdditions.m */; };
-		549A9C751C7A8C5700F27ED0 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 549A9C701C7A8C5700F27ED0 /* FMDatabasePool.m */; };
+		5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */; };
+		5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */; };
+		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
+		5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */; };
+		5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */; };
+		5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */; };
 		B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC51C761C8A001008AD /* AppDelegate.swift */; };
 		B262EAC81C761C8A001008AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC71C761C8A001008AD /* ViewController.swift */; };
 		B262EACB1C761C8A001008AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B262EAC91C761C8A001008AD /* Main.storyboard */; };
@@ -48,22 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesViewController.swift; sourceTree = "<group>"; };
-		894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHelpers.swift; sourceTree = "<group>"; };
-		549A9C621C7A8BE700F27ED0 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		549A9C651C7A8C5600F27ED0 /* MyStorybook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyStorybook-Bridging-Header.h"; sourceTree = "<group>"; };
-		549A9C661C7A8C5700F27ED0 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = "Third Party/fmdb/FMDB.h"; sourceTree = "<group>"; };
-		549A9C671C7A8C5700F27ED0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = "Third Party/fmdb/FMDatabase.h"; sourceTree = "<group>"; };
-		549A9C681C7A8C5700F27ED0 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = "Third Party/fmdb/FMDatabase.m"; sourceTree = "<group>"; };
-		549A9C691C7A8C5700F27ED0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = "Third Party/fmdb/FMResultSet.h"; sourceTree = "<group>"; };
-		549A9C6A1C7A8C5700F27ED0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = "Third Party/fmdb/FMResultSet.m"; sourceTree = "<group>"; };
-		549A9C6B1C7A8C5700F27ED0 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = "Third Party/fmdb/FMDatabaseQueue.h"; sourceTree = "<group>"; };
-		549A9C6C1C7A8C5700F27ED0 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = "Third Party/fmdb/FMDatabaseQueue.m"; sourceTree = "<group>"; };
-		549A9C6D1C7A8C5700F27ED0 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = "Third Party/fmdb/FMDatabaseAdditions.h"; sourceTree = "<group>"; };
-		549A9C6E1C7A8C5700F27ED0 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = "Third Party/fmdb/FMDatabaseAdditions.m"; sourceTree = "<group>"; };
-		549A9C6F1C7A8C5700F27ED0 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = "Third Party/fmdb/FMDatabasePool.h"; sourceTree = "<group>"; };
-		549A9C701C7A8C5700F27ED0 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = "Third Party/fmdb/FMDatabasePool.m"; sourceTree = "<group>"; };
+		5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewController.swift; sourceTree = "<group>"; };
+		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
+		5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewController.swift; sourceTree = "<group>"; };
+		5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-folder-md.png"; sourceTree = "<group>"; };
 		B262EAC21C761C8A001008AD /* MyStorybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStorybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B262EAC51C761C8A001008AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B262EAC71C761C8A001008AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,9 +147,12 @@
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
 				B262EAC71C761C8A001008AD /* ViewController.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
-				894CC30F1C7A79080004BD8B /* GoProImageCollectionViewCell.swift */,
-				894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */,
-				894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */,
+				5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */,
+				5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */,
+				5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */,
+				5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */,
+				5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */,
+				5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */,
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
 				B262EAD11C761C8A001008AD /* Info.plist */,
@@ -313,7 +303,9 @@
 			files = (
 				B262EAD01C761C8A001008AD /* LaunchScreen.storyboard in Resources */,
 				B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */,
+				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
+				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,19 +330,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */,
+				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				549A9C751C7A8C5700F27ED0 /* FMDatabasePool.m in Sources */,
 				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
-				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
+				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
 				894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
 				549A9C731C7A8C5700F27ED0 /* FMDatabaseQueue.m in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
-				894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */,
-				549A9C741C7A8C5700F27ED0 /* FMDatabaseAdditions.m in Sources */,
-				549A9C721C7A8C5700F27ED0 /* FMResultSet.m in Sources */,
+				5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				549A9C711C7A8C5700F27ED0 /* FMDatabase.m in Sources */,
 			);

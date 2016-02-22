@@ -1,47 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ig3-vb-t93">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H7J-In-WYK">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Go Pro Images View Controller-->
         <scene sceneID="Xra-cP-rIC">
             <objects>
-                <collectionViewController id="ig3-vb-t93" customClass="GoProImagesViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="w06-H7-8wO">
+                <collectionViewController title="Bookshelf" id="H7J-In-WYK" customClass="BookshelfCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VKP-fQ-vGt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fce-J9-tcG">
-                            <size key="itemSize" width="174" height="176"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mBY-eU-C7b">
+                            <size key="itemSize" width="295" height="295"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoProImageCell" id="Dyl-R1-nTq" customClass="GoProImageCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreateCell" id="swV-VV-0qR">
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wmt-Ua-KbV">
-                                            <rect key="frame" x="8" y="8" width="158" height="160"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMG-v0-dAH">
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                            <state key="normal" title="+"/>
+                                            <connections>
+                                                <segue destination="fSH-Sl-0de" kind="showDetail" id="eZH-34-E8s"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="295" height="295"/>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="3ZB-tZ-px2" customClass="BookshelfCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
+                                <rect key="frame" x="305" y="0.0" width="295" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red-book-hi.png" translatesAutoresizingMaskIntoConstraints="NO" id="9j8-dp-XDG">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-rY-Fdp">
+                                            <rect key="frame" x="33" y="55" width="184" height="200"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="wmt-Ua-KbV" secondAttribute="trailing" id="1vU-4J-Mrp"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="wmt-Ua-KbV" secondAttribute="bottom" id="Nwd-kJ-gWb"/>
-                                    <constraint firstItem="wmt-Ua-KbV" firstAttribute="top" secondItem="Dyl-R1-nTq" secondAttribute="topMargin" id="W2w-PP-y5c"/>
-                                    <constraint firstItem="wmt-Ua-KbV" firstAttribute="leading" secondItem="Dyl-R1-nTq" secondAttribute="leadingMargin" id="crh-mz-TXE"/>
-                                </constraints>
+                                <size key="customSize" width="295" height="295"/>
                                 <connections>
-                                    <outlet property="imageView" destination="wmt-Ua-KbV" id="0Cm-ka-6Nz"/>
+                                    <outlet property="Cover" destination="W6A-rY-Fdp" id="fpu-VI-Bjh"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -53,7 +69,78 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYG-bF-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-231" y="248"/>
+            <point key="canvasLocation" x="278" y="418"/>
+        </scene>
+        <!--Photo Groups Collection View Controller-->
+        <scene sceneID="zTi-3J-bwC">
+            <objects>
+                <collectionViewController id="fSH-Sl-0de" customClass="PhotoGroupsCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VMd-mv-FZF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="61j-5T-7FH">
+                            <size key="itemSize" width="295" height="295"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="Uah-jS-kfJ" customClass="PhotoGroupsCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fSH-Sl-0de" id="zEi-ME-xmg"/>
+                            <outlet property="delegate" destination="fSH-Sl-0de" id="I4r-74-9eZ"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="791"/>
+        </scene>
+        <!--GoProImages-->
+        <scene sceneID="Ggy-5f-A6L">
+            <objects>
+                <collectionViewController title="GoProImages" id="T7A-0L-uoR" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l6R-Xe-iif">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yC9-dt-Pb0">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Qp-98-UYd">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="T7A-0L-uoR" id="7ZQ-Uf-wNp"/>
+                            <outlet property="delegate" destination="T7A-0L-uoR" id="uLu-br-u6W"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WzU-AK-b7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="102"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="red-book-hi.png" width="504" height="597"/>
+    </resources>
 </document>
