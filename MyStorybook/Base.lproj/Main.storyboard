@@ -16,13 +16,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fce-J9-tcG">
                             <size key="itemSize" width="174" height="176"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoProImageCell" id="Dyl-R1-nTq" customClass="GoProImageCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
+                                <rect key="frame" x="0.0" y="50" width="174" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
@@ -45,6 +45,25 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectImageHeader" id="DMF-ov-u8s" customClass="GoProImagesHeaderViewController" customModule="MyStorybook" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Image Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-lX-MY4">
+                                    <rect key="frame" x="194" y="10" width="212" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="1DU-lX-MY4" firstAttribute="centerX" secondItem="DMF-ov-u8s" secondAttribute="centerX" id="cyg-dK-N1o"/>
+                                <constraint firstItem="1DU-lX-MY4" firstAttribute="centerY" secondItem="DMF-ov-u8s" secondAttribute="centerY" id="fzD-UX-JE4"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="headerLabel" destination="1DU-lX-MY4" id="Lf8-Lv-mt9"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="ig3-vb-t93" id="Qb5-05-egx"/>
                             <outlet property="delegate" destination="ig3-vb-t93" id="Sfd-e9-QpD"/>
