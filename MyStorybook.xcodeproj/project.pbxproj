@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */; };
+		5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */; };
+		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
+		5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */; };
+		5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */; };
+		5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */; };
 		B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC51C761C8A001008AD /* AppDelegate.swift */; };
 		B262EAC81C761C8A001008AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC71C761C8A001008AD /* ViewController.swift */; };
 		B262EACB1C761C8A001008AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B262EAC91C761C8A001008AD /* Main.storyboard */; };
@@ -39,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewController.swift; sourceTree = "<group>"; };
+		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
+		5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewController.swift; sourceTree = "<group>"; };
+		5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-folder-md.png"; sourceTree = "<group>"; };
 		B262EAC21C761C8A001008AD /* MyStorybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStorybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B262EAC51C761C8A001008AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B262EAC71C761C8A001008AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +124,12 @@
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
 				B262EAC71C761C8A001008AD /* ViewController.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
+				5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */,
+				5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */,
+				5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */,
+				5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */,
+				5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */,
+				5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */,
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
 				B262EAD11C761C8A001008AD /* Info.plist */,
@@ -262,7 +280,9 @@
 			files = (
 				B262EAD01C761C8A001008AD /* LaunchScreen.storyboard in Resources */,
 				B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */,
+				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
+				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,12 +307,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */,
+				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
+				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
+				5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
