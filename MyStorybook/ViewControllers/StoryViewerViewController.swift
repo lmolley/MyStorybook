@@ -34,13 +34,14 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     @IBAction func nextPage() {
-        print("next!")
         self.pager.gotoNext()
+        self.currentPage = (currentPage ?? -1) + 1
     }
     
     @IBAction func prevPage() {
         if self.currentPage != nil {
             self.pager.gotoPrev()
+            self.currentPage = (currentPage! > 0) ? currentPage! - 1 : nil
         }
     }
     
@@ -49,7 +50,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         {
             pager = segue.destinationViewController as! UIPageViewController
             pager.dataSource = self
-//            pager.delegate = self // I don't think we need any of the delegate functionality yet.
+            pager.delegate = self
             showPage(nil) // Show the storybook cover.
         }
     }
@@ -108,10 +109,20 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             fatalError("Invalid view controller in StoryViewerViewController pageViewController:viewControllerAfterViewController")
         }
     }
+    
+    // MARK: - UIPageViewControllerDelegate
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        let vc = pageViewController.viewControllers![0]
+        self.currentPage = (vc as? StoryViewerPhotoPageViewController)?.pageIndex
+        print("AYY: \(self.currentPage)")
+    }
 }
 
 extension UIPageViewController
 {
+    // Animates a transition to the next view controller.
     func gotoNext()
     {
         let current = self.viewControllers![0]
@@ -120,6 +131,7 @@ extension UIPageViewController
         self.setViewControllers([next], direction: .Forward, animated: true, completion: nil)
     }
     
+    // Animates a transition to the previous view controller.
     func gotoPrev()
     {
         let current = self.viewControllers![0]
