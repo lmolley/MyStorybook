@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Go Pro Images View Controller-->
+        <!--Bookshelf-->
         <scene sceneID="Xra-cP-rIC">
             <objects>
                 <collectionViewController title="Bookshelf" id="H7J-In-WYK" customClass="BookshelfCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="150"/>
                                             <state key="normal" title="+"/>
                                             <connections>
-                                                <segue destination="fSH-Sl-0de" kind="showDetail" id="eZH-34-E8s"/>
+                                                <segue destination="fSH-Sl-0de" kind="showDetail" identifier="CreateSegue" id="eZH-34-E8s"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -58,18 +58,23 @@
                                 <size key="customSize" width="295" height="295"/>
                                 <connections>
                                     <outlet property="Cover" destination="W6A-rY-Fdp" id="fpu-VI-Bjh"/>
+                                    <segue destination="tgc-qe-afY" kind="showDetail" identifier="ViewerSegue" id="af6-ID-5Hy"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ig3-vb-t93" id="Qb5-05-egx"/>
-                            <outlet property="delegate" destination="ig3-vb-t93" id="Sfd-e9-QpD"/>
-                        </connections>
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYG-bF-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="278" y="418"/>
+        </scene>
+        <!--Viewer Controller-->
+        <scene sceneID="aKG-NT-0f9">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="tgc-qe-afY" customClass="ViewerController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLb-uT-wQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="1175"/>
         </scene>
         <!--Photo Groups Collection View Controller-->
         <scene sceneID="zTi-3J-bwC">
@@ -91,8 +96,22 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYr-mg-gaN">
+                                            <rect key="frame" x="90" y="111" width="142" height="73"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="file-folder-md.png" translatesAutoresizingMaskIntoConstraints="NO" id="vLB-hp-K2H">
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="Date" destination="hYr-mg-gaN" id="UGn-WF-OYA"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -141,6 +160,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="file-folder-md.png" width="300" height="210"/>
         <image name="red-book-hi.png" width="504" height="597"/>
     </resources>
 </document>

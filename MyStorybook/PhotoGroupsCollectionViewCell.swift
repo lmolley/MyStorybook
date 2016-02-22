@@ -10,4 +10,5 @@ import UIKit
 
 class PhotoGroupsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var Date: UILabel!
 }

@@ -8,10 +8,12 @@
 
 import UIKit
 
-private let reuseIdentifier = "BookCell"
+private let reuseIdentifier = "CreateCell"
+private let reuseIdentifier2 = "BookCell"
 
 class BookshelfCollectionViewController: UICollectionViewController {
 
+    var selectedIndex = 0
     var stories = [Story]()
 
     override func viewDidLoad() {
@@ -22,6 +24,7 @@ class BookshelfCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
         
         // Do any additional setup after loading the view.
         stories = App.database.getStories()
@@ -52,20 +55,41 @@ class BookshelfCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return stories.count
+        return self.stories.count + 1
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
-        let photo = UIImage(named: stories[indexPath.row].icon)
-        cell.Cover.image = photo
-        // Configure the cell
-    
-        return cell
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! BookshelfCollectionViewCell
+            // Configure the cell
+            let photo = UIImage(named: self.stories[indexPath.item].icon)
+            cell.Cover.image = photo
+            return cell
+        }
     }
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // handle tap events
+        if indexPath.item == 0 {
+            self.performSegueWithIdentifier("CreateSegue", sender: self)
+        }
+        else {
+            
+            selectedIndex = indexPath.item
+            performSegueWithIdentifier("ViewerSegue", sender: <#T##AnyObject?#>)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        <#code#>
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {

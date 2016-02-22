@@ -8,10 +8,12 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "GroupCell"
 
 class PhotoGroupsCollectionViewController: UICollectionViewController {
 
+    var groups = [Photo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,7 @@ class PhotoGroupsCollectionViewController: UICollectionViewController {
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        // groups = App.database.getGroups()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,25 +46,31 @@ class PhotoGroupsCollectionViewController: UICollectionViewController {
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return groups.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoGroupsCollectionViewCell
         // Configure the cell
-    
+        cell.Date.text = groups[indexPath.item]
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // handle tap events
+        if (indexPath.item == 0) {
+            
+        }
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
