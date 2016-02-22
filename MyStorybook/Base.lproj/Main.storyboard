@@ -5,8 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Bookshelf-->
-        <scene sceneID="k96-44-mSF">
+        <!--Go Pro Images View Controller-->
+        <scene sceneID="Xra-cP-rIC">
             <objects>
                 <collectionViewController title="Bookshelf" id="H7J-In-WYK" customClass="BookshelfCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VKP-fQ-vGt">
@@ -62,12 +62,12 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="H7J-In-WYK" id="dTd-8s-cuw"/>
-                            <outlet property="delegate" destination="H7J-In-WYK" id="ZvP-z6-4MU"/>
+                            <outlet property="dataSource" destination="ig3-vb-t93" id="Qb5-05-egx"/>
+                            <outlet property="delegate" destination="ig3-vb-t93" id="Sfd-e9-QpD"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eop-Pr-MPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYG-bF-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="278" y="418"/>
         </scene>
