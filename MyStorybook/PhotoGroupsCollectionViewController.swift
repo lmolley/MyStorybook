@@ -12,7 +12,7 @@ private let reuseIdentifier = "GroupCell"
 
 class PhotoGroupsCollectionViewController: UICollectionViewController {
 
-    var groups = [Photo]()
+    var groups = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -23,8 +23,8 @@ class BookshelfCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
+//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
         
         // Do any additional setup after loading the view.
         stories = App.database.getStories()
@@ -61,14 +61,14 @@ class BookshelfCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
-            return cell
+                return cell
         }
         else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! BookshelfCollectionViewCell
             // Configure the cell
-            let photo = UIImage(named: self.stories[indexPath.item].icon)
-            cell.Cover.image = photo
-            return cell
+//            let photo = UIImage(named: self.stories[indexPath.item].icon)
+//            cell.Cover.image = photo
+                return cell
         }
     }
 
@@ -82,12 +82,10 @@ class BookshelfCollectionViewController: UICollectionViewController {
         else {
             
             selectedIndex = indexPath.item
-            performSegueWithIdentifier("ViewerSegue", sender: <#T##AnyObject?#>)
-        }
+            self.performSegueWithIdentifier("ViewerSegue", sender: self)        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        <#code#>
     }
     
     /*

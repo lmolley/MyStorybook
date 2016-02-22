@@ -12,3 +12,4 @@ class BookshelfCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var Cover: UIImageView!
 }
+
