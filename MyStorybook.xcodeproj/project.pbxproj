@@ -93,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				549A9C631C7A8BE700F27ED0 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +138,6 @@
 		B262EAB91C761C8A001008AD = {
 			isa = PBXGroup;
 			children = (
-				549A9C621C7A8BE700F27ED0 /* libsqlite3.0.tbd */,
 				B262EAC41C761C8A001008AD /* MyStorybook */,
 				B262EAD91C761C8A001008AD /* MyStorybookTests */,
 				B262EAE41C761C8A001008AD /* MyStorybookUITests */,
@@ -319,7 +317,9 @@
 			files = (
 				B262EAD01C761C8A001008AD /* LaunchScreen.storyboard in Resources */,
 				B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */,
+				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
+				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,23 +344,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */,
+				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
-				549A9C751C7A8C5700F27ED0 /* FMDatabasePool.m in Sources */,
+				5B14CCA91C7AABB900B8FA0B /* ViewerController.swift in Sources */,
 				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				89E9F5451C7A9B5300C812F2 /* GoProImagesHeaderViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
-				894CC3101C7A79080004BD8B /* GoProImageCollectionViewCell.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
-				549A9C731C7A8C5700F27ED0 /* FMDatabaseQueue.m in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				894CC30E1C7A77AE0004BD8B /* GoProImagesViewController.swift in Sources */,
 				549A9C741C7A8C5700F27ED0 /* FMDatabaseAdditions.m in Sources */,
 				549A9C721C7A8C5700F27ED0 /* FMResultSet.m in Sources */,
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
-				549A9C711C7A8C5700F27ED0 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
