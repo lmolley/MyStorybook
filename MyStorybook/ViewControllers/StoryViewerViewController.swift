@@ -131,7 +131,20 @@ extension UIPageViewController
 
 // A view controller for the over of an album.
 class StoryViewerCoverViewController: UIViewController {
+    @IBOutlet weak var square: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.imageView.image = UIImage(named: "file-folder-md")
+        
+        square.layer.borderColor = UIColor(red: 0.6, green: 0, blue: 0, alpha: 1.0).CGColor
+        square.layer.borderWidth = 7
+        square.layer.shadowColor = UIColor.blackColor().CGColor
+        square.layer.shadowRadius = 17
+        square.layer.shadowOpacity = 0.5
+    }
 }
 
 // A view controller for one page of the album.

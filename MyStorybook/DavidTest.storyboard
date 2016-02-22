@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -123,8 +125,47 @@
                     <view key="view" contentMode="scaleToFill" id="rnz-RP-gq6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNH-xW-cU8" userLabel="White Box">
+                                <rect key="frame" x="75" y="75" width="450" height="450"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-T5-xYP">
+                                        <rect key="frame" x="105" y="161" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="249" constant="240" id="Q85-ZS-rOt"/>
+                                            <constraint firstAttribute="height" priority="249" constant="128" id="pcH-QP-Em9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.95000000000000007" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4pj-T5-xYP" firstAttribute="height" relation="lessThanOrEqual" secondItem="FNH-xW-cU8" secondAttribute="height" multiplier="0.75" id="QxO-uQ-HAL"/>
+                                    <constraint firstItem="4pj-T5-xYP" firstAttribute="centerX" secondItem="FNH-xW-cU8" secondAttribute="centerX" id="XEA-c3-s91"/>
+                                    <constraint firstAttribute="width" secondItem="FNH-xW-cU8" secondAttribute="height" id="fLQ-R1-Fa8"/>
+                                    <constraint firstAttribute="height" constant="450" id="krZ-P6-DLo"/>
+                                    <constraint firstItem="4pj-T5-xYP" firstAttribute="centerY" secondItem="FNH-xW-cU8" secondAttribute="centerY" id="qxu-CR-W1e"/>
+                                    <constraint firstItem="4pj-T5-xYP" firstAttribute="width" relation="lessThanOrEqual" secondItem="FNH-xW-cU8" secondAttribute="width" multiplier="0.75" id="z9u-UR-0Tm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.0011086477909594272" blue="0.13219545958445467" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FNH-xW-cU8" firstAttribute="centerX" secondItem="rnz-RP-gq6" secondAttribute="centerX" id="FBM-cp-ErV"/>
+                            <constraint firstItem="FNH-xW-cU8" firstAttribute="centerY" secondItem="rnz-RP-gq6" secondAttribute="centerY" id="VgI-dp-gjM"/>
+                            <constraint firstItem="FNH-xW-cU8" firstAttribute="height" secondItem="rnz-RP-gq6" secondAttribute="height" multiplier="0.75" id="bQe-L9-ASK"/>
+                            <constraint firstItem="FNH-xW-cU8" firstAttribute="width" secondItem="rnz-RP-gq6" secondAttribute="width" multiplier="0.7" priority="750" id="hxg-kc-7q8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bQe-L9-ASK"/>
+                                <exclude reference="hxg-kc-7q8"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="4pj-T5-xYP" id="Gmz-iA-UvD"/>
+                        <outlet property="square" destination="FNH-xW-cU8" id="NnD-Gc-cwL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouz-xA-JaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
