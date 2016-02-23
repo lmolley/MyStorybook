@@ -736,6 +736,7 @@
 				5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */,
+				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

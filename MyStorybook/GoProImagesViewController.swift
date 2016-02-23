@@ -83,7 +83,7 @@ class GoProImagesViewController : UICollectionViewController {
                 let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
                 if (fetchResult.firstObject != nil) {
                     let lastAsset: PHAsset = fetchResult.lastObject as! PHAsset
-                    self.gopro_folder.addImage(data, id: lastAsset.localIdentifier)
+                    self.gopro_folder.addImageId(lastAsset)
                 }
             
             }
@@ -130,16 +130,7 @@ class GoProImagesViewController : UICollectionViewController {
     // Repeatedly call the following method while incrementing
     // the index until all the photos are fetched
     private func fetchPhotoAtIndexFromEnd(index:Int, assetCol:PHAssetCollection, folder:PreStory) {
-        
-        let imgManager = PHImageManager.defaultManager()
-        
-        // Note that if the request is not set to synchronous
-        // the requestImageForAsset will return both the image
-        // and thumbnail; by setting synchronous to true it
-        // will return just the thumbnail
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.synchronous = true
-        
+    
         // Sort the images by creation date
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
@@ -151,20 +142,12 @@ class GoProImagesViewController : UICollectionViewController {
             if fetchResult.count > 0 {
                 // Perform the image request
                 let myPHAsset = fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset
-                imgManager.requestImageForAsset(myPHAsset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
-                    // Add the returned image to your array
-                    folder.addImage(image!, id: myPHAsset.localIdentifier)
-                    self.image_count += 1
-                    
-                    // If you haven't already reached the first
-                    // index of the fetch result and if you haven't
-                    // already stored all of the images you need,
-                    // perform the fetch request again with an
-                    // incremented index
-                    if index + 1 < fetchResult.count && self.image_count < self.maxImageCount {
+                folder.addImageId(myPHAsset)
+                self.image_count += 1
+                if index + 1 < fetchResult.count && self.image_count < self.maxImageCount {
                         self.fetchPhotoAtIndexFromEnd(index + 1, assetCol: assetCol, folder: folder)
-                    }
-                })
+                }
+
             }
         }
     }
@@ -191,8 +174,8 @@ class GoProImagesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
             
             // Configure the cell
-        if folders.count > indexPath.row && folders[indexPath.row].images.count > 0 {
-            cell.imageView.image = folders[indexPath.row].images[0]
+        if (folders.count > indexPath.row && (folders[indexPath.row].topImage as UIImage!) != nil) {
+            cell.imageView.image = folders[indexPath.row].topImage
             cell.titleLabel.text = folders[indexPath.row].title
             cell.dateLabel.text = getDate(folders[indexPath.row].date!)
             cell.spinningCircle.stopAnimating()
