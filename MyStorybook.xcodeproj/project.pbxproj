@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54F2D3061C7D1A2E008D4094 /* MyStorybookDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2D3051C7D1A2E008D4094 /* MyStorybookDatabase.swift */; };
 		5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */; };
 		5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */; };
 		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
@@ -71,6 +72,7 @@
 		549A9C6E1C7A8C5700F27ED0 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = "Third Party/fmdb/FMDatabaseAdditions.m"; sourceTree = "<group>"; };
 		549A9C6F1C7A8C5700F27ED0 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = "Third Party/fmdb/FMDatabasePool.h"; sourceTree = "<group>"; };
 		549A9C701C7A8C5700F27ED0 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = "Third Party/fmdb/FMDatabasePool.m"; sourceTree = "<group>"; };
+		54F2D3051C7D1A2E008D4094 /* MyStorybookDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStorybookDatabase.swift; sourceTree = "<group>"; };
 		5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewController.swift; sourceTree = "<group>"; };
 		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				B2BA3C591C761F3E00D7342D /* Story.swift */,
 				B2BA3C5B1C76215200D7342D /* App.swift */,
 				B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */,
+				54F2D3051C7D1A2E008D4094 /* MyStorybookDatabase.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
+				54F2D3061C7D1A2E008D4094 /* MyStorybookDatabase.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
