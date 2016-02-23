@@ -182,6 +182,22 @@ class GoProImagesViewController : UICollectionViewController {
             cell.dateLabel.text = getDate(folders[indexPath.row].date!)
             return cell
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("PhotoSelectorSegue", sender: folders[indexPath.row])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PhotoSelectorSegue"
+        {
+            if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
+                if let folder = sender as? MyMomentCollection {
+                    destinationVC.titleToDisplay = folder.title!
+                    destinationVC.folderToDisplay = folder
+                }
+            }
+        }
+    }
     private func getDate(date:NSDate)->String{
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
