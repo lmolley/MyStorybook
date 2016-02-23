@@ -1,11 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T7A-0L-uoR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H7J-In-WYK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--CameraControl-->
+        <scene sceneID="q6h-xl-Neu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="CameraControl" id="GKE-CW-UMA" customClass="CameraControlViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ovn-sV-dDF"/>
+                        <viewControllerLayoutGuide type="bottom" id="BWN-OK-M63"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sTD-NY-Ns2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-YI-8B2">
+                                <rect key="frame" x="20" y="28" width="244" height="170"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="📷"/>
+                                <connections>
+                                    <action selector="changeToCameraMode" destination="GKE-CW-UMA" eventType="touchUpInside" id="ixV-bl-yaf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqg-kR-LeZ">
+                                <rect key="frame" x="20" y="290" width="560" height="290"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="QUx-x0-Fxk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="record" destination="GKE-CW-UMA" eventType="touchUpInside" id="AvR-Dv-fLj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-AC-v5O">
+                                <rect key="frame" x="336" y="28" width="244" height="170"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="📹"/>
+                                <connections>
+                                    <action selector="changeToVideoMode" destination="GKE-CW-UMA" eventType="touchUpInside" id="V0c-se-qOd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zG0-AC-v5O" firstAttribute="width" secondItem="hSd-YI-8B2" secondAttribute="width" id="35u-Bq-uAv"/>
+                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="top" secondItem="zG0-AC-v5O" secondAttribute="bottom" constant="92" id="5yK-AV-a97"/>
+                            <constraint firstItem="hSd-YI-8B2" firstAttribute="top" secondItem="Ovn-sV-dDF" secondAttribute="bottom" constant="8" id="CVA-Db-rCB"/>
+                            <constraint firstAttribute="bottom" secondItem="uqg-kR-LeZ" secondAttribute="bottom" constant="20" symbolic="YES" id="Egr-QB-lKY"/>
+                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="leading" secondItem="hSd-YI-8B2" secondAttribute="leading" id="Lru-WQ-nsW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hSd-YI-8B2" secondAttribute="leading" id="Nn0-Nw-87h"/>
+                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="trailing" secondItem="zG0-AC-v5O" secondAttribute="trailing" id="VcQ-Dn-0gb"/>
+                            <constraint firstItem="zG0-AC-v5O" firstAttribute="top" secondItem="Ovn-sV-dDF" secondAttribute="bottom" constant="8" id="hQG-2I-dtl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zG0-AC-v5O" secondAttribute="trailing" id="kZR-ym-ez2"/>
+                            <constraint firstItem="zG0-AC-v5O" firstAttribute="leading" secondItem="hSd-YI-8B2" secondAttribute="trailing" constant="72" id="nzk-5f-DlU"/>
+                            <constraint firstItem="zG0-AC-v5O" firstAttribute="height" secondItem="hSd-YI-8B2" secondAttribute="height" id="txG-Ku-P2Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="hSd-YI-8B2" id="AAu-n7-h9d"/>
+                        <outlet property="recordButton" destination="uqg-kR-LeZ" id="KCY-vy-zSj"/>
+                        <outlet property="videoButton" destination="zG0-AC-v5O" id="ffc-TL-jEu"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="278" y="-275"/>
+        </scene>
         <!--Bookshelf-->
         <scene sceneID="Xra-cP-rIC">
             <objects>
