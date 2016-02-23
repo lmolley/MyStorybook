@@ -14,7 +14,6 @@ class PhotoSelectorViewController: UIViewController{
     var titleToDisplay:String? = ""
     var folderToDisplay:MyMomentCollection?
     var currentPicInd:Int = 0
-    var acceptedImages:[UIImage] = [UIImage]()
     var status:[Bool] = [Bool](count:4, repeatedValue:false)
     
     @IBOutlet weak var mainImageView: UIImageView!
@@ -24,7 +23,7 @@ class PhotoSelectorViewController: UIViewController{
     @IBOutlet weak var imageViewRight: UIImageView!
     
     @IBAction func accept() {
-        acceptedImages.append(folderToDisplay!.images[currentPicInd])
+        folderToDisplay?.accepted_images.append(folderToDisplay!.images[currentPicInd])
         status[0] = status[1]
         status[1] = true
         status[2] = status[3]
@@ -33,7 +32,8 @@ class PhotoSelectorViewController: UIViewController{
         currentPicInd += 1
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
-            print(acceptedImages)
+            print(folderToDisplay!.accepted_images)
+            performSegueWithIdentifier("selectionCompleteSegue", sender: folderToDisplay)
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
@@ -50,7 +50,8 @@ class PhotoSelectorViewController: UIViewController{
         currentPicInd += 1
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
-            print(acceptedImages)
+            print(folderToDisplay!.accepted_images)
+            performSegueWithIdentifier("selectionCompleteSegue", sender: folderToDisplay)
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
@@ -102,6 +103,17 @@ class PhotoSelectorViewController: UIViewController{
             imageView.layer.borderColor = UIColor.redColor().CGColor
             imageView.layer.borderWidth = 2.0
 //            imageView.tintColor = UIColor.redColor().colorWithAlphaComponent(0.1)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectionCompleteSegue"
+        {
+            if let destinationVC = segue.destinationViewController as? PageSelectorViewController{
+                if let folder = sender as? MyMomentCollection {
+                    destinationVC.story_info = folder
+                }
+            }
         }
     }
     
