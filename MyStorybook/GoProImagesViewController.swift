@@ -23,22 +23,21 @@ class GoProImagesViewController : UICollectionViewController {
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
     var gopro_images:[String] = [String]()
+    var gopro_folder:MyMomentCollection = MyMomentCollection(title_in: "GOPRO", date_in: NSDate())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        //TODO: Get list of GoPro images from the camera here
-        //hardcoded for now
-        getGoProImageList()
-        //saveImages()
+        folders.append(gopro_folder)
         fetchPhotosFromCameraRoll()
-        
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+            self.getGoProImages()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.collectionView!.reloadData()
+            }
+        }
     }
     
-    private func getGoProImageList() -> Void {
+    private func getGoProImages() -> Void {
         HTTPGet(getMediaListCommand){
             (data: String, error: String?) -> Void in
             if error != nil {
@@ -67,6 +66,7 @@ class GoProImagesViewController : UICollectionViewController {
                 getAndSaveImage(image_file)
             }
         }
+        
     }
     
     private func getAndSaveImage(path: String) -> Void {
@@ -76,40 +76,48 @@ class GoProImagesViewController : UICollectionViewController {
                 print(error)
             }
             else {
+                self.gopro_folder.addImage(data)
                 print("saving data")
-                //Save data to camera roll here!!
                 UIImageWriteToSavedPhotosAlbum(data, nil, nil, nil)
             }
         }
     }
     
     private func fetchPhotosFromCameraRoll () {
-        
-        camera_roll_images = NSMutableArray()
+        print("about to fetch!")
         maxImageCount = 50
-        totalImageCountNeeded = 3
-        fetchCollections()
-//        fetchPhotoAtIndexFromEnd(0)
+        let collections = fetchCollections()
+        camera_roll_images = NSMutableArray(capacity:collections.count)
+        self.getImagesFromCollectionResult(collections)
+        
     }
     
-    private func fetchCollections(){
+    private func fetchCollections() -> PHFetchResult{
         let collectionFetchOptions = PHFetchOptions()
         collectionFetchOptions.sortDescriptors = [NSSortDescriptor(key:"startDate", ascending: false)]
         let smartAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: collectionFetchOptions)
-        smartAlbums.enumerateObjectsUsingBlock({
+        return smartAlbums
+
+        
+    }
+    private func getImagesFromCollectionResult(result:PHFetchResult) {
+        result.enumerateObjectsUsingBlock({
+            print("starting block")
             if let collection = $0.0 as? PHAssetCollection {
-//                print("collection title: \(collection.localizedTitle), count: \(collection.estimatedAssetCount) approx location: \(collection.approximateLocation), localized location names: \(collection.localizedLocationNames), date: \(collection.startDate)")
                 if self.camera_roll_images.count < self.maxImageCount {
-                    var new_folder = MyMomentCollection(title_in: collection.localizedTitle, date_in: collection.startDate)
+                    let new_folder = MyMomentCollection(title_in: collection.localizedTitle, date_in: collection.startDate)
                     self.folders.append(new_folder)
-                    self.fetchPhotoAtIndexFromEnd(0, assetCol: collection, folder: new_folder)
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+                        self.fetchPhotoAtIndexFromEnd(0, assetCol: collection, folder: new_folder)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.collectionView!.reloadData()
+                        }
+                    }
                 }
+
             }
-                
-        })
             
-
-
+        })
     }
     
     // Repeatedly call the following method while incrementing
@@ -122,11 +130,11 @@ class GoProImagesViewController : UICollectionViewController {
         // the requestImageForAsset will return both the image
         // and thumbnail; by setting synchronous to true it
         // will return just the thumbnail
-        var requestOptions = PHImageRequestOptions()
+        let requestOptions = PHImageRequestOptions()
         requestOptions.synchronous = true
         
         // Sort the images by creation date
-        var fetchOptions = PHFetchOptions()
+        let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
         
         if let fetchResult: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(assetCol, options: fetchOptions) {
@@ -177,9 +185,16 @@ class GoProImagesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
             
             // Configure the cell
+        if folders.count > indexPath.row && folders[indexPath.row].images.count > 0 {
             cell.imageView.image = folders[indexPath.row].images[0]
             cell.titleLabel.text = folders[indexPath.row].title
             cell.dateLabel.text = getDate(folders[indexPath.row].date!)
+            cell.spinningCircle.stopAnimating()
+        }
+        else {
+            cell.imageView.image = UIImage(named: "default.jpg")
+            cell.spinningCircle.startAnimating()
+        }
             return cell
     }
     
