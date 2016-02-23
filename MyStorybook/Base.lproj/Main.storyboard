@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H7J-In-WYK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--CameraControl-->
         <scene sceneID="q6h-xl-Neu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="CameraControl" id="GKE-CW-UMA" customClass="CameraControlViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ovn-sV-dDF"/>
@@ -71,8 +70,9 @@
                         <outlet property="videoButton" destination="zG0-AC-v5O" id="ffc-TL-jEu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="278" y="-275"/>
+            <point key="canvasLocation" x="-388" y="-377"/>
         </scene>
         <!--Bookshelf-->
         <scene sceneID="Xra-cP-rIC">
@@ -222,7 +222,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="Uah-jS-kfJ" customClass="PhotoGroupsCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="280" height="250"/>
+                                <rect key="frame" x="10" y="10" width="280" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="280" height="250"/>
@@ -285,7 +285,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectCell" id="kv8-q8-WfG">
-                                        <rect key="frame" x="0.0" y="63.5" width="153" height="167"/>
+                                        <rect key="frame" x="0.0" y="32" width="153" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="167"/>
