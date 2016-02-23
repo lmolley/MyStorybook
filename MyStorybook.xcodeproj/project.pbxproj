@@ -173,6 +173,7 @@
 			children = (
 				5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */,
 				5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */,
+				5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -386,6 +387,7 @@
 			files = (
 				B262EAD01C761C8A001008AD /* LaunchScreen.storyboard in Resources */,
 				B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */,
+				5B14CCAD1C7BDBDB00B8FA0B /* red-book-open.png in Resources */,
 				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
 				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,

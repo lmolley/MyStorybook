@@ -66,9 +66,7 @@ class PhotoGroupsCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        if (indexPath.item == 0) {
-            
-        }
+        
     }
     
     /*
