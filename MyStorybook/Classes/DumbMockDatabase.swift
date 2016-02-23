@@ -83,5 +83,9 @@ func SampleDumbMockDatabase() -> Database
         mp(4, "food4"),
         mp(5, "food5")))
     
+    db.createStoryWithPages(ms("Other?", "somethingElse",
+        mp(1, "other1"),
+        mp(2, "other2")))
+    
     return db
 }
