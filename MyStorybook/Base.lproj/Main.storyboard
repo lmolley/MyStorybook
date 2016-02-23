@@ -174,15 +174,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Storybook" id="Gz7-6g-LTv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zhn-ov-pVw">
-                            <connections>
-                                <segue destination="RFN-0h-Or5" kind="show" id="Fdf-90-bvd"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zhn-ov-pVw"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="6GZ-C5-aLp" kind="show" id="t5y-bS-mv6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQA-Pj-LbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,19 +203,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Storybook Pages" id="MPp-mR-lpR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Feo-ms-9eE">
-                            <connections>
-                                <segue destination="RFN-0h-Or5" kind="show" id="Guv-dx-XnV"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Feo-ms-9eE"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="6GZ-C5-aLp" kind="show" id="oNw-Nv-BQg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lk1-dL-DyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1987" y="2005"/>
+            <point key="canvasLocation" x="1370" y="1989"/>
         </scene>
         <!--Photo Groups-->
         <scene sceneID="zTi-3J-bwC">
@@ -526,24 +512,6 @@
             <point key="canvasLocation" x="5312" y="2041"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="RpB-nA-FQL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hvH-Yi-Q4f" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HWz-Do-Zkr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="cSb-bq-o5w" kind="relationship" relationship="rootViewController" id="qHo-oa-jki"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZcZ-B1-9J0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-320" y="1666"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="ll4-uh-rgb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9w6-fJ-tZ3" sceneMemberID="viewController">
@@ -651,24 +619,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3O-pr-qoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6366" y="2046"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xp2-Ca-cUd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6GZ-C5-aLp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rA-fX-oej">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2bI-HS-zMd" kind="relationship" relationship="rootViewController" id="bND-tt-k76"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EJz-d6-zpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1218" y="2121"/>
         </scene>
         <!--Photo Selector-->
         <scene sceneID="P9a-jR-dmV">
@@ -884,8 +834,6 @@
         <image name="red-book-open.png" width="504" height="597"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ooP-8h-2xW"/>
         <segue reference="2mp-Ie-tMh"/>
-        <segue reference="t5y-bS-mv6"/>
     </inferredMetricsTieBreakers>
 </document>
