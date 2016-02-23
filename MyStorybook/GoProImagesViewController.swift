@@ -18,7 +18,10 @@ let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
 class GoProImagesViewController : UICollectionViewController {
     
     var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
+    var folders:[MyMomentCollection] = [MyMomentCollection]()
+    var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
+    var maxImageCount:Int!
     var gopro_images:[String] = [String]()
 
     override func viewDidLoad() {
@@ -41,13 +44,12 @@ class GoProImagesViewController : UICollectionViewController {
             if error != nil {
                 print(error)
             } else {
+                //parse JSON returned from request to get out the filenames
                 if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
                     let json = JSON(data: dataFromString)
                     for (_,library)in json["media"] {
-                        print(library)
                         let prefix:String = library["d"].string! + "/"
                         for (_, file) in library["fs"] {
-                            print(file)
                             self.gopro_images.append(prefix + file["n"].string!)
                         }
                         
@@ -55,10 +57,19 @@ class GoProImagesViewController : UICollectionViewController {
                 }
             }
             print(self.gopro_images)
+            self.saveImages()
         }
     }
     
-    private func getImage(path: String) -> Void {
+    private func saveImages() {
+        for image_file in self.gopro_images {
+            if(image_file.containsString(".JPG")) {
+                getAndSaveImage(image_file)
+            }
+        }
+    }
+    
+    private func getAndSaveImage(path: String) -> Void {
         HTTPImageGet(getImageCommand + path){
             (data: UIImage, error: String?) -> Void in
             if error != nil {
@@ -73,14 +84,37 @@ class GoProImagesViewController : UICollectionViewController {
     }
     
     private func fetchPhotosFromCameraRoll () {
+        
         camera_roll_images = NSMutableArray()
+        maxImageCount = 50
         totalImageCountNeeded = 3
-        fetchPhotoAtIndexFromEnd(0)
+        fetchCollections()
+//        fetchPhotoAtIndexFromEnd(0)
+    }
+    
+    private func fetchCollections(){
+        let collectionFetchOptions = PHFetchOptions()
+        collectionFetchOptions.sortDescriptors = [NSSortDescriptor(key:"startDate", ascending: false)]
+        let smartAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: collectionFetchOptions)
+        smartAlbums.enumerateObjectsUsingBlock({
+            if let collection = $0.0 as? PHAssetCollection {
+//                print("collection title: \(collection.localizedTitle), count: \(collection.estimatedAssetCount) approx location: \(collection.approximateLocation), localized location names: \(collection.localizedLocationNames), date: \(collection.startDate)")
+                if self.camera_roll_images.count < self.maxImageCount {
+                    var new_folder = MyMomentCollection(title_in: collection.localizedTitle, date_in: collection.startDate)
+                    self.folders.append(new_folder)
+                    self.fetchPhotoAtIndexFromEnd(0, assetCol: collection, folder: new_folder)
+                }
+            }
+                
+        })
+            
+
+
     }
     
     // Repeatedly call the following method while incrementing
     // the index until all the photos are fetched
-    private func fetchPhotoAtIndexFromEnd(index:Int) {
+    private func fetchPhotoAtIndexFromEnd(index:Int, assetCol:PHAssetCollection, folder:MyMomentCollection) {
         
         let imgManager = PHImageManager.defaultManager()
         
@@ -95,7 +129,7 @@ class GoProImagesViewController : UICollectionViewController {
         var fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
         
-        if let fetchResult: PHFetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions) {
+        if let fetchResult: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(assetCol, options: fetchOptions) {
             
             // If the fetch result isn't empty,
             // proceed with the image request
@@ -104,18 +138,17 @@ class GoProImagesViewController : UICollectionViewController {
                 imgManager.requestImageForAsset(fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
                     
                     // Add the returned image to your array
-                    self.camera_roll_images.addObject(image!)
+//                    self.camera_roll_images.addObject(image!)
+                    folder.addImage(image!)
+                    self.image_count += 1
                     
                     // If you haven't already reached the first
                     // index of the fetch result and if you haven't
                     // already stored all of the images you need,
                     // perform the fetch request again with an
                     // incremented index
-                    if index + 1 < fetchResult.count && self.camera_roll_images.count < self.totalImageCountNeeded {
-                        self.fetchPhotoAtIndexFromEnd(index + 1)
-                    } else {
-                        // Else you have completed creating your array
-                        print("Completed array: \(self.camera_roll_images)")
+                    if index + 1 < fetchResult.count && self.image_count < self.maxImageCount {
+                        self.fetchPhotoAtIndexFromEnd(index + 1, assetCol: assetCol, folder: folder)
                     }
                 })
             }
@@ -134,7 +167,9 @@ class GoProImagesViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView!,
         numberOfItemsInSection section: Int) -> Int {
             //return number of images in our 1 section
-            return camera_roll_images.count
+//            return camera_roll_images.count
+//            return image_count
+            return folders.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -142,10 +177,32 @@ class GoProImagesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
             
             // Configure the cell
-            cell.imageView.image = camera_roll_images[indexPath.row] as! UIImage
+            cell.imageView.image = folders[indexPath.row].images[0]
+            cell.titleLabel.text = folders[indexPath.row].title
+            cell.dateLabel.text = getDate(folders[indexPath.row].date!)
             return cell
     }
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("PhotoSelectorSegue", sender: folders[indexPath.row])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PhotoSelectorSegue"
+        {
+            if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
+                if let folder = sender as? MyMomentCollection {
+                    destinationVC.titleToDisplay = folder.title
+                    destinationVC.folderToDisplay = folder
+                }
+            }
+        }
+    }
+    private func getDate(date:NSDate)->String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        return dateFormatter.stringFromDate(date)
+    }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var header: GoProImagesHeaderViewController?
