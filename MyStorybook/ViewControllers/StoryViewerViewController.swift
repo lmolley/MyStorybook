@@ -94,7 +94,9 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     func createCoverViewController() -> StoryViewerCoverViewController
     {
-        return self.storyboard!.instantiateViewControllerWithIdentifier("storyViewerCoverPage") as! StoryViewerCoverViewController
+        let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("storyViewerCoverPage") as! StoryViewerCoverViewController
+        viewController.story = self.story
+        return viewController
     }
     
     func createPhotoPageViewController(pageIndex: Int) -> StoryViewerPhotoPageViewController
@@ -171,10 +173,28 @@ class StoryViewerCoverViewController: UIViewController {
     @IBOutlet weak var square: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    internal var story: Story!
+    {
+        didSet
+        {
+
+        }
+    }
+    
+    static var defaultCoverImage: UIImage
+    {
+        get
+        {
+            return UIImage(named: "file-folder-md")!
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imageView.image = UIImage(named: "file-folder-md")
+        self.imageView.image = StoryViewerCoverViewController.defaultCoverImage
+        
+                    self.imageView.image = UIImage(named: "CoverPhotos/\(story.icon)") ?? StoryViewerCoverViewController.defaultCoverImage
         
         square.layer.borderColor = UIColor(red: 0.6, green: 0, blue: 0, alpha: 1.0).CGColor
         square.layer.borderWidth = 7
