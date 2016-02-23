@@ -17,13 +17,35 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     // This will be nil if the cover page is being shown.
     private var currentPage: Int?
+    {
+        didSet
+        {
+            if (currentPage == nil) { // On cover page
+                prevButton.hidden = true
+                nextButton.hidden = (pageCount <= 0)
+            } else // On photo page
+            {
+                prevButton.hidden = false
+                nextButton.hidden = (currentPage >= pageCount - 1)
+            }
+        }
+    }
+    
+    private var pageCount: Int
+    {
+        get
+        {
+            return story?.pages?.count ?? 0
+        }
+    }
     
     weak var pager: UIPageViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setting the currentPage updates the next and previous buttons.
+        currentPage = (currentPage)
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,8 +127,10 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         {
         case is StoryViewerCoverViewController:
             return createPhotoPageViewController(0)
-        case let page as StoryViewerPhotoPageViewController:
+        case let page as StoryViewerPhotoPageViewController where page.pageIndex < (pageCount - 1):
             return createPhotoPageViewController(page.pageIndex + 1)
+        case let page as StoryViewerPhotoPageViewController where page.pageIndex == pageCount - 1:
+            return nil
         default:
             fatalError("Invalid view controller in StoryViewerViewController pageViewController:viewControllerAfterViewController")
         }
@@ -118,7 +142,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         
         let vc = pageViewController.viewControllers![0]
         self.currentPage = (vc as? StoryViewerPhotoPageViewController)?.pageIndex
-        print("AYY: \(self.currentPage)")
     }
 }
 
