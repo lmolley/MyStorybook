@@ -48,15 +48,12 @@ class PhotoSelectorViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = titleToDisplay
-        if folderToDisplay!.images.count < 4 {
-            //TODO: add display choices here
+        if let mainImage:UIImage? = folderToDisplay!.images[0] as UIImage{
+            mainImageView.image = mainImage
+            imageViewMidRight.image = mainImage
         }
-        else {
-            mainImageView.image = folderToDisplay!.images[0]
-            imageViewLeft.image = folderToDisplay!.images[0]
-            imageViewMidLeft.image = folderToDisplay!.images[1]
-            imageViewMidRight.image = folderToDisplay!.images[2]
-            imageViewRight.image = folderToDisplay!.images[3]
+        if let nextImage:UIImage? = folderToDisplay!.images[1] as UIImage{
+            imageViewRight.image = nextImage
         }
     }
     
