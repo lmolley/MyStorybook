@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-YI-8B2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-YI-8B2">
                                 <rect key="frame" x="20" y="28" width="244" height="170"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -40,7 +40,7 @@
                                     <action selector="record" destination="GKE-CW-UMA" eventType="touchUpInside" id="AvR-Dv-fLj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-AC-v5O">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-AC-v5O">
                                 <rect key="frame" x="336" y="28" width="244" height="170"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -91,7 +91,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="3ZB-tZ-px2" customClass="BookshelfCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="280" height="250"/>
+                                <rect key="frame" x="10" y="185" width="280" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="280" height="250"/>
@@ -109,7 +109,6 @@
                                 <size key="customSize" width="280" height="250"/>
                                 <connections>
                                     <outlet property="Cover" destination="W6A-rY-Fdp" id="fpu-VI-Bjh"/>
-                                    <segue destination="Sgg-NJ-I5E" kind="show" id="GlW-0L-ZOl"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -130,6 +129,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="xT1-xY-GeE" kind="show" identifier="showStorybook" id="Wee-O8-dea"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYG-bF-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fps-cD-10p">
@@ -141,6 +143,14 @@
                 </toolbar>
             </objects>
             <point key="canvasLocation" x="1428" y="262"/>
+        </scene>
+        <!--storyViewerViewController-->
+        <scene sceneID="3sc-nI-M0U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DavidTest" referencedIdentifier="storyViewerViewController" id="xT1-xY-GeE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRn-m5-Cd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2024" y="347"/>
         </scene>
         <!--Storybook-->
         <scene sceneID="SXd-a2-gqG">
@@ -217,7 +227,6 @@
         <!--Photo Groups-->
         <scene sceneID="zTi-3J-bwC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="fSH-Sl-0de" customClass="PhotoGroupsCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VMd-mv-FZF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -263,10 +272,11 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bVw-37-sEi"/>
                     </navigationItem>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3790" y="-25"/>
         </scene>
-        <!--View Controller-->
+        <!--Cover Photo-->
         <scene sceneID="LuP-KL-aDS">
             <objects>
                 <viewController storyboardIdentifier="Cover Photo" id="Bex-uc-Jtm" sceneMemberID="viewController">
@@ -510,9 +520,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5gO-3L-Trn" kind="relationship" relationship="rootViewController" id="56H-fg-3ZN"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcv-m5-c3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -535,18 +542,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcZ-B1-9J0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-320" y="1666"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="4ea-zg-J9v">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Sgg-NJ-I5E" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="hvH-Yi-Q4f" kind="show" id="iaV-Jb-lMe"/>
-                    </connections>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bSf-ye-yJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="322" y="1047"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ll4-uh-rgb">
@@ -655,7 +650,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3O-pr-qoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6442" y="2218"/>
+            <point key="canvasLocation" x="6366" y="2046"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xp2-Ca-cUd">
@@ -719,7 +714,7 @@
                                         </view>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="I5S-Eo-h08">
-                                        <rect key="frame" x="156.5" y="0.0" width="131" height="119"/>
+                                        <rect key="frame" x="156" y="0.0" width="131" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="119"/>
@@ -728,7 +723,7 @@
                                         </view>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mNy-Ni-S4T">
-                                        <rect key="frame" x="312.5" y="0.0" width="131" height="119"/>
+                                        <rect key="frame" x="313" y="0.0" width="131" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="119"/>
@@ -806,4 +801,9 @@
         <image name="red-book-hi.png" width="504" height="597"/>
         <image name="red-book-open.png" width="504" height="597"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Guv-dx-XnV"/>
+        <segue reference="oNw-Nv-BQg"/>
+        <segue reference="CnT-zH-35V"/>
+    </inferredMetricsTieBreakers>
 </document>

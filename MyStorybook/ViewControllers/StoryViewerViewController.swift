@@ -13,6 +13,8 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    internal var story: Story?
+    
     // This will be nil if the cover page is being shown.
     private var currentPage: Int?
     

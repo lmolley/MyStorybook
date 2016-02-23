@@ -69,10 +69,18 @@ class BookshelfCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         selectedIndex = indexPath.item
+        performSegueWithIdentifier("showStorybook", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+        switch (segue.identifier ?? "")
+        {
+        case "showStorybook":
+            let viewer = segue.destinationViewController as! StoryViewerViewController
+            viewer.story = self.stories[self.selectedIndex]
+        default:
+            break
+        }
     }
     
     /*
