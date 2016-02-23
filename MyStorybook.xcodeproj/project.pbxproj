@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54F2D3061C7D1A2E008D4094 /* MyStorybookDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2D3051C7D1A2E008D4094 /* MyStorybookDatabase.swift */; };
 		5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */; };
 		5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */; };
 		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
@@ -21,7 +22,7 @@
 		895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */; };
 		895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */; };
 		895FE84C1C7B83CF006ADB29 /* GoProImagesHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5441C7A9B5300C812F2 /* GoProImagesHeaderViewController.swift */; };
-		895FE84E1C7BC8C0006ADB29 /* MyMomentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FE84D1C7BC8C0006ADB29 /* MyMomentCollection.swift */; };
+		895FE84E1C7BC8C0006ADB29 /* PreStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FE84D1C7BC8C0006ADB29 /* PreStory.swift */; };
 		8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8970B12F1C7CCCBB005A69F0 /* default.jpg */; };
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
 		B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC51C761C8A001008AD /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		549A9C6E1C7A8C5700F27ED0 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = "Third Party/fmdb/FMDatabaseAdditions.m"; sourceTree = "<group>"; };
 		549A9C6F1C7A8C5700F27ED0 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = "Third Party/fmdb/FMDatabasePool.h"; sourceTree = "<group>"; };
 		549A9C701C7A8C5700F27ED0 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = "Third Party/fmdb/FMDatabasePool.m"; sourceTree = "<group>"; };
+		54F2D3051C7D1A2E008D4094 /* MyStorybookDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStorybookDatabase.swift; sourceTree = "<group>"; };
 		5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewController.swift; sourceTree = "<group>"; };
 		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		890869131C7CDE510099C92E /* PageSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectorViewController.swift; sourceTree = "<group>"; };
 		894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesViewController.swift; sourceTree = "<group>"; };
 		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpHelpers.swift; path = MyStorybook/HttpHelpers.swift; sourceTree = "<group>"; };
-		895FE84D1C7BC8C0006ADB29 /* MyMomentCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMomentCollection.swift; path = ../MyMomentCollection.swift; sourceTree = "<group>"; };
+		895FE84D1C7BC8C0006ADB29 /* PreStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreStory.swift; path = ../PreStory.swift; sourceTree = "<group>"; };
 		8970B12F1C7CCCBB005A69F0 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		89E9F5441C7A9B5300C812F2 /* GoProImagesHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesHeaderViewController.swift; sourceTree = "<group>"; };
 		89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = MyStorybook/SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -285,7 +287,7 @@
 		B2BA3C541C761D6500D7342D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				895FE84D1C7BC8C0006ADB29 /* MyMomentCollection.swift */,
+				895FE84D1C7BC8C0006ADB29 /* PreStory.swift */,
 				B2BA3C571C761EEC00D7342D /* Page.swift */,
 				B2BA3C591C761F3E00D7342D /* Story.swift */,
 				B2BA3C5B1C76215200D7342D /* App.swift */,
@@ -457,7 +459,7 @@
 				B2E93F5F1C7A782B00A5C80E /* StoryViewerViewController.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
 				8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */,
-				895FE84E1C7BC8C0006ADB29 /* MyMomentCollection.swift in Sources */,
+				895FE84E1C7BC8C0006ADB29 /* PreStory.swift in Sources */,
 				B2B3375B1C7CEE6800C663A4 /* CoverSelectorViewController.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,

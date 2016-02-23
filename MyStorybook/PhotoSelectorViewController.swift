@@ -12,7 +12,7 @@ class PhotoSelectorViewController: UIViewController{
     
     @IBOutlet weak var titleLabel: UILabel!
     var titleToDisplay:String? = ""
-    var folderToDisplay:MyMomentCollection?
+    var folderToDisplay:PreStory?
     var currentPicInd:Int = 0
     var status:[Bool] = [Bool](count:4, repeatedValue:false)
     
@@ -110,7 +110,7 @@ class PhotoSelectorViewController: UIViewController{
         if segue.identifier == "SelectCoverSegue"
         {
             if let destinationVC = segue.destinationViewController as? CoverSelectorViewController{
-                if let folder = sender as? MyMomentCollection {
+                if let folder = sender as? PreStory {
                     destinationVC.story_info = folder
                 }
             }

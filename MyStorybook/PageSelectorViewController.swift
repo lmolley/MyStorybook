@@ -9,5 +9,5 @@
 import UIKit
 
 class PageSelectorViewController : UIViewController {
-    var story_info:MyMomentCollection?
+    var story_info:PreStory?
 }
