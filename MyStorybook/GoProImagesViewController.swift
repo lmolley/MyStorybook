@@ -192,7 +192,7 @@ class GoProImagesViewController : UICollectionViewController {
         {
             if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
                 if let folder = sender as? MyMomentCollection {
-                    destinationVC.titleToDisplay = folder.title!
+                    destinationVC.titleToDisplay = folder.title
                     destinationVC.folderToDisplay = folder
                 }
             }
