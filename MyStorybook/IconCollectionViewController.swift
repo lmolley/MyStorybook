@@ -11,7 +11,7 @@ import UIKit
 let iconCollect_reuseIdentifier = "MyIconCell"
 
 class IconCollectionViewController : UICollectionViewController {
-    var icon_names:[String] = []
+    var icon_names:[String] = AvailableCoverPhotos
     
     //********OVERRIDES FOR COLLECTION VIEW TO WORK***************
     override func numberOfSectionsInCollectionView(collectionView:
