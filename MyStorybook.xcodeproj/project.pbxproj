@@ -17,7 +17,7 @@
 		5B14CCAD1C7BDBDB00B8FA0B /* red-book-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */; };
 		890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */; };
 		8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690A1C7C056B0099C92E /* CameraControlViewController.swift */; };
-		8908690F1C7CACAA0099C92E /* bottomSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690E1C7CACAA0099C92E /* bottomSliderCell.swift */; };
+		8908690D1C7C33290099C92E /* BottomSliderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690C1C7C33290099C92E /* BottomSliderCollectionViewController.swift */; };
 		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
 		895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */; };
 		895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */; };
@@ -80,7 +80,7 @@
 		5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-open.png"; sourceTree = "<group>"; };
 		890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		8908690A1C7C056B0099C92E /* CameraControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlViewController.swift; sourceTree = "<group>"; };
-		8908690E1C7CACAA0099C92E /* bottomSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bottomSliderCell.swift; sourceTree = "<group>"; };
+		8908690C1C7C33290099C92E /* BottomSliderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSliderCollectionViewController.swift; sourceTree = "<group>"; };
 		894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesViewController.swift; sourceTree = "<group>"; };
 		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpHelpers.swift; path = MyStorybook/HttpHelpers.swift; sourceTree = "<group>"; };
 		895FE84D1C7BC8C0006ADB29 /* MyMomentCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMomentCollection.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */,
-				8908690E1C7CACAA0099C92E /* bottomSliderCell.swift */,
+				8908690C1C7C33290099C92E /* BottomSliderCollectionViewController.swift */,
 			);
 			name = PhotoSelector;
 			sourceTree = "<group>";
@@ -437,11 +437,11 @@
 				B2E93F5F1C7A782B00A5C80E /* StoryViewerViewController.swift in Sources */,
 				B2BA3C5C1C76215200D7342D /* App.swift in Sources */,
 				8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */,
-				8908690F1C7CACAA0099C92E /* bottomSliderCell.swift in Sources */,
 				895FE84E1C7BC8C0006ADB29 /* MyMomentCollection.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
 				5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */,
+				8908690D1C7C33290099C92E /* BottomSliderCollectionViewController.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
