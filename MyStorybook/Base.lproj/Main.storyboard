@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-YI-8B2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSd-YI-8B2">
                                 <rect key="frame" x="20" y="28" width="244" height="170"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -40,7 +40,7 @@
                                     <action selector="record" destination="GKE-CW-UMA" eventType="touchUpInside" id="AvR-Dv-fLj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-AC-v5O">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-AC-v5O">
                                 <rect key="frame" x="336" y="28" width="244" height="170"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -91,7 +91,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="3ZB-tZ-px2" customClass="BookshelfCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="280" height="250"/>
+                                <rect key="frame" x="10" y="185" width="280" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="280" height="250"/>
@@ -217,7 +217,6 @@
         <!--Photo Groups-->
         <scene sceneID="zTi-3J-bwC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="fSH-Sl-0de" customClass="PhotoGroupsCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VMd-mv-FZF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -263,10 +262,11 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bVw-37-sEi"/>
                     </navigationItem>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3790" y="-25"/>
         </scene>
-        <!--View Controller-->
+        <!--Cover Photo-->
         <scene sceneID="LuP-KL-aDS">
             <objects>
                 <viewController storyboardIdentifier="Cover Photo" id="Bex-uc-Jtm" sceneMemberID="viewController">
@@ -510,9 +510,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5gO-3L-Trn" kind="relationship" relationship="rootViewController" id="56H-fg-3ZN"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcv-m5-c3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -719,7 +716,7 @@
                                         </view>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="I5S-Eo-h08">
-                                        <rect key="frame" x="156.5" y="0.0" width="131" height="119"/>
+                                        <rect key="frame" x="156" y="0.0" width="131" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="119"/>
@@ -728,7 +725,7 @@
                                         </view>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mNy-Ni-S4T">
-                                        <rect key="frame" x="312.5" y="0.0" width="131" height="119"/>
+                                        <rect key="frame" x="313" y="0.0" width="131" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="119"/>
@@ -806,4 +803,9 @@
         <image name="red-book-hi.png" width="504" height="597"/>
         <image name="red-book-open.png" width="504" height="597"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MC7-hs-IQF"/>
+        <segue reference="ooP-8h-2xW"/>
+        <segue reference="t5y-bS-mv6"/>
+    </inferredMetricsTieBreakers>
 </document>
