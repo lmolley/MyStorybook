@@ -213,7 +213,7 @@
         <!--Cover Photo-->
         <scene sceneID="LuP-KL-aDS">
             <objects>
-                <viewController storyboardIdentifier="Cover Photo" id="Bex-uc-Jtm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Cover Photo" id="Bex-uc-Jtm" customClass="CoverSelectorViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nr2-fX-jt4"/>
                         <viewControllerLayoutGuide type="bottom" id="Gc2-Ox-loA"/>
@@ -268,12 +268,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Cover Photo" id="gLg-B2-fQ2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZZR-hi-bfv"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="c89-4a-tCG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="c89-4a-tCG">
+                            <connections>
+                                <action selector="doneButton:" destination="Bex-uc-Jtm" id="Y33-HH-Wko"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="PQU-VE-42p" kind="show" identifier="SelectPageSegue" id="P7d-a8-pbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiQ-hR-hHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2055" y="1034"/>
+            <point key="canvasLocation" x="3731" y="-212"/>
         </scene>
         <!--GoProImages-->
         <scene sceneID="Ggy-5f-A6L">
@@ -556,7 +563,7 @@
                         <outlet property="imageViewRight" destination="bAY-oc-f9i" id="Gx9-PI-Xj9"/>
                         <outlet property="mainImageView" destination="Ako-6O-74z" id="oHg-1f-U69"/>
                         <outlet property="titleLabel" destination="8wu-bd-Mdd" id="C9k-kb-Baj"/>
-                        <segue destination="PQU-VE-42p" kind="show" identifier="selectionCompleteSegue" id="1qi-QC-u1q"/>
+                        <segue destination="Bex-uc-Jtm" kind="show" identifier="SelectCoverSegue" id="s50-7s-f2s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1r-J8-fa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -622,7 +629,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaS-pG-anh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3617" y="-321"/>
+            <point key="canvasLocation" x="3697" y="633"/>
         </scene>
     </scenes>
     <resources>

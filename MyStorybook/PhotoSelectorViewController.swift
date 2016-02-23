@@ -33,7 +33,7 @@ class PhotoSelectorViewController: UIViewController{
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
             print(folderToDisplay!.accepted_images)
-            performSegueWithIdentifier("selectionCompleteSegue", sender: folderToDisplay)
+            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
@@ -51,7 +51,7 @@ class PhotoSelectorViewController: UIViewController{
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
             print(folderToDisplay!.accepted_images)
-            performSegueWithIdentifier("selectionCompleteSegue", sender: folderToDisplay)
+            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
@@ -107,9 +107,9 @@ class PhotoSelectorViewController: UIViewController{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "selectionCompleteSegue"
+        if segue.identifier == "SelectCoverSegue"
         {
-            if let destinationVC = segue.destinationViewController as? PageSelectorViewController{
+            if let destinationVC = segue.destinationViewController as? CoverSelectorViewController{
                 if let folder = sender as? MyMomentCollection {
                     destinationVC.story_info = folder
                 }
