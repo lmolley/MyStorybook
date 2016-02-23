@@ -14,6 +14,14 @@ class PhotoSelectorViewController: UIViewController {
     var titleToDisplay:String? = ""
     var folderToDisplay:MyMomentCollection?
     
+    @IBOutlet weak var mainImageView: UIImageView!
+    
+    @IBAction func accept() {
+    }
+    
+    @IBAction func reject() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = titleToDisplay

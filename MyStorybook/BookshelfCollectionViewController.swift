@@ -72,7 +72,7 @@ class BookshelfCollectionViewController: UICollectionViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        selectedIndex
+    
     }
     
     /*
