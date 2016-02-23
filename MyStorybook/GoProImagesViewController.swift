@@ -18,12 +18,12 @@ let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
 class GoProImagesViewController : UICollectionViewController {
     
     var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
-    var folders:[MyMomentCollection] = [MyMomentCollection]()
+    var folders:[PreStory] = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
     var gopro_images:[String] = [String]()
-    var gopro_folder:MyMomentCollection = MyMomentCollection(title_in: "GOPRO", date_in: NSDate())
+    var gopro_folder:PreStory = PreStory(title_in: "GOPRO", date_in: NSDate())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +76,16 @@ class GoProImagesViewController : UICollectionViewController {
                 print(error)
             }
             else {
-                self.gopro_folder.addImage(data)
                 print("saving data")
                 UIImageWriteToSavedPhotosAlbum(data, nil, nil, nil)
+                let fetchOptions: PHFetchOptions = PHFetchOptions()
+                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+                let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
+                if (fetchResult.firstObject != nil) {
+                    let lastAsset: PHAsset = fetchResult.lastObject as! PHAsset
+                    self.gopro_folder.addImage(data, id: lastAsset.localIdentifier)
+                }
+            
             }
         }
     }
@@ -105,7 +112,7 @@ class GoProImagesViewController : UICollectionViewController {
             print("starting block")
             if let collection = $0.0 as? PHAssetCollection {
                 if self.camera_roll_images.count < self.maxImageCount {
-                    let new_folder = MyMomentCollection(title_in: collection.localizedTitle, date_in: collection.startDate)
+                    let new_folder = PreStory(title_in: collection.localizedTitle, date_in: collection.startDate)
                     self.folders.append(new_folder)
                     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
                         self.fetchPhotoAtIndexFromEnd(0, assetCol: collection, folder: new_folder)
@@ -122,7 +129,7 @@ class GoProImagesViewController : UICollectionViewController {
     
     // Repeatedly call the following method while incrementing
     // the index until all the photos are fetched
-    private func fetchPhotoAtIndexFromEnd(index:Int, assetCol:PHAssetCollection, folder:MyMomentCollection) {
+    private func fetchPhotoAtIndexFromEnd(index:Int, assetCol:PHAssetCollection, folder:PreStory) {
         
         let imgManager = PHImageManager.defaultManager()
         
@@ -143,11 +150,10 @@ class GoProImagesViewController : UICollectionViewController {
             // proceed with the image request
             if fetchResult.count > 0 {
                 // Perform the image request
-                imgManager.requestImageForAsset(fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
-                    
+                let myPHAsset = fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset
+                imgManager.requestImageForAsset(myPHAsset, targetSize: view.frame.size, contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
                     // Add the returned image to your array
-//                    self.camera_roll_images.addObject(image!)
-                    folder.addImage(image!)
+                    folder.addImage(image!, id: myPHAsset.localIdentifier)
                     self.image_count += 1
                     
                     // If you haven't already reached the first
@@ -193,6 +199,8 @@ class GoProImagesViewController : UICollectionViewController {
         }
         else {
             cell.imageView.image = UIImage(named: "default.jpg")
+            cell.titleLabel.text = folders[indexPath.row].title
+            cell.dateLabel.text = getDate(folders[indexPath.row].date!)
             cell.spinningCircle.startAnimating()
         }
             return cell
@@ -206,7 +214,7 @@ class GoProImagesViewController : UICollectionViewController {
         if segue.identifier == "PhotoSelectorSegue"
         {
             if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
-                if let folder = sender as? MyMomentCollection {
+                if let folder = sender as? PreStory {
                     destinationVC.titleToDisplay = folder.title
                     destinationVC.folderToDisplay = folder
                 }

@@ -1,5 +1,5 @@
 //
-//  MyMomentCollection.swift
+//  PreStory.swift
 //  MyStorybook
 //
 //  Created by Lauren Molley on 2/22/16.
@@ -9,9 +9,10 @@
 import Foundation
 import Photos
 
-class MyMomentCollection{
+class PreStory{
 
     var images = [UIImage]()
+    var image_ids = [String]()
     var accepted_images = [UIImage]()
     var title:String?
     var date:NSDate?
@@ -22,8 +23,10 @@ class MyMomentCollection{
         date = date_in
     }
     
-    func addImage(new_image: UIImage) {
+    func addImage(new_image: UIImage, id:String) {
+        print("adding Image: \(id)")
         images.append(new_image)
+        image_ids.append(id)
         count += 1
     }
 }

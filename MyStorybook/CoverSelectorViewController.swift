@@ -9,7 +9,7 @@
 import UIKit
 
 class CoverSelectorViewController: UIViewController {
-        var story_info:MyMomentCollection?
+        var story_info:PreStory?
     
     @IBAction func doneButton(sender: UIBarButtonItem) {
             performSegueWithIdentifier("SelectPageSegue", sender: story_info)
@@ -19,7 +19,7 @@ class CoverSelectorViewController: UIViewController {
         if segue.identifier == "SelectPageSegue"
         {
             if let destinationVC = segue.destinationViewController as? PageSelectorViewController{
-                if let folder = sender as? MyMomentCollection {
+                if let folder = sender as? PreStory {
                     destinationVC.story_info = folder
                 }
             }
