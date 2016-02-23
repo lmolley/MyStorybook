@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -191,20 +192,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-0m-MCy">
-                                <rect key="frame" x="212" y="210" width="177" height="180"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="##" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-0m-MCy">
+                                <rect key="frame" x="508" y="44" width="48" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.42269408702850342" green="0.32788416743278503" blue="0.0090459659695625305" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5TG-0e-Y3P">
+                                <rect key="frame" x="30" y="100" width="540" height="480"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.15153365881650593" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99951857328414917" green="0.9774593710899353" blue="0.92487186193466187" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3Ce-0m-MCy" firstAttribute="centerX" secondItem="RaZ-yt-iq5" secondAttribute="centerX" id="8ms-dW-ClZ"/>
-                            <constraint firstItem="3Ce-0m-MCy" firstAttribute="centerY" secondItem="RaZ-yt-iq5" secondAttribute="centerY" id="lXz-hm-4g9"/>
+                            <constraint firstItem="5TG-0e-Y3P" firstAttribute="top" secondItem="3Ce-0m-MCy" secondAttribute="bottom" constant="8" id="3iP-2W-ZeZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Ce-0m-MCy" secondAttribute="trailing" constant="24" id="Rgi-40-U3h"/>
+                            <constraint firstItem="3Ce-0m-MCy" firstAttribute="top" secondItem="QyS-vV-jeP" secondAttribute="bottom" constant="24" id="UYd-l2-Vr9"/>
+                            <constraint firstItem="5TG-0e-Y3P" firstAttribute="leading" secondItem="RaZ-yt-iq5" secondAttribute="leading" constant="30" id="Ucz-UJ-3Wj"/>
+                            <constraint firstItem="5TG-0e-Y3P" firstAttribute="centerX" secondItem="RaZ-yt-iq5" secondAttribute="centerX" id="ks5-vc-cFT"/>
+                            <constraint firstItem="9cl-1V-uQh" firstAttribute="top" secondItem="5TG-0e-Y3P" secondAttribute="bottom" constant="20" id="lJs-BG-ruP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="5TG-0e-Y3P" id="viW-cy-O0Y"/>
                         <outlet property="numberLabel" destination="3Ce-0m-MCy" id="cHr-ei-Fbj"/>
                     </connections>
                 </viewController>
@@ -213,4 +222,7 @@
             <point key="canvasLocation" x="1714" y="1173"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="default.jpg" width="622" height="415"/>
+    </resources>
 </document>

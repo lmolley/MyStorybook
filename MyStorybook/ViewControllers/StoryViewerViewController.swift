@@ -208,6 +208,7 @@ class StoryViewerCoverViewController: UIViewController {
 class StoryViewerPhotoPageViewController: UIViewController {
     internal var pageIndex: Int = 0
     @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
