@@ -36,8 +36,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTG-N5-1mN" userLabel="Shadow View">
+                                <rect key="frame" x="39" y="59" width="522" height="502"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPw-CW-VGa">
-                                <rect key="frame" x="50" y="70" width="500" height="480"/>
+                                <rect key="frame" x="40" y="60" width="520" height="500"/>
                                 <connections>
                                     <segue destination="zqi-G4-h3v" kind="embed" identifier="embedPager" id="lK9-TA-8Ps"/>
                                 </connections>
@@ -93,15 +97,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nTG-N5-1mN" firstAttribute="width" secondItem="QPw-CW-VGa" secondAttribute="width" constant="2" id="GLk-ej-23b"/>
                             <constraint firstItem="Gr5-ld-Jd9" firstAttribute="leading" secondItem="rzP-PV-hCR" secondAttribute="leading" id="GN1-5P-GH3"/>
                             <constraint firstItem="Gr5-ld-Jd9" firstAttribute="top" secondItem="CQ0-BC-KS1" secondAttribute="bottom" id="Hcx-uI-sf4"/>
-                            <constraint firstAttribute="trailing" secondItem="QPw-CW-VGa" secondAttribute="trailing" constant="50" id="OIj-KB-u9X"/>
-                            <constraint firstItem="QPw-CW-VGa" firstAttribute="top" secondItem="CQ0-BC-KS1" secondAttribute="bottom" constant="50" id="Qy3-51-UxK"/>
+                            <constraint firstAttribute="trailing" secondItem="QPw-CW-VGa" secondAttribute="trailing" constant="40" id="OIj-KB-u9X"/>
+                            <constraint firstItem="QPw-CW-VGa" firstAttribute="top" secondItem="CQ0-BC-KS1" secondAttribute="bottom" constant="40" id="Qy3-51-UxK"/>
+                            <constraint firstItem="nTG-N5-1mN" firstAttribute="centerX" secondItem="QPw-CW-VGa" secondAttribute="centerX" id="WwN-nN-Ocj"/>
                             <constraint firstAttribute="trailing" secondItem="7zz-n9-c0i" secondAttribute="trailing" id="aTf-PY-vYg"/>
+                            <constraint firstItem="nTG-N5-1mN" firstAttribute="height" secondItem="QPw-CW-VGa" secondAttribute="height" constant="2" id="o8o-Od-iov"/>
                             <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="Fnr-4w-XZu" secondAttribute="bottom" constant="40" id="qdC-2p-foH"/>
                             <constraint firstAttribute="trailing" secondItem="Fnr-4w-XZu" secondAttribute="trailing" id="r4T-OK-v87"/>
-                            <constraint firstItem="QPw-CW-VGa" firstAttribute="leading" secondItem="rzP-PV-hCR" secondAttribute="leading" constant="50" id="uRH-ud-bdR"/>
-                            <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="QPw-CW-VGa" secondAttribute="bottom" constant="50" id="wXd-Hh-EqE"/>
+                            <constraint firstItem="nTG-N5-1mN" firstAttribute="centerY" secondItem="QPw-CW-VGa" secondAttribute="centerY" id="saT-2W-cfJ"/>
+                            <constraint firstItem="QPw-CW-VGa" firstAttribute="leading" secondItem="rzP-PV-hCR" secondAttribute="leading" constant="40" id="uRH-ud-bdR"/>
+                            <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="QPw-CW-VGa" secondAttribute="bottom" constant="40" id="wXd-Hh-EqE"/>
                             <constraint firstItem="Fnr-4w-XZu" firstAttribute="top" secondItem="7zz-n9-c0i" secondAttribute="bottom" constant="8" id="zlq-AZ-IZt"/>
                         </constraints>
                     </view>
@@ -109,6 +117,7 @@
                     <connections>
                         <outlet property="nextButton" destination="Fnr-4w-XZu" id="gMf-3t-wdc"/>
                         <outlet property="prevButton" destination="7zz-n9-c0i" id="Ovl-SJ-ec7"/>
+                        <outlet property="shadowView" destination="nTG-N5-1mN" id="FoY-bl-7Mc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGm-e3-kij" userLabel="First Responder" sceneMemberID="firstResponder"/>

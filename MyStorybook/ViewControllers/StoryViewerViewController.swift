@@ -12,6 +12,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var shadowView: UIView!
     
     internal var story: Story?
     
@@ -46,11 +47,22 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
 
         // Setting the currentPage updates the next and previous buttons.
         currentPage = (currentPage)
+        
+        self.shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.shadowView.layer.shadowRadius = 25
+        self.shadowView.layer.shadowOpacity = 0.25
+        self.shadowView.layer.borderWidth = 1
+        self.shadowView.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func goHome() {
