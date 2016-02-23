@@ -109,7 +109,6 @@
                                 <size key="customSize" width="280" height="250"/>
                                 <connections>
                                     <outlet property="Cover" destination="W6A-rY-Fdp" id="fpu-VI-Bjh"/>
-                                    <segue destination="Sgg-NJ-I5E" kind="show" id="GlW-0L-ZOl"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -130,6 +129,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="xT1-xY-GeE" kind="show" identifier="showStorybook" id="Wee-O8-dea"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYG-bF-9k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fps-cD-10p">
@@ -141,6 +143,14 @@
                 </toolbar>
             </objects>
             <point key="canvasLocation" x="1428" y="262"/>
+        </scene>
+        <!--storyViewerViewController-->
+        <scene sceneID="3sc-nI-M0U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DavidTest" referencedIdentifier="storyViewerViewController" id="xT1-xY-GeE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRn-m5-Cd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2024" y="347"/>
         </scene>
         <!--Storybook-->
         <scene sceneID="SXd-a2-gqG">
@@ -533,18 +543,6 @@
             </objects>
             <point key="canvasLocation" x="-320" y="1666"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="4ea-zg-J9v">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Sgg-NJ-I5E" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="hvH-Yi-Q4f" kind="show" id="iaV-Jb-lMe"/>
-                    </connections>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bSf-ye-yJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="322" y="1047"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ll4-uh-rgb">
             <objects>
@@ -652,7 +650,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3O-pr-qoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6442" y="2218"/>
+            <point key="canvasLocation" x="6366" y="2046"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xp2-Ca-cUd">

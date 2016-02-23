@@ -13,7 +13,6 @@
 		5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */; };
 		5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */; };
 		5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */; };
-		5B14CCA91C7AABB900B8FA0B /* ViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA81C7AABB900B8FA0B /* ViewerController.swift */; };
 		5B14CCAD1C7BDBDB00B8FA0B /* red-book-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */; };
 		890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */; };
 		8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690A1C7C056B0099C92E /* CameraControlViewController.swift */; };
@@ -25,7 +24,6 @@
 		8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8970B12F1C7CCCBB005A69F0 /* default.jpg */; };
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
 		B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC51C761C8A001008AD /* AppDelegate.swift */; };
-		B262EAC81C761C8A001008AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAC71C761C8A001008AD /* ViewController.swift */; };
 		B262EACB1C761C8A001008AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B262EAC91C761C8A001008AD /* Main.storyboard */; };
 		B262EACD1C761C8A001008AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B262EACC1C761C8A001008AD /* Assets.xcassets */; };
 		B262EAD01C761C8A001008AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */; };
@@ -76,7 +74,6 @@
 		5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewController.swift; sourceTree = "<group>"; };
 		5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-folder-md.png"; sourceTree = "<group>"; };
-		5B14CCA81C7AABB900B8FA0B /* ViewerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewerController.swift; sourceTree = "<group>"; };
 		5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-open.png"; sourceTree = "<group>"; };
 		890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		8908690A1C7C056B0099C92E /* CameraControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +86,6 @@
 		89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoProImagesCollectionViewCell.swift; path = ../GoProImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		B262EAC21C761C8A001008AD /* MyStorybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStorybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B262EAC51C761C8A001008AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B262EAC71C761C8A001008AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B262EACA1C761C8A001008AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B262EACC1C761C8A001008AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B262EACF1C761C8A001008AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -226,9 +222,7 @@
 				B2BA3C531C761D5000D7342D /* Protocols */,
 				549A9C641C7A8BEF00F27ED0 /* Third Party */,
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
-				B262EAC71C761C8A001008AD /* ViewController.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
-				5B14CCA81C7AABB900B8FA0B /* ViewerController.swift */,
 				5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */,
 				5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */,
 				5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */,
@@ -429,8 +423,6 @@
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */,
-				5B14CCA91C7AABB900B8FA0B /* ViewerController.swift in Sources */,
-				B262EAC81C761C8A001008AD /* ViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
