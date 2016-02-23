@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos // For simple database import from moments
 
 class DumbMockDatabase : Database
 {
@@ -88,4 +89,49 @@ func SampleDumbMockDatabase() -> Database
         mp(2, "other2")))
     
     return db
+}
+
+func ImportMomentsToDatabase(db: Database)
+{
+    func ms(title: String, _ icon: String, _ pages: Page...) -> Story
+    {
+        let story = Story()
+        story.title = title
+        story.icon = icon
+        story.pages = pages
+        return story
+    }
+    
+    func mp(number: Int, _ photoId: String) -> Page
+    {
+        let page = Page()
+        page.number = number
+        page.photoId = photoId
+        return page
+    }
+    
+    
+    let collectionFetchOptions = PHFetchOptions()
+    collectionFetchOptions.sortDescriptors = [NSSortDescriptor(key:"startDate", ascending: false)]
+    collectionFetchOptions.fetchLimit = 4
+    let smartAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: collectionFetchOptions)
+    smartAlbums.enumerateObjectsUsingBlock({
+        if let collection = $0.0 as? PHAssetCollection {
+            
+            let story = Story()
+            story.title = collection.localizedTitle ?? "Untitled!!!"
+            story.icon = randomCoverPhotoId()
+            story.pages = []
+            
+            let assets = PHAsset.fetchAssetsInAssetCollection(collection, options: nil)
+            assets.enumerateObjectsUsingBlock({ (someObject, index, _) -> Void in
+                let asset = someObject as! PHAsset
+                
+                let page = mp(index, asset.localIdentifier)
+                story.pages!.append(page)
+            })
+        
+            db.createStoryWithPages(story)
+        }
+    })
 }

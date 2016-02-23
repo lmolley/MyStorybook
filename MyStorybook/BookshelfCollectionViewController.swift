@@ -58,9 +58,11 @@ class BookshelfCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
+        
         // Configure the cell
-//      let photo = UIImage(named: self.stories[indexPath.item].icon)
-//      cell.Cover.image = photo
+        let story = self.stories[indexPath.item]
+        cell.Cover.image = coverPhotoImageOrDefault(story.icon)
+        
         return cell
     }
 
