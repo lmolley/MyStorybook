@@ -12,6 +12,7 @@ import Photos
 class MyMomentCollection{
 
     var images = [UIImage]()
+    var accepted_images = [UIImage]()
     var title:String?
     var date:NSDate?
     var count:Int = 0

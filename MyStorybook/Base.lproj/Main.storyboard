@@ -274,7 +274,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-Se-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3790" y="-25"/>
+            <point key="canvasLocation" x="3668" y="347"/>
         </scene>
         <!--Cover Photo-->
         <scene sceneID="LuP-KL-aDS">
@@ -808,11 +808,73 @@
                         <outlet property="imageViewRight" destination="bAY-oc-f9i" id="Gx9-PI-Xj9"/>
                         <outlet property="mainImageView" destination="Ako-6O-74z" id="oHg-1f-U69"/>
                         <outlet property="titleLabel" destination="8wu-bd-Mdd" id="C9k-kb-Baj"/>
+                        <segue destination="PQU-VE-42p" kind="show" identifier="selectionCompleteSegue" id="1qi-QC-u1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1r-J8-fa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2968" y="-321"/>
+        </scene>
+        <!--Page Selector Scene-->
+        <scene sceneID="YJr-yU-DQS">
+            <objects>
+                <viewController storyboardIdentifier="Page Selector Scene" title="Page Selector Scene" id="PQU-VE-42p" customClass="PageSelectorViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bgG-2g-aVr"/>
+                        <viewControllerLayoutGuide type="bottom" id="lA7-Mh-bKP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZBX-HB-CZa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red-book-open.png" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-44-U2X">
+                                <rect key="frame" x="20" y="156" width="228" height="235"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jm-U4-Hc6">
+                                <rect key="frame" x="36" y="487" width="75" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <state key="normal" title="&lt;"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ge8-1n-GLW">
+                                <rect key="frame" x="498" y="458" width="75" height="132"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <state key="normal" title="&gt;"/>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAv-Xt-4vW">
+                                <rect key="frame" x="266" y="74" width="314" height="385"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O7U-ie-Jka">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="w7C-qL-TJP">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuQ-7o-JdT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epL-ve-klD">
+                                <rect key="frame" x="44" y="209" width="150" height="150"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vaS-pG-anh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3617" y="-321"/>
         </scene>
     </scenes>
     <resources>
@@ -822,8 +884,8 @@
         <image name="red-book-open.png" width="504" height="597"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MC7-hs-IQF"/>
         <segue reference="ooP-8h-2xW"/>
+        <segue reference="2mp-Ie-tMh"/>
         <segue reference="t5y-bS-mv6"/>
     </inferredMetricsTieBreakers>
 </document>
