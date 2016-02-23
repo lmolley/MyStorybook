@@ -15,6 +15,7 @@ class PhotoSelectorViewController: UIViewController{
     var folderToDisplay:MyMomentCollection?
     var currentPicInd:Int = 0
     var acceptedImages:[UIImage] = [UIImage]()
+    var status:[Bool] = [Bool](count:4, repeatedValue:false)
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var imageViewLeft: UIImageView!
@@ -24,6 +25,11 @@ class PhotoSelectorViewController: UIViewController{
     
     @IBAction func accept() {
         acceptedImages.append(folderToDisplay!.images[currentPicInd])
+        status[0] = status[1]
+        status[1] = true
+        status[2] = status[3]
+        status[3] = false
+        
         currentPicInd += 1
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
@@ -31,10 +37,16 @@ class PhotoSelectorViewController: UIViewController{
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
+            updateBottomPics()
         }
     }
     
     @IBAction func reject() {
+        status[0] = status[1]
+        status[1] = false
+        status[2] = status[3]
+        status[3] = false
+        
         currentPicInd += 1
         if currentPicInd >= folderToDisplay!.images.count {
             print("Done!")
@@ -42,21 +54,54 @@ class PhotoSelectorViewController: UIViewController{
         }
         else {
             mainImageView.image = folderToDisplay!.images[currentPicInd]
+            updateBottomPics()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = titleToDisplay
-        if folderToDisplay!.images.count < 4 {
-            //TODO: add display choices here
+        if let mainImage:UIImage? = folderToDisplay!.images[0] as UIImage{
+            mainImageView.image = mainImage
+            imageViewMidRight.image = mainImage
+        }
+        if let nextImage:UIImage? = folderToDisplay!.images[1] as UIImage{
+            imageViewRight.image = nextImage
+        }
+    }
+    
+    private func updateBottomPics() {
+        imageViewMidRight.image = folderToDisplay!.images[currentPicInd]
+        
+        if currentPicInd - 1 >= 0 {
+            imageViewMidLeft.image = folderToDisplay!.images[currentPicInd-1]
+            addBorder(imageViewMidLeft, status: status[1])
+        }
+        
+        if currentPicInd - 2 >= 0{
+            imageViewLeft.image = folderToDisplay!.images[currentPicInd-2]
+            addBorder(imageViewLeft, status: status[0])
+        }
+        
+        if currentPicInd + 1 < folderToDisplay!.images.count {
+            imageViewRight.image = folderToDisplay!.images[currentPicInd+1]
         }
         else {
-            mainImageView.image = folderToDisplay!.images[0]
-            imageViewLeft.image = folderToDisplay!.images[0]
-            imageViewMidLeft.image = folderToDisplay!.images[1]
-            imageViewMidRight.image = folderToDisplay!.images[2]
-            imageViewRight.image = folderToDisplay!.images[3]
+            imageViewRight.image = UIImage(named: "default.jpg")
+        }
+        
+    }
+    
+    private func addBorder(imageView:UIImageView, status:Bool) {
+        if status {
+//            imageView.tintColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
+            imageView.layer.borderColor = UIColor.greenColor().CGColor
+            imageView.layer.borderWidth = 2.0
+        }
+        else {
+            imageView.layer.borderColor = UIColor.redColor().CGColor
+            imageView.layer.borderWidth = 2.0
+//            imageView.tintColor = UIColor.redColor().colorWithAlphaComponent(0.1)
         }
     }
     
