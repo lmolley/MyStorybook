@@ -32,6 +32,8 @@
 		B262EAE61C761C8A001008AD /* MyStorybookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B262EAE51C761C8A001008AD /* MyStorybookUITests.swift */; };
 		B2B337591C7CDD8E00C663A4 /* CoverPhotos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B337581C7CDD8E00C663A4 /* CoverPhotos.xcassets */; };
 		B2B3375B1C7CEE6800C663A4 /* CoverSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3375A1C7CEE6800C663A4 /* CoverSelectorViewController.swift */; };
+		B2B337601C7CF7B700C663A4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3375F1C7CF7B700C663A4 /* ViewExtensions.swift */; };
+		B2B337621C7CF87E00C663A4 /* CoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B337611C7CF87E00C663A4 /* CoverPhotos.swift */; };
 		B2BA3C561C761ECA00D7342D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C551C761ECA00D7342D /* Database.swift */; };
 		B2BA3C581C761EEC00D7342D /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C571C761EEC00D7342D /* Page.swift */; };
 		B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C591C761F3E00D7342D /* Story.swift */; };
@@ -102,6 +104,8 @@
 		B262EAE71C761C8A001008AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2B337581C7CDD8E00C663A4 /* CoverPhotos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CoverPhotos.xcassets; sourceTree = "<group>"; };
 		B2B3375A1C7CEE6800C663A4 /* CoverSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverSelectorViewController.swift; sourceTree = "<group>"; };
+		B2B3375F1C7CF7B700C663A4 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		B2B337611C7CF87E00C663A4 /* CoverPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverPhotos.swift; sourceTree = "<group>"; };
 		B2BA3C551C761ECA00D7342D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B2BA3C571C761EEC00D7342D /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		B2BA3C591C761F3E00D7342D /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 		B262EAC41C761C8A001008AD /* MyStorybook */ = {
 			isa = PBXGroup;
 			children = (
+				B2B3375D1C7CF79C00C663A4 /* Extensions */,
 				B2B3375C1C7CEED700C663A4 /* StoryCreate */,
 				890869091C7C05520099C92E /* CameraControl */,
 				89E9F54B1C7B643000C812F2 /* ImportImages */,
@@ -261,6 +266,14 @@
 			name = StoryCreate;
 			sourceTree = "<group>";
 		};
+		B2B3375D1C7CF79C00C663A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2B3375F1C7CF7B700C663A4 /* ViewExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		B2BA3C531C761D5000D7342D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +290,7 @@
 				B2BA3C591C761F3E00D7342D /* Story.swift */,
 				B2BA3C5B1C76215200D7342D /* App.swift */,
 				B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */,
+				B2B337611C7CF87E00C663A4 /* CoverPhotos.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -426,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2B337601C7CF7B700C663A4 /* ViewExtensions.swift in Sources */,
 				895FE84C1C7B83CF006ADB29 /* GoProImagesHeaderViewController.swift in Sources */,
 				895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */,
 				895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */,
@@ -435,6 +450,7 @@
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
+				B2B337621C7CF87E00C663A4 /* CoverPhotos.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
 				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,

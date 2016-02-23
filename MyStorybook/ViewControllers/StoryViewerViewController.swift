@@ -181,26 +181,12 @@ class StoryViewerCoverViewController: UIViewController {
         }
     }
     
-    static var defaultCoverImage: UIImage
-    {
-        get
-        {
-            return UIImage(named: "file-folder-md")!
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imageView.image = StoryViewerCoverViewController.defaultCoverImage
+        self.imageView.image = coverPhotoImageOrDefault(story.icon)
         
-                    self.imageView.image = UIImage(named: "CoverPhotos/\(story.icon)") ?? StoryViewerCoverViewController.defaultCoverImage
-        
-        square.layer.borderColor = UIColor(red: 0.6, green: 0, blue: 0, alpha: 1.0).CGColor
-        square.layer.borderWidth = 7
-        square.layer.shadowColor = UIColor.blackColor().CGColor
-        square.layer.shadowRadius = 17
-        square.layer.shadowOpacity = 0.5
+        square.addAlbumBorder()
     }
 }
 

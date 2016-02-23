@@ -11,5 +11,14 @@ import UIKit
 class BookshelfCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var Cover: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        if let view = self.viewWithTag(12345)
+        {
+            view.addAlbumBorder()
+        }
+    }
 }
 
