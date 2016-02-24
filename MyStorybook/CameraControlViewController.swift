@@ -22,17 +22,31 @@ class CameraControlViewController : UIViewController {
     
     @IBAction func changeToCameraMode() {
         HTTPGet(cameraModeCommand){_,_ in }
+        
+        cameraButton.layer.borderColor = UIColor.blackColor().CGColor
+        cameraButton.layer.borderWidth = 1
+        videoButton.layer.borderWidth = 0
+        
     }
     @IBAction func changeToVideoMode() {
         HTTPGet(videoModeCommand){_,_ in }
+        
+        videoButton.layer.borderColor = UIColor.blackColor().CGColor
+        videoButton.layer.borderWidth = 1
+        cameraButton.layer.borderWidth = 0
     }
     @IBAction func record() {
         
         if(isRecording){
             HTTPGet(recordOffCommand){_,_ in }
+            
+            recordButton.layer.borderWidth = 0
         }
         else {
             HTTPGet(recordOnCommand){_,_ in }
+            
+            recordButton.layer.borderColor = UIColor.redColor().CGColor
+            recordButton.layer.borderWidth = 1
         }
         
         isRecording = !isRecording
