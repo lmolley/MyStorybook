@@ -10,10 +10,12 @@ import Foundation
 import Photos
 
 class PreStory{
-
-    var images = [UIImage]()
     var image_ids = [String]()
+    var topImage:UIImage?
+    //add to these once you select the collection
+    var images = [UIImage]()
     var accepted_images = [UIImage]()
+    //-------------------------------------------
     var title:String?
     var date:NSDate?
     var count:Int = 0
@@ -23,10 +25,24 @@ class PreStory{
         date = date_in
     }
     
-    func addImage(new_image: UIImage, id:String) {
-        print("adding Image: \(id)")
-        images.append(new_image)
-        image_ids.append(id)
+    func addImageId(myAsset:PHAsset) {
+        if count == 0 {
+            setTopImage(myAsset)
+        }
+        image_ids.append(myAsset.localIdentifier)
         count += 1
+    }
+    private func setTopImage(myAsset:PHAsset) {
+        // Note that if the request is not set to synchronous
+        // the requestImageForAsset will return both the image
+        // and thumbnail; by setting synchronous to true it
+        // will return just the thumbnail
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        let imgManager = PHImageManager.defaultManager()
+        imgManager.requestImageForAsset(myAsset, targetSize:CGSize(width: myAsset.pixelWidth, height: myAsset.pixelHeight), contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
+            // Add the returned image to your array
+            self.topImage = image
+        })
     }
 }

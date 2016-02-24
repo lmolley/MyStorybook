@@ -19,23 +19,55 @@ class CameraControlViewController : UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     
     var isRecording:Bool = false
+    var isVideoMode:Bool = false
+    var isCameraMode:Bool = false
     
     @IBAction func changeToCameraMode() {
         HTTPGet(cameraModeCommand){_,_ in }
+        
+        isVideoMode = false
+        isCameraMode = true
+        
+        cameraButton.layer.borderColor = UIColor.blackColor().CGColor
+        cameraButton.layer.borderWidth = 1
+        videoButton.layer.borderWidth = 0
+        recordButton.layer.borderWidth = 0
     }
     @IBAction func changeToVideoMode() {
         HTTPGet(videoModeCommand){_,_ in }
+        
+        isVideoMode = true
+        isCameraMode = false
+        
+        videoButton.layer.borderColor = UIColor.blackColor().CGColor
+        videoButton.layer.borderWidth = 1
+        cameraButton.layer.borderWidth = 0
     }
     @IBAction func record() {
         
         if(isRecording){
             HTTPGet(recordOffCommand){_,_ in }
+            
+            recordButton.layer.borderWidth = 0
         }
         else {
             HTTPGet(recordOnCommand){_,_ in }
+            
+            if(isVideoMode){
+                recordButton.layer.borderColor = UIColor.redColor().CGColor
+                recordButton.layer.borderWidth = 1
+            }
+            
         }
         
-        isRecording = !isRecording
+        if(isCameraMode){
+            isRecording = false
+        }
+        else{
+            isRecording = !isRecording
+        }
+        
+        //isRecording = !isRecording
     }
     
 }
