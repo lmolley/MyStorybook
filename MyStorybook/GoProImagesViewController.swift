@@ -17,8 +17,9 @@ let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
 
 class GoProImagesViewController : UICollectionViewController {
     
-    var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
-    var folders:[PreStory] = [PreStory]()
+    /////var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
+    
+    var preStories = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
@@ -27,8 +28,8 @@ class GoProImagesViewController : UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        folders.append(gopro_folder)
-        fetchPhotosFromCameraRoll()
+        preStories.append(gopro_folder)
+        fetchMomentsFromCameraRoll()
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             self.getGoProImages()
             dispatch_async(dispatch_get_main_queue()) {
@@ -90,41 +91,59 @@ class GoProImagesViewController : UICollectionViewController {
         }
     }
     
-    private func fetchPhotosFromCameraRoll () {
+    private func fetchMomentsFromCameraRoll () {
         print("about to fetch!")
         maxImageCount = 50
-        let collections = fetchCollections()
-        camera_roll_images = NSMutableArray(capacity:collections.count)
-        self.getImagesFromCollectionResult(collections)
         
-    }
-    
-    private func fetchCollections() -> PHFetchResult{
         let collectionFetchOptions = PHFetchOptions()
         collectionFetchOptions.sortDescriptors = [NSSortDescriptor(key:"startDate", ascending: false)]
         let smartAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: collectionFetchOptions)
-        return smartAlbums
-
         
-    }
-    private func getImagesFromCollectionResult(result:PHFetchResult) {
-        result.enumerateObjectsUsingBlock({
-            print("starting block")
-            if let collection = $0.0 as? PHAssetCollection {
-                if self.camera_roll_images.count < self.maxImageCount {
-                    let new_folder = PreStory(title_in: collection.localizedTitle, date_in: collection.startDate)
-                    self.folders.append(new_folder)
-                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
-                        self.fetchPhotoAtIndexFromEnd(0, assetCol: collection, folder: new_folder)
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.collectionView!.reloadData()
-                        }
-                    }
-                }
-
-            }
+        smartAlbums.enumerateObjectsUsingBlock({
             
+            if let collection = $0.0 as? PHAssetCollection {
+                
+                let new_folder = PreStory(title_in: collection.localizedTitle, date_in: collection.startDate)
+                
+                new_folder.moment = collection
+                
+                // Begin attempt to get the top image. If there is none, don't bother with the moment. (Would there ever be a moment without an image?)
+                self.fetchFirstPhotoInMoment(new_folder)
+            }
         })
+    }
+    
+    // Returns true if the moment has at least one photo
+    private func fetchFirstPhotoInMoment(folder: PreStory)-> Bool
+    {
+        let opts = PHFetchOptions()
+        opts.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
+        opts.fetchLimit = 1
+        let fetchResult = PHAsset.fetchAssetsInAssetCollection(folder.moment, options: opts)
+        
+        if fetchResult.count == 0 {
+            return false
+        }
+        
+        self.preStories.append(folder)
+        let indexPath = NSIndexPath(forItem: self.preStories.count - 1, inSection: 0)
+        
+        let asset = fetchResult.objectAtIndex(0) as! PHAsset
+        let imageOptions = PHImageRequestOptions()
+        imageOptions.synchronous = false
+
+        let size = CGSizeMake(200, 200)
+        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions) { (image, info) -> Void in
+            
+            if image != nil {
+                folder.topImage = image
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+                }
+            }
+        }
+        
+        return true
     }
     
     // Repeatedly call the following method while incrementing
@@ -156,41 +175,74 @@ class GoProImagesViewController : UICollectionViewController {
     
 //********OVERRIDES FOR COLLECTION VIEW TO WORK***************
     override func numberOfSectionsInCollectionView(collectionView:
-        UICollectionView!) -> Int {
+        UICollectionView) -> Int {
             //only one section so we just return 1
             return 1
     }
     
-    override func collectionView(collectionView: UICollectionView!,
+    override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             //return number of images in our 1 section
-//            return camera_roll_images.count
-//            return image_count
-            return folders.count
+            return preStories.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
+        let story = preStories[indexPath.row]
             
-            // Configure the cell
-        if (folders.count > indexPath.row && (folders[indexPath.row].topImage as UIImage!) != nil) {
-            cell.imageView.image = folders[indexPath.row].topImage
-            cell.titleLabel.text = folders[indexPath.row].title
-            cell.dateLabel.text = getDate(folders[indexPath.row].date!)
+        // Configure the cell
+        cell.titleLabel.text = story.title
+        cell.dateLabel.text = getDate(story.date!)
+        
+        if (preStories.count > indexPath.row && (story.topImage != nil)) {
+            cell.imageView.image = story.topImage
             cell.spinningCircle.stopAnimating()
         }
         else {
             cell.imageView.image = UIImage(named: "default.jpg")
-            cell.titleLabel.text = folders[indexPath.row].title
-            cell.dateLabel.text = getDate(folders[indexPath.row].date!)
             cell.spinningCircle.startAnimating()
         }
-            return cell
+        
+        // TODO: FIXME: For some reason, the text labels in the cells randomly fail to appear sometimes.
+        cell.setNeedsLayout()
+        cell.setNeedsUpdateConstraints()
+        
+        return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("PhotoSelectorSegue", sender: folders[indexPath.row])
+        
+        let story = preStories[indexPath.row]
+        let result = PHAsset.fetchAssetsInAssetCollection(story.moment, options: nil)
+        
+        // TODO: Check if the story already has its images?
+        // TODO: Optimize this part of the app more. Maybe we don't entirely need to grab all of the images.
+        
+        var assetIDs = [String](count: result.count, repeatedValue: "")
+        var images = [UIImage?](count: result.count, repeatedValue: nil)
+        
+        let imageOptions = PHImageRequestOptions()
+        imageOptions.deliveryMode = .HighQualityFormat
+        imageOptions.synchronous = true
+        
+        result.enumerateObjectsWithOptions(NSEnumerationOptions.Concurrent, usingBlock: { (obj, index, _) -> Void in
+                
+            let asset = obj as! PHAsset
+            assetIDs[index] = asset.localIdentifier
+                
+                var size = CGSize()
+                size.width = CGFloat(asset.pixelWidth)
+                size.height = CGFloat(asset.pixelHeight)
+                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
+                    images[index] = image
+                })
+        })
+        
+        story.image_ids = assetIDs
+        story.images = images;
+        
+        performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -198,7 +250,6 @@ class GoProImagesViewController : UICollectionViewController {
         {
             if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
                 if let folder = sender as? PreStory {
-                    destinationVC.titleToDisplay = folder.title
                     destinationVC.folderToDisplay = folder
                 }
             }

@@ -10,10 +10,14 @@ import Foundation
 import Photos
 
 class PreStory{
+    
+    var moment: PHAssetCollection!
+    var topImage: UIImage?
+    
     var image_ids = [String]()
-    var topImage:UIImage?
+    
     //add to these once you select the collection
-    var images = [UIImage]()
+    var images = [UIImage?]()
     var accepted_images = [UIImage]()
     //-------------------------------------------
     var title:String?
@@ -32,6 +36,7 @@ class PreStory{
         image_ids.append(myAsset.localIdentifier)
         count += 1
     }
+    
     private func setTopImage(myAsset:PHAsset) {
         // Note that if the request is not set to synchronous
         // the requestImageForAsset will return both the image
