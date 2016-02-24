@@ -17,18 +17,20 @@ class IconCollectionViewController : UICollectionViewController {
         super.viewDidLoad()
         
     }
-    //********OVERRIDES FOR COLLECTION VIEW TO WORK***************
+
     override func numberOfSectionsInCollectionView(collectionView:
         UICollectionView!) -> Int {
             //only one section so we just return 1
             return 1
     }
     
+    //This function makes the number of cells equal to all the icons we have available
     override func collectionView(collectionView: UICollectionView!,
         numberOfItemsInSection section: Int) -> Int {
             return icon_names.count
     }
     
+    //This function sets all the icon images
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(iconCollect_reuseIdentifier,forIndexPath: indexPath) as! IconCell
@@ -37,9 +39,11 @@ class IconCollectionViewController : UICollectionViewController {
         return cell
     }
     
+    //This function sets the currently selected coverPhotoName for the story
     override func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
             if let coverSelector = self.parentViewController as! CoverSelectorViewController? {
+                coverSelector.displayImage.image = coverPhotoImageOrDefault(icon_names[indexPath.row])
                 coverSelector.story_info?.coverPhotoName = AvailableCoverPhotos[indexPath.row]
                 
             }

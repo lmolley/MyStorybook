@@ -10,6 +10,7 @@ import UIKit
 
 class CoverSelectorViewController: UIViewController {
         var story_info:PreStory?
+    @IBOutlet weak var displayImage: UIImageView!
     
     @IBAction func doneButton(sender: UIBarButtonItem) {
             performSegueWithIdentifier("SelectPageSegue", sender: story_info)
