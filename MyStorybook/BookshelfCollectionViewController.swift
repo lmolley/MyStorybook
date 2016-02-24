@@ -71,6 +71,9 @@ class BookshelfCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         selectedIndex = indexPath.item
+        let story = stories[selectedIndex]
+        story.pages = App.database.getPages(story.id)!
+        
         performSegueWithIdentifier("showStorybook", sender: nil)
     }
     

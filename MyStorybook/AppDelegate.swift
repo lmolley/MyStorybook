@@ -20,7 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.database = SampleDumbMockDatabase() // For some really dumb objects.
         
         // This will import a few moments from the camera roll into an in-memory database.
-//        App.database = DumbMockDatabase(); ImportMomentsToDatabase(App.database)
+//        App.database = DumbMockDatabase()
+        
+//        App.database = MyStorybookDatabase();     (App.database as! MyStorybookDatabase).createDB()
+        
+//        ImportMomentsToDatabase(App.database)
         
         return true
     }

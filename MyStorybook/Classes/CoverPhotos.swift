@@ -26,7 +26,8 @@ internal let AvailableCoverPhotos = [
 
 internal func randomCoverPhotoId() -> String
 {
-    return AvailableCoverPhotos[Int(arc4random()) % AvailableCoverPhotos.count]
+    // DQ: I think you need to divide the number by 2, otherwise casting the uint to an int causes problems on ARM. It's a dumb line of code.
+    return AvailableCoverPhotos[Int(arc4random() / 2) % AvailableCoverPhotos.count]
 }
 
 internal func coverPhotoImageOrDefault(code: String) -> UIImage

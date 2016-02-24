@@ -60,11 +60,11 @@ class MyStorybookDatabase : Database {
         
         if contactDB.open()
         {
-            let querySQL = "SELECT * FROM PAGES WHERE bookid = '\(storyId)'"
+            let querySQL = "SELECT * FROM PAGES WHERE bookid = ?;"
             
-            let results:FMResultSet? = contactDB.executeQuery(querySQL, withArgumentsInArray: nil)
+            let results:FMResultSet! = contactDB.executeQuery(querySQL, withArgumentsInArray: [storyId])
             
-            while results?.next() == true
+            while results.next()
             {
                 let newPage = Page()
                 if let pageId = results?.intForColumn("id")
@@ -110,6 +110,7 @@ class MyStorybookDatabase : Database {
             else
             {
                 //print("Successfully added story to database")
+                story.id = Int(contactDB.lastInsertRowId())
             }
         }
         contactDB.close()
