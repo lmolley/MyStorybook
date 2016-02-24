@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
-internal let AvailableCoverPhotos = [
-    "pizza",
-    "soccerball"
-]
+internal let AvailableCoverPhotos = getAvailableCoverPhotos()
+
+internal func getAvailableCoverPhotos() -> [String]{
+    let filemanager:NSFileManager = NSFileManager()
+    let files = filemanager.enumeratorAtPath(NSHomeDirectory())
+    while let file = files?.nextObject() {
+        print(file)
+    }
+    return []
+}
 
 internal func randomCoverPhotoId() -> String
 {
