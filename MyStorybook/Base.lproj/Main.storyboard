@@ -461,11 +461,11 @@
                                     <action selector="accept" destination="kaf-rB-YIG" eventType="touchUpInside" id="M3V-h9-ojn"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-sw-G1c">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-sw-G1c">
                                 <rect key="frame" x="0.0" y="421" width="600" height="135"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-1l-8GJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="FIc-7u-LSk"/>
                                             <constraint firstAttribute="width" constant="135" id="PlD-Z1-hIO"/>
@@ -474,11 +474,12 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="FIc-7u-LSk"/>
+                                                <exclude reference="PlD-Z1-hIO"/>
                                             </mask>
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
-                                        <rect key="frame" x="136" y="0.0" width="135" height="135"/>
+                                        <rect key="frame" x="152" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="A59-Cx-HQ7"/>
                                             <constraint firstAttribute="width" constant="135" id="hCl-ah-hn6"/>
@@ -486,11 +487,12 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="A59-Cx-HQ7"/>
+                                                <exclude reference="hCl-ah-hn6"/>
                                             </mask>
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-c7-qp8">
-                                        <rect key="frame" x="272" y="0.0" width="192" height="135"/>
+                                        <rect key="frame" x="303" y="0.0" width="147" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="Rq7-nR-2hT"/>
                                             <constraint firstAttribute="height" constant="135" id="W2w-aX-LrV"/>
@@ -507,7 +509,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bAY-oc-f9i">
-                                        <rect key="frame" x="465" y="0.0" width="135" height="135"/>
+                                        <rect key="frame" x="454" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="c83-nm-cpu"/>
                                             <constraint firstAttribute="width" constant="135" id="qrk-xR-WsR"/>
@@ -515,13 +517,21 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="c83-nm-cpu"/>
+                                                <exclude reference="qrk-xR-WsR"/>
                                             </mask>
                                         </variation>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="c4n-Jm-ITi"/>
+                                    <constraint firstAttribute="width" constant="600" id="stN-GE-Nbz"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="c4n-Jm-ITi"/>
+                                        <exclude reference="stN-GE-Nbz"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -529,19 +539,20 @@
                             <constraint firstItem="Ako-6O-74z" firstAttribute="bottom" secondItem="qA2-nP-HUZ" secondAttribute="bottom" id="ChT-0Z-lcX"/>
                             <constraint firstItem="8wu-bd-Mdd" firstAttribute="centerX" secondItem="1Sl-vm-d8A" secondAttribute="centerX" id="Dan-pi-JMG"/>
                             <constraint firstItem="Ako-6O-74z" firstAttribute="trailing" secondItem="8wu-bd-Mdd" secondAttribute="trailing" id="Iq0-PM-rvX"/>
+                            <constraint firstItem="L8f-sw-G1c" firstAttribute="leading" secondItem="1Sl-vm-d8A" secondAttribute="leading" id="LyR-Ng-PFi"/>
                             <constraint firstItem="TBX-4F-Whv" firstAttribute="top" secondItem="Ako-6O-74z" secondAttribute="top" id="Qeu-cg-VuE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qA2-nP-HUZ" secondAttribute="trailing" constant="38" id="SGB-ZT-lxI"/>
                             <constraint firstItem="8wu-bd-Mdd" firstAttribute="top" secondItem="K1e-CW-jk1" secondAttribute="bottom" id="SPj-33-1Xi"/>
+                            <constraint firstItem="L8f-sw-G1c" firstAttribute="top" secondItem="qA2-nP-HUZ" secondAttribute="bottom" constant="27" id="SQt-TQ-9bt"/>
                             <constraint firstItem="TBX-4F-Whv" firstAttribute="leading" secondItem="qA2-nP-HUZ" secondAttribute="leading" id="Tdn-1J-pSl"/>
                             <constraint firstItem="Ako-6O-74z" firstAttribute="top" secondItem="8wu-bd-Mdd" secondAttribute="bottom" constant="8" symbolic="YES" id="WrE-Ei-zMd"/>
                             <constraint firstItem="Ako-6O-74z" firstAttribute="leading" secondItem="1Sl-vm-d8A" secondAttribute="leadingMargin" constant="39" id="Z4i-pH-KAL"/>
                             <constraint firstItem="TBX-4F-Whv" firstAttribute="trailing" secondItem="qA2-nP-HUZ" secondAttribute="trailing" id="a1K-fe-022"/>
-                            <constraint firstItem="L8f-sw-G1c" firstAttribute="bottom" secondItem="dy1-Mg-ojX" secondAttribute="top" id="l6t-Hz-CJr"/>
-                            <constraint firstItem="L8f-sw-G1c" firstAttribute="centerX" secondItem="8wu-bd-Mdd" secondAttribute="centerX" id="pPm-fH-Q99"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L8f-sw-G1c" secondAttribute="trailing" constant="-20" id="flT-AU-W7F"/>
+                            <constraint firstItem="L8f-sw-G1c" firstAttribute="bottom" secondItem="dy1-Mg-ojX" secondAttribute="top" id="gFt-oZ-7AO"/>
                             <constraint firstItem="qA2-nP-HUZ" firstAttribute="top" secondItem="TBX-4F-Whv" secondAttribute="bottom" constant="78" id="qHe-4a-nYb"/>
                             <constraint firstItem="TBX-4F-Whv" firstAttribute="top" secondItem="K1e-CW-jk1" secondAttribute="bottom" constant="32" id="uAU-Qc-mYQ"/>
                             <constraint firstItem="TBX-4F-Whv" firstAttribute="leading" secondItem="Ako-6O-74z" secondAttribute="trailing" constant="77" id="wtI-Kg-pHV"/>
-                            <constraint firstItem="L8f-sw-G1c" firstAttribute="top" secondItem="qA2-nP-HUZ" secondAttribute="bottom" constant="27" id="xAK-H3-WFW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -555,6 +566,7 @@
                         <outlet property="imageViewMidRight" destination="lUk-c7-qp8" id="v3m-qJ-Voj"/>
                         <outlet property="imageViewRight" destination="bAY-oc-f9i" id="Gx9-PI-Xj9"/>
                         <outlet property="mainImageView" destination="Ako-6O-74z" id="oHg-1f-U69"/>
+                        <outlet property="stackImageView" destination="L8f-sw-G1c" id="Xiq-vT-8Pn"/>
                         <outlet property="titleLabel" destination="8wu-bd-Mdd" id="C9k-kb-Baj"/>
                         <segue destination="Bex-uc-Jtm" kind="show" identifier="SelectCoverSegue" id="s50-7s-f2s"/>
                     </connections>

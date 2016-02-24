@@ -69,6 +69,8 @@ class PhotoSelectorViewController: UIViewController{
         if let nextImage:UIImage? = folderToDisplay!.images[1] as UIImage{
             imageViewRight.image = nextImage
         }
+        //imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+        //imageViewMidRight.layer.borderWidth = 3.0
     }
     
     private func updateBottomPics() {
