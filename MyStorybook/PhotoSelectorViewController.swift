@@ -65,16 +65,18 @@ class PhotoSelectorViewController: UIViewController{
         if let mainImage:UIImage? = folderToDisplay!.images[0] as UIImage{
             mainImageView.image = mainImage
             imageViewMidRight.image = mainImage
+            imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+            imageViewMidRight.layer.borderWidth = 3.0
         }
         if let nextImage:UIImage? = folderToDisplay!.images[1] as UIImage{
             imageViewRight.image = nextImage
         }
-        //imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
-        //imageViewMidRight.layer.borderWidth = 3.0
     }
     
     private func updateBottomPics() {
         imageViewMidRight.image = folderToDisplay!.images[currentPicInd]
+        imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+        imageViewMidRight.layer.borderWidth = 3.0
         
         if currentPicInd - 1 >= 0 {
             imageViewMidLeft.image = folderToDisplay!.images[currentPicInd-1]
