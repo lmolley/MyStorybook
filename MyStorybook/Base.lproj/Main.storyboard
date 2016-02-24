@@ -599,7 +599,6 @@
                         <outlet property="imageViewMidRight" destination="lUk-c7-qp8" id="v3m-qJ-Voj"/>
                         <outlet property="imageViewRight" destination="bAY-oc-f9i" id="Gx9-PI-Xj9"/>
                         <outlet property="mainImageView" destination="Ako-6O-74z" id="oHg-1f-U69"/>
-                        <outlet property="stackImageView" destination="L8f-sw-G1c" id="Xiq-vT-8Pn"/>
                         <outlet property="titleLabel" destination="8wu-bd-Mdd" id="C9k-kb-Baj"/>
                         <segue destination="Bex-uc-Jtm" kind="show" identifier="SelectCoverSegue" id="s50-7s-f2s"/>
                     </connections>
