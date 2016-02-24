@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Bex-uc-Jtm">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -228,20 +228,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red-book-hi.png" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-Y9-9L1">
-                                <rect key="frame" x="20" y="215" width="228" height="235"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" image="red-book-hi.png" translatesAutoresizingMaskIntoConstraints="NO" id="fqG-Y9-9L1">
+                                <rect key="frame" x="20" y="150" width="238" height="300"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tyn-mY-PFi">
-                                <rect key="frame" x="38" y="255" width="150" height="150"/>
-                            </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XzH-BF-KoP">
-                                <rect key="frame" x="256" y="72" width="324" height="476"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="XzH-BF-KoP">
+                                <rect key="frame" x="266" y="72" width="314" height="476"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="cw0-Hs-Zgj" kind="embed" id="NAD-eh-75S"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tyn-mY-PFi">
+                                <rect key="frame" x="45" y="235" width="150" height="150"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XzH-BF-KoP" firstAttribute="leading" secondItem="9kn-Qk-sVF" secondAttribute="leadingMargin" constant="246" id="0aB-4P-vQO"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="leading" secondItem="9kn-Qk-sVF" secondAttribute="leadingMargin" constant="18" id="6qv-Ji-HBD"/>
+                            <constraint firstItem="fqG-Y9-9L1" firstAttribute="leading" secondItem="Tyn-mY-PFi" secondAttribute="trailing" constant="-168" id="A7J-WE-m7t"/>
+                            <constraint firstItem="Gc2-Ox-loA" firstAttribute="top" secondItem="fqG-Y9-9L1" secondAttribute="bottom" constant="106" id="Drt-NM-cua"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="top" secondItem="nr2-fX-jt4" secondAttribute="bottom" constant="191" id="H1B-Cf-dVN"/>
+                            <constraint firstItem="Gc2-Ox-loA" firstAttribute="top" secondItem="Tyn-mY-PFi" secondAttribute="bottom" constant="151" id="IO2-gB-xJ9"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="centerX" secondItem="9kn-Qk-sVF" secondAttribute="centerX" id="IdM-VT-9Ls"/>
+                            <constraint firstItem="XzH-BF-KoP" firstAttribute="leading" secondItem="fqG-Y9-9L1" secondAttribute="trailing" constant="8" symbolic="YES" id="PvA-6P-VJn"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="centerX" secondItem="fqG-Y9-9L1" secondAttribute="centerX" id="QaE-Ws-TVi"/>
+                            <constraint firstItem="XzH-BF-KoP" firstAttribute="leading" secondItem="Tyn-mY-PFi" secondAttribute="trailing" constant="68" id="YyN-U9-lbU"/>
+                            <constraint firstItem="XzH-BF-KoP" firstAttribute="top" secondItem="nr2-fX-jt4" secondAttribute="bottom" constant="8" symbolic="YES" id="bNT-Oo-BFp"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="top" secondItem="nr2-fX-jt4" secondAttribute="bottom" constant="171" id="bRh-t7-a5Y"/>
+                            <constraint firstItem="Gc2-Ox-loA" firstAttribute="top" secondItem="XzH-BF-KoP" secondAttribute="bottom" constant="8" symbolic="YES" id="cPD-Dc-DAX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XzH-BF-KoP" secondAttribute="trailing" id="cht-oq-sUV"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="leading" secondItem="9kn-Qk-sVF" secondAttribute="leadingMargin" constant="18" id="gtP-qp-tMV"/>
+                            <constraint firstItem="fqG-Y9-9L1" firstAttribute="centerY" secondItem="9kn-Qk-sVF" secondAttribute="centerY" id="h7Y-n3-Rqo"/>
+                            <constraint firstItem="fqG-Y9-9L1" firstAttribute="top" secondItem="Tyn-mY-PFi" secondAttribute="bottom" constant="-190" id="hGf-QQ-8mz"/>
+                            <constraint firstItem="XzH-BF-KoP" firstAttribute="leading" secondItem="Tyn-mY-PFi" secondAttribute="trailing" constant="71" id="jsN-xF-aB1"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="leading" secondItem="9kn-Qk-sVF" secondAttribute="leadingMargin" constant="25" id="kP7-Mr-khL"/>
+                            <constraint firstItem="Tyn-mY-PFi" firstAttribute="centerY" secondItem="XzH-BF-KoP" secondAttribute="centerY" id="mn6-Sv-zch"/>
+                            <constraint firstItem="fqG-Y9-9L1" firstAttribute="leading" secondItem="9kn-Qk-sVF" secondAttribute="leadingMargin" id="oJ2-Wc-VVN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A7J-WE-m7t"/>
+                                <exclude reference="hGf-QQ-8mz"/>
+                                <exclude reference="6qv-Ji-HBD"/>
+                                <exclude reference="H1B-Cf-dVN"/>
+                                <exclude reference="IdM-VT-9Ls"/>
+                                <exclude reference="QaE-Ws-TVi"/>
+                                <exclude reference="gtP-qp-tMV"/>
+                                <exclude reference="YyN-U9-lbU"/>
+                                <exclude reference="IO2-gB-xJ9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Cover Photo" id="gLg-B2-fQ2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZZR-hi-bfv"/>
@@ -281,10 +318,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="246" height="228"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-hr-jYc">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-hr-jYc">
                                             <rect key="frame" x="8" y="8" width="230" height="154"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqj-Nr-Oj7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqj-Nr-Oj7">
                                             <rect key="frame" x="8" y="170" width="230" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -629,24 +666,25 @@
             <objects>
                 <collectionViewController id="cw0-Hs-Zgj" customClass="IconCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sC7-5H-GBc">
-                        <rect key="frame" x="0.0" y="0.0" width="324" height="476"/>
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="476"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HQf-8I-J5i">
-                            <size key="itemSize" width="127" height="128"/>
+                            <size key="itemSize" width="178" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyIconCell" id="hEE-ta-tdc" customClass="IconCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
+                                <rect key="frame" x="68" y="0.0" width="178" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="178" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7rW-bo-PGS">
-                                            <rect key="frame" x="8" y="8" width="111" height="159"/>
+                                            <rect key="frame" x="8" y="8" width="162" height="159"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -654,7 +692,7 @@
                                 <constraints>
                                     <constraint firstItem="7rW-bo-PGS" firstAttribute="leading" secondItem="hEE-ta-tdc" secondAttribute="leadingMargin" id="3Wb-RL-mag"/>
                                     <constraint firstItem="7rW-bo-PGS" firstAttribute="top" secondItem="hEE-ta-tdc" secondAttribute="topMargin" id="4Jo-Qd-WC6"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="7rW-bo-PGS" secondAttribute="bottom" constant="-47" id="ECX-FA-EO7"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="7rW-bo-PGS" secondAttribute="bottom" id="ECX-FA-EO7"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="7rW-bo-PGS" secondAttribute="trailing" id="SUf-KI-seV"/>
                                 </constraints>
                                 <connections>
