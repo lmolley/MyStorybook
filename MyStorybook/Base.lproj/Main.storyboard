@@ -625,8 +625,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <state key="normal" title="&gt;"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epL-ve-klD">
+                                <rect key="frame" x="44" y="209" width="150" height="150"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAv-Xt-4vW">
-                                <rect key="frame" x="266" y="74" width="314" height="385"/>
+                                <rect key="frame" x="266" y="72" width="314" height="385"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O7U-ie-Jka">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -650,9 +653,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epL-ve-klD">
-                                <rect key="frame" x="44" y="209" width="150" height="150"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
