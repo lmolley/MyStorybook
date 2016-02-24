@@ -37,11 +37,6 @@ class IconCollectionViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(iconCollect_reuseIdentifier,forIndexPath: indexPath) as! IconCell
-        
-        //start with first icon selected
-        if indexPath.row == 1 {
-            updateSelected(cell, cell_to_undecorate: nil, ind: indexPath)
-        }
         // Configure the cell
         cell.iconView.image = coverPhotoImageOrDefault(icon_names[indexPath.row])
         return cell
@@ -49,7 +44,12 @@ class IconCollectionViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(iconCollect_reuseIdentifier,forIndexPath: indexPath) as! IconCell
-        updateSelected(cell, cell_to_undecorate: selectedCell, ind: indexPath)
+//        updateSelected(cell, cell_to_undecorate: selectedCell, ind: indexPath)
+        if let coverSelector = self.parentViewController as! CoverSelectorViewController? {
+            coverSelector.story_info?.coverPhotoName = icon_names[0]
+            coverSelector.finishedSelecting()
+        }
+        
     }
     
     func updateSelected(cell_to_decorate:IconCell?, cell_to_undecorate:IconCell?, ind:NSIndexPath) {
@@ -57,22 +57,22 @@ class IconCollectionViewController : UICollectionViewController {
             undecorate.layer.borderColor = UIColor.whiteColor().CGColor
             undecorate.layer.borderWidth = 0
             self.collectionView!.reloadItemsAtIndexPaths([selectedIconPath!])
-            if selectedCell == undecorate{
+        }
+        if let decorate = cell_to_decorate as IconCell! {
+            if decorate == selectedCell{
                 selectedCell = nil
                 selectedIconPath = nil
                 return
             }
-        }
-        if let decorate = cell_to_decorate as IconCell! {
             decorate.layer.borderColor = UIColor.redColor().CGColor
             decorate.layer.borderWidth = 2
             self.collectionView!.reloadItemsAtIndexPaths([ind])
             selectedCell = decorate
             selectedIconPath = ind
         }
+        print(selectedIconPath!.row)
         
-        print(selectedCell)
-        print(selectedIconPath)
+        
     }
 
 }

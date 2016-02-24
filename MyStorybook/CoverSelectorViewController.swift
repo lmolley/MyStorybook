@@ -15,6 +15,10 @@ class CoverSelectorViewController: UIViewController {
             performSegueWithIdentifier("SelectPageSegue", sender: story_info)
     }
     
+    func finishedSelecting() {
+        performSegueWithIdentifier("SelectPageSegue", sender: story_info)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SelectPageSegue"
         {
