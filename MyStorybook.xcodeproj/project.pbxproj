@@ -11,8 +11,6 @@
 		5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */; };
 		5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */; };
 		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
-		5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */; };
-		5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */; };
 		5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */; };
 		5B14CCAD1C7BDBDB00B8FA0B /* red-book-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */; };
 		890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */; };
@@ -86,8 +84,6 @@
 		5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfCollectionViewController.swift; sourceTree = "<group>"; };
 		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
-		5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewController.swift; sourceTree = "<group>"; };
-		5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-folder-md.png"; sourceTree = "<group>"; };
 		5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-open.png"; sourceTree = "<group>"; };
 		890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
@@ -241,8 +237,6 @@
 				549A9C641C7A8BEF00F27ED0 /* Third Party */,
 				B262EAC51C761C8A001008AD /* AppDelegate.swift */,
 				B262EAC91C761C8A001008AD /* Main.storyboard */,
-				5B14CCA41C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift */,
-				5B14CCA21C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift */,
 				5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */,
 				5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */,
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
@@ -463,7 +457,6 @@
 				895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */,
 				895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */,
 				B272D6991C7D1C3600C12226 /* FMDatabasePool.m in Sources */,
-				5B14CCA31C7A959B00B8FA0B /* PhotoGroupsCollectionViewController.swift in Sources */,
 				890869141C7CDE510099C92E /* PageSelectorViewController.swift in Sources */,
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
@@ -485,7 +478,6 @@
 				B2B3375B1C7CEE6800C663A4 /* CoverSelectorViewController.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
-				5B14CCA51C7A963300B8FA0B /* PhotoGroupsCollectionViewCell.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,
@@ -632,6 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyStorybook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.eecs481.w16.MyStorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -646,6 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MyStorybook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.eecs481.w16.MyStorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";

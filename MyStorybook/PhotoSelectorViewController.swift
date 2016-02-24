@@ -11,7 +11,6 @@ import UIKit
 class PhotoSelectorViewController: UIViewController{
     
     @IBOutlet weak var titleLabel: UILabel!
-    var titleToDisplay:String? = ""
     var folderToDisplay:PreStory?
     var currentPicInd:Int = 0
     var status:[Bool] = [Bool](count:4, repeatedValue:false)
@@ -23,7 +22,7 @@ class PhotoSelectorViewController: UIViewController{
     @IBOutlet weak var imageViewRight: UIImageView!
     
     @IBAction func accept() {
-        folderToDisplay?.accepted_images.append(folderToDisplay!.images[currentPicInd])
+        folderToDisplay?.accepted_images.append(folderToDisplay!.images[currentPicInd]!)
         status[0] = status[1]
         status[1] = true
         status[2] = status[3]
@@ -61,18 +60,24 @@ class PhotoSelectorViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = titleToDisplay
-        if let mainImage:UIImage? = folderToDisplay!.images[0] as UIImage{
+        titleLabel.text = folderToDisplay?.title
+        if let mainImage = folderToDisplay!.topImage {
             mainImageView.image = mainImage
             imageViewMidRight.image = mainImage
+            imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+            imageViewMidRight.layer.borderWidth = 3.0
         }
-        if let nextImage:UIImage? = folderToDisplay!.images[1] as UIImage{
-            imageViewRight.image = nextImage
+        if folderToDisplay!.images.count > 1 {
+            if let nextImage:UIImage = folderToDisplay!.images[1]{
+                imageViewRight.image = nextImage
+            }
         }
     }
     
     private func updateBottomPics() {
         imageViewMidRight.image = folderToDisplay!.images[currentPicInd]
+        imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+        imageViewMidRight.layer.borderWidth = 3.0
         
         if currentPicInd - 1 >= 0 {
             imageViewMidLeft.image = folderToDisplay!.images[currentPicInd-1]
