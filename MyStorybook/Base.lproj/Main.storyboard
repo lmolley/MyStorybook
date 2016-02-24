@@ -283,10 +283,12 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="c89-4a-tCG">
                             <connections>
                                 <action selector="doneButton:" destination="Bex-uc-Jtm" id="Y33-HH-Wko"/>
-                                <segue destination="PQU-VE-42p" kind="show" identifier="SelectPageSegue" id="P0d-Y0-SDs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="PQU-VE-42p" kind="show" identifier="SelectPageSegue" id="tgY-s5-UWG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiQ-hR-hHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -497,7 +499,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-sw-G1c">
                                 <rect key="frame" x="0.0" y="421" width="600" height="135"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-1l-8GJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-1l-8GJ">
                                         <rect key="frame" x="0.0" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="FIc-7u-LSk"/>
@@ -511,7 +513,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
                                         <rect key="frame" x="151" y="0.0" width="147" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="A59-Cx-HQ7"/>
@@ -524,7 +526,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-c7-qp8">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-c7-qp8">
                                         <rect key="frame" x="303" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="Rq7-nR-2hT"/>
@@ -637,7 +639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaS-pG-anh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="611"/>
+            <point key="canvasLocation" x="3731" y="599"/>
         </scene>
         <!--Icon Collection View Controller-->
         <scene sceneID="O8g-qM-7bR">
