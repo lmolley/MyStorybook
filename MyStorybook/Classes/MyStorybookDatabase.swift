@@ -13,7 +13,7 @@ class MyStorybookDatabase : Database {
     var databasePath = NSString()
     
     internal var stories: [Story] = []
-    internal var pages: [Page] = []
+    //internal var pages: [Page] = []
     
     func getStories() -> [Story]
     {
@@ -56,7 +56,7 @@ class MyStorybookDatabase : Database {
     func getPages(storyId: Int) -> [Page]?
     {
         let contactDB = FMDatabase(path: databasePath as String)
-        //var pages = [Page]()
+        var pages = [Page]()
         
         if contactDB.open()
         {
@@ -81,14 +81,14 @@ class MyStorybookDatabase : Database {
                 }
                 newPage.storyId = storyId
                 
-                self.pages.append(newPage)
+                pages.append(newPage)
             }
             
         }
         
         contactDB.close()
         
-        return self.pages
+        return pages
         
     }
     
