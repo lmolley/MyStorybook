@@ -10,4 +10,7 @@ import UIKit
 
 class PageSelectorViewController : UIViewController {
     var story_info:PreStory?
+    
+    @IBOutlet weak var pageImage: UIImageView!
+    
 }
