@@ -11,6 +11,7 @@ import UIKit
 class PageSelectorViewController : UIViewController {
     var story_info:PreStory?
     
+    @IBOutlet weak var pageNumber: UILabel!
     @IBOutlet weak var pageImage: UIImageView!
     
 }

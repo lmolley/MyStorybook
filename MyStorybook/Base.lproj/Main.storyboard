@@ -634,13 +634,21 @@
                                     <segue destination="fRt-pj-oxN" kind="embed" id="aMk-od-f8r"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JY-1J-z0H">
+                                <rect key="frame" x="45" y="72" width="30" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="5JT-gm-XGI" secondAttribute="trailing" id="34I-TQ-wWE"/>
                             <constraint firstItem="AdY-Cc-doc" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="25" id="52o-Dc-dB6"/>
+                            <constraint firstItem="2JY-1J-z0H" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="8" id="6WQ-hS-7PH"/>
                             <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="8" symbolic="YES" id="8nV-CS-KWj"/>
                             <constraint firstItem="5JT-gm-XGI" firstAttribute="centerY" secondItem="AdY-Cc-doc" secondAttribute="centerY" id="Eab-51-wgR"/>
+                            <constraint firstItem="2JY-1J-z0H" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="25" id="SC9-yZ-KfM"/>
                             <constraint firstItem="5JT-gm-XGI" firstAttribute="leading" secondItem="wkM-44-U2X" secondAttribute="trailing" constant="8" id="aEX-kg-NVG"/>
                             <constraint firstItem="AdY-Cc-doc" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="171" id="b3n-rU-jVb"/>
                             <constraint firstItem="lA7-Mh-bKP" firstAttribute="top" secondItem="wkM-44-U2X" secondAttribute="bottom" constant="106" id="cMW-fw-z9E"/>
@@ -653,6 +661,7 @@
                     </view>
                     <connections>
                         <outlet property="pageImage" destination="AdY-Cc-doc" id="P7f-I7-ENF"/>
+                        <outlet property="pageNumber" destination="2JY-1J-z0H" id="qeJ-kS-mAC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaS-pG-anh" userLabel="First Responder" sceneMemberID="firstResponder"/>
