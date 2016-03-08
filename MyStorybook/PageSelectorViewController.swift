@@ -29,12 +29,25 @@ class PageSelectorViewController : UIViewController {
             //update labels or finish
             if story_info!.accepted_images.count > 0 {
                 count += 1
+                pageImage.image = UIImage(named: "default.jpg")
+                if let myImageOptions:PageCollectionViewController = self.childViewControllers[0] as? PageCollectionViewController {
+                    myImageOptions.collectionView!.reloadData()
+                    myImageOptions.viewWillAppear(true)
+                }
             }
-            if let myImageOptions:PageCollectionViewController = self.childViewControllers[0] as? PageCollectionViewController {
-                myImageOptions.collectionView!.reloadData()
-                myImageOptions.viewWillAppear(true)
+            else {
+                performSegueWithIdentifier("finishedSegue", sender: story_info)
             }
+            
         }
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "finishedSegue"
+        {
+            //save story_info here to database
+        }
+    }
+
 }
