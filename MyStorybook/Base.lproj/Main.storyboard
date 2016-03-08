@@ -700,11 +700,25 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBY-Li-E5y">
+                                <rect key="frame" x="321" y="404" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKA-sH-TVW">
+                                <rect key="frame" x="265" y="348" width="70" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Home"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nKA-sH-TVW" firstAttribute="centerX" secondItem="Cfd-6u-O0R" secondAttribute="centerX" id="1dM-ga-3zw"/>
                             <constraint firstItem="dEG-7I-4Zk" firstAttribute="centerX" secondItem="Cfd-6u-O0R" secondAttribute="centerX" id="Nid-Qe-WwK"/>
                             <constraint firstItem="dEG-7I-4Zk" firstAttribute="centerY" secondItem="Cfd-6u-O0R" secondAttribute="centerY" id="eWi-4b-aJ8"/>
+                            <constraint firstItem="nKA-sH-TVW" firstAttribute="top" secondItem="dEG-7I-4Zk" secondAttribute="bottom" constant="30" id="th0-tv-GTZ"/>
+                            <constraint firstItem="VEV-HA-KCr" firstAttribute="top" secondItem="nKA-sH-TVW" secondAttribute="bottom" constant="152" id="v0g-X4-4SQ"/>
                         </constraints>
                     </view>
                 </viewController>
