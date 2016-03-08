@@ -49,6 +49,7 @@ class PageCollectionViewController : UICollectionViewController {
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
             if let pageSelector = self.parentViewController as! PageSelectorViewController? {
                 pageSelector.pageImage.image = pageSelector.story_info!.accepted_images[indexPath.row]
+                pageSelector.curSelectedIndex = indexPath.row
             }
     }
 }

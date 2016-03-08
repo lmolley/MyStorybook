@@ -20,6 +20,7 @@ class PreStory{
     //add to these once you select the collection
     var images = [UIImage?]()
     var accepted_images = [UIImage]()
+    var page_images = [UIImage]()
     //-------------------------------------------
     var title:String?
     var date:NSDate?
