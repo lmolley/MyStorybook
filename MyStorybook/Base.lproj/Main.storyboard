@@ -682,10 +682,10 @@
             </objects>
             <point key="canvasLocation" x="3731" y="599"/>
         </scene>
-        <!--View Controller-->
+        <!--Finished View Controller-->
         <scene sceneID="dGr-L8-m5b">
             <objects>
-                <viewController id="DXP-XL-yjA" sceneMemberID="viewController">
+                <viewController id="DXP-XL-yjA" customClass="FinishedViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QYt-n1-U1T"/>
                         <viewControllerLayoutGuide type="bottom" id="VEV-HA-KCr"/>
@@ -710,6 +710,9 @@
                                 <rect key="frame" x="265" y="348" width="70" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Home"/>
+                                <connections>
+                                    <action selector="goHome" destination="DXP-XL-yjA" eventType="touchUpInside" id="ruV-1H-Nve"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
