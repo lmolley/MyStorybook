@@ -24,7 +24,7 @@ class PageCollectionViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             if let pageSelector = self.parentViewController as! PageSelectorViewController? {
-                pageSelector.story_info!.accepted_images.count
+                return pageSelector.story_info!.accepted_images.count
             }
             return 0
     }
