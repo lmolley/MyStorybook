@@ -613,7 +613,7 @@
         <!--Page Selector Scene-->
         <scene sceneID="YJr-yU-DQS">
             <objects>
-                <viewController storyboardIdentifier="Page Selector Scene" title="Page Selector Scene" id="PQU-VE-42p" customClass="PageSelectorViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page Select" title="Page Selector Scene" id="PQU-VE-42p" customClass="PageSelectorViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bgG-2g-aVr"/>
                         <viewControllerLayoutGuide type="bottom" id="lA7-Mh-bKP"/>
@@ -622,13 +622,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red-book-open.png" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-44-U2X">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="red-book-open.png" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-44-U2X">
                                 <rect key="frame" x="20" y="150" width="238" height="300"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AdY-Cc-doc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AdY-Cc-doc">
                                 <rect key="frame" x="45" y="235" width="150" height="150"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-gm-XGI">
+                            <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-gm-XGI">
                                 <rect key="frame" x="266" y="72" width="314" height="476"/>
                                 <connections>
                                     <segue destination="fRt-pj-oxN" kind="embed" id="aMk-od-f8r"/>
@@ -636,6 +636,20 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="5JT-gm-XGI" secondAttribute="trailing" id="34I-TQ-wWE"/>
+                            <constraint firstItem="AdY-Cc-doc" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="25" id="52o-Dc-dB6"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="8" symbolic="YES" id="8nV-CS-KWj"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="centerY" secondItem="AdY-Cc-doc" secondAttribute="centerY" id="Eab-51-wgR"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="leading" secondItem="wkM-44-U2X" secondAttribute="trailing" constant="8" id="aEX-kg-NVG"/>
+                            <constraint firstItem="AdY-Cc-doc" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="171" id="b3n-rU-jVb"/>
+                            <constraint firstItem="lA7-Mh-bKP" firstAttribute="top" secondItem="wkM-44-U2X" secondAttribute="bottom" constant="106" id="cMW-fw-z9E"/>
+                            <constraint firstItem="lA7-Mh-bKP" firstAttribute="top" secondItem="5JT-gm-XGI" secondAttribute="bottom" constant="8" id="eD6-RH-rTk"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="246" id="gCI-Ii-6JY"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wkM-44-U2X" secondAttribute="leading" id="qfq-Lv-nhm"/>
+                            <constraint firstItem="wkM-44-U2X" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="86" id="sq8-pJ-aU0"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="leading" secondItem="AdY-Cc-doc" secondAttribute="trailing" constant="71" id="x53-ED-wFG"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pageImage" destination="AdY-Cc-doc" id="P7f-I7-ENF"/>
