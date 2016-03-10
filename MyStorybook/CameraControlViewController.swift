@@ -17,10 +17,16 @@ class CameraControlViewController : UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var previewView: UIImageView!
     
     var isRecording:Bool = false
     var isVideoMode:Bool = false
     var isCameraMode:Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        changeToCameraMode()
+    }
     
     @IBAction func changeToCameraMode() {
         HTTPGet(cameraModeCommand){_,_ in }
@@ -29,7 +35,7 @@ class CameraControlViewController : UIViewController {
         isCameraMode = true
         
         cameraButton.layer.borderColor = UIColor.blackColor().CGColor
-        cameraButton.layer.borderWidth = 1
+        cameraButton.layer.borderWidth = 3
         videoButton.layer.borderWidth = 0
         recordButton.layer.borderWidth = 0
     }
@@ -40,7 +46,7 @@ class CameraControlViewController : UIViewController {
         isCameraMode = false
         
         videoButton.layer.borderColor = UIColor.blackColor().CGColor
-        videoButton.layer.borderWidth = 1
+        videoButton.layer.borderWidth = 3
         cameraButton.layer.borderWidth = 0
     }
     @IBAction func record() {
@@ -52,10 +58,11 @@ class CameraControlViewController : UIViewController {
         }
         else {
             HTTPGet(recordOnCommand){_,_ in }
+            setPreviewImage()
             
             if(isVideoMode){
                 recordButton.layer.borderColor = UIColor.redColor().CGColor
-                recordButton.layer.borderWidth = 1
+                recordButton.layer.borderWidth = 3
             }
             
         }
@@ -69,5 +76,46 @@ class CameraControlViewController : UIViewController {
         
         //isRecording = !isRecording
     }
-    
+ 
+    private func setPreviewImage(){
+        var imageList = [String]()
+        HTTPGet(getMediaListCommand){
+            (data: String, error: String?) -> Void in
+            if error != nil {
+                print(error)
+                return;
+            } else {
+                //parse JSON returned from request to get out the filenames
+                if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString)
+                    for (_,library)in json["media"] {
+                        let prefix:String = library["d"].string! + "/"
+                        for (_, file) in library["fs"] {
+                            let name = file["n"].string!
+                            if name.containsString(".JPG") {
+                                imageList.append(prefix + name)}
+                        }
+                        
+                    }
+                }
+                
+                if imageList.count == 0 {
+                    return;
+                }
+                
+                let filename = imageList.last
+                HTTPImageGet(getThumbnailCommand + filename!){(data:UIImage, error: String?) -> Void in
+                    if error != nil {
+                        print(error)
+                        return;
+                    }
+                    else{
+                        self.previewView.image = data
+                    }
+                    
+                }
+            }
+        }
+    }
 }
+
