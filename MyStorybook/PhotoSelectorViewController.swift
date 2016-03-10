@@ -30,8 +30,6 @@ class PhotoSelectorViewController: UIViewController{
         
         currentPicInd += 1
         if currentPicInd >= folderToDisplay!.images.count {
-            print("Done!")
-            print(folderToDisplay!.accepted_images)
             performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
         }
         else {

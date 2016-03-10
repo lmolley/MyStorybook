@@ -23,8 +23,9 @@ class PageSelectorViewController : UIViewController {
     @IBAction func confirmSelection() {
         if let index = curSelectedIndex! as Int? {
             //put selected image as page
-            story_info!.page_images.append(story_info!.accepted_images[index])
+            story_info!.ordered_ids.append(story_info!.image_ids[index])
             //remove selected image from showing up for next one
+            story_info!.image_ids.removeAtIndex(index)
             story_info!.accepted_images.removeAtIndex(index)
             //update labels or finish
             if story_info!.accepted_images.count > 0 {
@@ -47,6 +48,7 @@ class PageSelectorViewController : UIViewController {
         if segue.identifier == "finishedSegue"
         {
             //save story_info here to database
+            print(story_info!.ordered_ids)
         }
     }
 
