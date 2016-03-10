@@ -19,11 +19,6 @@ let albumName = "GOPRO"
 
 class GoProImagesViewController : UICollectionViewController {
     
-    var albumFound : Bool = false
-//    var assetCollection: PHAssetCollection = PHAssetCollection()
-    var photosAsset: PHFetchResult!
-    var goProImageAssets: NSArray = NSArray()
-    
     var preStories = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
@@ -51,7 +46,6 @@ class GoProImagesViewController : UICollectionViewController {
         
         if let first_Obj:AnyObject = collection.firstObject{
             //found the album
-            self.albumFound = true
             self.gopro_folder.moment = first_Obj as! PHAssetCollection
         }else{
             //Album placeholder for the asset collection, used to reference collection in completion handler
@@ -65,12 +59,10 @@ class GoProImagesViewController : UICollectionViewController {
                 completionHandler: {(success:Bool, error:NSError?)in
                     if(success){
                         print("Successfully created folder")
-                        self.albumFound = true
                         let collection = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([albumPlaceholder.localIdentifier], options: nil)
                         self.gopro_folder.moment = collection.firstObject as! PHAssetCollection
                     }else{
                         print("Error creating folder")
-                        self.albumFound = false
                     }
             })
         }
@@ -196,32 +188,7 @@ class GoProImagesViewController : UICollectionViewController {
         return true
     }
     
-    // Repeatedly call the following method while incrementing
-    // the index until all the photos are fetched
-    private func fetchPhotoAtIndexFromEnd(index:Int, assetCol:PHAssetCollection, folder:PreStory) {
-    
-        // Sort the images by creation date
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
-        
-        if let fetchResult: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(assetCol, options: fetchOptions) {
-            
-            // If the fetch result isn't empty,
-            // proceed with the image request
-            if fetchResult.count > 0 {
-                // Perform the image request
-                let myPHAsset = fetchResult.objectAtIndex(fetchResult.count - 1 - index) as! PHAsset
-                folder.addImageId(myPHAsset)
-                self.image_count += 1
-                if index + 1 < fetchResult.count && self.image_count < self.maxImageCount {
-                        self.fetchPhotoAtIndexFromEnd(index + 1, assetCol: assetCol, folder: folder)
-                }
 
-            }
-        }
-    }
-
-    
     
 //********OVERRIDES FOR COLLECTION VIEW TO WORK***************
     override func numberOfSectionsInCollectionView(collectionView:
