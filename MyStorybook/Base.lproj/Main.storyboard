@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -629,7 +629,7 @@
                                 <rect key="frame" x="45" y="235" width="150" height="150"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-gm-XGI">
-                                <rect key="frame" x="266" y="110" width="314" height="438"/>
+                                <rect key="frame" x="266" y="133" width="314" height="415"/>
                                 <connections>
                                     <segue destination="fRt-pj-oxN" kind="embed" id="aMk-od-f8r"/>
                                 </connections>
@@ -641,8 +641,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-hK-SiD">
-                                <rect key="frame" x="538" y="64" width="42" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <rect key="frame" x="496" y="64" width="84" height="68"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <state key="normal" title="✔︎">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -657,9 +657,9 @@
                             <constraint firstItem="AdY-Cc-doc" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="25" id="52o-Dc-dB6"/>
                             <constraint firstItem="2JY-1J-z0H" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="8" id="6WQ-hS-7PH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bxt-hK-SiD" secondAttribute="trailing" id="8Q8-pY-xZq"/>
-                            <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="46" id="8nV-CS-KWj"/>
-                            <constraint firstItem="5JT-gm-XGI" firstAttribute="centerY" secondItem="AdY-Cc-doc" secondAttribute="centerY" constant="19" id="Eab-51-wgR"/>
-                            <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bxt-hK-SiD" secondAttribute="bottom" constant="-1" id="Jzx-wQ-6d3"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="69" id="8nV-CS-KWj"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="centerY" secondItem="AdY-Cc-doc" secondAttribute="centerY" constant="30.5" id="Eab-51-wgR"/>
+                            <constraint firstItem="5JT-gm-XGI" firstAttribute="top" secondItem="bxt-hK-SiD" secondAttribute="bottom" constant="1" id="Jzx-wQ-6d3"/>
                             <constraint firstItem="2JY-1J-z0H" firstAttribute="leading" secondItem="ZBX-HB-CZa" secondAttribute="leadingMargin" constant="25" id="SC9-yZ-KfM"/>
                             <constraint firstItem="5JT-gm-XGI" firstAttribute="leading" secondItem="wkM-44-U2X" secondAttribute="trailing" constant="8" id="aEX-kg-NVG"/>
                             <constraint firstItem="AdY-Cc-doc" firstAttribute="top" secondItem="bgG-2g-aVr" secondAttribute="bottom" constant="171" id="b3n-rU-jVb"/>
@@ -734,7 +734,7 @@
             <objects>
                 <collectionViewController id="fRt-pj-oxN" customClass="PageCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uFu-hS-f6s">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="438"/>
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X8O-Ff-19f">

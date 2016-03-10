@@ -14,10 +14,15 @@ let GoPro_reuseIdentifier = "GoProImageCell"
 let getThumbnailCommand = "http://10.5.5.9/gp/gpMediaMetadata?p="
 let getMediaListCommand = "http://10.5.5.9:8080/gp/gpMediaList"
 let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
+let deleteFileCommand = "http://10.5.5.9/gp/gpControl/command/storage/delete?p="
+let albumName = "GOPRO"
 
 class GoProImagesViewController : UICollectionViewController {
     
-    /////var camera_roll_images:NSMutableArray! // <-- Array to hold the fetched images
+    var albumFound : Bool = false
+//    var assetCollection: PHAssetCollection = PHAssetCollection()
+    var photosAsset: PHFetchResult!
+    var goProImageAssets: NSArray = NSArray()
     
     var preStories = [PreStory]()
     var image_count:Int = 0
@@ -31,14 +36,47 @@ class GoProImagesViewController : UICollectionViewController {
         preStories.append(gopro_folder)
         fetchMomentsFromCameraRoll()
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
-            self.getGoProImages()
+            self.makeGoProAlbum()
+            self.startGoProProcessing()
             dispatch_async(dispatch_get_main_queue()) {
-                self.collectionView!.reloadData()
             }
         }
     }
     
-    private func getGoProImages() -> Void {
+    private func makeGoProAlbum(){
+        //Check if the folder exists, if not, create it
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
+        let collection:PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
+        
+        if let first_Obj:AnyObject = collection.firstObject{
+            //found the album
+            self.albumFound = true
+            self.gopro_folder.moment = first_Obj as! PHAssetCollection
+        }else{
+            //Album placeholder for the asset collection, used to reference collection in completion handler
+            var albumPlaceholder:PHObjectPlaceholder!
+            //create the folder
+            NSLog("\nFolder \"%@\" does not exist\nCreating now...", albumName)
+            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(albumName)
+                albumPlaceholder = request.placeholderForCreatedAssetCollection
+                },
+                completionHandler: {(success:Bool, error:NSError?)in
+                    if(success){
+                        print("Successfully created folder")
+                        self.albumFound = true
+                        let collection = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([albumPlaceholder.localIdentifier], options: nil)
+                        self.gopro_folder.moment = collection.firstObject as! PHAssetCollection
+                    }else{
+                        print("Error creating folder")
+                        self.albumFound = false
+                    }
+            })
+        }
+    }
+    
+    private func startGoProProcessing() -> Void {
         HTTPGet(getMediaListCommand){
             (data: String, error: String?) -> Void in
             if error != nil {
@@ -57,35 +95,46 @@ class GoProImagesViewController : UICollectionViewController {
                 }
             }
             print(self.gopro_images)
-            self.saveImages()
+            self.importGoProImages()
         }
     }
     
-    private func saveImages() {
+    private func importGoProImages() {
+        var count = 0
         for image_file in self.gopro_images {
             if(image_file.containsString(".JPG")) {
-                getAndSaveImage(image_file)
+                getImageFromGoProAndSave(image_file)
+                if(count == 0){
+                    self.fetchFirstPhotoInMoment(0)
+                }
+                count++
             }
+
         }
-        
     }
     
-    private func getAndSaveImage(path: String) -> Void {
+    private func getImageFromGoProAndSave(path: String) -> Void {
         HTTPImageGet(getImageCommand + path){
             (data: UIImage, error: String?) -> Void in
             if error != nil {
                 print(error)
             }
             else {
-                print("saving data")
-                UIImageWriteToSavedPhotosAlbum(data, nil, nil, nil)
-                let fetchOptions: PHFetchOptions = PHFetchOptions()
-                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-                let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
-                if (fetchResult.firstObject != nil) {
-                    let lastAsset: PHAsset = fetchResult.lastObject as! PHAsset
-                    self.gopro_folder.addImageId(lastAsset)
-                }
+                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                    let assetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(data)
+                    let assetPlaceholder = assetChangeRequest.placeholderForCreatedAsset
+                    let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.gopro_folder.moment)
+                    let enumeration: NSArray = [assetPlaceholder!]
+                    albumChangeRequest!.addAssets(enumeration)
+                    }, completionHandler: {(success:Bool, error:NSError?)in
+                        if(success){
+                            print("Successfully Saved Photo")
+                            print("deleting photo now...")
+                            HTTPGet(deleteFileCommand + path){_,_ in }
+                        }else{
+                            print("Saving photo")
+                        }
+                })
             
             }
         }
@@ -108,14 +157,16 @@ class GoProImagesViewController : UICollectionViewController {
                 new_folder.moment = collection
                 
                 // Begin attempt to get the top image. If there is none, don't bother with the moment. (Would there ever be a moment without an image?)
-                self.fetchFirstPhotoInMoment(new_folder)
+                self.preStories.append(new_folder)
+                self.fetchFirstPhotoInMoment(self.preStories.count-1)
             }
         })
     }
     
     // Returns true if the moment has at least one photo
-    private func fetchFirstPhotoInMoment(folder: PreStory)-> Bool
+    private func fetchFirstPhotoInMoment(folder_index:Int)-> Bool
     {
+        let folder = self.preStories[folder_index]
         let opts = PHFetchOptions()
         opts.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
         opts.fetchLimit = 1
@@ -125,8 +176,7 @@ class GoProImagesViewController : UICollectionViewController {
             return false
         }
         
-        self.preStories.append(folder)
-        let indexPath = NSIndexPath(forItem: self.preStories.count - 1, inSection: 0)
+        let indexPath = NSIndexPath(forItem: folder_index, inSection: 0)
         
         let asset = fetchResult.objectAtIndex(0) as! PHAsset
         let imageOptions = PHImageRequestOptions()

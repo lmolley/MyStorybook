@@ -72,17 +72,18 @@ func SampleDumbMockDatabase() -> Database
         return page
     }
     
-    db.createStoryWithPages(ms("Sports!", "soccerball",
-        mp(1, "sports1"),
-        mp(2, "sports2"),
-        mp(3, "sports3")))
+    db.createStoryWithPages(ms("Party", "pizza",
+        mp(1, "967B1CE1-D4D5-4755-8BE8-6330C151A74A/L0/001"),
+        mp(2, "C2D31558-B30D-445A-9C59-4C27F8049C9B/L0/001"),
+        mp(3, "2B654ABA-3F67-45A1-9598-941AF7F8C782/L0/001"),
+        mp(4, "4CD71961-F24E-49C0-9AAF-F10A58B04504/L0/001")))
     
-    db.createStoryWithPages(ms("Food", "pizza",
-        mp(1, "food1"),
-        mp(2, "food2"),
-        mp(3, "food3"),
-        mp(4, "food4"),
-        mp(5, "food5")))
+    db.createStoryWithPages(ms("Selena!", "ic_sentiment_satisfied_black_48dp",
+        mp(1, "5F4EFFC2-BF60-45A5-8C35-371AE7DED242/L0/001"),
+        mp(2, "3FC2AE86-3105-43A6-8DFE-9180E159EFA9/L0/001"),
+        mp(3, "DF490728-6BD7-4BDB-A5F1-991770DA4EA2/L0/001"),
+        mp(4, "FA4A1B53-44E8-49F4-8F09-D7361FA4C12F/L0/001")))
+    
     
     db.createStoryWithPages(ms("Other?", "somethingElse",
         mp(1, "other1"),
