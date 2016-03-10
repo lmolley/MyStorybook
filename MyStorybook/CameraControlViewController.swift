@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 let recordOnCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=1"
 let recordOffCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=0"
 let cameraModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=1"
@@ -14,67 +16,91 @@ let videoModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=0"
 
 class CameraControlViewController : UIViewController {
     
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var videoButton: UIButton!
-    @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var previewView: UIImageView!
+    var isInSelfieMode:Bool = false
+    let captureSession = AVCaptureSession()
+    let stillImageOutput = AVCaptureStillImageOutput()
     
-    var isRecording:Bool = false
-    var isVideoMode:Bool = false
-    var isCameraMode:Bool = false
+    // If we find a device we'll store it here for later use
+    var captureDevice : AVCaptureDevice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         changeToCameraMode()
+        captureSession.sessionPreset = AVCaptureSessionPresetLow
+        
+        let devices = AVCaptureDevice.devices()
+        
+        // Loop through all the capture devices on this phone
+        for device in devices {
+            // Make sure this particular device supports video
+            if (device.hasMediaType(AVMediaTypeVideo)) {
+                // Finally check the position and confirm we've got the front camera
+                if(device.position == AVCaptureDevicePosition.Front) {
+                    captureDevice = device as? AVCaptureDevice
+                }
+            }
+        }
     }
     
-    @IBAction func changeToCameraMode() {
+    func changeToCameraMode() {
         HTTPGet(cameraModeCommand){_,_ in }
-        
-        isVideoMode = false
-        isCameraMode = true
-        
-        cameraButton.layer.borderColor = UIColor.blackColor().CGColor
-        cameraButton.layer.borderWidth = 3
-        videoButton.layer.borderWidth = 0
-        recordButton.layer.borderWidth = 0
     }
-    @IBAction func changeToVideoMode() {
-        HTTPGet(videoModeCommand){_,_ in }
-        
-        isVideoMode = true
-        isCameraMode = false
-        
-        videoButton.layer.borderColor = UIColor.blackColor().CGColor
-        videoButton.layer.borderWidth = 3
-        cameraButton.layer.borderWidth = 0
-    }
+
     @IBAction func record() {
-        
-        if(isRecording){
-            HTTPGet(recordOffCommand){_,_ in }
-            
-            recordButton.layer.borderWidth = 0
+        if isInSelfieMode {
+            if let videoConnection = stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
+                stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection) {
+                    (imageDataSampleBuffer, error) -> Void in
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
+                    UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData)!, nil, nil, nil)
+                }
+            }
         }
         else {
             HTTPGet(recordOnCommand){_,_ in }
             setPreviewImage()
-            
-            if(isVideoMode){
-                recordButton.layer.borderColor = UIColor.redColor().CGColor
-                recordButton.layer.borderWidth = 3
+        }
+    }
+    
+    @IBAction func toggleSelfie(sender: UIButton) {
+        if !isInSelfieMode {
+            if captureDevice != nil {
+                beginSession()
+                previewView.hidden = true
+                sender.setTitle("GoPro Mode", forState: .Normal)
+                isInSelfieMode = true
             }
-            
+        }
+        else {
+//            captureSession.removeInput(AVCaptureDeviceInput(device: captureDevice))
+            captureSession.stopRunning()
+            previewView.hidden = false
+            sender.setTitle("Selfie Mode", forState: .Normal)
+            isInSelfieMode = false
         }
         
-        if(isCameraMode){
-            isRecording = false
+        //toggle mode
+        isInSelfieMode = !isInSelfieMode
+    }
+    
+    private func beginSession() {
+        do {
+            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice))
+            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            self.view.layer.addSublayer(previewLayer)
+            previewLayer?.frame = self.previewView.layer.frame
+            captureSession.startRunning()
+            stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
+            if captureSession.canAddOutput(stillImageOutput) {
+                captureSession.addOutput(stillImageOutput)
+            }
         }
-        else{
-            isRecording = !isRecording
+        catch _{
+            print("issue adding input to capture session")
         }
         
-        //isRecording = !isRecording
+        
     }
  
     private func setPreviewImage(){
