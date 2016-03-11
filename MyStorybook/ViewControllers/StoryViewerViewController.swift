@@ -8,12 +8,15 @@
 
 import UIKit
 import Photos
+import MessageUI
 
-class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var shadowView: UIView!
+    
+    @IBOutlet weak var shareButton: UIButton!
     
     internal var story: Story?
     
@@ -54,6 +57,11 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.shadowOpacity = 0.25
         self.shadowView.layer.borderWidth = 1
         self.shadowView.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
+        
+        if !MFMailComposeViewController.canSendMail() {
+            print("Device cannot send emails, hiding share button.")
+            shareButton.hidden = true
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +72,45 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    @IBAction func share() {
+        let c = MFMailComposeViewController()
+        
+        let assetsFetch = PHAsset.fetchAssetsWithLocalIdentifiers(story!.pages!.map { $0.photoId }, options: nil)
+        
+        let opts = PHImageRequestOptions()
+        opts.deliveryMode = .HighQualityFormat
+        opts.synchronous = true
+        
+        for i in 0..<assetsFetch.count {
+            let asset = assetsFetch.objectAtIndex(i) as! PHAsset
+            
+            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: { (imageData, imageType, someUIOrientation, someData) -> Void in
+
+                guard let imageData = imageData else {
+                    print("Unable to fetch data for asset with local identifier \(asset.localIdentifier).")
+                    return
+                }
+                guard let mimeType = mimeTypeForUTI(imageType!) else {
+                    print("Can't determine MIME type for UTI \(imageType)")
+                    return
+                }
+                
+                let fileName = (someData!["PHImageFileURLKey"] as! NSURL).lastPathComponent!
+                
+                c.addAttachmentData(imageData, mimeType: mimeType, fileName: fileName)
+                
+            })
+            
+        }
+
+        c.setMessageBody("Check out these photos!", isHTML: false)
+        c.setSubject("A MyStorybook Photo Album")
+        
+        c.mailComposeDelegate = self
+        
+        self.presentViewController(c, animated: true, completion: nil)
     }
     
     @IBAction func goHome() {
@@ -119,6 +166,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         viewController.page = self.story?.pages![pageIndex]
         return viewController
     }
+    
+    // MARK: - MFMailComposeViewControllerDelegate
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     // MARK: - UIPageViewControllerDataSource
     
@@ -158,6 +211,16 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         
         let vc = pageViewController.viewControllers![0]
         self.currentPage = (vc as? StoryViewerPhotoPageViewController)?.pageIndex
+    }
+}
+
+internal func mimeTypeForUTI(uti: String) -> String? {
+    switch (uti) {
+    case "public.jpeg": return "image/jpeg"
+    case "public.png": return "image/png"
+    case "public.tiff": return "image/tiff"
+    default:
+        return nil
     }
 }
 

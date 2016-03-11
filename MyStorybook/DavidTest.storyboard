@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -93,6 +93,20 @@
                                     <action selector="nextPage" destination="maw-T9-hk7" eventType="touchUpInside" id="tSF-6N-Jnd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMN-rO-99A">
+                                <rect key="frame" x="0.0" y="500" width="160" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="1oV-xX-jmw"/>
+                                    <constraint firstAttribute="height" constant="100" id="ksW-n9-6WF"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="share" destination="maw-T9-hk7" eventType="touchUpInside" id="JGc-H9-tZ5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -102,7 +116,9 @@
                             <constraint firstAttribute="trailing" secondItem="QPw-CW-VGa" secondAttribute="trailing" constant="40" id="OIj-KB-u9X"/>
                             <constraint firstItem="QPw-CW-VGa" firstAttribute="top" secondItem="CQ0-BC-KS1" secondAttribute="bottom" constant="40" id="Qy3-51-UxK"/>
                             <constraint firstItem="nTG-N5-1mN" firstAttribute="centerX" secondItem="QPw-CW-VGa" secondAttribute="centerX" id="WwN-nN-Ocj"/>
+                            <constraint firstItem="RMN-rO-99A" firstAttribute="leading" secondItem="rzP-PV-hCR" secondAttribute="leading" id="Xwn-EX-xh4"/>
                             <constraint firstAttribute="trailing" secondItem="7zz-n9-c0i" secondAttribute="trailing" id="aTf-PY-vYg"/>
+                            <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="RMN-rO-99A" secondAttribute="bottom" id="dfV-HI-bNs"/>
                             <constraint firstItem="nTG-N5-1mN" firstAttribute="height" secondItem="QPw-CW-VGa" secondAttribute="height" constant="2" id="o8o-Od-iov"/>
                             <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="Fnr-4w-XZu" secondAttribute="bottom" constant="40" id="qdC-2p-foH"/>
                             <constraint firstAttribute="trailing" secondItem="Fnr-4w-XZu" secondAttribute="trailing" id="r4T-OK-v87"/>
@@ -117,6 +133,7 @@
                         <outlet property="nextButton" destination="Fnr-4w-XZu" id="gMf-3t-wdc"/>
                         <outlet property="prevButton" destination="7zz-n9-c0i" id="Ovl-SJ-ec7"/>
                         <outlet property="shadowView" destination="nTG-N5-1mN" id="FoY-bl-7Mc"/>
+                        <outlet property="shareButton" destination="RMN-rO-99A" id="YnP-lX-BTA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGm-e3-kij" userLabel="First Responder" sceneMemberID="firstResponder"/>
