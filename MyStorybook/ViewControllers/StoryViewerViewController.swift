@@ -74,7 +74,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func share() {
+    @IBAction internal func share() {
         let c = MFMailComposeViewController()
         
         let assetsFetch = PHAsset.fetchAssetsWithLocalIdentifiers(story!.pages!.map { $0.photoId }, options: nil)

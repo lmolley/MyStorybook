@@ -23,4 +23,10 @@ class StoryViewerCoverViewController: UIViewController {
         
         square.addAlbumBorder()
     }
+    
+    @IBAction func shareInStoryViewerAncestor() {
+        let viewer = self.parentViewController?.parentViewController as! StoryViewerViewController
+        
+        viewer.share()
+    }
 }

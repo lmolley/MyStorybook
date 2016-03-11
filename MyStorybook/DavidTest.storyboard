@@ -93,20 +93,6 @@
                                     <action selector="nextPage" destination="maw-T9-hk7" eventType="touchUpInside" id="tSF-6N-Jnd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMN-rO-99A">
-                                <rect key="frame" x="0.0" y="500" width="160" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="1oV-xX-jmw"/>
-                                    <constraint firstAttribute="height" constant="100" id="ksW-n9-6WF"/>
-                                </constraints>
-                                <state key="normal" title="Share">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="share" destination="maw-T9-hk7" eventType="touchUpInside" id="JGc-H9-tZ5"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -116,9 +102,7 @@
                             <constraint firstAttribute="trailing" secondItem="QPw-CW-VGa" secondAttribute="trailing" constant="40" id="OIj-KB-u9X"/>
                             <constraint firstItem="QPw-CW-VGa" firstAttribute="top" secondItem="CQ0-BC-KS1" secondAttribute="bottom" constant="40" id="Qy3-51-UxK"/>
                             <constraint firstItem="nTG-N5-1mN" firstAttribute="centerX" secondItem="QPw-CW-VGa" secondAttribute="centerX" id="WwN-nN-Ocj"/>
-                            <constraint firstItem="RMN-rO-99A" firstAttribute="leading" secondItem="rzP-PV-hCR" secondAttribute="leading" id="Xwn-EX-xh4"/>
                             <constraint firstAttribute="trailing" secondItem="7zz-n9-c0i" secondAttribute="trailing" id="aTf-PY-vYg"/>
-                            <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="RMN-rO-99A" secondAttribute="bottom" id="dfV-HI-bNs"/>
                             <constraint firstItem="nTG-N5-1mN" firstAttribute="height" secondItem="QPw-CW-VGa" secondAttribute="height" constant="2" id="o8o-Od-iov"/>
                             <constraint firstItem="zvO-JR-KA6" firstAttribute="top" secondItem="Fnr-4w-XZu" secondAttribute="bottom" constant="40" id="qdC-2p-foH"/>
                             <constraint firstAttribute="trailing" secondItem="Fnr-4w-XZu" secondAttribute="trailing" id="r4T-OK-v87"/>
@@ -133,7 +117,6 @@
                         <outlet property="nextButton" destination="Fnr-4w-XZu" id="gMf-3t-wdc"/>
                         <outlet property="prevButton" destination="7zz-n9-c0i" id="Ovl-SJ-ec7"/>
                         <outlet property="shadowView" destination="nTG-N5-1mN" id="FoY-bl-7Mc"/>
-                        <outlet property="shareButton" destination="RMN-rO-99A" id="YnP-lX-BTA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGm-e3-kij" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,13 +156,29 @@
                                     <constraint firstItem="4pj-T5-xYP" firstAttribute="width" relation="lessThanOrEqual" secondItem="FNH-xW-cU8" secondAttribute="width" multiplier="0.75" id="z9u-UR-0Tm"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvL-kh-ddZ">
+                                <rect key="frame" x="0.0" y="500" width="160" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="XXR-dV-Qmi"/>
+                                    <constraint firstAttribute="height" constant="100" id="ds4-bq-Y8A"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareInStoryViewerAncestor" destination="flK-me-8gB" eventType="touchUpInside" id="Fc0-jv-MvC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0011086477909594272" blue="0.13219545958445467" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="IvL-kh-ddZ" firstAttribute="leading" secondItem="rnz-RP-gq6" secondAttribute="leading" id="7T6-bo-UT3"/>
                             <constraint firstItem="FNH-xW-cU8" firstAttribute="centerX" secondItem="rnz-RP-gq6" secondAttribute="centerX" id="FBM-cp-ErV"/>
                             <constraint firstItem="FNH-xW-cU8" firstAttribute="centerY" secondItem="rnz-RP-gq6" secondAttribute="centerY" id="VgI-dp-gjM"/>
                             <constraint firstItem="FNH-xW-cU8" firstAttribute="height" secondItem="rnz-RP-gq6" secondAttribute="height" multiplier="0.75" id="bQe-L9-ASK"/>
                             <constraint firstItem="FNH-xW-cU8" firstAttribute="width" secondItem="rnz-RP-gq6" secondAttribute="width" multiplier="0.7" priority="750" id="hxg-kc-7q8"/>
+                            <constraint firstItem="5wj-9v-2PL" firstAttribute="top" secondItem="IvL-kh-ddZ" secondAttribute="bottom" id="jPz-Rf-fQf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
