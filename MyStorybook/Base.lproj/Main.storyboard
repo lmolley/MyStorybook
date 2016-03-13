@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqg-kR-LeZ">
-                                <rect key="frame" x="304" y="72" width="276" height="446"/>
+                                <rect key="frame" x="304" y="82" width="276" height="436"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                 <state key="normal" title="◉"/>
@@ -34,39 +34,32 @@
                                     <action selector="toggleSelfie:" destination="GKE-CW-UMA" eventType="touchUpInside" id="ADw-oC-omh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-Fe-y5C">
-                                <rect key="frame" x="20" y="72" width="276" height="415"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="276" id="4nA-L5-vtS"/>
-                                    <constraint firstAttribute="width" constant="276" id="KGM-bx-mqC"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="KGM-bx-mqC"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQ1-5n-0Fj">
+                                <rect key="frame" x="20" y="82" width="276" height="436"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="trailing" secondItem="sTD-NY-Ns2" secondAttribute="trailingMargin" id="2ad-9P-UcS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BQ1-5n-0Fj" secondAttribute="trailing" constant="284" id="2yf-Ov-tPk"/>
+                            <constraint firstItem="BQ1-5n-0Fj" firstAttribute="width" secondItem="uqg-kR-LeZ" secondAttribute="width" id="5sX-Ep-LBC"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="trailing" secondItem="uqg-kR-LeZ" secondAttribute="trailing" id="5zW-Ns-F52"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="uqg-kR-LeZ" secondAttribute="bottom" id="CW7-Om-2IQ"/>
-                            <constraint firstItem="6aH-Fe-y5C" firstAttribute="centerY" secondItem="uqg-kR-LeZ" secondAttribute="centerY" id="ILS-ri-uEi"/>
-                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="leading" secondItem="6aH-Fe-y5C" secondAttribute="trailing" constant="8" symbolic="YES" id="J10-rF-Qzn"/>
-                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="top" secondItem="6aH-Fe-y5C" secondAttribute="top" id="Noz-P5-uEM"/>
-                            <constraint firstItem="6aH-Fe-y5C" firstAttribute="leading" secondItem="Vuo-sb-Xvi" secondAttribute="leading" id="PmE-sM-ohM"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BQ1-5n-0Fj" secondAttribute="leading" id="DIc-jZ-rPr"/>
+                            <constraint firstItem="BQ1-5n-0Fj" firstAttribute="centerY" secondItem="sTD-NY-Ns2" secondAttribute="centerY" id="OBd-wi-3XJ"/>
                             <constraint firstItem="BWN-OK-M63" firstAttribute="top" secondItem="Vuo-sb-Xvi" secondAttribute="bottom" constant="8" symbolic="YES" id="Rij-hf-Mt2"/>
-                            <constraint firstItem="6aH-Fe-y5C" firstAttribute="top" secondItem="Ovn-sV-dDF" secondAttribute="bottom" constant="8" symbolic="YES" id="TMH-4z-S6Y"/>
+                            <constraint firstItem="BWN-OK-M63" firstAttribute="top" secondItem="BQ1-5n-0Fj" secondAttribute="bottom" constant="38" id="Riy-GR-Zrb"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="uqg-kR-LeZ" secondAttribute="bottom" constant="18" id="Wo8-XP-meO"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="uqg-kR-LeZ" secondAttribute="bottom" constant="8" id="YuG-A3-sqx"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="Ovn-sV-dDF" secondAttribute="bottom" constant="8" symbolic="YES" id="apo-Rw-rDT"/>
-                            <constraint firstItem="6aH-Fe-y5C" firstAttribute="leading" secondItem="sTD-NY-Ns2" secondAttribute="leadingMargin" id="tKY-2M-7eR"/>
+                            <constraint firstItem="BWN-OK-M63" firstAttribute="top" secondItem="BQ1-5n-0Fj" secondAttribute="bottom" constant="38" id="jBD-og-2oV"/>
+                            <constraint firstItem="BQ1-5n-0Fj" firstAttribute="top" secondItem="uqg-kR-LeZ" secondAttribute="top" id="l5S-Ly-ids"/>
+                            <constraint firstItem="uqg-kR-LeZ" firstAttribute="leading" secondItem="BQ1-5n-0Fj" secondAttribute="trailing" constant="8" symbolic="YES" id="orF-99-cB3"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ILS-ri-uEi"/>
-                                <exclude reference="PmE-sM-ohM"/>
+                                <exclude reference="Riy-GR-Zrb"/>
                                 <exclude reference="Wo8-XP-meO"/>
                                 <exclude reference="YuG-A3-sqx"/>
                                 <exclude reference="apo-Rw-rDT"/>
@@ -75,7 +68,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="previewView" destination="6aH-Fe-y5C" id="wud-uF-2a9"/>
+                        <outlet property="previewView" destination="BQ1-5n-0Fj" id="pHQ-Ob-Wd8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,7 +16,8 @@ let videoModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=0"
 
 class CameraControlViewController : UIViewController {
     
-    @IBOutlet weak var previewView: UIImageView!
+    @IBOutlet weak var previewView: UIView!
+//    @IBOutlet weak var previewView: UIImageView!
     var isInSelfieMode:Bool = false
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
@@ -48,7 +49,8 @@ class CameraControlViewController : UIViewController {
     }
 
     @IBAction func record() {
-        if isInSelfieMode {
+        print(self.isInSelfieMode)
+        if self.isInSelfieMode {
             if let videoConnection = stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
                 stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection) {
                     (imageDataSampleBuffer, error) -> Void in
@@ -64,12 +66,11 @@ class CameraControlViewController : UIViewController {
     }
     
     @IBAction func toggleSelfie(sender: UIButton) {
-        if !isInSelfieMode {
+        if !self.isInSelfieMode {
             if captureDevice != nil {
                 beginSession()
                 previewView.hidden = true
                 sender.setTitle("GoPro Mode", forState: .Normal)
-                isInSelfieMode = true
             }
         }
         else {
@@ -77,7 +78,6 @@ class CameraControlViewController : UIViewController {
             captureSession.stopRunning()
             previewView.hidden = false
             sender.setTitle("Selfie Mode", forState: .Normal)
-            isInSelfieMode = false
         }
         
         //toggle mode
@@ -136,7 +136,8 @@ class CameraControlViewController : UIViewController {
                         return;
                     }
                     else{
-                        self.previewView.image = data
+                        self.previewView = UIImageView(image: data)
+//                        self.previewView.image = data
                     }
                     
                 }
