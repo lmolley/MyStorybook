@@ -37,19 +37,24 @@ class PageSelectorViewController : UIViewController {
                 }
             }
             else {
-                performSegueWithIdentifier("finishedSegue", sender: story_info)
+                
+                let actualStory = Story()
+                actualStory.title = "Untitled Storybook" // What can we eventually use?
+                actualStory.icon = story_info!.coverPhotoName ?? ""
+                
+                var index = 0
+                actualStory.pages = story_info!.ordered_ids.map { photoId in
+                    let p = Page()
+                    p.number = index
+                    index += 1
+                    p.photoId = photoId
+                    return p
+                }
+                
+                App.database.createStoryWithPages(actualStory)
+                
+                self.navigationController?.popToRootViewControllerAnimated(true)
             }
-            
-        }
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "finishedSegue"
-        {
-            //save story_info here to database
-            print(story_info!.ordered_ids)
         }
     }
-
 }

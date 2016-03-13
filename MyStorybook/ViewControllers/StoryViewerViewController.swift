@@ -8,12 +8,15 @@
 
 import UIKit
 import Photos
+import MessageUI
 
-class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var shadowView: UIView!
+    
+    @IBOutlet weak var shareButton: UIButton!
     
     internal var story: Story?
     
@@ -54,6 +57,11 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.shadowOpacity = 0.25
         self.shadowView.layer.borderWidth = 1
         self.shadowView.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
+        
+        if !MFMailComposeViewController.canSendMail() {
+            print("Device cannot send emails, hiding share button.")
+            shareButton.hidden = true
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +72,45 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    @IBAction internal func share() {
+        let c = MFMailComposeViewController()
+        
+        let assetsFetch = PHAsset.fetchAssetsWithLocalIdentifiers(story!.pages!.map { $0.photoId }, options: nil)
+        
+        let opts = PHImageRequestOptions()
+        opts.deliveryMode = .HighQualityFormat
+        opts.synchronous = true
+        
+        for i in 0..<assetsFetch.count {
+            let asset = assetsFetch.objectAtIndex(i) as! PHAsset
+            
+            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: { (imageData, imageType, someUIOrientation, someData) -> Void in
+
+                guard let imageData = imageData else {
+                    print("Unable to fetch data for asset with local identifier \(asset.localIdentifier).")
+                    return
+                }
+                guard let mimeType = mimeTypeForUTI(imageType!) else {
+                    print("Can't determine MIME type for UTI \(imageType)")
+                    return
+                }
+                
+                let fileName = (someData!["PHImageFileURLKey"] as! NSURL).lastPathComponent!
+                
+                c.addAttachmentData(imageData, mimeType: mimeType, fileName: fileName)
+                
+            })
+            
+        }
+
+        c.setMessageBody("Check out these photos!", isHTML: false)
+        c.setSubject("A MyStorybook Photo Album")
+        
+        c.mailComposeDelegate = self
+        
+        self.presentViewController(c, animated: true, completion: nil)
     }
     
     @IBAction func goHome() {
@@ -119,6 +166,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         viewController.page = self.story?.pages![pageIndex]
         return viewController
     }
+    
+    // MARK: - MFMailComposeViewControllerDelegate
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     // MARK: - UIPageViewControllerDataSource
     
@@ -161,93 +214,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     }
 }
 
-extension UIPageViewController
-{
-    // Animates a transition to the next view controller.
-    func gotoNext()
-    {
-        let current = self.viewControllers![0]
-        let next = self.dataSource!.pageViewController(self, viewControllerAfterViewController: current)!
-        
-        self.setViewControllers([next], direction: .Forward, animated: true, completion: nil)
-    }
-    
-    // Animates a transition to the previous view controller.
-    func gotoPrev()
-    {
-        let current = self.viewControllers![0]
-        let prev = self.dataSource!.pageViewController(self, viewControllerBeforeViewController: current)!
-        
-        self.setViewControllers([prev], direction: .Reverse, animated: true, completion: nil)
-    }
-}
-
-// A view controller for the over of an album.
-class StoryViewerCoverViewController: UIViewController {
-    @IBOutlet weak var square: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    
-    internal var story: Story!
-    {
-        didSet
-        {
-
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.imageView.image = coverPhotoImageOrDefault(story.icon)
-        
-        square.addAlbumBorder()
-    }
-}
-
-// A view controller for one page of the album.
-class StoryViewerPhotoPageViewController: UIViewController {
-    internal var pageIndex: Int = 0
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
-    
-    private var _image: UIImage! {
-        willSet {
-            
-        }
-        didSet {
-            self.imageView?.image = _image
-        }
-    }
-    
-    internal var page: Page? {
-        didSet {
-            guard let page = page else {
-                _image = nil
-                return
-            }
-            
-            let opts = PHFetchOptions()
-            let result = PHAsset.fetchAssetsWithLocalIdentifiers([page.photoId], options: opts)
-            
-            if result.count == 0 {
-                _image = nil
-                return
-            }
-            
-            let asset = result.objectAtIndex(0) as! PHAsset
-            let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: nil) { (image, info) -> Void in
-                self._image = image!
-            }
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        numberLabel.text = "\(pageIndex + 1)"
-        
-        if self.imageView.image != self._image {
-            self.imageView.image = self._image
-        }
+internal func mimeTypeForUTI(uti: String) -> String? {
+    switch (uti) {
+    case "public.jpeg": return "image/jpeg"
+    case "public.png": return "image/png"
+    case "public.tiff": return "image/tiff"
+    default:
+        return nil
     }
 }
