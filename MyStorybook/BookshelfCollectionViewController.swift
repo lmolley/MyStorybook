@@ -9,6 +9,8 @@
 import UIKit
 
 private let reuseIdentifier = "BookCell"
+private let reuseIdentifier2 = "AddCell"
+private let reuseIdentifier3 = "CameraCell"
 
 class BookshelfCollectionViewController: UICollectionViewController {
 
@@ -45,28 +47,38 @@ class BookshelfCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.stories.count
+        return self.stories.count + 2
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
-        
-        // Configure the cell
-        let story = self.stories[indexPath.item]
-        cell.Cover.image = coverPhotoImageOrDefault(story.icon)
-        
-        return cell
+        if (indexPath.item < self.stories.count) {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookshelfCollectionViewCell
+            
+            // Configure the cell
+            let story = self.stories[indexPath.item]
+            cell.Cover.image = coverPhotoImageOrDefault(story.icon)
+            
+            return cell
+        }
+        else if (indexPath.item == self.stories.count) {
+            return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! AddCollectionViewCell
+        }
+        else {
+            return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier3, forIndexPath: indexPath) as! CameraCollectionViewCell
+        }
     }
 
     // MARK: UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        selectedIndex = indexPath.item
-        let story = stories[selectedIndex]
-        story.pages = App.database.getPages(story.id)!
+        if (indexPath.item < self.stories.count) {
+            selectedIndex = indexPath.item
+            let story = stories[selectedIndex]
+            story.pages = App.database.getPages(story.id)!
         
-        performSegueWithIdentifier("showStorybook", sender: nil)
+            performSegueWithIdentifier("showStorybook", sender: nil)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
