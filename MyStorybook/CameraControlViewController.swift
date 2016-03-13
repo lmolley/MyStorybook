@@ -16,17 +16,19 @@ let videoModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=0"
 
 class CameraControlViewController : UIViewController {
     
-    @IBOutlet weak var previewView: UIView!
-//    @IBOutlet weak var previewView: UIImageView!
+    @IBOutlet weak var previewView: UIImageView!
     var isInSelfieMode:Bool = false
     let captureSession = AVCaptureSession()
+    var cameraInputDevice:AVCaptureDeviceInput?
     let stillImageOutput = AVCaptureStillImageOutput()
+    var selfiePreviewLayer:CALayer?
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         changeToCameraMode()
         captureSession.sessionPreset = AVCaptureSessionPresetLow
         
@@ -49,7 +51,6 @@ class CameraControlViewController : UIViewController {
     }
 
     @IBAction func record() {
-        print(self.isInSelfieMode)
         if self.isInSelfieMode {
             if let videoConnection = stillImageOutput.connectionWithMediaType(AVMediaTypeVideo) {
                 stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection) {
@@ -71,25 +72,31 @@ class CameraControlViewController : UIViewController {
                 beginSession()
                 previewView.hidden = true
                 sender.setTitle("GoPro Mode", forState: .Normal)
+                self.isInSelfieMode = true
             }
         }
         else {
-//            captureSession.removeInput(AVCaptureDeviceInput(device: captureDevice))
+            if(selfiePreviewLayer != nil){
+                selfiePreviewLayer!.removeFromSuperlayer()
+            }
+            previewView.image = UIImage(named:"default.jpg")
+            captureSession.removeInput(cameraInputDevice)
             captureSession.stopRunning()
             previewView.hidden = false
             sender.setTitle("Selfie Mode", forState: .Normal)
+            self.isInSelfieMode = false
         }
-        
-        //toggle mode
-        isInSelfieMode = !isInSelfieMode
     }
     
     private func beginSession() {
         do {
-            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice))
-            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            self.view.layer.addSublayer(previewLayer)
-            previewLayer?.frame = self.previewView.layer.frame
+            if(cameraInputDevice == nil){
+                try cameraInputDevice = AVCaptureDeviceInput(device: captureDevice)
+            }
+            captureSession.addInput(cameraInputDevice)
+            selfiePreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            self.view.layer.addSublayer(selfiePreviewLayer!)
+            selfiePreviewLayer!.frame = self.previewView.layer.frame
             captureSession.startRunning()
             stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
             if captureSession.canAddOutput(stillImageOutput) {
@@ -136,8 +143,7 @@ class CameraControlViewController : UIViewController {
                         return;
                     }
                     else{
-                        self.previewView = UIImageView(image: data)
-//                        self.previewView.image = data
+                        self.previewView.image = data
                     }
                     
                 }
