@@ -11,11 +11,6 @@ import UIKit
 import Photos
 
 let GoPro_reuseIdentifier = "GoProImageCell"
-let getThumbnailCommand = "http://10.5.5.9/gp/gpMediaMetadata?p="
-let getMediaListCommand = "http://10.5.5.9:8080/gp/gpMediaList"
-let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
-let deleteFileCommand = "http://10.5.5.9/gp/gpControl/command/storage/delete?p="
-let albumName = "GOPRO"
 
 class GoProImagesViewController : UICollectionViewController {
     
@@ -23,113 +18,10 @@ class GoProImagesViewController : UICollectionViewController {
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
-    var gopro_images:[String] = [String]()
-    var gopro_folder:PreStory = PreStory(title_in: "GOPRO", date_in: NSDate())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        preStories.append(gopro_folder)
         fetchMomentsFromCameraRoll()
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
-            self.makeGoProAlbum()
-            self.startGoProProcessing()
-            dispatch_async(dispatch_get_main_queue()) {
-            }
-        }
-    }
-    
-    private func makeGoProAlbum(){
-        //Check if the folder exists, if not, create it
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
-        let collection:PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
-        
-        if let first_Obj:AnyObject = collection.firstObject{
-            //found the album
-            self.gopro_folder.moment = first_Obj as! PHAssetCollection
-        }else{
-            //Album placeholder for the asset collection, used to reference collection in completion handler
-            var albumPlaceholder:PHObjectPlaceholder!
-            //create the folder
-            NSLog("\nFolder \"%@\" does not exist\nCreating now...", albumName)
-            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(albumName)
-                albumPlaceholder = request.placeholderForCreatedAssetCollection
-                },
-                completionHandler: {(success:Bool, error:NSError?)in
-                    if(success){
-                        print("Successfully created folder")
-                        let collection = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([albumPlaceholder.localIdentifier], options: nil)
-                        self.gopro_folder.moment = collection.firstObject as! PHAssetCollection
-                    }else{
-                        print("Error creating folder")
-                    }
-            })
-        }
-    }
-    
-    private func startGoProProcessing() -> Void {
-        HTTPGet(getMediaListCommand){
-            (data: String, error: String?) -> Void in
-            if error != nil {
-                print(error)
-            } else {
-                //parse JSON returned from request to get out the filenames
-                if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-                    let json = JSON(data: dataFromString)
-                    for (_,library)in json["media"] {
-                        let prefix:String = library["d"].string! + "/"
-                        for (_, file) in library["fs"] {
-                            self.gopro_images.append(prefix + file["n"].string!)
-                        }
-                        
-                    }
-                }
-            }
-            print(self.gopro_images)
-            self.importGoProImages()
-        }
-    }
-    
-    private func importGoProImages() {
-        var count = 0
-        for image_file in self.gopro_images {
-            if(image_file.containsString(".JPG")) {
-                getImageFromGoProAndSave(image_file)
-                if(count == 0){
-                    self.fetchFirstPhotoInMoment(0)
-                }
-                count++
-            }
-
-        }
-    }
-    
-    private func getImageFromGoProAndSave(path: String) -> Void {
-        HTTPImageGet(getImageCommand + path){
-            (data: UIImage, error: String?) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else {
-                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                    let assetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(data)
-                    let assetPlaceholder = assetChangeRequest.placeholderForCreatedAsset
-                    let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: self.gopro_folder.moment)
-                    let enumeration: NSArray = [assetPlaceholder!]
-                    albumChangeRequest!.addAssets(enumeration)
-                    }, completionHandler: {(success:Bool, error:NSError?)in
-                        if(success){
-                            print("Successfully Saved Photo")
-                            print("deleting photo now...")
-                            HTTPGet(deleteFileCommand + path){_,_ in }
-                        }else{
-                            print("Saving photo")
-                        }
-                })
-            
-            }
-        }
     }
     
     private func fetchMomentsFromCameraRoll () {

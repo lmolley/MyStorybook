@@ -39,7 +39,8 @@ func HTTPsendImageRequest(request: NSMutableURLRequest,callback: (UIImage, Strin
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if error != nil {
                     callback(UIImage(), (error!.localizedDescription) as String)
-                } else {
+                }
+                else{
                     callback(UIImage(data: data!)!,nil)
                 }
             })

@@ -13,6 +13,10 @@ let recordOnCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=1"
 let recordOffCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=0"
 let cameraModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=1"
 let videoModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=0"
+let getThumbnailCommand = "http://10.5.5.9/gp/gpMediaMetadata?p="
+let getMediaListCommand = "http://10.5.5.9:8080/gp/gpMediaList"
+let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
+let deleteFileCommand = "http://10.5.5.9/gp/gpControl/command/storage/delete?p="
 
 class CameraControlViewController : UIViewController {
     
@@ -22,6 +26,23 @@ class CameraControlViewController : UIViewController {
     var cameraInputDevice:AVCaptureDeviceInput?
     let stillImageOutput = AVCaptureStillImageOutput()
     var selfiePreviewLayer:CALayer?
+    
+    var lastTakenPictureFilename:String? {
+        didSet {
+            HTTPImageGet(getThumbnailCommand + lastTakenPictureFilename!){(data:UIImage, error: String?) -> Void in
+                if error != nil {
+                    print(error)
+                    return;
+                }
+                else{
+                    self.previewView.image = data
+                }
+                
+            }
+        }
+    }
+    
+    var current_gopro_images = [String]()
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
@@ -61,9 +82,11 @@ class CameraControlViewController : UIViewController {
             }
         }
         else {
-            HTTPGet(recordOnCommand){_,_ in }
-            setPreviewImage()
+            HTTPGet(recordOnCommand){_,_ in}
+            self.startGoProProcessing()
         }
+
+        
     }
     
     @IBAction func toggleSelfie(sender: UIButton) {
@@ -110,13 +133,14 @@ class CameraControlViewController : UIViewController {
         
     }
  
-    private func setPreviewImage(){
-        var imageList = [String]()
+    
+    
+    private func startGoProProcessing() -> Void {
+//        self.current_gopro_images = [String]()
         HTTPGet(getMediaListCommand){
             (data: String, error: String?) -> Void in
             if error != nil {
                 print(error)
-                return;
             } else {
                 //parse JSON returned from request to get out the filenames
                 if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
@@ -124,31 +148,54 @@ class CameraControlViewController : UIViewController {
                     for (_,library)in json["media"] {
                         let prefix:String = library["d"].string! + "/"
                         for (_, file) in library["fs"] {
-                            let name = file["n"].string!
-                            if name.containsString(".JPG") {
-                                imageList.append(prefix + name)}
+                            let full_filename = prefix + file["n"].string!
+                            if full_filename.containsString(".JPG") &&
+                            !self.current_gopro_images.contains(full_filename){
+                                self.current_gopro_images.append(full_filename)}
                         }
                         
                     }
+                    print(self.current_gopro_images)
+                    if(self.current_gopro_images.count != 0){
+                        self.lastTakenPictureFilename = self.current_gopro_images.last
+                    }
+                    self.importGoProImages()
                 }
                 
-                if imageList.count == 0 {
-                    return;
-                }
-                
-                let filename = imageList.last
-                HTTPImageGet(getThumbnailCommand + filename!){(data:UIImage, error: String?) -> Void in
-                    if error != nil {
-                        print(error)
-                        return;
-                    }
-                    else{
-                        self.previewView.image = data
-                    }
-                    
-                }
             }
         }
     }
+    
+    private func importGoProImages() {
+        if self.current_gopro_images.count != 0 {
+            getImageFromGoProAndSave(self.current_gopro_images.first!)
+        }
+    }
+    
+    private func getImageFromGoProAndSave(path: String) -> Void {
+        HTTPImageGet(getImageCommand + path){
+            (data: UIImage, error: String?) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                UIImageWriteToSavedPhotosAlbum(data, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            }
+        }
+    }
+
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        guard error == nil else {
+            print("error saving image")
+            //Error saving image
+            return
+        }
+        //Image saved successfully
+        print("successful and deleting now...")
+        HTTPGet(deleteFileCommand + self.current_gopro_images.first!){_,_ in
+            self.current_gopro_images.removeFirst()
+            self.startGoProProcessing()}
+    }
+    
 }
 
