@@ -94,8 +94,8 @@ class CameraControlViewController : UIViewController {
             if captureDevice != nil {
                 beginSession()
                 previewView.hidden = true
-                sender.setTitle("GoPro Mode", forState: .Normal)
                 self.isInSelfieMode = true
+                sender.imageView!.image = UIImage(named:"camera_rear")
             }
         }
         else {
@@ -106,8 +106,8 @@ class CameraControlViewController : UIViewController {
             captureSession.removeInput(cameraInputDevice)
             captureSession.stopRunning()
             previewView.hidden = false
-            sender.setTitle("Selfie Mode", forState: .Normal)
             self.isInSelfieMode = false
+            sender.imageView!.image = UIImage(named:"camera_front")
         }
     }
     
