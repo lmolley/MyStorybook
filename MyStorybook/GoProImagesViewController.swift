@@ -13,15 +13,18 @@ import Photos
 let GoPro_reuseIdentifier = "GoProImageCell"
 
 class GoProImagesViewController : UICollectionViewController {
-    
     var preStories = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMomentsFromCameraRoll()
+    }
+    
+    @IBAction func homeButton() {
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     private func fetchMomentsFromCameraRoll () {
