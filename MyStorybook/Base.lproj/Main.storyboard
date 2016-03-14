@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -358,7 +358,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoProImageCell" id="0Qp-98-UYd" customClass="GoProImageCollectionViewCell" customModule="MyStorybook" customModuleProvider="target">
-                                <rect key="frame" x="60" y="66" width="481" height="409"/>
+                                <rect key="frame" x="59.5" y="66" width="481" height="409"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="481" height="409"/>
@@ -517,8 +517,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-sw-G1c">
                                 <rect key="frame" x="0.0" y="421" width="600" height="135"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-1l-8GJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="146" height="135"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UEx-1l-8GJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="FIc-7u-LSk"/>
                                             <constraint firstAttribute="width" constant="135" id="PlD-Z1-hIO"/>
@@ -532,7 +532,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
-                                        <rect key="frame" x="151" y="0.0" width="147" height="135"/>
+                                        <rect key="frame" x="152" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="A59-Cx-HQ7"/>
                                             <constraint firstAttribute="width" constant="135" id="hCl-ah-hn6"/>
@@ -544,8 +544,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-c7-qp8">
-                                        <rect key="frame" x="303" y="0.0" width="146" height="135"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-c7-qp8">
+                                        <rect key="frame" x="303" y="0.0" width="147" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="Rq7-nR-2hT"/>
                                             <constraint firstAttribute="height" constant="135" id="W2w-aX-LrV"/>
