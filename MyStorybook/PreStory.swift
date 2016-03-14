@@ -13,6 +13,8 @@ class PreStory{
     
     var moment: PHAssetCollection!
     var topImage: UIImage?
+    var middleImage: UIImage?
+    var bottomImage: UIImage?
     var coverPhotoName: String?
     
     var image_ids = [String]()

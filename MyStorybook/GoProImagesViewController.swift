@@ -53,7 +53,7 @@ class GoProImagesViewController : UICollectionViewController {
         let folder = self.preStories[folder_index]
         let opts = PHFetchOptions()
         opts.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
-        opts.fetchLimit = 1
+        opts.fetchLimit = 3
         let fetchResult = PHAsset.fetchAssetsInAssetCollection(folder.moment, options: opts)
         
         if fetchResult.count == 0 {
@@ -61,20 +61,30 @@ class GoProImagesViewController : UICollectionViewController {
         }
         
         let indexPath = NSIndexPath(forItem: folder_index, inSection: 0)
-        
-        let asset = fetchResult.objectAtIndex(0) as! PHAsset
-        let imageOptions = PHImageRequestOptions()
-        imageOptions.synchronous = false
+        for index in 0...2 {
+            if fetchResult.count <= index {
+                break
+            }
+            let asset = fetchResult.objectAtIndex(index) as! PHAsset
+            let imageOptions = PHImageRequestOptions()
+            imageOptions.synchronous = false
 
-        let size = CGSizeMake(200, 200)
-        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions) { (image, info) -> Void in
-            
-            if image != nil {
-                folder.topImage = image
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+            let size = CGSizeMake(200, 200)
+            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions) { (image, info) -> Void in
+                
+                if image != nil {
+                    switch(index){
+                    case 0:folder.topImage = image
+                    case 1:folder.middleImage = image
+                    case 2:folder.bottomImage = image
+                    default:break
+                    }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+                    }
                 }
             }
+                
         }
         
         return true
@@ -101,16 +111,21 @@ class GoProImagesViewController : UICollectionViewController {
         let story = preStories[indexPath.row]
             
         // Configure the cell
-        cell.titleLabel.text = story.title
-        cell.dateLabel.text = getDate(story.date!)
+//        cell.titleLabel.text = story.title
+//        cell.dateLabel.text = getDate(story.date!)
         
-        if (preStories.count > indexPath.row && (story.topImage != nil)) {
-            cell.imageView.image = story.topImage
-            cell.spinningCircle.stopAnimating()
+        if (preStories.count > indexPath.row) {
+            cell.bottomImageView.image = story.bottomImage ?? UIImage(named: "default.jpg")
+            cell.middleImageView.image = story.middleImage ?? UIImage(named: "default.jpg")
+            cell.topImageView.image = story.topImage ?? UIImage(named: "default.jpg")
+            
+
+
         }
         else {
-            cell.imageView.image = UIImage(named: "default.jpg")
-            cell.spinningCircle.startAnimating()
+            cell.bottomImageView.image = UIImage(named: "default.jpg")
+            cell.middleImageView.image = UIImage(named: "default.jpg")
+            cell.topImageView.image = UIImage(named: "default.jpg")
         }
         
         // TODO: FIXME: For some reason, the text labels in the cells randomly fail to appear sometimes.
@@ -168,20 +183,6 @@ class GoProImagesViewController : UICollectionViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         return dateFormatter.stringFromDate(date)
-    }
-    
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var header: GoProImagesHeaderViewController?
-        
-        if kind == UICollectionElementKindSectionHeader {
-            header =
-                collectionView.dequeueReusableSupplementaryViewOfKind(kind,
-                    withReuseIdentifier: "SelectImageHeader", forIndexPath: indexPath)
-                as? GoProImagesHeaderViewController
-            
-            header?.headerLabel.text = "Select Image Folder"
-        }
-        return header!
     }
     
 }

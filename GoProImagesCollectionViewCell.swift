@@ -10,9 +10,16 @@ import Foundation
 import UIKit
 
 class GoProImageCollectionViewCell : UICollectionViewCell {
-    @IBOutlet weak var spinningCircle: UIActivityIndicatorView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+
+
+    @IBOutlet weak var topImageView: UIImageView!
+    
+    @IBOutlet weak var middleImageView: UIImageView!
+    
+    @IBOutlet weak var bottomImageView: UIImageView!
+    
+    
+    
+
     
 }
