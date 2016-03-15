@@ -23,10 +23,6 @@ class GoProImagesViewController : UICollectionViewController {
         fetchMomentsFromCameraRoll()
     }
     
-    @IBAction func homeButton() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
     private func fetchMomentsFromCameraRoll () {
         print("about to fetch!")
         maxImageCount = 50
