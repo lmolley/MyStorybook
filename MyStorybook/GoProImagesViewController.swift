@@ -171,7 +171,7 @@ class GoProImagesViewController : UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PhotoSelectorSegue"
         {
-            if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
+            if let destinationVC = segue.destinationViewController as? NewPhotoSelectViewController{
                 if let folder = sender as? PreStory {
                     destinationVC.folderToDisplay = folder
                 }

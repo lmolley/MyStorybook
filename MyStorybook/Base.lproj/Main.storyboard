@@ -431,13 +431,14 @@
             </objects>
             <point key="canvasLocation" x="2544" y="-417"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--New Photo Select View Controller-->
         <scene sceneID="Rep-7e-HwR">
             <objects>
-                <collectionViewController id="Gy3-zr-Qjw" sceneMemberID="viewController">
+                <collectionViewController id="Gy3-zr-Qjw" customClass="NewPhotoSelectViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Guc-D8-VJI">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="402"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KcU-EX-vUH">
                             <size key="itemSize" width="332" height="283"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -445,7 +446,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LFo-u4-EvY">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photo" id="LFo-u4-EvY" customClass="PhotoCell" customModule="MyStorybook" customModuleProvider="target">
                                 <rect key="frame" x="114" y="0.0" width="332" height="283"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -458,6 +459,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="imageView" destination="NFt-zK-Dex" id="IPy-Gp-ERX"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
