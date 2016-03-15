@@ -25,7 +25,7 @@ class CameraControlViewController : UIViewController {
     let captureSession = AVCaptureSession()
     var cameraInputDevice:AVCaptureDeviceInput?
     let stillImageOutput = AVCaptureStillImageOutput()
-    var selfiePreviewLayer:CALayer?
+    var selfiePreviewLayer:AVCaptureVideoPreviewLayer?
     
     var lastTakenPictureFilename:String? {
         didSet {
@@ -92,7 +92,7 @@ class CameraControlViewController : UIViewController {
     @IBAction func toggleSelfie(sender: UIButton) {
         if !self.isInSelfieMode {
             if captureDevice != nil {
-                beginSession()
+                beginFrontCameraSession()
                 previewView.hidden = true
                 self.isInSelfieMode = true
                 sender.imageView!.image = UIImage(named:"camera_rear")
@@ -111,7 +111,7 @@ class CameraControlViewController : UIViewController {
         }
     }
     
-    private func beginSession() {
+    private func beginFrontCameraSession() {
         do {
             if(cameraInputDevice == nil){
                 try cameraInputDevice = AVCaptureDeviceInput(device: captureDevice)
@@ -120,6 +120,7 @@ class CameraControlViewController : UIViewController {
             selfiePreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.view.layer.addSublayer(selfiePreviewLayer!)
             selfiePreviewLayer!.frame = self.previewView.layer.frame
+            updateOrientation()
             captureSession.startRunning()
             stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
             if captureSession.canAddOutput(stillImageOutput) {
@@ -196,6 +197,26 @@ class CameraControlViewController : UIViewController {
             self.current_gopro_images.removeFirst()
             self.startGoProProcessing()}
     }
+   
+    func updateOrientation() {
+        let orientation: UIDeviceOrientation = UIDevice.currentDevice().orientation
     
+        switch (orientation)
+        {
+        case .Portrait:
+            selfiePreviewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.Portrait
+            break
+        case .LandscapeRight:
+            selfiePreviewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.LandscapeLeft
+            break
+        case .LandscapeLeft:
+            selfiePreviewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.LandscapeRight
+            break
+        default:
+            selfiePreviewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.Portrait
+            break
+        }
+        
+    }
 }
 
