@@ -11,6 +11,11 @@ import UIKit
 class CameraRollViewController:UIViewController {
     var mainStory = PreStory(title_in: "Tommy's Storybook", date_in: NSDate())
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
+    }
+    
     @IBAction func finished() {
         performSegueWithIdentifier("SelectionDoneSegue", sender:nil)
     }
