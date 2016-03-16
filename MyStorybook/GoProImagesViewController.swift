@@ -137,34 +137,6 @@ class GoProImagesViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let story = preStories[indexPath.row]
-        let result = PHAsset.fetchAssetsInAssetCollection(story.moment, options: nil)
-        
-        // TODO: Check if the story already has its images?
-        // TODO: Optimize this part of the app more. Maybe we don't entirely need to grab all of the images.
-        
-        var assetIDs = [String](count: result.count, repeatedValue: "")
-        var images = [UIImage?](count: result.count, repeatedValue: nil)
-        
-        let imageOptions = PHImageRequestOptions()
-        imageOptions.deliveryMode = .HighQualityFormat
-        imageOptions.synchronous = true
-        
-        result.enumerateObjectsWithOptions(NSEnumerationOptions.Concurrent, usingBlock: { (obj, index, _) -> Void in
-                
-            let asset = obj as! PHAsset
-            assetIDs[index] = asset.localIdentifier
-                
-                var size = CGSize()
-                size.width = CGFloat(asset.pixelWidth)
-                size.height = CGFloat(asset.pixelHeight)
-                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
-                    images[index] = image
-                })
-        })
-        
-        story.image_ids = assetIDs
-        story.images = images;
-        
         performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
     }
     
@@ -173,7 +145,7 @@ class GoProImagesViewController : UICollectionViewController {
         {
             if let destinationVC = segue.destinationViewController as? NewPhotoSelectViewController{
                 if let folder = sender as? PreStory {
-                    destinationVC.folderToDisplay = folder
+                    destinationVC.story = folder
                 }
             }
         }

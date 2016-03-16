@@ -456,11 +456,15 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NFt-zK-Dex">
                                             <rect key="frame" x="8" y="8" width="316" height="267"/>
                                         </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Mc1-Rd-udW">
+                                            <rect key="frame" x="156" y="132" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="NFt-zK-Dex" id="IPy-Gp-ERX"/>
+                                    <outlet property="spinningCircle" destination="Mc1-Rd-udW" id="k7R-HN-yPv"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
