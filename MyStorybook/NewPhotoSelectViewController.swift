@@ -11,18 +11,19 @@ import Photos
 
 let photoReuseIdentifier = "photo"
 class NewPhotoSelectViewController:UICollectionViewController {
-    
-    var story:PreStory?
+    var parent: NewPhotoSelectContainerViewController?
     var result: PHFetchResult?
+    var image_ids: [String]?
     var images: [UIImage?]?
-    
+    var selectedPhotoIds = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.allowsMultipleSelection = true
         
-        result = PHAsset.fetchAssetsInAssetCollection(story!.moment, options: nil)
-        story!.image_ids = [String](count: result!.count, repeatedValue: "")
+        let moment = parent!.momentToDisplay
+        result = PHAsset.fetchAssetsInAssetCollection(moment, options: nil)
+        image_ids = [String](count: result!.count, repeatedValue: "")
         images = [UIImage?](count: result!.count, repeatedValue: nil)
         
         //load images in the background
@@ -32,7 +33,7 @@ class NewPhotoSelectViewController:UICollectionViewController {
                 
                 //get asset and set localIdentifier in story
                 let asset = self.result?.objectAtIndex(index) as! PHAsset
-                self.story!.image_ids[index] = asset.localIdentifier
+                self.image_ids![index] = asset.localIdentifier
                 
                 //Grab the image and set as cell's image
                 let imageOptions = PHImageRequestOptions()
@@ -58,13 +59,12 @@ class NewPhotoSelectViewController:UICollectionViewController {
             return 1
     }
     
-    //This function makes the number of cells equal to all the icons we have available
+
     override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             return result!.count
     }
     
-    //This function sets all the icon images
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         //get the cell object
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoReuseIdentifier,forIndexPath: indexPath) as! PhotoCell
@@ -79,9 +79,21 @@ class NewPhotoSelectViewController:UICollectionViewController {
         return cell
     }
     
-    //This function sets the currently selected coverPhotoName for the story
+
     override func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+            selectedPhotoIds.append(image_ids![indexPath.row])
+    }
+    
+    override func collectionView(collectionView: UICollectionView,
+        didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+            if let foundIndex = selectedPhotoIds.indexOf(image_ids![indexPath.row]) {
+                selectedPhotoIds.removeAtIndex(foundIndex)
+            }
+    }
+    
+    func clearSelection(){
+        selectedPhotoIds = [String]()
+        self.collectionView!.reloadData()
     }
 }

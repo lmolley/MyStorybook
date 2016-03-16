@@ -20,6 +20,7 @@ class CameraRollViewController:UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(mainStory.accepted_image_ids)
         if segue.identifier == "SelectionDoneSegue"
         {
             if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
@@ -28,6 +29,10 @@ class CameraRollViewController:UIViewController {
                 }
             }
         }
+    }
+    
+     @IBAction func unwindToCameraRoll(segue: UIStoryboardSegue) {
+        print(mainStory.accepted_image_ids)
     }
 
     

@@ -32,6 +32,7 @@
 		89606B561C98629B009743D3 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89606B551C98629B009743D3 /* PhotoCell.swift */; };
 		8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8970B12F1C7CCCBB005A69F0 /* default.jpg */; };
 		89872CA71C8E901B0099A89A /* FinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89872CA61C8E901B0099A89A /* FinishedViewController.swift */; };
+		89C8FCCF1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8FCCE1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift */; };
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
 		B2522CEF1C9268190013E55C /* StoryViewerCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */; };
 		B2522CF11C92685F0013E55C /* StoryViewerPhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2522CF01C92685F0013E55C /* StoryViewerPhotoPageViewController.swift */; };
@@ -115,6 +116,7 @@
 		89606B551C98629B009743D3 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8970B12F1C7CCCBB005A69F0 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		89872CA61C8E901B0099A89A /* FinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedViewController.swift; sourceTree = "<group>"; };
+		89C8FCCE1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPhotoSelectContainerViewController.swift; sourceTree = "<group>"; };
 		89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = MyStorybook/SwiftyJSON.swift; sourceTree = "<group>"; };
 		89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraRollCollectionViewCell.swift; path = ../CameraRollCollectionViewCell.swift; sourceTree = "<group>"; };
 		B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewerCoverViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				890869171C7D1A200099C92E /* IconCell.swift */,
 				89606B051C7E817B009743D3 /* PageCollectionViewController.swift */,
 				89872CA61C8E901B0099A89A /* FinishedViewController.swift */,
+				89C8FCCE1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift */,
 			);
 			name = StoryCreate;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */,
 				890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,
+				89C8FCCF1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

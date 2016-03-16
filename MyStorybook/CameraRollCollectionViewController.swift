@@ -127,7 +127,6 @@ class CameraRollCollectionViewController : UICollectionViewController {
             cell.topImageView.image = UIImage(named: "default.jpg")
         }
         
-        // TODO: FIXME: For some reason, the text labels in the cells randomly fail to appear sometimes.
         cell.setNeedsLayout()
         cell.setNeedsUpdateConstraints()
         
@@ -143,9 +142,9 @@ class CameraRollCollectionViewController : UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PhotoSelectorSegue"
         {
-            if let destinationVC = segue.destinationViewController as? NewPhotoSelectViewController{
+            if let destinationVC = segue.destinationViewController as? NewPhotoSelectContainerViewController{
                 if let folder = sender as? PreStory {
-                    destinationVC.story = folder
+                    destinationVC.momentToDisplay = folder.moment
                 }
             }
         }
