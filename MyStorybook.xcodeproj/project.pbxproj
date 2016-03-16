@@ -22,8 +22,8 @@
 		890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869151C7D19F50099C92E /* IconCollectionViewController.swift */; };
 		890869181C7D1A200099C92E /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869171C7D1A200099C92E /* IconCell.swift */; };
 		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
-		895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */; };
-		895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */; };
+		895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */; };
+		895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */; };
 		895FE84E1C7BC8C0006ADB29 /* PreStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FE84D1C7BC8C0006ADB29 /* PreStory.swift */; };
 		89606B061C7E817B009743D3 /* PageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89606B051C7E817B009743D3 /* PageCollectionViewController.swift */; };
 		89606B4E1C970688009743D3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89606B4D1C970688009743D3 /* Icons.xcassets */; };
@@ -105,7 +105,7 @@
 		890869131C7CDE510099C92E /* PageSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectorViewController.swift; sourceTree = "<group>"; };
 		890869151C7D19F50099C92E /* IconCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCollectionViewController.swift; sourceTree = "<group>"; };
 		890869171C7D1A200099C92E /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
-		894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProImagesViewController.swift; sourceTree = "<group>"; };
+		894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewController.swift; sourceTree = "<group>"; };
 		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpHelpers.swift; path = MyStorybook/HttpHelpers.swift; sourceTree = "<group>"; };
 		895FE84D1C7BC8C0006ADB29 /* PreStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreStory.swift; path = ../PreStory.swift; sourceTree = "<group>"; };
 		89606B051C7E817B009743D3 /* PageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		8970B12F1C7CCCBB005A69F0 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		89872CA61C8E901B0099A89A /* FinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedViewController.swift; sourceTree = "<group>"; };
 		89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = MyStorybook/SwiftyJSON.swift; sourceTree = "<group>"; };
-		89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoProImagesCollectionViewCell.swift; path = ../GoProImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraRollCollectionViewCell.swift; path = ../CameraRollCollectionViewCell.swift; sourceTree = "<group>"; };
 		B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewerCoverViewController.swift; sourceTree = "<group>"; };
 		B2522CF01C92685F0013E55C /* StoryViewerPhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryViewerPhotoPageViewController.swift; path = ViewControllers/StoryViewerPhotoPageViewController.swift; sourceTree = "<group>"; };
 		B2522CF21C9268A40013E55C /* UIPageViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPageViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -219,9 +219,9 @@
 		89E9F54B1C7B643000C812F2 /* ImportImages */ = {
 			isa = PBXGroup;
 			children = (
-				89E9F5481C7B639A00C812F2 /* GoProImagesCollectionViewCell.swift */,
+				89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */,
 				89606B511C985BC1009743D3 /* CameraRollViewController.swift */,
-				894CC30D1C7A77AE0004BD8B /* GoProImagesViewController.swift */,
+				894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */,
 			);
 			name = ImportImages;
 			sourceTree = "<group>";
@@ -491,8 +491,8 @@
 				B2B337601C7CF7B700C663A4 /* ViewExtensions.swift in Sources */,
 				B2522CF31C9268A40013E55C /* UIPageViewControllerExtensions.swift in Sources */,
 				89606B541C986197009743D3 /* NewPhotoSelectViewController.swift in Sources */,
-				895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */,
-				895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */,
+				895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */,
+				895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */,
 				B272D6991C7D1C3600C12226 /* FMDatabasePool.m in Sources */,
 				890869141C7CDE510099C92E /* PageSelectorViewController.swift in Sources */,
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,

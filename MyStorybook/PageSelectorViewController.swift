@@ -21,40 +21,40 @@ class PageSelectorViewController : UIViewController {
     }
     
     @IBAction func confirmSelection() {
-        if let index = curSelectedIndex! as Int? {
-            //put selected image as page
-            story_info!.ordered_ids.append(story_info!.image_ids[index])
-            //remove selected image from showing up for next one
-            story_info!.image_ids.removeAtIndex(index)
-            story_info!.accepted_images.removeAtIndex(index)
-            //update labels or finish
-            if story_info!.accepted_images.count > 0 {
-                count += 1
-                pageImage.image = UIImage(named: "default.jpg")
-                if let myImageOptions:PageCollectionViewController = self.childViewControllers[0] as? PageCollectionViewController {
-                    myImageOptions.collectionView!.reloadData()
-                    myImageOptions.viewWillAppear(true)
-                }
-            }
-            else {
-                
-                let actualStory = Story()
-                actualStory.title = "Untitled Storybook" // What can we eventually use?
-                actualStory.icon = story_info!.coverPhotoName ?? ""
-                
-                var index = 0
-                actualStory.pages = story_info!.ordered_ids.map { photoId in
-                    let p = Page()
-                    p.number = index
-                    index += 1
-                    p.photoId = photoId
-                    return p
-                }
-                
-                App.database.createStoryWithPages(actualStory)
-                
-                self.navigationController?.popToRootViewControllerAnimated(true)
-            }
-        }
+//        if let index = curSelectedIndex! as Int? {
+//            //put selected image as page
+//            story_info!.ordered_ids.append(story_info!.image_ids[index])
+//            //remove selected image from showing up for next one
+//            story_info!.image_ids.removeAtIndex(index)
+//            story_info!.accepted_images.removeAtIndex(index)
+//            //update labels or finish
+//            if story_info!.accepted_images.count > 0 {
+//                count += 1
+//                pageImage.image = UIImage(named: "default.jpg")
+//                if let myImageOptions:PageCollectionViewController = self.childViewControllers[0] as? PageCollectionViewController {
+//                    myImageOptions.collectionView!.reloadData()
+//                    myImageOptions.viewWillAppear(true)
+//                }
+//            }
+//            else {
+//                
+//                let actualStory = Story()
+//                actualStory.title = "Untitled Storybook" // What can we eventually use?
+//                actualStory.icon = story_info!.coverPhotoName ?? ""
+//                
+//                var index = 0
+//                actualStory.pages = story_info!.ordered_ids.map { photoId in
+//                    let p = Page()
+//                    p.number = index
+//                    index += 1
+//                    p.photoId = photoId
+//                    return p
+//                }
+//                
+//                App.database.createStoryWithPages(actualStory)
+//                
+//                self.navigationController?.popToRootViewControllerAnimated(true)
+//            }
+//        }
     }
 }

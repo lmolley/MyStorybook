@@ -23,9 +23,9 @@ class PageCollectionViewController : UICollectionViewController {
     //This function makes the number of cells equal to all the icons we have available
     override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
-            if let pageSelector = self.parentViewController as! PageSelectorViewController? {
-                return pageSelector.story_info!.accepted_images.count
-            }
+//            if let pageSelector = self.parentViewController as! PageSelectorViewController? {
+//                return pageSelector.story_info!.accepted_images.count
+//            }
             return 0
     }
     
@@ -34,12 +34,12 @@ class PageCollectionViewController : UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(iconCollect_reuseIdentifier,forIndexPath: indexPath) as! IconCell
         // Configure the cell
-        if let pageSelector = self.parentViewController as! PageSelectorViewController? {
-            cell.iconView.image = pageSelector.story_info!.accepted_images[indexPath.row]
-        }
-        else {
+//        if let pageSelector = self.parentViewController as! PageSelectorViewController? {
+//            cell.iconView.image = pageSelector.story_info!.accepted_images[indexPath.row]
+//        }
+//        else {
             cell.iconView.image = UIImage(named: "default.jpg")
-        }
+//        }
         
         return cell
     }
@@ -48,7 +48,7 @@ class PageCollectionViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
             if let pageSelector = self.parentViewController as! PageSelectorViewController? {
-                pageSelector.pageImage.image = pageSelector.story_info!.accepted_images[indexPath.row]
+//                pageSelector.pageImage.image = pageSelector.story_info!.accepted_images[indexPath.row]
                 pageSelector.curSelectedIndex = indexPath.row
             }
     }

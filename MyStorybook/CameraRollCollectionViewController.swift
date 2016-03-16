@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import Photos
 
-let GoPro_reuseIdentifier = "GoProImageCell"
+let moment_reuseIdentifier = "MomentCell"
 
-class GoProImagesViewController : UICollectionViewController {
+class CameraRollCollectionViewController : UICollectionViewController {
     var preStories = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
@@ -106,7 +106,7 @@ class GoProImagesViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(moment_reuseIdentifier,forIndexPath: indexPath) as! CameraRollCollectionViewCell
         let story = preStories[indexPath.row]
             
         // Configure the cell
@@ -149,11 +149,6 @@ class GoProImagesViewController : UICollectionViewController {
                 }
             }
         }
-    }
-    private func getDate(date:NSDate)->String{
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        return dateFormatter.stringFromDate(date)
     }
     
 }

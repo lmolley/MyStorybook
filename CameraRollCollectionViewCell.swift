@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GoProImageCollectionViewCell : UICollectionViewCell {
+class CameraRollCollectionViewCell : UICollectionViewCell {
 
 
     @IBOutlet weak var topImageView: UIImageView!
