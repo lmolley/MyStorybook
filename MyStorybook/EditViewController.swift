@@ -21,14 +21,14 @@ class EditViewController: UIViewController {
         self.EditPhotoImage.image = UIImage(named: "default.jpg")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch (segue.identifier ?? "")
-        {
-        case "editSegue":
-            let viewer = segue.destinationViewController as! EditViewController
-            viewer.page = self.page
-        default:
-            break
-        }
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    switch (segue.identifier ?? "")
+    {
+    case "editSegue":
+    let viewer = segue.destinationViewController as! EditViewController
+    viewer.page = self.page
+    default:
+    break
     }
+    }*/
 }

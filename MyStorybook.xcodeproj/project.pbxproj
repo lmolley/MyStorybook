@@ -16,9 +16,9 @@
 		5B5B17DE1C96052700FF9106 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */; };
 		5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */; };
 		5B5B17E21C9610EC00FF9106 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5B17E11C9610EC00FF9106 /* Camera.png */; };
+		5BE6EBCE1C9A32DD00CBE7BC /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE6EBCD1C9A32DD00CBE7BC /* EditViewController.swift */; };
 		5BF4D2B91C97774A008080A3 /* EditCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */; };
 		5BF4D2BB1C977FEA008080A3 /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */; };
-		5BF4D2BD1C9787BF008080A3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D2BC1C9787BF008080A3 /* EditViewController.swift */; };
 		890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */; };
 		8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690A1C7C056B0099C92E /* CameraControlViewController.swift */; };
 		890869141C7CDE510099C92E /* PageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890869131C7CDE510099C92E /* PageSelectorViewController.swift */; };
@@ -104,9 +104,9 @@
 		5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17E11C9610EC00FF9106 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		5BE6EBCD1C9A32DD00CBE7BC /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCollectionViewController.swift; sourceTree = "<group>"; };
 		5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
-		5BF4D2BC1C9787BF008080A3 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		890869071C7BECC50099C92E /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		8908690A1C7C056B0099C92E /* CameraControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlViewController.swift; sourceTree = "<group>"; };
 		890869131C7CDE510099C92E /* PageSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectorViewController.swift; sourceTree = "<group>"; };
@@ -205,9 +205,9 @@
 		5BE6EBCC1C9A2E5700CBE7BC /* StoryEdit */ = {
 			isa = PBXGroup;
 			children = (
-				5BF4D2BC1C9787BF008080A3 /* EditViewController.swift */,
 				5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */,
 				5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */,
+				5BE6EBCD1C9A32DD00CBE7BC /* EditViewController.swift */,
 			);
 			name = StoryEdit;
 			sourceTree = "<group>";
@@ -510,9 +510,9 @@
 				89606B061C7E817B009743D3 /* PageCollectionViewController.swift in Sources */,
 				B2B337601C7CF7B700C663A4 /* ViewExtensions.swift in Sources */,
 				B2522CF31C9268A40013E55C /* UIPageViewControllerExtensions.swift in Sources */,
-				895FE84B1C7B83CB006ADB29 /* GoProImagesViewController.swift in Sources */,
-				5BF4D2BD1C9787BF008080A3 /* EditViewController.swift in Sources */,
-				895FE84A1C7B83C8006ADB29 /* GoProImagesCollectionViewCell.swift in Sources */,
+				89606B541C986197009743D3 /* NewPhotoSelectViewController.swift in Sources */,
+				895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */,
+				895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */,
 				B272D6991C7D1C3600C12226 /* FMDatabasePool.m in Sources */,
 				890869141C7CDE510099C92E /* PageSelectorViewController.swift in Sources */,
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,
@@ -527,6 +527,7 @@
 				B2522CF11C92685F0013E55C /* StoryViewerPhotoPageViewController.swift in Sources */,
 				B2522CEF1C9268190013E55C /* StoryViewerCoverViewController.swift in Sources */,
 				5B14CC9F1C7A790600B8FA0B /* BookshelfCollectionViewController.swift in Sources */,
+				5BE6EBCE1C9A32DD00CBE7BC /* EditViewController.swift in Sources */,
 				B2BA3C581C761EEC00D7342D /* Page.swift in Sources */,
 				5BF4D2BB1C977FEA008080A3 /* EditCollectionViewCell.swift in Sources */,
 				5B5B17DE1C96052700FF9106 /* AddCollectionViewCell.swift in Sources */,
