@@ -58,6 +58,9 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.borderWidth = 1
         self.shadowView.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
         
+        self.shadowView.layer.shouldRasterize = true
+        self.shadowView.layer.rasterizationScale = UIScreen.mainScreen().scale
+        
         if !MFMailComposeViewController.canSendMail() {
             print("Device cannot send emails, hiding share button.")
             shareButton.hidden = true
