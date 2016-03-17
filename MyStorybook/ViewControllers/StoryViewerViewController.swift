@@ -141,8 +141,8 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             pager.delegate = self
             showPage(nil) // Show the storybook cover.
         }
-        else if segue.identifier == "editCollectionSegue" {
-            let collection = segue.destinationViewController as! EditCollectionViewController
+        else if segue.identifier == "editContainerSegue" {
+            let collection = segue.destinationViewController as! EditContainerViewController
             collection.story = self.story
         }
     }
