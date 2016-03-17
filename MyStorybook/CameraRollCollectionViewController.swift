@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import Photos
 
-let GoPro_reuseIdentifier = "GoProImageCell"
+let moment_reuseIdentifier = "MomentCell"
 
-class GoProImagesViewController : UICollectionViewController {
+class CameraRollCollectionViewController : UICollectionViewController {
     var preStories = [PreStory]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
@@ -21,10 +21,6 @@ class GoProImagesViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchMomentsFromCameraRoll()
-    }
-    
-    @IBAction func homeButton() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     private func fetchMomentsFromCameraRoll () {
@@ -110,7 +106,7 @@ class GoProImagesViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(GoPro_reuseIdentifier,forIndexPath: indexPath) as! GoProImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(moment_reuseIdentifier,forIndexPath: indexPath) as! CameraRollCollectionViewCell
         let story = preStories[indexPath.row]
             
         // Configure the cell
@@ -131,7 +127,6 @@ class GoProImagesViewController : UICollectionViewController {
             cell.topImageView.image = UIImage(named: "default.jpg")
         }
         
-        // TODO: FIXME: For some reason, the text labels in the cells randomly fail to appear sometimes.
         cell.setNeedsLayout()
         cell.setNeedsUpdateConstraints()
         
@@ -141,51 +136,18 @@ class GoProImagesViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let story = preStories[indexPath.row]
-        let result = PHAsset.fetchAssetsInAssetCollection(story.moment, options: nil)
-        
-        // TODO: Check if the story already has its images?
-        // TODO: Optimize this part of the app more. Maybe we don't entirely need to grab all of the images.
-        
-        var assetIDs = [String](count: result.count, repeatedValue: "")
-        var images = [UIImage?](count: result.count, repeatedValue: nil)
-        
-        let imageOptions = PHImageRequestOptions()
-        imageOptions.deliveryMode = .HighQualityFormat
-        imageOptions.synchronous = true
-        
-        result.enumerateObjectsWithOptions(NSEnumerationOptions.Concurrent, usingBlock: { (obj, index, _) -> Void in
-                
-            let asset = obj as! PHAsset
-            assetIDs[index] = asset.localIdentifier
-                
-                var size = CGSize()
-                size.width = CGFloat(asset.pixelWidth)
-                size.height = CGFloat(asset.pixelHeight)
-                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
-                    images[index] = image
-                })
-        })
-        
-        story.image_ids = assetIDs
-        story.images = images;
-        
         performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PhotoSelectorSegue"
         {
-            if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
+            if let destinationVC = segue.destinationViewController as? NewPhotoSelectContainerViewController{
                 if let folder = sender as? PreStory {
-                    destinationVC.folderToDisplay = folder
+                    destinationVC.momentToDisplay = folder.moment
                 }
             }
         }
-    }
-    private func getDate(date:NSDate)->String{
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        return dateFormatter.stringFromDate(date)
     }
     
 }

@@ -20,9 +20,7 @@ class PreStory{
     var image_ids = [String]()
     
     //add to these once you select the collection
-    var images = [UIImage?]()
-    var accepted_images = [UIImage]()
-    var ordered_ids = [String]()
+    var accepted_image_ids = [String]()
     //-------------------------------------------
     var title:String?
     var date:NSDate?
@@ -31,27 +29,5 @@ class PreStory{
     init(title_in:String?, date_in:NSDate?) {
         title = title_in
         date = date_in
-    }
-    
-    func addImageId(myAsset:PHAsset) {
-        if count == 0 {
-            setTopImage(myAsset)
-        }
-        image_ids.append(myAsset.localIdentifier)
-        count += 1
-    }
-    
-    private func setTopImage(myAsset:PHAsset) {
-        // Note that if the request is not set to synchronous
-        // the requestImageForAsset will return both the image
-        // and thumbnail; by setting synchronous to true it
-        // will return just the thumbnail
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.synchronous = true
-        let imgManager = PHImageManager.defaultManager()
-        imgManager.requestImageForAsset(myAsset, targetSize:CGSize(width: myAsset.pixelWidth, height: myAsset.pixelHeight), contentMode: PHImageContentMode.AspectFill, options: requestOptions, resultHandler: { (image, _) in
-            // Add the returned image to your array
-            self.topImage = image
-        })
     }
 }

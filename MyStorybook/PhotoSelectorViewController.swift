@@ -22,77 +22,77 @@ class PhotoSelectorViewController: UIViewController{
     @IBOutlet weak var imageViewRight: UIImageView!
     
     @IBAction func accept() {
-        folderToDisplay?.accepted_images.append(folderToDisplay!.images[currentPicInd]!)
-        status[0] = status[1]
-        status[1] = true
-        status[2] = status[3]
-        status[3] = false
-        
-        currentPicInd += 1
-        if currentPicInd >= folderToDisplay!.images.count {
-            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
-        }
-        else {
-            mainImageView.image = folderToDisplay!.images[currentPicInd]
-            updateBottomPics()
-        }
+//        folderToDisplay?.accepted_images.append(folderToDisplay!.images[currentPicInd]!)
+//        status[0] = status[1]
+//        status[1] = true
+//        status[2] = status[3]
+//        status[3] = false
+//        
+//        currentPicInd += 1
+//        if currentPicInd >= folderToDisplay!.images.count {
+//            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
+//        }
+//        else {
+//            mainImageView.image = folderToDisplay!.images[currentPicInd]
+//            updateBottomPics()
+//        }
     }
     
     @IBAction func reject() {
-        status[0] = status[1]
-        status[1] = false
-        status[2] = status[3]
-        status[3] = false
-        
-        currentPicInd += 1
-        if currentPicInd >= folderToDisplay!.images.count {
-            print("Done!")
-            print(folderToDisplay!.accepted_images)
-            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
-        }
-        else {
-            mainImageView.image = folderToDisplay!.images[currentPicInd]
-            updateBottomPics()
-        }
+//        status[0] = status[1]
+//        status[1] = false
+//        status[2] = status[3]
+//        status[3] = false
+//        
+//        currentPicInd += 1
+//        if currentPicInd >= folderToDisplay!.images.count {
+//            print("Done!")
+//            print(folderToDisplay!.accepted_images)
+//            performSegueWithIdentifier("SelectCoverSegue", sender: folderToDisplay)
+//        }
+//        else {
+//            mainImageView.image = folderToDisplay!.images[currentPicInd]
+//            updateBottomPics()
+//        }
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        titleLabel.text = folderToDisplay?.title
-        if let mainImage = folderToDisplay!.topImage {
-            mainImageView.image = mainImage
-            imageViewMidRight.image = mainImage
-            imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
-            imageViewMidRight.layer.borderWidth = 3.0
-        }
-        if folderToDisplay!.images.count > 1 {
-            if let nextImage:UIImage = folderToDisplay!.images[1]{
-                imageViewRight.image = nextImage
-            }
-        }
+//        super.viewDidLoad()
+//        titleLabel.text = folderToDisplay?.title
+//        if let mainImage = folderToDisplay!.topImage {
+//            mainImageView.image = mainImage
+//            imageViewMidRight.image = mainImage
+//            imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+//            imageViewMidRight.layer.borderWidth = 3.0
+//        }
+//        if folderToDisplay!.images.count > 1 {
+//            if let nextImage:UIImage = folderToDisplay!.images[1]{
+//                imageViewRight.image = nextImage
+//            }
+//        }
     }
     
     private func updateBottomPics() {
-        imageViewMidRight.image = folderToDisplay!.images[currentPicInd]
-        imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
-        imageViewMidRight.layer.borderWidth = 3.0
-        
-        if currentPicInd - 1 >= 0 {
-            imageViewMidLeft.image = folderToDisplay!.images[currentPicInd-1]
-            addBorder(imageViewMidLeft, status: status[1])
-        }
-        
-        if currentPicInd - 2 >= 0{
-            imageViewLeft.image = folderToDisplay!.images[currentPicInd-2]
-            addBorder(imageViewLeft, status: status[0])
-        }
-        
-        if currentPicInd + 1 < folderToDisplay!.images.count {
-            imageViewRight.image = folderToDisplay!.images[currentPicInd+1]
-        }
-        else {
-            imageViewRight.image = UIImage(named: "default.jpg")
-        }
+//        imageViewMidRight.image = folderToDisplay!.images[currentPicInd]
+//        imageViewMidRight.layer.borderColor = UIColor.yellowColor().CGColor
+//        imageViewMidRight.layer.borderWidth = 3.0
+//        
+//        if currentPicInd - 1 >= 0 {
+//            imageViewMidLeft.image = folderToDisplay!.images[currentPicInd-1]
+//            addBorder(imageViewMidLeft, status: status[1])
+//        }
+//        
+//        if currentPicInd - 2 >= 0{
+//            imageViewLeft.image = folderToDisplay!.images[currentPicInd-2]
+//            addBorder(imageViewLeft, status: status[0])
+//        }
+//        
+//        if currentPicInd + 1 < folderToDisplay!.images.count {
+//            imageViewRight.image = folderToDisplay!.images[currentPicInd+1]
+//        }
+//        else {
+//            imageViewRight.image = UIImage(named: "default.jpg")
+//        }
         
     }
     
