@@ -78,7 +78,6 @@ class EditCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return displayedPages.count
     }
     
@@ -89,7 +88,7 @@ class EditCollectionViewController: UICollectionViewController {
         let pageIndex = displayedPages[indexPath.item]
         
         cell.EditImage.image = UIImage(named: "default.jpg")
-        cell.EditPageNum.text = "\(pageIndex)"
+        cell.EditPageNum.text = "\(indexPath.item + 1)" // The displayed page number is defined by the index path, not by the photo index in the original story.
         
         if let thumbnail = imageThumbnails[pageIndex] {
             cell.EditImage.image = thumbnail;
@@ -105,6 +104,25 @@ class EditCollectionViewController: UICollectionViewController {
         }
             
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    override func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        let from = sourceIndexPath.item
+        let to = destinationIndexPath.item
+        
+        let oldIndex = displayedPages.removeAtIndex(from)
+        displayedPages.insert(oldIndex, atIndex: to)
+        
+        // Update the displayed page numbers.
+        for visibleIdx in collectionView.indexPathsForVisibleItems() {
+            let cell = collectionView.cellForItemAtIndexPath(visibleIdx) as! EditCollectionViewCell
+            cell.EditPageNum.text = "\(visibleIdx.item + 1)"
+        }
     }
     
     // MARK: UICollectionViewDelegate
