@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exl-zG-jeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="-294"/>
+            <point key="canvasLocation" x="2312" y="-338"/>
         </scene>
         <!--Edit Story Photos-->
         <scene sceneID="QKN-wn-yDv">
@@ -326,7 +326,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5X-iX-1jY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-335"/>
+            <point key="canvasLocation" x="1546" y="-338"/>
         </scene>
         <!--Story Viewer Cover View Controller-->
         <scene sceneID="9qS-ZU-fNF">
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouz-xA-JaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="409"/>
+            <point key="canvasLocation" x="1546" y="409"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="M5w-z9-hCi">
@@ -407,7 +407,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="zqi-G4-h3v" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3R-R4-Sxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="1073"/>
+            <point key="canvasLocation" x="768" y="1133"/>
         </scene>
         <!--Story Viewer Photo Page View Controller-->
         <scene sceneID="ckN-9u-8du">
@@ -450,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRp-dy-27z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="1173"/>
+            <point key="canvasLocation" x="2312" y="409"/>
         </scene>
     </scenes>
     <resources>
