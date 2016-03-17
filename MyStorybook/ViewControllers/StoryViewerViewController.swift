@@ -18,6 +18,8 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     @IBOutlet weak var shareButton: UIButton!
     
+    @IBOutlet weak var EditButton: UIButton!
+    
     internal var story: Story?
     
     // This will be nil if the cover page is being shown.
@@ -28,10 +30,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             if (currentPage == nil) { // On cover page
                 prevButton.hidden = true
                 nextButton.hidden = (pageCount <= 0)
+                EditButton.hidden = false
             } else // On photo page
             {
                 prevButton.hidden = false
                 nextButton.hidden = (currentPage >= pageCount - 1)
+                EditButton.hidden = true
             }
         }
     }
@@ -136,6 +140,10 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             pager.dataSource = self
             pager.delegate = self
             showPage(nil) // Show the storybook cover.
+        }
+        else if segue.identifier == "editCollectionSegue" {
+            let collection = segue.destinationViewController as! EditCollectionViewController
+            collection.story = self.story
         }
     }
     

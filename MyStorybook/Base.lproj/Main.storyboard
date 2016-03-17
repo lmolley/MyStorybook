@@ -531,7 +531,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cCy-U8-JQJ">
                                         <rect key="frame" x="152" y="0.0" width="146" height="135"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="135" id="A59-Cx-HQ7"/>
