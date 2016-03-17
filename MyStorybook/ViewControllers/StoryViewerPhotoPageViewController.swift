@@ -42,7 +42,9 @@ class StoryViewerPhotoPageViewController: UIViewController {
             
             let asset = result.objectAtIndex(0) as! PHAsset
             let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: nil) { (image, info) -> Void in
+            let opts2 = PHImageRequestOptions()
+            opts2.synchronous = true
+            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: opts2) { (image, info) -> Void in
                 self._image = image!
             }
         }
