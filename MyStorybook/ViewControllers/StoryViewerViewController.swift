@@ -75,7 +75,9 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        // Now the bar is hidden on the bookshelf.
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction internal func share() {
