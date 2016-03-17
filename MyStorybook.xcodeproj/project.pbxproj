@@ -63,7 +63,7 @@
 		B2BA3C5C1C76215200D7342D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C5B1C76215200D7342D /* App.swift */; };
 		B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */; };
 		B2E93F5F1C7A782B00A5C80E /* StoryViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E93F5E1C7A782B00A5C80E /* StoryViewerViewController.swift */; };
-		B2E93F611C7A785300A5C80E /* DavidTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E93F601C7A785300A5C80E /* DavidTest.storyboard */; };
+		B2E93F611C7A785300A5C80E /* StoryViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,7 +153,7 @@
 		B2BA3C5B1C76215200D7342D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumbMockDatabase.swift; sourceTree = "<group>"; };
 		B2E93F5E1C7A782B00A5C80E /* StoryViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryViewerViewController.swift; path = ViewControllers/StoryViewerViewController.swift; sourceTree = "<group>"; };
-		B2E93F601C7A785300A5C80E /* DavidTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DavidTest.storyboard; sourceTree = "<group>"; };
+		B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryViewer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,7 +290,7 @@
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
 				B262EAD11C761C8A001008AD /* Info.plist */,
-				B2E93F601C7A785300A5C80E /* DavidTest.storyboard */,
+				B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */,
 			);
 			path = MyStorybook;
 			sourceTree = "<group>";
@@ -483,7 +483,7 @@
 				5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */,
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
 				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
-				B2E93F611C7A785300A5C80E /* DavidTest.storyboard in Resources */,
+				B2E93F611C7A785300A5C80E /* StoryViewer.storyboard in Resources */,
 				8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */,
 				89606B4E1C970688009743D3 /* Icons.xcassets in Resources */,
 			);

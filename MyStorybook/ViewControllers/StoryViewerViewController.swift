@@ -18,8 +18,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     @IBOutlet weak var shareButton: UIButton!
     
-    @IBOutlet weak var EditButton: UIButton!
-    
     internal var story: Story?
     
     // This will be nil if the cover page is being shown.
@@ -30,12 +28,10 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             if (currentPage == nil) { // On cover page
                 prevButton.hidden = true
                 nextButton.hidden = (pageCount <= 0)
-                EditButton.hidden = false
             } else // On photo page
             {
                 prevButton.hidden = false
                 nextButton.hidden = (currentPage >= pageCount - 1)
-                EditButton.hidden = true
             }
         }
     }
@@ -62,6 +58,9 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.borderWidth = 1
         self.shadowView.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
         
+        self.shadowView.layer.shouldRasterize = true
+        self.shadowView.layer.rasterizationScale = UIScreen.mainScreen().scale
+        
         if !MFMailComposeViewController.canSendMail() {
             print("Device cannot send emails, hiding share button.")
             shareButton.hidden = true
@@ -75,10 +74,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        // Now the bar is hidden on the bookshelf.
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction internal func share() {
+    @IBAction internal func share(sender: AnyObject) {
         let c = MFMailComposeViewController()
         
         let assetsFetch = PHAsset.fetchAssetsWithLocalIdentifiers(story!.pages!.map { $0.photoId }, options: nil)
@@ -115,6 +116,10 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         c.mailComposeDelegate = self
         
         self.presentViewController(c, animated: true, completion: nil)
+    }
+    
+    @IBAction internal func editStoryPageCollection(sender: AnyObject) {
+        self.performSegueWithIdentifier("editCollectionSegue", sender: sender)
     }
     
     @IBAction func goHome() {

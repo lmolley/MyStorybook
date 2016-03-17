@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 private let edit_reuseIdentifier = "EditCell"
 
@@ -14,6 +15,11 @@ class EditCollectionViewController: UICollectionViewController {
     var selectedIndex = 0
     var story: Story?
     var page: Page?
+    
+    var imageThumbnails: [UIImage?]! // In the order as the original storybook.
+    var assets: [PHAsset]! // In the order as the original storybook.
+    
+    var displayedPages: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +29,6 @@ class EditCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -42,6 +47,25 @@ class EditCollectionViewController: UICollectionViewController {
         cell.EditPageNum.text = "\(page_cell.number)"
             
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    override func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        let from = sourceIndexPath.item
+        let to = destinationIndexPath.item
+        
+        let oldIndex = displayedPages.removeAtIndex(from)
+        displayedPages.insert(oldIndex, atIndex: to)
+        
+        // Update the displayed page numbers.
+        for visibleIdx in collectionView.indexPathsForVisibleItems() {
+            let cell = collectionView.cellForItemAtIndexPath(visibleIdx) as! EditCollectionViewCell
+            cell.EditPageNum.text = "\(visibleIdx.item + 1)"
+        }
     }
     
     // MARK: UICollectionViewDelegate
