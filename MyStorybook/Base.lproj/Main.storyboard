@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -235,7 +235,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sec-9G-vfb">
                                 <rect key="frame" x="20" y="146" width="560" height="402"/>
                                 <connections>
-                                    <segue destination="T7A-0L-uoR" kind="embed" id="soT-L6-gIc"/>
+                                    <segue destination="T7A-0L-uoR" kind="embed" identifier="EmbedSegue" id="hie-gC-V8X"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -256,10 +256,13 @@
                             <constraint firstItem="oOI-iz-5ir" firstAttribute="top" secondItem="sec-9G-vfb" secondAttribute="bottom" constant="8" id="uZe-ld-yov"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="xT1-xY-GeE" kind="show" identifier="SelectionDoneSegue" id="7xC-p4-5cp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXp-1R-6ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="-417"/>
+            <point key="canvasLocation" x="1926" y="-418"/>
         </scene>
         <!--storyViewerViewController-->
         <scene sceneID="3sc-nI-M0U">
@@ -267,7 +270,7 @@
                 <viewControllerPlaceholder storyboardName="StoryViewer" referencedIdentifier="storyViewerViewController" id="xT1-xY-GeE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRn-m5-Cd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="312"/>
+            <point key="canvasLocation" x="2032" y="-66"/>
         </scene>
         <!--GoProImages-->
         <scene sceneID="Ggy-5f-A6L">
@@ -492,4 +495,7 @@
         <image name="red-book-hi.png" width="504" height="597"/>
         <image name="replay" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7xC-p4-5cp"/>
+    </inferredMetricsTieBreakers>
 </document>
