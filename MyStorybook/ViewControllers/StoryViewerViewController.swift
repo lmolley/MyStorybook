@@ -22,7 +22,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     
     // This will be nil if the cover page is being shown.
     private var currentPage: Int?
-    {
+        {
         didSet
         {
             if (currentPage == nil) { // On cover page
@@ -37,7 +37,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     private var pageCount: Int
-    {
+        {
         get
         {
             return story?.pages?.count ?? 0
@@ -45,10 +45,10 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     weak var pager: UIPageViewController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setting the currentPage updates the next and previous buttons.
         currentPage = (currentPage)
         
@@ -66,7 +66,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             shareButton.hidden = true
         }
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -76,7 +76,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         super.viewWillDisappear(animated)
         
         // Now the bar is hidden on the bookshelf.
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
+        //        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction internal func share(sender: AnyObject) {
@@ -92,7 +92,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             let asset = assetsFetch.objectAtIndex(i) as! PHAsset
             
             PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: { (imageData, imageType, someUIOrientation, someData) -> Void in
-
+                
                 guard let imageData = imageData else {
                     print("Unable to fetch data for asset with local identifier \(asset.localIdentifier).")
                     return
@@ -109,7 +109,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             })
             
         }
-
+        
         c.setMessageBody("Check out these photos!", isHTML: false)
         c.setSubject("A MyStorybook Photo Album")
         
@@ -119,8 +119,9 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     @IBAction internal func editStoryPageCollection(sender: AnyObject) {
-        self.performSegueWithIdentifier("editCollectionSegue", sender: sender)
+        self.performSegueWithIdentifier("editSelectSegue", sender: sender)
     }
+    
     
     @IBAction func goHome() {
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -146,8 +147,8 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             pager.delegate = self
             showPage(nil) // Show the storybook cover.
         }
-        else if segue.identifier == "editCollectionSegue" {
-            let collection = segue.destinationViewController as! EditCollectionViewController
+        else if segue.identifier == "editSelectSegue" {
+            let collection = segue.destinationViewController as! EditSelectViewController
             collection.story = self.story
         }
     }
@@ -185,7 +186,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
@@ -202,7 +203,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
             fatalError("Invalid view controller in StoryViewerViewController pageViewController:viewControllerBeforeViewController")
         }
     }
-
+    
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
     {
         switch (viewController)

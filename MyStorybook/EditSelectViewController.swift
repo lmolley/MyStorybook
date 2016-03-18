@@ -1,8 +1,8 @@
 //
-//  EditCollectionViewController.swift
+//  EditSelectViewController.swift
 //  MyStorybook
 //
-//  Created by Rachel Choi on 3/14/16.
+//  Created by Rachel Choi on 3/17/16.
 //  Copyright © 2016 The My Storybook Team. All rights reserved.
 //
 
@@ -11,9 +11,13 @@ import Photos
 
 private let edit_reuseIdentifier = "EditCell"
 
-class EditCollectionViewController: UICollectionViewController {
+class EditSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var selectedIndex = 0
+    
+    @IBOutlet weak var editCollection: UICollectionView!
+    
     internal var story: Story?
+    internal var page: Page?
     
     var imageThumbnails: [UIImage?]! // In the order as the original storybook.
     var assets: [PHAsset]! // In the order as the original storybook.
@@ -22,19 +26,25 @@ class EditCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        editCollection.dataSource = self
+        editCollection.delegate = self
         
         setupDisplayedPages()
         loadStoryThumbnails()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    @IBAction func goPrevPage() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func setupDisplayedPages()
@@ -42,26 +52,26 @@ class EditCollectionViewController: UICollectionViewController {
         guard let story = story else {
             fatalError("self.story must be set upon view loading.")
         }
-        
+            
         displayedPages = [Int](0 ..< (story.pages?.count ?? 0))
         
         guard let pages = story.pages else {
             return
         }
-        
+            
         let ids = pages.map { $0.photoId }
         let assetOptions = PHFetchOptions()
-        
+            
         let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers(ids, options: assetOptions)
-        
+            
         assets = []
-        
+            
         for i in 0 ..< fetchResult.count {
             let asset = fetchResult.objectAtIndex(i) as! PHAsset
             assets.append(asset)
         }
     }
-    
+        
     func loadStoryThumbnails()
     {
         guard let story = story else {
@@ -70,26 +80,26 @@ class EditCollectionViewController: UICollectionViewController {
         
         imageThumbnails = Array<UIImage?>(count: story.pages?.count ?? 0, repeatedValue: nil)
     }
-    
+        
     // MARK: UICollectionViewDataSource
-    
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedPages.count
     }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(edit_reuseIdentifier, forIndexPath: indexPath) as! EditCollectionViewCell
         
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(edit_reuseIdentifier, forIndexPath: indexPath) as! EditCollectionViewCell
+            
         // Configure the cell
         let pageIndex = displayedPages[indexPath.item]
-        
+            
         cell.EditImage.image = UIImage(named: "default.jpg")
         cell.EditPageNum.text = "\(indexPath.item + 1)" // The displayed page number is defined by the index path, not by the photo index in the original story.
-        
+            
         if let thumbnail = imageThumbnails[pageIndex] {
             cell.EditImage.image = thumbnail;
         } else {
@@ -102,40 +112,40 @@ class EditCollectionViewController: UICollectionViewController {
                 })
             })
         }
-        
+            
         return cell
     }
-    
-    override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+    func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-    override func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         
+    func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+            
         let from = sourceIndexPath.item
         let to = destinationIndexPath.item
-        
+            
         let oldIndex = displayedPages.removeAtIndex(from)
         displayedPages.insert(oldIndex, atIndex: to)
-        
+            
         // Update the displayed page numbers.
         for visibleIdx in collectionView.indexPathsForVisibleItems() {
             let cell = collectionView.cellForItemAtIndexPath(visibleIdx) as! EditCollectionViewCell
             cell.EditPageNum.text = "\(visibleIdx.item + 1)"
         }
     }
-    
+        
     // MARK: UICollectionViewDelegate
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         selectedIndex = indexPath.item
     }
-    
+        
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier ?? "")
         {
-        case "editSegue":
+        case "editPhotoSegue":
             let viewer = segue.destinationViewController as! EditViewController
             viewer.page = story!.pages![self.selectedIndex]
         default:
@@ -143,3 +153,4 @@ class EditCollectionViewController: UICollectionViewController {
         }
     }
 }
+
