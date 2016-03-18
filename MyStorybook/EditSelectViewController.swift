@@ -43,7 +43,7 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    @IBAction func goBack() {
+    @IBAction func goPrevPage() {
         self.navigationController?.popViewControllerAnimated(true)
     }
     

@@ -329,6 +329,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
+                                    <action selector="goBack" destination="1Xm-NK-JJY" eventType="touchDown" id="6zs-J4-CgR"/>
+                                    <action selector="goBack" destination="1Xm-NK-JJY" eventType="touchUpInside" id="CSb-pz-OoN"/>
+                                    <action selector="goBack:" destination="1Xm-NK-JJY" eventType="touchUpInside" id="iCQ-fv-Rng"/>
                                     <action selector="goHome" destination="1Xm-NK-JJY" eventType="editingDidEndOnExit" id="iYw-Yg-hWC"/>
                                     <action selector="goHome" destination="maw-T9-hk7" eventType="touchUpInside" id="x9n-i7-Aew"/>
                                 </connections>
