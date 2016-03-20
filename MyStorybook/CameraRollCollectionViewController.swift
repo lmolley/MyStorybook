@@ -20,6 +20,7 @@ class CameraRollCollectionViewController : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView?.allowsMultipleSelection = true
         fetchMomentsFromCameraRoll()
     }
     
@@ -110,8 +111,7 @@ class CameraRollCollectionViewController : UICollectionViewController {
         let story = preStories[indexPath.row]
             
         // Configure the cell
-//        cell.titleLabel.text = story.title
-//        cell.dateLabel.text = getDate(story.date!)
+        cell.checkMark.hidden = true
         
         if (preStories.count > indexPath.row) {
             cell.bottomImageView.image = story.bottomImage ?? UIImage(named: "default.jpg")
@@ -134,7 +134,6 @@ class CameraRollCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
         let story = preStories[indexPath.row]
         performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
     }

@@ -246,7 +246,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL6-NR-hM6">
                                 <rect key="frame" x="455" y="72" width="125" height="66"/>
-                                <color key="backgroundColor" red="0.41176470590000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <state key="normal" title="✔︎">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -318,47 +318,66 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vr1-Bt-Ror">
-                                            <rect key="frame" x="48" y="29" width="264" height="229"/>
+                                            <rect key="frame" x="37" y="8" width="275" height="275"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SyX-g6-SVn">
-                                            <rect key="frame" x="24" y="54" width="272" height="229"/>
+                                            <rect key="frame" x="23" y="22" width="275" height="275"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-hr-jYc">
-                                            <rect key="frame" x="8" y="75" width="272" height="229"/>
+                                            <rect key="frame" x="8" y="37" width="275" height="275"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmW-fh-UAe">
+                                            <rect key="frame" x="117" y="121" width="86" height="78"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="5"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="SyX-g6-SVn" secondAttribute="bottom" constant="29" id="1R7-Sl-kyg"/>
                                     <constraint firstItem="UMX-hr-jYc" firstAttribute="centerY" secondItem="0Qp-98-UYd" secondAttribute="centerY" id="4am-sa-QVg"/>
-                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" constant="16" id="5tK-Mm-MhF"/>
-                                    <constraint firstItem="Vr1-Bt-Ror" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" constant="40" id="7Fe-pT-dgs"/>
+                                    <constraint firstItem="Vr1-Bt-Ror" firstAttribute="trailing" secondItem="0Qp-98-UYd" secondAttribute="trailingMargin" id="4xM-rj-iz7"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="8" id="7UD-ZR-2e3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="UMX-hr-jYc" secondAttribute="trailing" constant="29" id="AYn-2U-DT6"/>
                                     <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="42" id="BRd-aR-97o"/>
                                     <constraint firstItem="UMX-hr-jYc" firstAttribute="centerY" secondItem="0Qp-98-UYd" secondAttribute="centerY" id="CtR-xK-kfa"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="UMX-hr-jYc" secondAttribute="trailing" constant="32" id="GDB-Yv-TgX"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="SyX-g6-SVn" secondAttribute="trailing" constant="16" id="I3R-34-gEL"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="29" id="G8Y-RM-8nV"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" id="GON-d4-EyC"/>
+                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="centerX" secondItem="0Qp-98-UYd" secondAttribute="centerX" id="Gmh-Iu-Mrs"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="SyX-g6-SVn" secondAttribute="bottom" constant="-221" id="HcP-tE-csm"/>
                                     <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" id="Oh4-5R-ti8"/>
-                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="46" id="YbK-O1-JTl"/>
+                                    <constraint firstItem="Vr1-Bt-Ror" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" id="POb-DR-ePl"/>
+                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="centerY" secondItem="0Qp-98-UYd" secondAttribute="centerY" id="TEE-6F-zgI"/>
+                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="14" id="VbE-lg-fVV"/>
+                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" constant="15" id="W1e-W1-upt"/>
+                                    <constraint firstItem="SyX-g6-SVn" firstAttribute="leading" secondItem="UMX-hr-jYc" secondAttribute="trailing" constant="8" symbolic="YES" id="Xgf-az-XF8"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="bottom" secondItem="0Qp-98-UYd" secondAttribute="bottomMargin" id="YMZ-ML-dgv"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="UMX-hr-jYc" secondAttribute="trailing" constant="8" id="Yby-Za-a5f"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="UMX-hr-jYc" secondAttribute="bottom" id="cra-GE-NVE"/>
-                                    <constraint firstItem="Vr1-Bt-Ror" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="21" id="gSJ-PO-G3E"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="Vr1-Bt-Ror" secondAttribute="bottom" constant="54" id="kYa-hX-9L3"/>
-                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="0Qp-98-UYd" secondAttribute="topMargin" constant="67" id="noh-kc-blX"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="Vr1-Bt-Ror" secondAttribute="trailing" id="oNG-QD-iEr"/>
-                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" id="sr1-me-Ger"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="UMX-hr-jYc" secondAttribute="bottom" constant="8" id="t7S-rI-YaL"/>
+                                    <constraint firstItem="Vr1-Bt-Ror" firstAttribute="leading" secondItem="0Qp-98-UYd" secondAttribute="leadingMargin" constant="29" id="dT6-SA-KQv"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Vr1-Bt-Ror" secondAttribute="bottom" constant="29" id="ftE-RX-KcC"/>
+                                    <constraint firstItem="UMX-hr-jYc" firstAttribute="top" secondItem="SyX-g6-SVn" secondAttribute="bottom" constant="8" symbolic="YES" id="jYH-Bm-PgX"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="Xgf-az-XF8"/>
                                         <exclude reference="4am-sa-QVg"/>
+                                        <exclude reference="7UD-ZR-2e3"/>
                                         <exclude reference="BRd-aR-97o"/>
                                         <exclude reference="CtR-xK-kfa"/>
+                                        <exclude reference="HcP-tE-csm"/>
                                         <exclude reference="Oh4-5R-ti8"/>
+                                        <exclude reference="Yby-Za-a5f"/>
                                         <exclude reference="cra-GE-NVE"/>
+                                        <exclude reference="jYH-Bm-PgX"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="bottomImageView" destination="Vr1-Bt-Ror" id="8Xv-wj-yW8"/>
+                                    <outlet property="checkMark" destination="hmW-fh-UAe" id="jyl-Kg-02g"/>
                                     <outlet property="middleImageView" destination="SyX-g6-SVn" id="tN2-2X-OTQ"/>
                                     <outlet property="topImageView" destination="UMX-hr-jYc" id="sBE-f0-67x"/>
                                 </connections>
