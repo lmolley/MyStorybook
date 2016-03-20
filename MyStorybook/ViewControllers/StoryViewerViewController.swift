@@ -63,7 +63,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         
         if !MFMailComposeViewController.canSendMail() {
             print("Device cannot send emails, hiding share button.")
-            shareButton.hidden = true
+            //shareButton.hidden = true
         }
     }
     
