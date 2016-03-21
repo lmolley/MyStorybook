@@ -26,4 +26,14 @@ class StoryViewerCoverViewController: UIViewController {
         square.addAlbumBorder()
         shareButton.hideIfEmailUnavailable()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if segue.identifier == "shareStory" {
+            let nav = segue.destinationViewController as! UINavigationController
+            let dest = nav.viewControllers[0] as! EmailFavoritesViewController
+            dest.story = self.story
+        }
+    }
 }

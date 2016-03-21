@@ -17,9 +17,22 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
     var ids: [String]!
     var contacts: [CNContact]! = []
     
+    var composer: MailComposer!
+    
+    internal var story: Story!
+    {
+        didSet {
+            composer = MailComposer(story: story)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if self.story == nil {
+            fatalError("You must set the 'story' property of this EmailFavoritesViewController before its view loads")
+        }
+        
         load()
     }
     
@@ -57,12 +70,15 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
         let c = CNContactPickerViewController()
         
         c.delegate = self
+        c.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
         
         c.modalPresentationStyle = .CurrentContext
         
         self.presentViewController(c, animated: true, completion: nil)
     }
 
+    // MARK: - CNContactPickerDelegate Methods
+    
     func contactPickerDidCancel(picker: CNContactPickerViewController) {
     }
     
@@ -76,14 +92,15 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
         load()
     }
     
+    // MARK: - UICollectionViewDelegate/DataSource Methods
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EmailFavoriteCell", forIndexPath: indexPath) as! EmailFavoriteCollectionViewCell
         
         let contact = contacts[indexPath.item]
         
-        
         cell.nameLabel.text = "\(contact.givenName) \(contact.familyName)"
-        cell.emailLabel.text = contact.emailAddresses[0].value as? String
+        cell.emailLabel.text = contact.emailAddresses.first?.value as? String
         
         if let imageData = contact.imageData {
             cell.imageView.image = UIImage(data: imageData)
@@ -107,7 +124,15 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.dismiss()
+
+        let contact = contacts[indexPath.item]
+        let email = contact.emailAddresses[0].value as! String
+        
+        composer.toRecipients = [email]
+        
+        composer.presentComposeSheet(onViewController: self) { () -> () in
+            
+        }
     }
 }
 

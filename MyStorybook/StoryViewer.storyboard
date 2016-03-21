@@ -504,7 +504,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="mail"/>
                                 <connections>
-                                    <segue destination="UZh-ro-JkX" kind="presentation" modalPresentationStyle="formSheet" id="nbH-Zj-hUO"/>
+                                    <segue destination="UZh-ro-JkX" kind="presentation" identifier="shareStory" modalPresentationStyle="formSheet" id="nbH-Zj-hUO"/>
                                 </connections>
                             </button>
                         </subviews>

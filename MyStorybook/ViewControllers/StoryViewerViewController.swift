@@ -8,9 +8,8 @@
 
 import UIKit
 import Photos
-import MessageUI
 
-class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MFMailComposeViewControllerDelegate {
+class StoryViewerViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -72,44 +71,7 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         //        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction internal func share(sender: AnyObject) {
-        let c = MFMailComposeViewController()
-        
-        let assetsFetch = PHAsset.fetchAssetsWithLocalIdentifiers(story!.pages!.map { $0.photoId }, options: nil)
-        
-        let opts = PHImageRequestOptions()
-        opts.deliveryMode = .HighQualityFormat
-        opts.synchronous = true
-        
-        for i in 0..<assetsFetch.count {
-            let asset = assetsFetch.objectAtIndex(i) as! PHAsset
-            
-            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: { (imageData, imageType, someUIOrientation, someData) -> Void in
-                
-                guard let imageData = imageData else {
-                    print("Unable to fetch data for asset with local identifier \(asset.localIdentifier).")
-                    return
-                }
-                guard let mimeType = mimeTypeForUTI(imageType!) else {
-                    print("Can't determine MIME type for UTI \(imageType)")
-                    return
-                }
-                
-                let fileName = (someData!["PHImageFileURLKey"] as! NSURL).lastPathComponent!
-                
-                c.addAttachmentData(imageData, mimeType: mimeType, fileName: fileName)
-                
-            })
-            
-        }
-        
-        c.setMessageBody("Check out these photos!", isHTML: false)
-        c.setSubject("A MyStorybook Photo Album")
-        
-        c.mailComposeDelegate = self
-        
-        self.presentViewController(c, animated: true, completion: nil)
-    }
+
     
     @IBAction internal func editStoryPageCollection(sender: AnyObject) {
         self.performSegueWithIdentifier("editSelectSegue", sender: sender)
@@ -172,12 +134,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         viewController.pageIndex = pageIndex
         viewController.page = self.story?.pages![pageIndex]
         return viewController
-    }
-    
-    // MARK: - MFMailComposeViewControllerDelegate
-    
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UIPageViewControllerDataSource
