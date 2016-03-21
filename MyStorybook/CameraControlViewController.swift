@@ -27,6 +27,10 @@ class CameraControlViewController : UIViewController {
     let stillImageOutput = AVCaptureStillImageOutput()
     var selfiePreviewLayer:AVCaptureVideoPreviewLayer?
     
+    @IBAction func goHome() {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     var lastTakenPictureFilename:String? {
         didSet {
             HTTPImageGet(getThumbnailCommand + lastTakenPictureFilename!){(data:UIImage, error: String?) -> Void in

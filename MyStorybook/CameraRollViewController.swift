@@ -11,13 +11,40 @@ import UIKit
 class CameraRollViewController:UIViewController {
     var mainStory = PreStory(title_in: "Tommy's Storybook", date_in: NSDate())
     
+    @IBOutlet weak var numberSelectedLabel: UILabel!
+    var numberSelected:Int = 0 {
+        didSet {
+            if numberSelected == 0 {
+                numberSelectedLabel.text = ""
+            }
+            else {
+                numberSelectedLabel.text = String(numberSelected)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
+        numberSelected = self.mainStory.accepted_image_ids.count
     }
     
     @IBAction func finished() {
-        performSegueWithIdentifier("SelectionDoneSegue", sender:nil)
+        print("SAVING")
+        let actualStory = Story()
+        actualStory.title = mainStory.title ?? "Untitled Storybook" // What can we eventually use?
+        actualStory.icon = mainStory.accepted_image_ids.first ?? "" //set icon as first image for now
+        var index = 0
+        actualStory.pages = mainStory.accepted_image_ids.map { photoId in
+                                let p = Page()
+                                p.number = index
+                                index += 1
+                                p.photoId = photoId
+                                return p
+                            }
+            
+        App.database.createStoryWithPages(actualStory)
+        performSegueWithIdentifier("SelectionDoneSegue", sender:actualStory)
     }
     
     @IBAction func goHome() {
@@ -25,12 +52,11 @@ class CameraRollViewController:UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(mainStory.accepted_image_ids)
         if segue.identifier == "SelectionDoneSegue"
         {
-            if let destinationVC = segue.destinationViewController as? PhotoSelectorViewController{
-                if let folder = sender as? PreStory {
-                    destinationVC.folderToDisplay = folder
+            if let destinationVC = segue.destinationViewController as? StoryViewerViewController{
+                if let story = sender as? Story {
+                    destinationVC.story = story
                 }
             }
         }
@@ -38,6 +64,7 @@ class CameraRollViewController:UIViewController {
     
      @IBAction func unwindToCameraRoll(segue: UIStoryboardSegue) {
         print(mainStory.accepted_image_ids)
+        numberSelected = mainStory.accepted_image_ids.count
     }
 
     

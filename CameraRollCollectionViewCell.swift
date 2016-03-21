@@ -11,6 +11,7 @@ import UIKit
 
 class CameraRollCollectionViewCell : UICollectionViewCell {
 
+    @IBOutlet weak var checkMark: UILabel!
 
     @IBOutlet weak var topImageView: UIImageView!
     
@@ -18,7 +19,11 @@ class CameraRollCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var bottomImageView: UIImageView!
     
-    
+    override var selected : Bool {
+        didSet {
+            self.checkMark.hidden = !selected
+        }
+    }
     
 
     
