@@ -495,7 +495,7 @@
                                     <action selector="editStoryPageCollection:" destination="Ouz-xA-JaJ" eventType="touchUpInside" id="yNP-aO-URB"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvL-kh-ddZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvL-kh-ddZ">
                                 <rect key="frame" x="0.0" y="500" width="160" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -529,6 +529,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="4pj-T5-xYP" id="Gmz-iA-UvD"/>
+                        <outlet property="shareButton" destination="IvL-kh-ddZ" id="ecf-be-YzH"/>
                         <outlet property="square" destination="FNH-xW-cU8" id="NnD-Gc-cwL"/>
                     </connections>
                 </viewController>

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
 extension UIView
 {
@@ -22,5 +23,13 @@ extension UIView
         
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.mainScreen().scale
+    }
+    
+    public func hideIfEmailUnavailable()
+    {
+        if !MFMailComposeViewController.canSendMail() {
+            print("Device cannot send emails, hiding \(self).")
+            self.hidden = true
+        }
     }
 }

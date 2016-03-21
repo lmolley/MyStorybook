@@ -102,7 +102,7 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
             
         if let thumbnail = imageThumbnails[pageIndex] {
             cell.EditImage.image = thumbnail;
-        } /*else {
+        } else {
             let asset = assets[pageIndex]
             PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: cell.EditImage.frame.size, contentMode: .AspectFit, options: nil, resultHandler: { (image, _) -> Void in
                 guard let image = image else { return }
@@ -111,7 +111,7 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
                     collectionView.reloadItemsAtIndexPaths([indexPath])
                 })
             })
-        }*/
+        }
             
         return cell
     }

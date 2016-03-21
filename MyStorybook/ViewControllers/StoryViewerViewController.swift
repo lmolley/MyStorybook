@@ -16,8 +16,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var shadowView: UIView!
     
-    @IBOutlet weak var shareButton: UIButton!
-    
     internal var story: Story?
     
     // This will be nil if the cover page is being shown.
@@ -60,11 +58,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         
         self.shadowView.layer.shouldRasterize = true
         self.shadowView.layer.rasterizationScale = UIScreen.mainScreen().scale
-        
-        if !MFMailComposeViewController.canSendMail() {
-            print("Device cannot send emails, hiding share button.")
-            //shareButton.hidden = true
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
