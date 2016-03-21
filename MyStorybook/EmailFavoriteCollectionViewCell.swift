@@ -13,4 +13,12 @@ class EmailFavoriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.imageView.layer.cornerRadius = (self.imageView.frame.size.width / 2)
+        
+        self.imageView.layer.masksToBounds = true
+    }
 }
