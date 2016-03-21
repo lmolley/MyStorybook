@@ -14,6 +14,8 @@ class StoryViewerCoverViewController: UIViewController {
     @IBOutlet weak var square: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var shareButton: UIButton!
+    
     internal var story: Story!
     
     override func viewDidLoad() {
@@ -22,5 +24,6 @@ class StoryViewerCoverViewController: UIViewController {
         self.imageView.image = coverPhotoImageOrDefault(story.icon)
         
         square.addAlbumBorder()
+        shareButton.hideIfEmailUnavailable()
     }
 }

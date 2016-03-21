@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -375,7 +375,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="##" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-V0-anr">
-                                                    <rect key="frame" x="268" y="10" width="33" height="32.5"/>
+                                                    <rect key="frame" x="268" y="10" width="33" height="33"/>
                                                     <color key="backgroundColor" red="1" green="0.96862745100000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="O8h-kw-zJn"/>
@@ -395,8 +395,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
-                                                    <rect key="frame" x="21" y="50.5" width="278" height="199.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
+                                                    <rect key="frame" x="21" y="51" width="278" height="200"/>
                                                     <color key="backgroundColor" red="1" green="0.96862745100000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -521,7 +521,7 @@
                                     <action selector="editStoryPageCollection:" destination="Ouz-xA-JaJ" eventType="touchUpInside" id="yNP-aO-URB"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvL-kh-ddZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvL-kh-ddZ">
                                 <rect key="frame" x="0.0" y="500" width="160" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -555,6 +555,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="4pj-T5-xYP" id="Gmz-iA-UvD"/>
+                        <outlet property="shareButton" destination="IvL-kh-ddZ" id="ecf-be-YzH"/>
                         <outlet property="square" destination="FNH-xW-cU8" id="NnD-Gc-cwL"/>
                     </connections>
                 </viewController>
