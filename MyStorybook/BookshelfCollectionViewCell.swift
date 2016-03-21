@@ -10,6 +10,7 @@ import UIKit
 
 class BookshelfCollectionViewCell: UICollectionViewCell {
     
+
     @IBOutlet weak var Cover: UIImageView!
     
     override func awakeFromNib() {

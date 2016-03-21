@@ -33,6 +33,7 @@
 		8948F4E91CA0AF3C00F0082E /* book_ff1a1a.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948F4E31CA0AF3C00F0082E /* book_ff1a1a.png */; };
 		8948F4EA1CA0AF3C00F0082E /* book_ff9900.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948F4E41CA0AF3C00F0082E /* book_ff9900.png */; };
 		8948F4EB1CA0AF3C00F0082E /* book_ffff00.png in Resources */ = {isa = PBXBuildFile; fileRef = 8948F4E51CA0AF3C00F0082E /* book_ffff00.png */; };
+		8948F4EF1CA0B8C600F0082E /* BookshelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948F4EE1CA0B8C600F0082E /* BookshelfViewController.swift */; };
 		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
 		895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */; };
 		895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */; };
@@ -129,6 +130,7 @@
 		8948F4E31CA0AF3C00F0082E /* book_ff1a1a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_ff1a1a.png; sourceTree = "<group>"; };
 		8948F4E41CA0AF3C00F0082E /* book_ff9900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_ff9900.png; sourceTree = "<group>"; };
 		8948F4E51CA0AF3C00F0082E /* book_ffff00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_ffff00.png; sourceTree = "<group>"; };
+		8948F4EE1CA0B8C600F0082E /* BookshelfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookshelfViewController.swift; sourceTree = "<group>"; };
 		894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewController.swift; sourceTree = "<group>"; };
 		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpHelpers.swift; path = MyStorybook/HttpHelpers.swift; sourceTree = "<group>"; };
 		895FE84D1C7BC8C0006ADB29 /* PreStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreStory.swift; path = ../PreStory.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */,
 				5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */,
 				5B14CC9E1C7A790600B8FA0B /* BookshelfCollectionViewController.swift */,
+				8948F4EE1CA0B8C600F0082E /* BookshelfViewController.swift */,
 				5B14CC9C1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift */,
 				B262EACC1C761C8A001008AD /* Assets.xcassets */,
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
@@ -546,6 +549,7 @@
 				895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */,
 				B272D6991C7D1C3600C12226 /* FMDatabasePool.m in Sources */,
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,
+				8948F4EF1CA0B8C600F0082E /* BookshelfViewController.swift in Sources */,
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */,
