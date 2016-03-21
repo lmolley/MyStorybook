@@ -43,9 +43,7 @@ class MyStorybookDatabase : Database {
                 }
                 
                 self.stories.append(newStory)
-                
             }
-            
         }
         
         contactDB.close()
@@ -79,17 +77,55 @@ class MyStorybookDatabase : Database {
                 {
                     newPage.photoId = pagePhotoId
                 }
+                if let pageFrameId = results?.stringForColumn("frameid")
+                {
+                    newPage.frameId = pageFrameId
+                }
+                if let pageFilterId = results?.stringForColumn("filterid")
+                {
+                    newPage.filterId = pageFilterId
+                }
                 newPage.storyId = storyId
+                
+                //Fetch emojis for page
+                let queryEmojiSQL = "SELECT * FROM EMOJIS WHERE pageid = ?;"
+                
+                let emojiResults:FMResultSet! = contactDB.executeQuery(queryEmojiSQL, withArgumentsInArray: [newPage.id])
+                
+                while emojiResults.next()
+                {
+                    let newEmoji = Emoji()
+                    if let id = emojiResults?.intForColumn("id")
+                    {
+                        newEmoji.id = Int(id)
+                    }
+                    if let emojiId = emojiResults?.intForColumn("emojiid")
+                    {
+                        newEmoji.id = Int(emojiId)
+                    }
+                    if let x = emojiResults?.intForColumn("xcoord")
+                    {
+                        newEmoji.x = Int(x)
+                    }
+                    if let y = emojiResults?.intForColumn("ycoord")
+                    {
+                        newEmoji.y = Int(y)
+                    }
+                    if let z = emojiResults?.intForColumn("zcoord")
+                    {
+                        newEmoji.z = Int(z)
+                    }
+                    
+                    newPage.emojis.append(newEmoji)
+                }
                 
                 pages.append(newPage)
             }
-            
         }
         
         contactDB.close()
         
         return pages
-        
     }
     
     func createStory(story: Story)
@@ -122,7 +158,7 @@ class MyStorybookDatabase : Database {
         
         if contactDB.open()
         {
-            let insertSQL = "INSERT INTO PAGES (photolibraryid, sequencenumber, bookid) VALUES ('\(page.photoId)', '\(page.number)', '\(page.storyId)')"
+            let insertSQL = "INSERT INTO PAGES (photolibraryid, sequencenumber, frameid, filterid, bookid) VALUES ('\(page.photoId)', '\(page.number)', '\(page.frameId)', '\(page.filterId)', '\(page.storyId)')"
             
             let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
             
@@ -131,9 +167,18 @@ class MyStorybookDatabase : Database {
                 //print("Did not successfully add page to database")
                 print("Error: \(contactDB.lastErrorMessage())")
             }
-            else
+            
+            //Add emojis to database
+            for emoji in page.emojis
             {
-                //print("Successfully added page to database")
+                let insertEmojiSQL = "INSERT INTO EMOJIS (emojiid, xcoord, ycoord, zcoord, pageid) VALUES ('\(emoji.emojiId)', '\(emoji.x)', '\(emoji.y)', '\(emoji.z)', '\(emoji.pageId)')"
+                
+                let result = contactDB.executeUpdate(insertEmojiSQL, withArgumentsInArray: nil)
+                
+                if !result
+                {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                }
             }
         }
         contactDB.close()
@@ -162,14 +207,25 @@ class MyStorybookDatabase : Database {
             
             if contactDB.open()
             {
+                //Storybooks table
                 let sql_stmt1 = "CREATE TABLE IF NOT EXISTS STORYBOOKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, ICON TEXT, TITLE TEXT)"
-                let sql_stmt2 = "CREATE TABLE IF NOT EXISTS PAGES (ID INTEGER PRIMARY KEY AUTOINCREMENT, PHOTOLIBRARYID TEXT, SEQUENCENUMBER INTEGER, BOOKID INTEGER, FOREIGN KEY(BOOKID) REFERENCES STORYBOOKS(ID))"
+                
+                //Pages table
+                let sql_stmt2 = "CREATE TABLE IF NOT EXISTS PAGES (ID INTEGER PRIMARY KEY AUTOINCREMENT, PHOTOLIBRARYID TEXT, SEQUENCENUMBER INTEGER, FRAMEID TEXT, FILTERID TEXT, BOOKID INTEGER, FOREIGN KEY(BOOKID) REFERENCES STORYBOOKS(ID))"
+                
+                //Emojis Table
+                let sql_stmt3 = "CREATE TABLE IF NOT EXISTS EMOJIS (ID INTEGER PRIMARY KEY AUTOINCREMENT, EMOJIID INTEGER, XCOORD INTEGER, YCOORD INTEGER, ZCOORD INTEGER, PAGEID INTEGER, FOREIGN KEY(PAGEID) REFERENCES PAGES(ID))"
+                
                 
                 if !contactDB.executeStatements(sql_stmt1)
                 {
                     print("Error: \(contactDB.lastErrorMessage())")
                 }
                 if !contactDB.executeStatements(sql_stmt2)
+                {
+                    print("Error: \(contactDB.lastErrorMessage())")
+                }
+                if !contactDB.executeStatements(sql_stmt3)
                 {
                     print("Error: \(contactDB.lastErrorMessage())")
                 }
