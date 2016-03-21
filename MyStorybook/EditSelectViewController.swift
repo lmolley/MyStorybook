@@ -12,7 +12,7 @@ import Photos
 private let edit_reuseIdentifier = "EditCell"
 
 class EditSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var selectedIndex = 0
+    var selectedIndex = -1
     
     @IBOutlet weak var editCollection: UICollectionView!
     
@@ -102,7 +102,7 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
             
         if let thumbnail = imageThumbnails[pageIndex] {
             cell.EditImage.image = thumbnail;
-        } else {
+        } /*else {
             let asset = assets[pageIndex]
             PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: cell.EditImage.frame.size, contentMode: .AspectFit, options: nil, resultHandler: { (image, _) -> Void in
                 guard let image = image else { return }
@@ -111,7 +111,7 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
                     collectionView.reloadItemsAtIndexPaths([indexPath])
                 })
             })
-        }
+        }*/
             
         return cell
     }
@@ -139,15 +139,45 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
         
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        selectedIndex = indexPath.item
+        self.selectedIndex = indexPath.item
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell?.layer.borderWidth = 1.0
+        cell?.layer.borderColor = UIColor.greenColor().CGColor
+    }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell?.layer.borderWidth = 0.0
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier ?? "")
         {
         case "editPhotoSegue":
-            let viewer = segue.destinationViewController as! EditViewController
-            viewer.page = story!.pages![self.selectedIndex]
+            if self.selectedIndex != -1 {
+                let viewer = segue.destinationViewController as! EditViewController
+                viewer.page = story!.pages![self.selectedIndex]
+                viewer.index = self.selectedIndex
+                if let imageExist = self.imageThumbnails[displayedPages[self.selectedIndex]] {
+                    viewer.image = imageExist
+                }
+                else {
+                    viewer.image = UIImage(named: "default.jpg")
+                }
+            }
+            else {
+                let attributedString = NSAttributedString(string: "X", attributes: [
+                    NSFontAttributeName : UIFont.systemFontOfSize(40),
+                    NSForegroundColorAttributeName : UIColor.redColor()
+                    ])
+                let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+                alert.setValue(attributedString, forKey: "attributedMessage")
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+                let delay = 1.0 * Double(NSEC_PER_SEC)
+                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                dispatch_after(time, dispatch_get_main_queue(), {alert.dismissViewControllerAnimated(true, completion: nil)})
+            }
         default:
             break
         }

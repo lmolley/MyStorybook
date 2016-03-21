@@ -13,6 +13,12 @@
 		5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */; };
 		5B14CCA71C7A997C00B8FA0B /* file-folder-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */; };
 		5B14CCAD1C7BDBDB00B8FA0B /* red-book-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */; };
+		5B29FBF51C9CA6B40042C64C /* EditEmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBF41C9CA6B40042C64C /* EditEmojiViewController.swift */; };
+		5B29FBF71C9CA6D60042C64C /* EditFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBF61C9CA6D60042C64C /* EditFrameViewController.swift */; };
+		5B29FBF91C9CA6E90042C64C /* EditFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBF81C9CA6E90042C64C /* EditFilterViewController.swift */; };
+		5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFA1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift */; };
+		5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFC1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift */; };
+		5B29FBFF1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFE1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift */; };
 		5B5B17DE1C96052700FF9106 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */; };
 		5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */; };
 		5B5B17E21C9610EC00FF9106 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5B17E11C9610EC00FF9106 /* Camera.png */; };
@@ -102,6 +108,12 @@
 		5B14CCA01C7A7B9900B8FA0B /* red-book-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-hi.png"; sourceTree = "<group>"; };
 		5B14CCA61C7A997C00B8FA0B /* file-folder-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-folder-md.png"; sourceTree = "<group>"; };
 		5B14CCAC1C7BDBDB00B8FA0B /* red-book-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-book-open.png"; sourceTree = "<group>"; };
+		5B29FBF41C9CA6B40042C64C /* EditEmojiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmojiViewController.swift; sourceTree = "<group>"; };
+		5B29FBF61C9CA6D60042C64C /* EditFrameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFrameViewController.swift; sourceTree = "<group>"; };
+		5B29FBF81C9CA6E90042C64C /* EditFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFilterViewController.swift; sourceTree = "<group>"; };
+		5B29FBFA1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B29FBFC1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFrameCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B29FBFE1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17E11C9610EC00FF9106 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
@@ -211,6 +223,12 @@
 				5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */,
 				5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */,
 				5BE6EBCD1C9A32DD00CBE7BC /* EditViewController.swift */,
+				5B29FBF41C9CA6B40042C64C /* EditEmojiViewController.swift */,
+				5B29FBF61C9CA6D60042C64C /* EditFrameViewController.swift */,
+				5B29FBFC1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift */,
+				5B29FBFE1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift */,
+				5B29FBFA1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift */,
+				5B29FBF81C9CA6E90042C64C /* EditFilterViewController.swift */,
 			);
 			name = StoryEdit;
 			sourceTree = "<group>";
@@ -522,10 +540,13 @@
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */,
+				5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
 				B2B337621C7CF87E00C663A4 /* CoverPhotos.swift in Sources */,
 				54F2D3061C7D1A2E008D4094 /* MyStorybookDatabase.swift in Sources */,
 				894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */,
+				5B29FBF71C9CA6D60042C64C /* EditFrameViewController.swift in Sources */,
+				5B29FBFF1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift in Sources */,
 				B272D6951C7D1C0800C12226 /* FMDatabase.m in Sources */,
 				B2522CF11C92685F0013E55C /* StoryViewerPhotoPageViewController.swift in Sources */,
 				B2522CEF1C9268190013E55C /* StoryViewerCoverViewController.swift in Sources */,
@@ -545,12 +566,15 @@
 				B2B3375B1C7CEE6800C663A4 /* CoverSelectorViewController.swift in Sources */,
 				89872CA71C8E901B0099A89A /* FinishedViewController.swift in Sources */,
 				89606B561C98629B009743D3 /* PhotoCell.swift in Sources */,
+				5B29FBF91C9CA6E90042C64C /* EditFilterViewController.swift in Sources */,
 				B262EAC61C761C8A001008AD /* AppDelegate.swift in Sources */,
 				89606B521C985BC1009743D3 /* CameraRollViewController.swift in Sources */,
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */,
 				890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */,
+				5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */,
+				5B29FBF51C9CA6B40042C64C /* EditEmojiViewController.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,
 				89C8FCCF1C99FB4B00534CF6 /* NewPhotoSelectContainerViewController.swift in Sources */,
 			);
