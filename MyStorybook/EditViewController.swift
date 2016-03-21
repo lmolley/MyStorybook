@@ -13,8 +13,9 @@ class EditViewController: UIViewController {
     var index: Int?
     var page: Page?
     var image: UIImage?
+    var origImage: UIImage?
     var text: String?
-    var check: Bool? = false
+    var check: [String?] = []
     
     @IBOutlet weak var EmojiButton: UIButton!
     @IBOutlet weak var FrameButton: UIButton!
@@ -24,11 +25,6 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.EditPhotoImage.image = self.image
-        
-        if check == true {
-            createNewEmoji()
-            check = false
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +39,23 @@ class EditViewController: UIViewController {
     
     @IBAction func goPrevPage() {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func Undo() {
+        if check.first != nil {
+            switch(check.last! ?? "") {
+            case "emoji":
+                self.view.subviews.last?.removeFromSuperview()
+            case "frame":
+                self.image = self.origImage
+            case "filter":
+                self.image = self.origImage
+            default:
+                break
+            }
+            check.popLast()
+            viewDidLoad()
+        }
     }
     
     func createNewEmoji() {
@@ -115,10 +128,10 @@ class EditViewController: UIViewController {
         {
         case "editFrameSegue":
             let viewer = segue.destinationViewController as! EditFrameViewController
-            viewer.image = self.image
+            viewer.image = self.origImage
         case "editFilterSegue":
             let viewer = segue.destinationViewController as! EditFilterViewController
-            viewer.image = self.image
+            viewer.image = self.origImage
         default:
             break
         }
@@ -129,13 +142,16 @@ class EditViewController: UIViewController {
         case "unwindEmoji":
             let viewer = sender.sourceViewController as! EditEmojiViewController
             self.text = viewer.text
-            check = true
+            check.append("emoji")
+            createNewEmoji()
         case "unwindFrame":
             let viewer = sender.sourceViewController as! EditFrameViewController
             self.image = viewer.image
+            check.append("frame")
         case "unwindFilter":
             let viewer = sender.sourceViewController as! EditFilterViewController
             self.image = viewer.image
+            check.append("filter")
         default:
             break
         }

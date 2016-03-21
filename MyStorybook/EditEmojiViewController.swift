@@ -11,7 +11,6 @@ import UIKit
 private let emoji_reuseIdentifier = "EditEmojiCell"
 
 class EditEmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var image: UIImage?
     var text: String?
     
     var emojiList = ["😀","😍","😎","😕","😛","😡"]
@@ -62,13 +61,6 @@ class EditEmojiViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         self.text = self.emojiList[indexPath.item]
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 1.0
-        cell?.layer.borderColor = UIColor.greenColor().CGColor
-    }
-    
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 0.0
+        performSegueWithIdentifier("unwindEmoji", sender: self)
     }
 }
