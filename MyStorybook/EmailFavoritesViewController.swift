@@ -8,15 +8,39 @@
 
 import UIKit
 import ContactsUI
+import Contacts
 
 class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CNContactPickerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!;
     
+    var ids: [String]!
+    var contacts: [CNContact]! = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        load()
+    }
+    
+    private func load()
+    {
+        ids = EmailFavorites.getContactIdentifiers() ?? []
+        contacts = []
+        
+        if ids.count == 0 {
+            collectionView.reloadData()
+            return
+        }
+        
+        let store = CNContactStore()
+        let request = CNContactFetchRequest(keysToFetch: [CNContactEmailAddressesKey, CNContactGivenNameKey, CNContactFamilyNameKey, CNContactImageDataKey])
+        
+        let predicate = CNContact.predicateForContactsWithIdentifiers(ids)
+        
+        contacts = (try? store.unifiedContactsMatchingPredicate(predicate, keysToFetch: request.keysToFetch)) ?? []
+        
+        collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,15 +67,35 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
     }
     
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+        print(contact)
+        
+        var list = EmailFavorites.getContactIdentifiers() ?? []
+        list.append(contact.identifier)
+        EmailFavorites.setContactIdentifiers(list)
+        
+        load()
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EmailFavoriteCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EmailFavoriteCell", forIndexPath: indexPath) as! EmailFavoriteCollectionViewCell
+        
+        let contact = contacts[indexPath.item]
+        
+        
+        cell.nameLabel.text = "\(contact.givenName) \(contact.familyName)"
+        cell.emailLabel.text = contact.emailAddresses[0].value as? String
+        
+        if let imageData = contact.imageData {
+            cell.imageView.image = UIImage(data: imageData)
+        } else {
+            cell.imageView.image = nil
+        }
+        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 17
+        return contacts.count
     }
     
     func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -60,5 +104,22 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.dismiss()
+    }
+}
+
+class EmailFavorites
+{
+    private static let userDefaultsKey = "FavoriteEmailContacts"
+    
+    static func getContactIdentifiers() -> [String]? {
+        return NSUserDefaults.standardUserDefaults().valueForKey(userDefaultsKey) as? [String]
+    }
+    
+    static func setContactIdentifiers(ids: [String]) {
+        NSUserDefaults.standardUserDefaults().setValue(ids, forKey: userDefaultsKey)
     }
 }
