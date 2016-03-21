@@ -16,7 +16,7 @@ class PhotoCell:UICollectionViewCell {
     override var selected : Bool {
         didSet {
             self.layer.borderColor = selected ? UIColor.greenColor().CGColor : UIColor.whiteColor().CGColor
-            self.layer.borderWidth = selected ? 4 : 0
+            self.layer.borderWidth = selected ? 6 : 0
         }
     }
 }

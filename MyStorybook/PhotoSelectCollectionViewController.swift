@@ -10,8 +10,8 @@ import UIKit
 import Photos
 
 let photoReuseIdentifier = "photo"
-class NewPhotoSelectViewController:UICollectionViewController {
-    var parent: NewPhotoSelectContainerViewController?
+class PhotoSelectCollectionViewController:UICollectionViewController {
+    var parent: PhotoSelectViewController?
     var result: PHFetchResult?
     var image_ids: [String]?
     var images: [UIImage?]?

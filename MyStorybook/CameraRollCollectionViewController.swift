@@ -141,7 +141,7 @@ class CameraRollCollectionViewController : UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PhotoSelectorSegue"
         {
-            if let destinationVC = segue.destinationViewController as? NewPhotoSelectContainerViewController{
+            if let destinationVC = segue.destinationViewController as? PhotoSelectViewController{
                 if let folder = sender as? PreStory {
                     destinationVC.momentToDisplay = folder.moment
                 }

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 import Photos
-class NewPhotoSelectContainerViewController:UIViewController {
-    var embeddedViewController:NewPhotoSelectViewController!
+class PhotoSelectViewController:UIViewController {
+    var embeddedViewController:PhotoSelectCollectionViewController!
     var momentToDisplay:PHAssetCollection!
 
     @IBAction func clearSelection() {
@@ -23,7 +23,7 @@ class NewPhotoSelectContainerViewController:UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? NewPhotoSelectViewController
+        if let vc = segue.destinationViewController as? PhotoSelectCollectionViewController
             where segue.identifier == "EmbedSegue" {
                 embeddedViewController = vc
                 embeddedViewController.parent = self

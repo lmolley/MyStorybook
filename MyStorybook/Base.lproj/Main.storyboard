@@ -246,7 +246,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL6-NR-hM6">
                                 <rect key="frame" x="455" y="72" width="125" height="66"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <state key="normal" title="✔︎">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -261,25 +261,35 @@
                                     <segue destination="T7A-0L-uoR" kind="embed" identifier="EmbedSegue" id="hie-gC-V8X"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMU-np-J8J">
+                                <rect key="frame" x="417" y="72" width="30" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sec-9G-vfb" firstAttribute="top" secondItem="vL6-NR-hM6" secondAttribute="bottom" constant="8" id="1zP-bA-ReQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vL6-NR-hM6" secondAttribute="trailing" id="DTE-JG-duM"/>
                             <constraint firstItem="3Zw-EN-0VR" firstAttribute="width" secondItem="vL6-NR-hM6" secondAttribute="width" id="GMY-z4-LVb"/>
+                            <constraint firstItem="IMU-np-J8J" firstAttribute="top" secondItem="Lgz-Q9-bZ6" secondAttribute="bottom" constant="8" id="NIc-wU-iEf"/>
                             <constraint firstItem="sec-9G-vfb" firstAttribute="centerX" secondItem="Jdx-x0-kMt" secondAttribute="centerX" id="WfF-ED-ToA"/>
                             <constraint firstItem="3Zw-EN-0VR" firstAttribute="top" secondItem="Lgz-Q9-bZ6" secondAttribute="bottom" constant="8" id="XIN-C2-pUg"/>
+                            <constraint firstItem="vL6-NR-hM6" firstAttribute="leading" secondItem="IMU-np-J8J" secondAttribute="trailing" constant="8" id="YOb-b2-hNq"/>
                             <constraint firstItem="vL6-NR-hM6" firstAttribute="leading" secondItem="3Zw-EN-0VR" secondAttribute="trailing" constant="310" id="acq-Io-7UN"/>
                             <constraint firstItem="sec-9G-vfb" firstAttribute="top" secondItem="3Zw-EN-0VR" secondAttribute="bottom" constant="8" id="cMV-xC-0pu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="sec-9G-vfb" secondAttribute="leading" id="d9t-6G-nPn"/>
                             <constraint firstItem="3Zw-EN-0VR" firstAttribute="height" secondItem="vL6-NR-hM6" secondAttribute="height" id="jiV-Kf-0nx"/>
                             <constraint firstItem="vL6-NR-hM6" firstAttribute="top" secondItem="Lgz-Q9-bZ6" secondAttribute="bottom" constant="8" id="ljn-k2-6hv"/>
+                            <constraint firstItem="IMU-np-J8J" firstAttribute="height" secondItem="vL6-NR-hM6" secondAttribute="height" id="mqh-GD-Dbb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sec-9G-vfb" secondAttribute="trailing" id="qP9-Yt-mbr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="3Zw-EN-0VR" secondAttribute="leading" id="s4T-HQ-LYa"/>
                             <constraint firstItem="oOI-iz-5ir" firstAttribute="top" secondItem="sec-9G-vfb" secondAttribute="bottom" constant="8" id="uZe-ld-yov"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="numberSelectedLabel" destination="IMU-np-J8J" id="53y-5p-0Up"/>
                         <segue destination="xT1-xY-GeE" kind="show" identifier="SelectionDoneSegue" id="7xC-p4-5cp"/>
                     </connections>
                 </viewController>
@@ -401,10 +411,10 @@
             </objects>
             <point key="canvasLocation" x="2674" y="-425"/>
         </scene>
-        <!--New Photo Select Container View Controller-->
+        <!--Photo Select View Controller-->
         <scene sceneID="MYa-mv-YRM">
             <objects>
-                <viewController id="Cf6-NM-wZK" customClass="NewPhotoSelectContainerViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cf6-NM-wZK" customClass="PhotoSelectViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LaK-aD-ghT"/>
                         <viewControllerLayoutGuide type="bottom" id="dks-gl-iWZ"/>
@@ -462,10 +472,10 @@
             </objects>
             <point key="canvasLocation" x="3323" y="-417"/>
         </scene>
-        <!--New Photo Select View Controller-->
+        <!--Photo Select Collection View Controller-->
         <scene sceneID="Rep-7e-HwR">
             <objects>
-                <collectionViewController id="Gy3-zr-Qjw" customClass="NewPhotoSelectViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Gy3-zr-Qjw" customClass="PhotoSelectCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Guc-D8-VJI">
                         <rect key="frame" x="0.0" y="0.0" width="520" height="306"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

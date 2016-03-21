@@ -11,9 +11,22 @@ import UIKit
 class CameraRollViewController:UIViewController {
     var mainStory = PreStory(title_in: "Tommy's Storybook", date_in: NSDate())
     
+    @IBOutlet weak var numberSelectedLabel: UILabel!
+    var numberSelected:Int = 0 {
+        didSet {
+            if numberSelected == 0 {
+                numberSelectedLabel.text = ""
+            }
+            else {
+                numberSelectedLabel.text = String(numberSelected)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
+        numberSelected = self.mainStory.accepted_image_ids.count
     }
     
     @IBAction func finished() {
@@ -51,6 +64,7 @@ class CameraRollViewController:UIViewController {
     
      @IBAction func unwindToCameraRoll(segue: UIStoryboardSegue) {
         print(mainStory.accepted_image_ids)
+        numberSelected = mainStory.accepted_image_ids.count
     }
 
     
