@@ -503,6 +503,9 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="mail"/>
+                                <connections>
+                                    <segue destination="UZh-ro-JkX" kind="presentation" modalPresentationStyle="formSheet" id="nbH-Zj-hUO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0011086477909594272" blue="0.13219545958445467" alpha="1" colorSpace="calibratedRGB"/>
