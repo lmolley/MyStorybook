@@ -21,7 +21,9 @@ class StoryViewerCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imageView.image = coverPhotoImageOrDefault(story.icon)
+        requestImage(story.icon, size: CGSizeZero, synchronous: true) { (image) -> () in
+            self.imageView.image = image ?? coverPhotoImageOrDefault(self.story.icon)
+        }
         
         square.addAlbumBorder()
         shareButton.hideIfEmailUnavailable()
