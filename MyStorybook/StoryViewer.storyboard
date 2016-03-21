@@ -385,8 +385,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
-                                                    <rect key="frame" x="21" y="51" width="278" height="199"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
+                                                    <rect key="frame" x="21" y="51" width="278" height="200"/>
                                                     <color key="backgroundColor" red="1" green="0.96862745100000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -415,22 +415,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-lj-BZF">
-                                <rect key="frame" x="420" y="20" width="160" height="100"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="bDi-oF-7gj"/>
-                                    <constraint firstAttribute="width" constant="160" id="cIa-PA-UoX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <state key="normal" title="✔︎">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ehJ-qg-orR" kind="show" identifier="editPhotoSegue" id="C6i-GQ-IWx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znM-DG-EGh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSo-up-s9Y">
                                 <rect key="frame" x="20" y="20" width="160" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -447,14 +432,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="En8-Lr-udc" firstAttribute="trailing" secondItem="FoV-lj-BZF" secondAttribute="trailing" id="8t8-0H-zQa"/>
+                            <constraint firstItem="cSo-up-s9Y" firstAttribute="leading" secondItem="En8-Lr-udc" secondAttribute="leading" id="AB3-V8-SQa"/>
                             <constraint firstItem="En8-Lr-udc" firstAttribute="leading" secondItem="JgA-NF-zre" secondAttribute="leadingMargin" id="ONM-pu-aHx"/>
-                            <constraint firstItem="En8-Lr-udc" firstAttribute="top" secondItem="FoV-lj-BZF" secondAttribute="bottom" constant="8" symbolic="YES" id="b4o-GN-arK"/>
-                            <constraint firstItem="FoV-lj-BZF" firstAttribute="trailing" secondItem="JgA-NF-zre" secondAttribute="trailingMargin" id="coS-kh-iYg"/>
-                            <constraint firstItem="znM-DG-EGh" firstAttribute="top" secondItem="xrO-Bd-eqK" secondAttribute="bottom" id="he6-gE-UZy"/>
+                            <constraint firstItem="cSo-up-s9Y" firstAttribute="top" secondItem="xrO-Bd-eqK" secondAttribute="bottom" id="T6D-aP-yRe"/>
+                            <constraint firstItem="En8-Lr-udc" firstAttribute="top" secondItem="cSo-up-s9Y" secondAttribute="bottom" constant="8" symbolic="YES" id="T98-mZ-RzC"/>
                             <constraint firstAttribute="bottom" secondItem="En8-Lr-udc" secondAttribute="bottom" constant="20" symbolic="YES" id="q4t-fE-oro"/>
-                            <constraint firstItem="znM-DG-EGh" firstAttribute="leading" secondItem="JgA-NF-zre" secondAttribute="leadingMargin" id="uvc-jh-6NU"/>
-                            <constraint firstItem="FoV-lj-BZF" firstAttribute="top" secondItem="xrO-Bd-eqK" secondAttribute="bottom" id="yi7-JI-djU"/>
+                            <constraint firstItem="En8-Lr-udc" firstAttribute="trailing" secondItem="JgA-NF-zre" secondAttribute="trailingMargin" id="vvB-Hl-SNm"/>
                         </constraints>
                     </view>
                     <connections>
