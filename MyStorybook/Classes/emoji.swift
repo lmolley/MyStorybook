@@ -9,6 +9,7 @@
 import Foundation
 
 class Emoji {
+    var id:Int = 0
     var x:Int = -1
     var y:Int = -1
     var z:Int = -1
