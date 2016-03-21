@@ -121,7 +121,7 @@ func ImportMomentsToDatabase(db: Database)
             
             let story = Story()
             story.title = collection.localizedTitle ?? "Untitled!!!"
-            story.icon = randomCoverPhotoId()
+            story.icon = ""
             story.pages = []
             
             let assets = PHAsset.fetchAssetsInAssetCollection(collection, options: nil)
@@ -130,7 +130,12 @@ func ImportMomentsToDatabase(db: Database)
                 
                 let page = mp(index, asset.localIdentifier)
                 story.pages!.append(page)
+                
+                if story.icon == "" {
+                    story.icon = asset.localIdentifier
+                }
             })
+            
         
             db.createStoryWithPages(story)
         }
