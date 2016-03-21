@@ -12,7 +12,7 @@ import Photos
 private let edit_reuseIdentifier = "EditCell"
 
 class EditSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var selectedIndex = -1
+    var selectedIndex = 0
     
     @IBOutlet weak var editCollection: UICollectionView!
     
@@ -139,44 +139,23 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
         
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        self.selectedIndex = indexPath.item
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 1.0
-        cell?.layer.borderColor = UIColor.greenColor().CGColor
+        selectedIndex = indexPath.item
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 0.0
-    }
-        
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier ?? "")
         {
         case "editPhotoSegue":
-            if self.selectedIndex != -1 {
-                let viewer = segue.destinationViewController as! EditViewController
-                viewer.page = story!.pages![self.selectedIndex]
-                viewer.index = self.selectedIndex
-                if let imageExist = self.imageThumbnails[displayedPages[self.selectedIndex]] {
-                    viewer.image = imageExist
-                }
-                else {
-                    viewer.image = UIImage(named: "default.jpg")
-                }
+            let viewer = segue.destinationViewController as! EditViewController
+            viewer.page = story!.pages![selectedIndex]
+            viewer.index = selectedIndex
+            if let imageExist = self.imageThumbnails[displayedPages[selectedIndex]] {
+                viewer.image = imageExist
+                viewer.origImage = viewer.image
             }
             else {
-                let attributedString = NSAttributedString(string: "X", attributes: [
-                    NSFontAttributeName : UIFont.systemFontOfSize(40),
-                    NSForegroundColorAttributeName : UIColor.redColor()
-                    ])
-                let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
-                alert.setValue(attributedString, forKey: "attributedMessage")
-                
-                self.presentViewController(alert, animated: true, completion: nil)
-                let delay = 1.0 * Double(NSEC_PER_SEC)
-                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(time, dispatch_get_main_queue(), {alert.dismissViewControllerAnimated(true, completion: nil)})
+                viewer.image = UIImage(named:"default.jpg")
+                viewer.origImage = viewer.image
             }
         default:
             break

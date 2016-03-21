@@ -80,13 +80,6 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         self.image = images[indexPath.item]
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 1.0
-        cell?.layer.borderColor = UIColor.greenColor().CGColor
-    }
-    
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 0.0
+        performSegueWithIdentifier("unwindFilter", sender: self)
     }
 }
