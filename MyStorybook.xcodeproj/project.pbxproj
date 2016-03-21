@@ -64,6 +64,8 @@
 		B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */; };
 		B2E93F5F1C7A782B00A5C80E /* StoryViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E93F5E1C7A782B00A5C80E /* StoryViewerViewController.swift */; };
 		B2E93F611C7A785300A5C80E /* StoryViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */; };
+		B2FA517E1CA08BBC00EBA397 /* Sharing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2FA517D1CA08BBC00EBA397 /* Sharing.storyboard */; };
+		B2FA51801CA08C3700EBA397 /* EmailFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA517F1CA08C3700EBA397 /* EmailFavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,8 @@
 		B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumbMockDatabase.swift; sourceTree = "<group>"; };
 		B2E93F5E1C7A782B00A5C80E /* StoryViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryViewerViewController.swift; path = ViewControllers/StoryViewerViewController.swift; sourceTree = "<group>"; };
 		B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryViewer.storyboard; sourceTree = "<group>"; };
+		B2FA517D1CA08BBC00EBA397 /* Sharing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sharing.storyboard; sourceTree = "<group>"; };
+		B2FA517F1CA08C3700EBA397 /* EmailFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +301,7 @@
 				B262EACE1C761C8A001008AD /* LaunchScreen.storyboard */,
 				B262EAD11C761C8A001008AD /* Info.plist */,
 				B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */,
+				B2FA517D1CA08BBC00EBA397 /* Sharing.storyboard */,
 			);
 			path = MyStorybook;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				B2E93F5E1C7A782B00A5C80E /* StoryViewerViewController.swift */,
 				B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */,
 				B2522CF01C92685F0013E55C /* StoryViewerPhotoPageViewController.swift */,
+				B2FA517F1CA08C3700EBA397 /* EmailFavoritesViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				B262EACB1C761C8A001008AD /* Main.storyboard in Resources */,
 				5B14CCA11C7A7B9900B8FA0B /* red-book-hi.png in Resources */,
 				B2E93F611C7A785300A5C80E /* StoryViewer.storyboard in Resources */,
+				B2FA517E1CA08BBC00EBA397 /* Sharing.storyboard in Resources */,
 				8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */,
 				89606B4E1C970688009743D3 /* Icons.xcassets in Resources */,
 			);
@@ -549,6 +556,7 @@
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */,
+				B2FA51801CA08C3700EBA397 /* EmailFavoritesViewController.swift in Sources */,
 				5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */,
 				5B29FBF51C9CA6B40042C64C /* EditEmojiViewController.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,

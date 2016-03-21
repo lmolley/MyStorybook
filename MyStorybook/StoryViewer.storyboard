@@ -530,9 +530,6 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="mail"/>
-                                <connections>
-                                    <action selector="share:" destination="Ouz-xA-JaJ" eventType="touchUpInside" id="adj-gZ-G7B"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0011086477909594272" blue="0.13219545958445467" alpha="1" colorSpace="calibratedRGB"/>
@@ -562,6 +559,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouz-xA-JaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1546" y="409"/>
+        </scene>
+        <!--Sharing-->
+        <scene sceneID="leZ-4e-iZS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sharing" id="UZh-ro-JkX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6V-DN-ajy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546.5" y="882"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="M5w-z9-hCi">
