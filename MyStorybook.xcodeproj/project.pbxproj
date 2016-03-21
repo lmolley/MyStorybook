@@ -27,6 +27,7 @@
 		5BF4D2B91C97774A008080A3 /* EditCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */; };
 		5BF4D2BB1C977FEA008080A3 /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */; };
 		8908690B1C7C056B0099C92E /* CameraControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908690A1C7C056B0099C92E /* CameraControlViewController.swift */; };
+		8948F4DF1CA0867700F0082E /* emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948F4DE1CA0867700F0082E /* emoji.swift */; };
 		894CC3121C7A7FC40004BD8B /* HttpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */; };
 		895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */; };
 		895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */; };
@@ -115,6 +116,7 @@
 		5BF4D2B81C97774A008080A3 /* EditCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCollectionViewController.swift; sourceTree = "<group>"; };
 		5BF4D2BA1C977FEA008080A3 /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
 		8908690A1C7C056B0099C92E /* CameraControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlViewController.swift; sourceTree = "<group>"; };
+		8948F4DE1CA0867700F0082E /* emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emoji.swift; sourceTree = "<group>"; };
 		894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewController.swift; sourceTree = "<group>"; };
 		894CC3111C7A7FC40004BD8B /* HttpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpHelpers.swift; path = MyStorybook/HttpHelpers.swift; sourceTree = "<group>"; };
 		895FE84D1C7BC8C0006ADB29 /* PreStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreStory.swift; path = ../PreStory.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				895FE84D1C7BC8C0006ADB29 /* PreStory.swift */,
 				B2BA3C571C761EEC00D7342D /* Page.swift */,
+				8948F4DE1CA0867700F0082E /* emoji.swift */,
 				B2BA3C591C761F3E00D7342D /* Story.swift */,
 				B2BA3C5B1C76215200D7342D /* App.swift */,
 				B2BA3C5D1C76219A00D7342D /* DumbMockDatabase.swift */,
@@ -511,12 +514,12 @@
 				B2522CF31C9268A40013E55C /* UIPageViewControllerExtensions.swift in Sources */,
 				89606B541C986197009743D3 /* PhotoSelectCollectionViewController.swift in Sources */,
 				895FE84B1C7B83CB006ADB29 /* CameraRollCollectionViewController.swift in Sources */,
+				8948F4DF1CA0867700F0082E /* emoji.swift in Sources */,
 				895FE84A1C7B83C8006ADB29 /* CameraRollCollectionViewCell.swift in Sources */,
 				B272D6991C7D1C3600C12226 /* FMDatabasePool.m in Sources */,
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
-				890869081C7BECC50099C92E /* PhotoSelectorViewController.swift in Sources */,
 				5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,
 				B2B337621C7CF87E00C663A4 /* CoverPhotos.swift in Sources */,
@@ -546,7 +549,6 @@
 				89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */,
 				B2BA3C5A1C761F3E00D7342D /* Story.swift in Sources */,
 				5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */,
-				890869161C7D19F50099C92E /* IconCollectionViewController.swift in Sources */,
 				5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */,
 				5B29FBF51C9CA6B40042C64C /* EditEmojiViewController.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,

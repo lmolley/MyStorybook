@@ -14,4 +14,7 @@ class Page
     var id: Int = 0
     var storyId: Int = 0
     var photoId: String = ""
+    var frameId: String = ""
+    var filterId: String = ""
+    var emojis = [Emoji]()
 }
