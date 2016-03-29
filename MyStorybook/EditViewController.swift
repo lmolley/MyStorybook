@@ -15,7 +15,8 @@ class EditViewController: UIViewController {
     var image: UIImage?
     var origImage: UIImage?
     var text: String?
-    var check: [String?] = []
+    var undo: [String?] = []
+    var undoImages: [UIImage?] = []
     
     @IBOutlet weak var EmojiButton: UIButton!
     @IBOutlet weak var FrameButton: UIButton!
@@ -42,18 +43,30 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func Undo() {
-        if check.first != nil {
-            switch(check.last! ?? "") {
+        if undo.first != nil {
+            switch(undo.last! ?? "") {
             case "emoji":
                 self.view.subviews.last?.removeFromSuperview()
             case "frame":
-                self.image = self.origImage
+                undoImages.popLast()
+                if undoImages.first != nil {
+                    self.image = undoImages.last!
+                }
+                else {
+                    self.image = self.origImage
+                }
             case "filter":
-                self.image = self.origImage
+                undoImages.popLast()
+                if undoImages.first != nil {
+                    self.image = undoImages.last!
+                }
+                else {
+                    self.image = self.origImage
+                }
             default:
                 break
             }
-            check.popLast()
+            undo.popLast()
             viewDidLoad()
         }
     }
@@ -142,16 +155,18 @@ class EditViewController: UIViewController {
         case "unwindEmoji":
             let viewer = sender.sourceViewController as! EditEmojiViewController
             self.text = viewer.text
-            check.append("emoji")
+            undo.append("emoji")
             createNewEmoji()
         case "unwindFrame":
             let viewer = sender.sourceViewController as! EditFrameViewController
             self.image = viewer.image
-            check.append("frame")
+            undo.append("frame")
+            undoImages.append(self.image)
         case "unwindFilter":
             let viewer = sender.sourceViewController as! EditFilterViewController
             self.image = viewer.image
-            check.append("filter")
+            undo.append("filter")
+            undoImages.append(self.image)
         default:
             break
         }
