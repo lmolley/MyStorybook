@@ -24,6 +24,14 @@ protocol Database
     /// Adds the given Page to the database and updates the 'id' property of the Page object.
     /// - parameter page: The Page object to add to the database.
     func createPage(page: Page)
+    
+    /// Deletes a story from the database.
+    /// - parameter sId: The ID of the story to delete.
+    func removeStory(sId: Int)
+    
+    /// Deletes a page from the database.
+    /// - parameter pId: The ID of the page to delete.
+    func removePage(pId: Int)
 }
 
 extension Database

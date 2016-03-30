@@ -49,6 +49,18 @@ class DumbMockDatabase : Database
         page.id = self.pageId
         self.pageId += 1
     }
+
+    func removeStory(sId: Int)
+    {
+        stories = stories.filter { $0.id != sId }
+    }
+
+    func removePage(pId: Int)
+    {
+        for (sid, pageList) in pages {
+            pages[sid] = pageList.filter { $0.id != pId }
+        }
+    }
 }
 
 func SampleDumbMockDatabase() -> Database
