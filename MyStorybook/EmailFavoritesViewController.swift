@@ -12,7 +12,8 @@ import Contacts
 
 class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CNContactPickerDelegate {
 
-    @IBOutlet weak var collectionView: UICollectionView!;
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noFavoritesView: UIView!
     
     var ids: [String]!
     var contacts: [CNContact]! = []
@@ -38,6 +39,16 @@ class EmailFavoritesViewController: UIViewController, UICollectionViewDataSource
     
     private func load()
     {
+        defer {
+            if contacts.count == 0 {
+                collectionView.backgroundView = noFavoritesView
+                view.backgroundColor = noFavoritesView.backgroundColor
+            } else {
+                collectionView.backgroundView = nil
+                view.backgroundColor = collectionView.backgroundColor
+            }
+        }
+        
         ids = EmailFavorites.getContactIdentifiers() ?? []
         contacts = []
         

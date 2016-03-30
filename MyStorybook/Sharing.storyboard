@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZUc-Y3-9GL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZUc-Y3-9GL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -118,9 +118,35 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3yA-g1-wUw" id="BOC-bG-xeM"/>
+                        <outlet property="noFavoritesView" destination="Drs-Hf-HaC" id="Ftl-0S-JNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtX-Ox-2bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Drs-Hf-HaC">
+                    <rect key="frame" x="0.0" y="0.0" width="376" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-6m-kem">
+                            <rect key="frame" x="92" y="19" width="193" height="42"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <color key="textColor" red="0.44608191287878785" green="0.44608191287878785" blue="0.44608191287878785" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Click &quot;Add Favorite&quot; to add favorite contacts." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fe-CQ-ywQ">
+                            <rect key="frame" x="17" y="68" width="341" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93132496843434343" green="0.93132496843434343" blue="0.93132496843434343" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="7Fe-CQ-ywQ" firstAttribute="top" secondItem="Xwc-6m-kem" secondAttribute="bottom" constant="7" id="5VG-vI-uJd"/>
+                        <constraint firstItem="7Fe-CQ-ywQ" firstAttribute="centerX" secondItem="Xwc-6m-kem" secondAttribute="centerX" id="8RR-GI-AU0"/>
+                        <constraint firstItem="Xwc-6m-kem" firstAttribute="centerY" secondItem="Drs-Hf-HaC" secondAttribute="centerY" constant="-20" id="apB-HH-wRC"/>
+                        <constraint firstItem="Xwc-6m-kem" firstAttribute="centerX" secondItem="Drs-Hf-HaC" secondAttribute="centerX" id="bBc-Tm-GA2"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1181" y="441"/>
         </scene>
