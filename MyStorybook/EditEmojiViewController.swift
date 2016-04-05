@@ -13,7 +13,7 @@ private let emoji_reuseIdentifier = "EditEmojiCell"
 class EditEmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var text: String?
     
-    var emojiList = ["😀","😍","😎","😕","😛","😡"]
+    var emojiList = ["😀","😇","😈","😍","😎","😕","😚","😛","😡","😨","😮","😰","😱","😲","😴"]
     
     @IBOutlet weak var editEmojiCollection: UICollectionView!
     
@@ -44,7 +44,7 @@ class EditEmojiViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 15
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

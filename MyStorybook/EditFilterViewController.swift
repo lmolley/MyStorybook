@@ -43,7 +43,7 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 15
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -61,6 +61,15 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         case 3: filterName = "CIColorInvert"
         case 4: filterName = "CIColorPosterize"
         case 5: filterName = "CIPhotoEffectTransfer"
+        case 6: filterName = "CIColorMonochrome"
+        case 7: filterName = "CIColorMonochrome"
+        case 8: filterName = "CIColorMonochrome"
+        case 9: filterName = "CIColorMonochrome"
+        case 10: filterName = "CIColorMonochrome"
+        case 11: filterName = "CIColorMonochrome"
+        case 12: filterName = ""
+        case 13: filterName = ""
+        case 14: filterName = ""
         default: break
         }
         
@@ -68,6 +77,24 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         filter?.setValue(origImage, forKey: kCIInputImageKey)
         if (indexPath.item == 1 || indexPath.item == 2) {
             filter?.setValue(0.5, forKey: kCIInputIntensityKey)
+        }
+        if (indexPath.item == 6) {
+            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
+        }
+        if (indexPath.item == 7) {
+            filter?.setValue(UIColor.orangeColor().CIColor, forKey: kCIInputColorKey)
+        }
+        if (indexPath.item == 8) {
+            filter?.setValue(UIColor.yellowColor().CIColor, forKey: kCIInputColorKey)
+        }
+        if (indexPath.item == 9) {
+            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
+        }
+        if (indexPath.item == 10) {
+            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
+        }
+        if (indexPath.item == 1) {
+            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
         }
         let newImage = UIImage(CIImage: (filter?.outputImage)!)
         cell.filterImage.image = newImage

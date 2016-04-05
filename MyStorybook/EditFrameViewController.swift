@@ -43,7 +43,7 @@ class EditFrameViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 15
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -67,12 +67,21 @@ class EditFrameViewController: UIViewController, UICollectionViewDataSource, UIC
         CGContextStrokeRect(context, rect)
         
         switch (indexPath.item) {
-        case 0: UIColor.redColor().setStroke()
-        case 1: UIColor.orangeColor().setStroke()
-        case 2: UIColor.yellowColor().setStroke()
-        case 3: UIColor.greenColor().setStroke()
-        case 4: UIColor.blueColor().setStroke()
-        case 5: UIColor.purpleColor().setStroke()
+        case 0: UIColor.blackColor().setStroke()
+        case 1: UIColor.darkGrayColor().setStroke()
+        case 2: UIColor.lightGrayColor().setStroke()
+        case 3: UIColor.whiteColor().setStroke()
+        case 4: UIColor.grayColor().setStroke()
+        case 5: UIColor.redColor().setStroke()
+        case 6: UIColor.greenColor().setStroke()
+        case 7: UIColor.blueColor().setStroke()
+        case 8: UIColor.cyanColor().setStroke()
+        case 9: UIColor.yellowColor().setStroke()
+        case 10: UIColor.magentaColor().setStroke()
+        case 11: UIColor.orangeColor().setStroke()
+        case 12: UIColor.purpleColor().setStroke()
+        case 13: UIColor.brownColor().setStroke()
+        case 14: UIColor.clearColor().setStroke()
         default: break
         }
         
