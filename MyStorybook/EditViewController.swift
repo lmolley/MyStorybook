@@ -18,6 +18,12 @@ class EditViewController: UIViewController {
     var undo: [String?] = []
     var undoImages: [UIImage?] = []
     
+    @IBOutlet var labels: [UILabel]!
+    
+    var emojiList = ["😀","😇","😈","😍","😎","😕","😚","😛","😡","😨","😮","😰","😱","😲","😴"]
+    var frameId: String?
+    var filterId: String?
+    
     @IBOutlet weak var EmojiButton: UIButton!
     @IBOutlet weak var FrameButton: UIButton!
     @IBOutlet weak var FilterButton: UIButton!
@@ -47,26 +53,29 @@ class EditViewController: UIViewController {
             switch(undo.last! ?? "") {
             case "emoji":
                 self.view.subviews.last?.removeFromSuperview()
-            case "frame":
-                undoImages.popLast()
-                if undoImages.first != nil {
-                    self.image = undoImages.last!
-                }
-                else {
-                    self.image = self.origImage
-                }
-            case "filter":
-                undoImages.popLast()
-                if undoImages.first != nil {
-                    self.image = undoImages.last!
-                }
-                else {
-                    self.image = self.origImage
-                }
+                self.labels.removeLast()
+                undo.popLast()
             default:
-                break
+                undoImages.popLast()
+                undo.popLast()
+                if undoImages.first != nil {
+                    self.image = undoImages.last!
+                    if (undo.last! == "red" || undo.last! == "orange" || undo.last! == "yellow" ||
+                        undo.last! == "green" || undo.last! == "blue" || undo.last! == "purple") {
+                        self.frameId = undo.last!
+                        self.filterId = nil
+                    }
+                    else {
+                        self.filterId = undo.last!
+                        self.frameId = nil
+                    }
+                }
+                else {
+                    self.image = self.origImage
+                    self.frameId = nil
+                    self.filterId = nil
+                }
             }
-            undo.popLast()
             viewDidLoad()
         }
     }
@@ -83,6 +92,7 @@ class EditViewController: UIViewController {
         let pan = UIPanGestureRecognizer(target: self, action: "handlePan:")
         label.addGestureRecognizer(pan)
         
+        self.labels.append(label)
         self.view.addSubview(label)
         self.EditPhotoImage.bringSubviewToFront(label)
         text = ""
@@ -130,10 +140,35 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func doneEdit(sender: UIButton) {
-        finalImage()
-        // save photo?
-        //story!.pages![self.index!] = self.page!
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        //finalImage()
+        if self.labels.count > 1 {
+            for (var i = 1; i < labels.count; i++) {
+                let em: Emoji = Emoji.init()
+                em.x = Int(labels[i].frame.origin.x)
+                em.y = Int(labels[i].frame.origin.y)
+                em.z = 0
+                em.emojiId = emojiList.indexOf(labels[i].text!)!
+                em.pageId = (self.page?.id)!
+                self.page?.emojis.append(em)
+            }
+        }
+        else {
+            self.page?.emojis = []
+        }
+        if self.frameId != nil {
+            self.page?.frameId = self.frameId!
+        }
+        else {
+            self.page?.frameId = ""
+        }
+        if self.filterId != nil {
+            self.page?.filterId = self.filterId!
+        }
+        else {
+            self.page?.filterId = ""
+        }
+        let count = (self.navigationController?.viewControllers.count)! - 3
+        self.navigationController?.popToViewController((self.navigationController?.viewControllers[count])!, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -160,12 +195,16 @@ class EditViewController: UIViewController {
         case "unwindFrame":
             let viewer = sender.sourceViewController as! EditFrameViewController
             self.image = viewer.image
-            undo.append("frame")
+            self.frameId = viewer.frameId
+            self.filterId = nil
+            undo.append(viewer.frameId)
             undoImages.append(self.image)
         case "unwindFilter":
             let viewer = sender.sourceViewController as! EditFilterViewController
             self.image = viewer.image
-            undo.append("filter")
+            self.filterId = viewer.filterId
+            self.frameId = nil
+            undo.append(viewer.filterId)
             undoImages.append(self.image)
         default:
             break

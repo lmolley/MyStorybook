@@ -13,6 +13,7 @@ private let filter_reuseIdentifier = "EditFilterCell"
 class EditFilterViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var image: UIImage?
     var images: [UIImage?] = []
+    var filterId: String?
     
     @IBOutlet weak var editFilterCollection: UICollectionView!
     
@@ -43,7 +44,7 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 6
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -61,15 +62,6 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         case 3: filterName = "CIColorInvert"
         case 4: filterName = "CIColorPosterize"
         case 5: filterName = "CIPhotoEffectTransfer"
-        case 6: filterName = "CIColorMonochrome"
-        case 7: filterName = "CIColorMonochrome"
-        case 8: filterName = "CIColorMonochrome"
-        case 9: filterName = "CIColorMonochrome"
-        case 10: filterName = "CIColorMonochrome"
-        case 11: filterName = "CIColorMonochrome"
-        case 12: filterName = ""
-        case 13: filterName = ""
-        case 14: filterName = ""
         default: break
         }
         
@@ -77,24 +69,6 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         filter?.setValue(origImage, forKey: kCIInputImageKey)
         if (indexPath.item == 1 || indexPath.item == 2) {
             filter?.setValue(0.5, forKey: kCIInputIntensityKey)
-        }
-        if (indexPath.item == 6) {
-            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
-        }
-        if (indexPath.item == 7) {
-            filter?.setValue(UIColor.orangeColor().CIColor, forKey: kCIInputColorKey)
-        }
-        if (indexPath.item == 8) {
-            filter?.setValue(UIColor.yellowColor().CIColor, forKey: kCIInputColorKey)
-        }
-        if (indexPath.item == 9) {
-            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
-        }
-        if (indexPath.item == 10) {
-            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
-        }
-        if (indexPath.item == 1) {
-            filter?.setValue(UIColor.redColor().CIColor, forKey: kCIInputColorKey)
         }
         let newImage = UIImage(CIImage: (filter?.outputImage)!)
         cell.filterImage.image = newImage
@@ -107,6 +81,15 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         self.image = images[indexPath.item]
+        switch(indexPath.item) {
+        case 0: self.filterId = "CIPhotoEffectNoir"
+        case 1: self.filterId = "CISepiaTone"
+        case 2: self.filterId = "CIVignette"
+        case 3: self.filterId = "CIColorInvert"
+        case 4: self.filterId = "CIColorPosterize"
+        case 5: self.filterId = "CIPhotoEffectTransfer"
+        default: break
+        }
         performSegueWithIdentifier("unwindFilter", sender: self)
     }
 }
