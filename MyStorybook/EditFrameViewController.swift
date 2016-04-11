@@ -13,6 +13,7 @@ private let frame_reuseIdentifier = "EditFrameCell"
 class EditFrameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var image: UIImage?
     var images: [UIImage?] = []
+    var frameId: String?
     
     @IBOutlet weak var editFrameCollection: UICollectionView!
     
@@ -20,16 +21,6 @@ class EditFrameViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewDidLoad()
         editFrameCollection.dataSource = self
         editFrameCollection.delegate = self
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func goPrevPage() {
@@ -92,6 +83,15 @@ class EditFrameViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         self.image = images[indexPath.item]
+        switch (indexPath.item) {
+        case 0: self.frameId = "red"
+        case 1: self.frameId = "orange"
+        case 2: self.frameId = "yellow"
+        case 3: self.frameId = "green"
+        case 4: self.frameId = "blue"
+        case 5: self.frameId = "purple"
+        default: break
+        }
         performSegueWithIdentifier("unwindFrame", sender: self)
     }
 }

@@ -13,6 +13,7 @@ private let filter_reuseIdentifier = "EditFilterCell"
 class EditFilterViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var image: UIImage?
     var images: [UIImage?] = []
+    var filterId: String?
     
     @IBOutlet weak var editFilterCollection: UICollectionView!
     
@@ -20,16 +21,6 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         editFilterCollection.dataSource = self
         editFilterCollection.delegate = self
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func goPrevPage() {
@@ -80,6 +71,15 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         self.image = images[indexPath.item]
+        switch(indexPath.item) {
+        case 0: self.filterId = "CIPhotoEffectNoir"
+        case 1: self.filterId = "CISepiaTone"
+        case 2: self.filterId = "CIVignette"
+        case 3: self.filterId = "CIColorInvert"
+        case 4: self.filterId = "CIColorPosterize"
+        case 5: self.filterId = "CIPhotoEffectTransfer"
+        default: break
+        }
         performSegueWithIdentifier("unwindFilter", sender: self)
     }
 }

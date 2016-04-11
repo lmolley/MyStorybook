@@ -46,6 +46,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Disable tapping gestures to navigate pages
+        for tapper in pager.gestureRecognizers where tapper is UITapGestureRecognizer {
+            print("Disabling UIPageViewController's gesture \(tapper)")
+            tapper.enabled = false
+        }
+        
         // Setting the currentPage updates the next and previous buttons.
         currentPage = (currentPage)
         
@@ -58,20 +64,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.shouldRasterize = true
         self.shadowView.layer.rasterizationScale = UIScreen.mainScreen().scale
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Now the bar is hidden on the bookshelf.
-        //        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-
     
     @IBAction internal func editStoryPageCollection(sender: AnyObject) {
         self.performSegueWithIdentifier("editSelectSegue", sender: sender)

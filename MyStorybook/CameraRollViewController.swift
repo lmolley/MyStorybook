@@ -11,14 +11,18 @@ import UIKit
 class CameraRollViewController:UIViewController {
     var mainStory = PreStory(title_in: "Tommy's Storybook", date_in: NSDate())
     
+    @IBOutlet weak var acceptButton: UIControl!
+    
     @IBOutlet weak var numberSelectedLabel: UILabel!
     var numberSelected:Int = 0 {
         didSet {
             if numberSelected == 0 {
                 numberSelectedLabel.text = ""
+                acceptButton.hidden = true
             }
             else {
                 numberSelectedLabel.text = String(numberSelected)
+                acceptButton.hidden = false
             }
         }
     }

@@ -21,10 +21,16 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
         super.viewDidLoad()
         self.collectionView!.allowsMultipleSelection = true
         
-        let moment = parent!.momentToDisplay
+        let moment = parent!.preStory.moment
         result = PHAsset.fetchAssetsInAssetCollection(moment, options: nil)
         image_ids = [String](count: result!.count, repeatedValue: "")
         images = [UIImage?](count: result!.count, repeatedValue: nil)
+        
+        // Ideally, you would use this value to take full advantage of the retina screen, but doing that makes
+        // the app crash (one particular time David was testing with an album of around 40 photos). Better safe than sorry,
+        // for the sake of shipping something that *probably* won't crash when being shown off.
+        let scale = 1 // UIScreen.mainScreen().scale
+        let targetSize = CGSize(width: scale * 290, height: scale * 246) // "Temporarily" hardcoded to the size the image views end up.
         
         //load images in the background
         let priority = QOS_CLASS_USER_INTERACTIVE

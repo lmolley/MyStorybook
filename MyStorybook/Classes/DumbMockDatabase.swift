@@ -49,6 +49,18 @@ class DumbMockDatabase : Database
         page.id = self.pageId
         self.pageId += 1
     }
+
+    func removeStory(sId: Int)
+    {
+        stories = stories.filter { $0.id != sId }
+    }
+
+    func removePage(pId: Int)
+    {
+        for (sid, pageList) in pages {
+            pages[sid] = pageList.filter { $0.id != pId }
+        }
+    }
 }
 
 func SampleDumbMockDatabase() -> Database
@@ -114,7 +126,7 @@ func ImportMomentsToDatabase(db: Database)
     
     let collectionFetchOptions = PHFetchOptions()
     collectionFetchOptions.sortDescriptors = [NSSortDescriptor(key:"startDate", ascending: false)]
-    collectionFetchOptions.fetchLimit = 4
+    collectionFetchOptions.fetchLimit = 15
     let smartAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: collectionFetchOptions)
     smartAlbums.enumerateObjectsUsingBlock({
         if let collection = $0.0 as? PHAssetCollection {

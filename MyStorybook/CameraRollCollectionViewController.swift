@@ -143,7 +143,7 @@ class CameraRollCollectionViewController : UICollectionViewController {
         {
             if let destinationVC = segue.destinationViewController as? PhotoSelectViewController{
                 if let folder = sender as? PreStory {
-                    destinationVC.momentToDisplay = folder.moment
+                    destinationVC.preStory = folder
                 }
             }
         }

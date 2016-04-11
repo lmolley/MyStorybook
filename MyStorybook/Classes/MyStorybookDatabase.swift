@@ -168,20 +168,53 @@ class MyStorybookDatabase : Database {
                 print("Error: \(contactDB.lastErrorMessage())")
             }
             
+            
+        }
+        contactDB.close()
+        
+    }
+    
+    func updatePage(page: Page)
+    {
+        let  contactDB = FMDatabase(path: databasePath as String)
+        
+        if contactDB.open()
+        {
+            //Delete emojis from page
+            let deleteEmojiSQL = "DELETE FROM EMOJIS WHERE pageid = \(page.id)"
+            
+            let result = contactDB.executeUpdate(deleteEmojiSQL, withArgumentsInArray: nil)
+            
+            if !result
+            {
+                print("Error: \(contactDB.lastErrorMessage())")
+            }
+            
+            //Update filters and frames
+            let updateSQL = "UPDATE PAGES SET frameid = \(page.frameId), filterid = \(page.filterId) WHERE id = \(page.id)"
+            
+            let result1 = contactDB.executeUpdate(updateSQL, withArgumentsInArray: nil)
+            
+            if !result1
+            {
+                print("Error: \(contactDB.lastErrorMessage())")
+            }
+            
+            
             //Add emojis to database
             for emoji in page.emojis
             {
                 let insertEmojiSQL = "INSERT INTO EMOJIS (emojiid, xcoord, ycoord, zcoord, pageid) VALUES ('\(emoji.emojiId)', '\(emoji.x)', '\(emoji.y)', '\(emoji.z)', '\(emoji.pageId)')"
                 
-                let result = contactDB.executeUpdate(insertEmojiSQL, withArgumentsInArray: nil)
+                let result2 = contactDB.executeUpdate(insertEmojiSQL, withArgumentsInArray: nil)
                 
-                if !result
+                if !result2
                 {
                     print("Error: \(contactDB.lastErrorMessage())")
                 }
             }
         }
-        contactDB.close()
+        
         
     }
     
