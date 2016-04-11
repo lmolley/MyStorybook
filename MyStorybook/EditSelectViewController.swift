@@ -12,7 +12,6 @@ import Photos
 private let edit_reuseIdentifier = "EditCell"
 
 class EditSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var selectedIndex = 0
     
     @IBOutlet weak var editCollection: UICollectionView!
     
@@ -63,13 +62,16 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
         let assetOptions = PHFetchOptions()
             
         let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers(ids, options: assetOptions)
-            
-        assets = []
-            
+        
+        // The result from fetchAssetsWithLocalIdentifiers doesn't put the assets in the same order as you request them, so build a lookup dictionary for them.
+        var lookup = [String:PHAsset]()
+        
         for i in 0 ..< fetchResult.count {
             let asset = fetchResult.objectAtIndex(i) as! PHAsset
-            assets.append(asset)
+            lookup[asset.localIdentifier] = asset
         }
+        
+        assets = ids.map { lookup[$0]! }
     }
         
     func loadStoryThumbnails()
@@ -136,16 +138,17 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
     }
         
     // MARK: UICollectionViewDelegate
-        
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // handle tap events
-        selectedIndex = indexPath.item
-    }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         switch (segue.identifier ?? "")
         {
         case "editPhotoSegue":
+            
+            guard let cell = sender as? EditCollectionViewCell else { fatalError("EditSelectViewController segue 'editPhotoSegue' must have EditCollectionViewCell as sender.") }
+            
+            guard let selectedIndex = editCollection.indexPathForCell(cell)?.item else { fatalError("Sender cell is not in the collection view?") }
+            
             let viewer = segue.destinationViewController as! EditViewController
             viewer.page = story!.pages![selectedIndex]
             viewer.index = selectedIndex
