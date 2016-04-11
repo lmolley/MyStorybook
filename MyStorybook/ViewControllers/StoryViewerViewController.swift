@@ -46,6 +46,12 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Disable tapping gestures to navigate pages
+        for tapper in pager.gestureRecognizers where tapper is UITapGestureRecognizer {
+            print("Disabling UIPageViewController's gesture \(tapper)")
+            tapper.enabled = false
+        }
+        
         // Setting the currentPage updates the next and previous buttons.
         currentPage = (currentPage)
         
