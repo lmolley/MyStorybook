@@ -607,8 +607,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-0m-MCy">
-                                <rect key="frame" x="508" y="44" width="48" height="48"/>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-0m-MCy">
+                                <rect key="frame" x="524" y="44" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.97254901960784312" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="0.42269408702850342" green="0.32788416743278503" blue="0.0090459659695625305" alpha="1" colorSpace="calibratedRGB"/>
@@ -622,7 +622,7 @@
                         <color key="backgroundColor" red="0.99951857328414917" green="0.9774593710899353" blue="0.92487186193466187" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5TG-0e-Y3P" firstAttribute="top" secondItem="3Ce-0m-MCy" secondAttribute="bottom" constant="8" id="3iP-2W-ZeZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Ce-0m-MCy" secondAttribute="trailing" constant="24" id="Rgi-40-U3h"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ce-0m-MCy" secondAttribute="trailing" constant="28" id="Rgi-40-U3h"/>
                             <constraint firstItem="3Ce-0m-MCy" firstAttribute="top" secondItem="QyS-vV-jeP" secondAttribute="bottom" constant="24" id="UYd-l2-Vr9"/>
                             <constraint firstItem="5TG-0e-Y3P" firstAttribute="leading" secondItem="RaZ-yt-iq5" secondAttribute="leading" constant="30" id="Ucz-UJ-3Wj"/>
                             <constraint firstItem="5TG-0e-Y3P" firstAttribute="centerX" secondItem="RaZ-yt-iq5" secondAttribute="centerX" id="ks5-vc-cFT"/>
