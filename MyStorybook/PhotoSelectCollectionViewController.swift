@@ -43,11 +43,8 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
                 //Grab the image and set as cell's image
                 let imageOptions = PHImageRequestOptions()
                 imageOptions.synchronous = true
-                imageOptions.deliveryMode = .HighQualityFormat
-                var size = CGSize()
-                size.width = CGFloat(asset.pixelWidth)
-                size.height = CGFloat(asset.pixelHeight)
-                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
+
+                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
                     self.images![index] = image
                 })
                 dispatch_async(dispatch_get_main_queue()) {
