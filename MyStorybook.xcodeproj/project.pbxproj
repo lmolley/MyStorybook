@@ -47,6 +47,7 @@
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
 		B202C2A61CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */; };
 		B202C2A81CA0B23A008615A4 /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A71CA0B23A008615A4 /* MailComposer.swift */; };
+		B23766871CBB5DD3004D5BFB /* PageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23766861CBB5DD3004D5BFB /* PageRenderer.swift */; };
 		B2522CEF1C9268190013E55C /* StoryViewerCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */; };
 		B2522CF11C92685F0013E55C /* StoryViewerPhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2522CF01C92685F0013E55C /* StoryViewerPhotoPageViewController.swift */; };
 		B2522CF31C9268A40013E55C /* UIPageViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2522CF21C9268A40013E55C /* UIPageViewControllerExtensions.swift */; };
@@ -146,6 +147,7 @@
 		89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewCell.swift; sourceTree = "<group>"; };
 		B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B202C2A71CA0B23A008615A4 /* MailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
+		B23766861CBB5DD3004D5BFB /* PageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageRenderer.swift; path = Classes/PageRenderer.swift; sourceTree = "<group>"; };
 		B2522CEE1C9268190013E55C /* StoryViewerCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewerCoverViewController.swift; sourceTree = "<group>"; };
 		B2522CF01C92685F0013E55C /* StoryViewerPhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryViewerPhotoPageViewController.swift; path = ViewControllers/StoryViewerPhotoPageViewController.swift; sourceTree = "<group>"; };
 		B2522CF21C9268A40013E55C /* UIPageViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPageViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				B2E93F601C7A785300A5C80E /* StoryViewer.storyboard */,
 				B2FA517D1CA08BBC00EBA397 /* Sharing.storyboard */,
 				B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */,
+				B23766861CBB5DD3004D5BFB /* PageRenderer.swift */,
 			);
 			path = MyStorybook;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				B272D6961C7D1C0D00C12226 /* FMResultSet.m in Sources */,
 				8948F4EF1CA0B8C600F0082E /* BookshelfViewController.swift in Sources */,
 				5B14CC9D1C7A77CD00B8FA0B /* BookshelfCollectionViewCell.swift in Sources */,
+				B23766871CBB5DD3004D5BFB /* PageRenderer.swift in Sources */,
 				B2BA3C561C761ECA00D7342D /* Database.swift in Sources */,
 				5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */,
 				B2BA3C5E1C76219A00D7342D /* DumbMockDatabase.swift in Sources */,

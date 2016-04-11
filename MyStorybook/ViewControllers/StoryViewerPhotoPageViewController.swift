@@ -16,12 +16,18 @@ class StoryViewerPhotoPageViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    private func _prepare(image: UIImage) -> UIImage
+    {
+        let renderer = PageRenderer()
+        return renderer.render(page: page!, onImage: _image)
+    }
+    
     private var _image: UIImage! {
         willSet {
             
         }
         didSet {
-            self.imageView?.image = _image
+            self.imageView?.image = _prepare(_image)
         }
     }
     
@@ -55,7 +61,7 @@ class StoryViewerPhotoPageViewController: UIViewController {
         numberLabel.text = "\(pageIndex + 1)"
         
         if self.imageView.image != self._image {
-            self.imageView.image = self._image
+            self.imageView.image = _prepare(self._image)
         }
     }
 }
