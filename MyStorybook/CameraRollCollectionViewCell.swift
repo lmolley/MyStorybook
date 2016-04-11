@@ -25,6 +25,10 @@ class CameraRollCollectionViewCell : UICollectionViewCell {
         }
     }
     
-
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        checkMark.layer.cornerRadius = 15
+        checkMark.layer.masksToBounds = true
+    }
     
 }
