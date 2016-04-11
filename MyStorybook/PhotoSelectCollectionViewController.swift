@@ -21,7 +21,7 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
         super.viewDidLoad()
         self.collectionView!.allowsMultipleSelection = true
         
-        let moment = parent!.momentToDisplay
+        let moment = parent!.preStory.moment
         result = PHAsset.fetchAssetsInAssetCollection(moment, options: nil)
         image_ids = [String](count: result!.count, repeatedValue: "")
         images = [UIImage?](count: result!.count, repeatedValue: nil)
