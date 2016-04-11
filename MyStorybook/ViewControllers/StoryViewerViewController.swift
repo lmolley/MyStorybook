@@ -65,20 +65,6 @@ class StoryViewerViewController: UIViewController, UIPageViewControllerDataSourc
         self.shadowView.layer.rasterizationScale = UIScreen.mainScreen().scale
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Now the bar is hidden on the bookshelf.
-        //        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-
-    
     @IBAction internal func editStoryPageCollection(sender: AnyObject) {
         self.performSegueWithIdentifier("editSelectSegue", sender: sender)
     }
