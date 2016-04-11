@@ -26,6 +26,12 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
         image_ids = [String](count: result!.count, repeatedValue: "")
         images = [UIImage?](count: result!.count, repeatedValue: nil)
         
+        // Ideally, you would use this value to take full advantage of the retina screen, but doing that makes
+        // the app crash (one particular time David was testing with an album of around 40 photos). Better safe than sorry,
+        // for the sake of shipping something that *probably* won't crash when being shown off.
+        let scale = 1 // UIScreen.mainScreen().scale
+        let targetSize = CGSize(width: scale * 290, height: scale * 246) // "Temporarily" hardcoded to the size the image views end up.
+        
         //load images in the background
         let priority = QOS_CLASS_USER_INTERACTIVE
         for index in 0...result!.count-1 {
@@ -39,10 +45,8 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
                 let imageOptions = PHImageRequestOptions()
                 imageOptions.deliveryMode = .HighQualityFormat
                 imageOptions.synchronous = true
-                var size = CGSize()
-                size.width = CGFloat(asset.pixelWidth)
-                size.height = CGFloat(asset.pixelHeight)
-                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
+
+                PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFit, options: imageOptions, resultHandler: { (image, _) -> Void in
                     self.images![index] = image
                 })
                 dispatch_async(dispatch_get_main_queue()) {
