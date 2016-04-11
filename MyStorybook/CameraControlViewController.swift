@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+let cameraShutterSound:SystemSoundID = 1108
 let recordOnCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=1"
 let recordOffCommand = "http://10.5.5.9/gp/gpControl/command/shutter?p=0"
 let cameraModeCommand = "http://10.5.5.9/gp/gpControl/command/mode?p=1"
@@ -19,6 +20,7 @@ let getImageCommand = "http://10.5.5.9:8080/videos/DCIM/"
 let deleteFileCommand = "http://10.5.5.9/gp/gpControl/command/storage/delete?p="
 
 class CameraControlViewController : UIViewController {
+    @IBOutlet weak var shutterButton: UIButton!
     
     @IBOutlet weak var previewView: UIImageView!
     var isInSelfieMode:Bool = false
@@ -26,6 +28,8 @@ class CameraControlViewController : UIViewController {
     var cameraInputDevice:AVCaptureDeviceInput?
     let stillImageOutput = AVCaptureStillImageOutput()
     var selfiePreviewLayer:AVCaptureVideoPreviewLayer?
+    var currentPhotoBeingSaved:String? = nil
+    
     
     @IBAction func goHome() {
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -53,12 +57,15 @@ class CameraControlViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //GoPro set up
         changeToCameraMode()
+        self.startGoProProcessing(false)
+        
+        
+        //Selfie set up
         captureSession.sessionPreset = AVCaptureSessionPresetLow
-        
         let devices = AVCaptureDevice.devices()
-        
         // Loop through all the capture devices on this phone
         for device in devices {
             // Make sure this particular device supports video
@@ -69,6 +76,9 @@ class CameraControlViewController : UIViewController {
                 }
             }
         }
+        
+        let timer = NSTimer(timeInterval: 5.0, target: self, selector: "saveAnyPhotos", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
     func changeToCameraMode() {
@@ -87,7 +97,12 @@ class CameraControlViewController : UIViewController {
         }
         else {
             HTTPGet(recordOnCommand){_,_ in}
-            self.startGoProProcessing()
+            AudioServicesPlaySystemSound(cameraShutterSound);
+            //disable shutter button until we have added the photo
+            shutterButton.enabled = false
+            //this is going to call go pro processing 
+            //until a new picture is added to the array
+            self.startGoProProcessing(true)
         }
 
         
@@ -99,7 +114,7 @@ class CameraControlViewController : UIViewController {
                 beginFrontCameraSession()
                 previewView.hidden = true
                 self.isInSelfieMode = true
-                sender.imageView!.image = UIImage(named:"camera_rear")
+//                sender.imageView!.image = UIImage(named:"camera_rear")
             }
         }
         else {
@@ -111,7 +126,8 @@ class CameraControlViewController : UIViewController {
             captureSession.stopRunning()
             previewView.hidden = false
             self.isInSelfieMode = false
-            sender.imageView!.image = UIImage(named:"camera_front")
+            changeToCameraMode()
+//            sender.imageView!.image = UIImage(named:"camera_front")
         }
     }
     
@@ -140,13 +156,13 @@ class CameraControlViewController : UIViewController {
  
     
     
-    private func startGoProProcessing() -> Void {
-//        self.current_gopro_images = [String]()
+    func startGoProProcessing(cameFromShutter:Bool) -> Void {
         HTTPGet(getMediaListCommand){
             (data: String, error: String?) -> Void in
             if error != nil {
                 print(error)
             } else {
+                var madeAnUpdate = false
                 //parse JSON returned from request to get out the filenames
                 if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
                     let json = JSON(data: dataFromString)
@@ -156,7 +172,17 @@ class CameraControlViewController : UIViewController {
                             let full_filename = prefix + file["n"].string!
                             if full_filename.containsString(".JPG") &&
                             !self.current_gopro_images.contains(full_filename){
-                                self.current_gopro_images.append(full_filename)}
+                                if self.currentPhotoBeingSaved != nil {
+                                    if full_filename != self.currentPhotoBeingSaved! {
+                                        madeAnUpdate = true
+                                        self.current_gopro_images.append(full_filename)
+                                    }
+                                }
+                                else {
+                                    madeAnUpdate = true
+                                    self.current_gopro_images.append(full_filename)
+                                }
+                            }
                         }
                         
                     }
@@ -164,17 +190,34 @@ class CameraControlViewController : UIViewController {
                     if(self.current_gopro_images.count != 0){
                         self.lastTakenPictureFilename = self.current_gopro_images.last
                     }
-                    self.importGoProImages()
+                    
+                    //if this came from a shutter command
+                    //we know we should've added a photo
+                    //so keep trying
+                    if cameFromShutter && !madeAnUpdate {
+                        self.startGoProProcessing(true)
+                    }
+                    //reenable the shutter button now because we are finished
+                    self.shutterButton.enabled = true
+                    return
                 }
                 
             }
         }
     }
     
-    private func importGoProImages() {
-        if self.current_gopro_images.count != 0 {
-            getImageFromGoProAndSave(self.current_gopro_images.first!)
+    func saveAnyPhotos(){
+        //check if we're in the middle of saving a photo
+        if currentPhotoBeingSaved != nil {
+            return;
         }
+        //check if we don't have any photos to save
+        if current_gopro_images.count == 0 {
+            return;
+        }
+        currentPhotoBeingSaved = current_gopro_images.first!
+        current_gopro_images.removeFirst()
+        getImageFromGoProAndSave(currentPhotoBeingSaved!)
     }
     
     private func getImageFromGoProAndSave(path: String) -> Void {
@@ -184,7 +227,7 @@ class CameraControlViewController : UIViewController {
                 print(error)
             }
             else {
-                UIImageWriteToSavedPhotosAlbum(data, self, "image:didFinishSavingWithError:contextInfo:", nil)
+                UIImageWriteToSavedPhotosAlbum(data.resize(0.5), self, "image:didFinishSavingWithError:contextInfo:", nil)
             }
         }
     }
@@ -196,10 +239,11 @@ class CameraControlViewController : UIViewController {
             return
         }
         //Image saved successfully
-        print("successful and deleting now...")
-        HTTPGet(deleteFileCommand + self.current_gopro_images.first!){_,_ in
-            self.current_gopro_images.removeFirst()
-            self.startGoProProcessing()}
+        print("successful save and deleting now...")
+        HTTPGet(deleteFileCommand + self.currentPhotoBeingSaved!){_,_ in
+            print("successful deletion!")
+            self.currentPhotoBeingSaved = nil
+        }
     }
    
     func updateOrientation() {
@@ -222,5 +266,18 @@ class CameraControlViewController : UIViewController {
         }
         
     }
+}
+
+extension UIImage {
+    func resize(scale:CGFloat)-> UIImage {
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width*scale, height: size.height*scale)))
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        imageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+}
 }
 

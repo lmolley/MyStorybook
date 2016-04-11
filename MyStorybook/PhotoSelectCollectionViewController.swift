@@ -28,17 +28,16 @@ class PhotoSelectCollectionViewController:UICollectionViewController {
         
         //load images in the background
         let priority = QOS_CLASS_USER_INTERACTIVE
+//        let max_index = result!.count < 6 ? result!.count-1 : 5
         for index in 0...result!.count-1 {
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                
                 //get asset and set localIdentifier in story
                 let asset = self.result?.objectAtIndex(index) as! PHAsset
                 self.image_ids![index] = asset.localIdentifier
-                
                 //Grab the image and set as cell's image
                 let imageOptions = PHImageRequestOptions()
-                imageOptions.deliveryMode = .HighQualityFormat
                 imageOptions.synchronous = true
+                imageOptions.deliveryMode = .HighQualityFormat
                 var size = CGSize()
                 size.width = CGFloat(asset.pixelWidth)
                 size.height = CGFloat(asset.pixelHeight)
