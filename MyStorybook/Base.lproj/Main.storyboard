@@ -269,8 +269,8 @@
                                     <action selector="finished" destination="pw4-NH-fyu" eventType="touchUpInside" id="RE9-tL-PLr"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sec-9G-vfb">
-                                <rect key="frame" x="20" y="146" width="560" height="402"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sec-9G-vfb">
+                                <rect key="frame" x="20" y="146" width="560" height="446"/>
                                 <connections>
                                     <segue destination="T7A-0L-uoR" kind="embed" identifier="EmbedSegue" id="hie-gC-V8X"/>
                                 </connections>
@@ -303,6 +303,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acceptButton" destination="vL6-NR-hM6" id="bdx-QV-P2t"/>
                         <outlet property="numberSelectedLabel" destination="IMU-np-J8J" id="53y-5p-0Up"/>
                         <segue destination="xT1-xY-GeE" kind="show" identifier="SelectionDoneSegue" id="7xC-p4-5cp"/>
                     </connections>
@@ -324,7 +325,7 @@
             <objects>
                 <collectionViewController title="GoProImages" id="T7A-0L-uoR" customClass="CameraRollCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l6R-Xe-iif">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="402"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yC9-dt-Pb0">
@@ -434,11 +435,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dks-gl-iWZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jsY-FP-SQR">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="402"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xx-TE-ImZ">
-                                <rect key="frame" x="20" y="88" width="520" height="306"/>
+                                <rect key="frame" x="20" y="88" width="520" height="350"/>
                                 <connections>
                                     <segue destination="Gy3-zr-Qjw" kind="embed" identifier="EmbedSegue" id="65A-H0-gQe"/>
                                 </connections>
@@ -491,7 +492,7 @@
             <objects>
                 <collectionViewController id="Gy3-zr-Qjw" customClass="PhotoSelectCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Guc-D8-VJI">
-                        <rect key="frame" x="0.0" y="0.0" width="520" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="520" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KcU-EX-vUH">
@@ -562,6 +563,6 @@
         <image name="replay" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wee-O8-dea"/>
+        <segue reference="7xC-p4-5cp"/>
     </inferredMetricsTieBreakers>
 </document>
