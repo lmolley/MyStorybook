@@ -137,8 +137,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHF-Xg-Tha">
-                                <rect key="frame" x="9" y="128" width="450" height="452"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dHF-Xg-Tha">
+                                <rect key="frame" x="9" y="128" width="447" height="452"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="Mgy-R2-xCo"/>
                                     <constraint firstAttribute="width" constant="400" id="TNv-CI-83v"/>
@@ -156,22 +156,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dip-7N-Al4">
-                                <rect key="frame" x="9" y="20" width="160" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="dcY-0A-8nB"/>
-                                    <constraint firstAttribute="height" constant="100" id="nEp-ds-4Fh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="&lt;"/>
-                                <connections>
-                                    <action selector="goPrevPage" destination="ehJ-qg-orR" eventType="touchDown" id="QmX-t6-ODG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvQ-xg-zhb">
-                                <rect key="frame" x="467" y="455" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvQ-xg-zhb">
+                                <rect key="frame" x="464" y="455" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Aat-Zl-73e"/>
                                     <constraint firstAttribute="width" constant="125" id="icL-KO-TVJ"/>
@@ -190,15 +176,16 @@
                                     <constraint firstAttribute="height" constant="100" id="Rb1-Vc-gHC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="✔︎">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneEdit:" destination="ehJ-qg-orR" eventType="touchDown" id="Rbc-wY-2To"/>
+                                    <action selector="doneEdit:" destination="ehJ-qg-orR" eventType="touchUpInside" id="IMR-ZS-IFw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbG-vl-qJm">
-                                <rect key="frame" x="467" y="128" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbG-vl-qJm">
+                                <rect key="frame" x="464" y="128" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Eay-RA-wqq"/>
                                     <constraint firstAttribute="width" constant="125" id="irF-9N-W4R"/>
@@ -209,20 +196,21 @@
                                     <segue destination="n6W-er-f1d" kind="show" identifier="editEmojiSegue" id="o4Y-9N-e5D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOw-XO-Tlt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOw-XO-Tlt">
                                 <rect key="frame" x="220" y="20" width="160" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="002-Xy-5dY"/>
                                     <constraint firstAttribute="height" constant="100" id="Vg4-Y5-rbn"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="replay"/>
                                 <connections>
-                                    <action selector="Undo" destination="ehJ-qg-orR" eventType="touchDown" id="N4n-at-7W1"/>
+                                    <action selector="Undo" destination="ehJ-qg-orR" eventType="touchUpInside" id="PjY-Rg-CUE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-kz-Jqt">
-                                <rect key="frame" x="467" y="291" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-kz-Jqt">
+                                <rect key="frame" x="464" y="291" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="NMn-p5-Ybl"/>
                                     <constraint firstAttribute="height" constant="125" id="wXK-TK-q0r"/>
@@ -239,6 +227,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dip-7N-Al4">
+                                <rect key="frame" x="9" y="20" width="160" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.87165713730000005" blue="0.0019964527460000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="dcY-0A-8nB"/>
+                                    <constraint firstAttribute="height" constant="100" id="nEp-ds-4Fh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="goPrevPage" destination="ehJ-qg-orR" eventType="touchUpInside" id="LTi-XW-ws4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -323,7 +325,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
-                                    <action selector="goPrevPage" destination="lxh-x0-HmU" eventType="touchDown" id="6xZ-D7-auj"/>
+                                    <action selector="goPrevPage" destination="lxh-x0-HmU" eventType="touchUpInside" id="xRd-eB-g88"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wnX-4c-52X">
@@ -426,7 +428,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
+                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5L7-4V-LCH">
                                                     <rect key="frame" x="21" y="51" width="278" height="200"/>
                                                     <color key="backgroundColor" red="1" green="0.96862745100000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
@@ -659,7 +661,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
-                                    <action selector="goPrevPage" destination="UIn-Fv-RFH" eventType="touchDown" id="aaP-f0-75v"/>
+                                    <action selector="goPrevPage" destination="UIn-Fv-RFH" eventType="touchUpInside" id="WE4-eu-sF4"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wYF-kv-cNh">
@@ -767,7 +769,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
-                                    <action selector="goPrevPage" destination="n6W-er-f1d" eventType="touchDown" id="DAJ-jP-LNi"/>
+                                    <action selector="goPrevPage" destination="n6W-er-f1d" eventType="touchUpInside" id="bXd-DN-yNQ"/>
                                 </connections>
                             </button>
                         </subviews>
