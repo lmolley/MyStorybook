@@ -45,6 +45,7 @@
 		8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8970B12F1C7CCCBB005A69F0 /* default.jpg */; };
 		89C8FCCF1C99FB4B00534CF6 /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8FCCE1C99FB4B00534CF6 /* PhotoSelectViewController.swift */; };
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
+		89F2C1A21CBC89C6008FE55D /* CameraRollHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F2C1A11CBC89C6008FE55D /* CameraRollHeader.swift */; };
 		B202C2A61CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */; };
 		B202C2A81CA0B23A008615A4 /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A71CA0B23A008615A4 /* MailComposer.swift */; };
 		B23766871CBB5DD3004D5BFB /* PageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23766861CBB5DD3004D5BFB /* PageRenderer.swift */; };
@@ -145,6 +146,7 @@
 		89C8FCCE1C99FB4B00534CF6 /* PhotoSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectViewController.swift; sourceTree = "<group>"; };
 		89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = MyStorybook/SwiftyJSON.swift; sourceTree = "<group>"; };
 		89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewCell.swift; sourceTree = "<group>"; };
+		89F2C1A11CBC89C6008FE55D /* CameraRollHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollHeader.swift; sourceTree = "<group>"; };
 		B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B202C2A71CA0B23A008615A4 /* MailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
 		B23766861CBB5DD3004D5BFB /* PageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageRenderer.swift; path = Classes/PageRenderer.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */,
 				89606B511C985BC1009743D3 /* CameraRollViewController.swift */,
 				894CC30D1C7A77AE0004BD8B /* CameraRollCollectionViewController.swift */,
+				89F2C1A11CBC89C6008FE55D /* CameraRollHeader.swift */,
 			);
 			name = AlbumSelect;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				B2FA51801CA08C3700EBA397 /* EmailFavoritesViewController.swift in Sources */,
 				5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */,
 				5B29FBF51C9CA6B40042C64C /* EditEmojiViewController.swift in Sources */,
+				89F2C1A21CBC89C6008FE55D /* CameraRollHeader.swift in Sources */,
 				B272D6971C7D1C1000C12226 /* FMDatabaseQueue.m in Sources */,
 				89C8FCCF1C99FB4B00534CF6 /* PhotoSelectViewController.swift in Sources */,
 				B202C2A61CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift in Sources */,

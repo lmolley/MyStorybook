@@ -12,6 +12,7 @@ import UIKit
 class CameraRollCollectionViewCell : UICollectionViewCell {
 
     @IBOutlet weak var checkMark: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
     @IBOutlet weak var topImageView: UIImageView!
     

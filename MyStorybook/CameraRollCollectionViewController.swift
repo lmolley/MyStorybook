@@ -11,9 +11,13 @@ import UIKit
 import Photos
 
 let moment_reuseIdentifier = "MomentCell"
+let headerViewIdentifier = "HeaderView"
 
-class CameraRollCollectionViewController : UICollectionViewController {
-    var preStories = [PreStory]()
+class CameraRollCollectionViewController : UICollectionViewController{
+    let formatter = NSDateFormatter()
+    let yearFormatter = NSDateFormatter()
+    var years = [String:Array<PreStory>]()
+    var year_order = [String]()
     var image_count:Int = 0
     var totalImageCountNeeded:Int! // <-- The number of images to fetch
     var maxImageCount:Int!
@@ -21,6 +25,8 @@ class CameraRollCollectionViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.allowsMultipleSelection = true
+        formatter.dateFormat = "MMM d"
+        yearFormatter.dateFormat = "Y"
         fetchMomentsFromCameraRoll()
     }
     
@@ -41,16 +47,30 @@ class CameraRollCollectionViewController : UICollectionViewController {
                 new_folder.moment = collection
                 
                 // Begin attempt to get the top image. If there is none, don't bother with the moment. (Would there ever be a moment without an image?)
-                self.preStories.append(new_folder)
-                self.fetchFirstPhotoInMoment(self.preStories.count-1)
+                
+                let yearString = self.yearFormatter.stringFromDate(new_folder.moment.startDate!)
+                //check if we already mapped this year
+                if (self.years[yearString]) != nil {
+                    self.years[yearString]!.append(new_folder)
+                    self.fetchFirstPhotoInMoment(yearString, rowIndex: self.years[yearString]!.count-1)
+                }
+                //if not, map the year and initialize with empty array
+                else {
+                    self.year_order.append(yearString)
+                    var initialStoriesForYear = [PreStory]()
+                    initialStoriesForYear.append(new_folder)
+                    self.years[yearString] = initialStoriesForYear
+                    self.fetchFirstPhotoInMoment(yearString, rowIndex: 0)
+                }
+                
             }
         })
     }
     
     // Returns true if the moment has at least one photo
-    private func fetchFirstPhotoInMoment(folder_index:Int)-> Bool
+    private func fetchFirstPhotoInMoment(yearString:String, rowIndex:Int)-> Bool
     {
-        let folder = self.preStories[folder_index]
+        let folder = self.years[yearString]![rowIndex]
         let opts = PHFetchOptions()
         opts.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
         opts.fetchLimit = 3
@@ -60,7 +80,7 @@ class CameraRollCollectionViewController : UICollectionViewController {
             return false
         }
         
-        let indexPath = NSIndexPath(forItem: folder_index, inSection: 0)
+        let indexPath = NSIndexPath(forItem: rowIndex, inSection: year_order.indexOf(yearString)!)
         for index in 0...2 {
             if fetchResult.count <= index {
                 break
@@ -96,36 +116,30 @@ class CameraRollCollectionViewController : UICollectionViewController {
     override func numberOfSectionsInCollectionView(collectionView:
         UICollectionView) -> Int {
             //only one section so we just return 1
-            return 1
+            return years.count
     }
     
     override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             //return number of images in our 1 section
-            return preStories.count
+        let sectionKey = year_order[section]
+        return years[sectionKey]!.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(moment_reuseIdentifier,forIndexPath: indexPath) as! CameraRollCollectionViewCell
-        let story = preStories[indexPath.row]
+        let rowKey = year_order[indexPath.section]
+        let stories = years[rowKey]
+        let story = stories![indexPath.row]
             
         // Configure the cell
         cell.checkMark.hidden = true
+        cell.dateLabel.text = formatter.stringFromDate(story.moment.startDate!)
         
-        if (preStories.count > indexPath.row) {
-            cell.bottomImageView.image = story.bottomImage ?? UIImage(named: "default.jpg")
-            cell.middleImageView.image = story.middleImage ?? UIImage(named: "default.jpg")
-            cell.topImageView.image = story.topImage ?? UIImage(named: "default.jpg")
-            
-
-
-        }
-        else {
-            cell.bottomImageView.image = UIImage(named: "default.jpg")
-            cell.middleImageView.image = UIImage(named: "default.jpg")
-            cell.topImageView.image = UIImage(named: "default.jpg")
-        }
+        cell.bottomImageView.image = story.bottomImage ?? UIImage(named: "default.jpg")
+        cell.middleImageView.image = story.middleImage ?? UIImage(named: "default.jpg")
+        cell.topImageView.image = story.topImage ?? UIImage(named: "default.jpg")
         
         cell.setNeedsLayout()
         cell.setNeedsUpdateConstraints()
@@ -134,8 +148,16 @@ class CameraRollCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let story = preStories[indexPath.row]
+        let rowKey = year_order[indexPath.section]
+        let stories = years[rowKey]
+        let story = stories![indexPath.row]
         performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let headerView: CameraRollHeader = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerViewIdentifier, forIndexPath: indexPath) as! CameraRollHeader
+        headerView.sectionLabel.text = year_order[indexPath.section]
+        return headerView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
