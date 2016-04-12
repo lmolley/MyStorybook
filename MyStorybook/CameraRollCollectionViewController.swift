@@ -153,6 +153,13 @@ class CameraRollCollectionViewController : UICollectionViewController{
         let story = stories![indexPath.row]
         performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
     }
+    //treat deselect exactly the same as select
+    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let rowKey = year_order[indexPath.section]
+        let stories = years[rowKey]
+        let story = stories![indexPath.row]
+        performSegueWithIdentifier("PhotoSelectorSegue", sender: story)
+    }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView: CameraRollHeader = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerViewIdentifier, forIndexPath: indexPath) as! CameraRollHeader

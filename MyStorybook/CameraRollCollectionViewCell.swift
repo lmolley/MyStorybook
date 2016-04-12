@@ -22,7 +22,7 @@ class CameraRollCollectionViewCell : UICollectionViewCell {
     
     override var selected : Bool {
         didSet {
-            self.checkMark.hidden = !selected
+            self.checkMark.hidden = false
         }
     }
     
