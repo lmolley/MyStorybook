@@ -103,6 +103,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="previewView" destination="Hys-ba-KB3" id="y4T-Bz-9hF"/>
+                        <outlet property="shutterButton" destination="uqg-kR-LeZ" id="AoF-Or-cBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -610,6 +611,6 @@
         <image name="replay" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7xC-p4-5cp"/>
+        <segue reference="Wee-O8-dea"/>
     </inferredMetricsTieBreakers>
 </document>
