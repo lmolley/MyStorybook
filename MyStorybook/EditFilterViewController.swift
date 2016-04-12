@@ -12,13 +12,18 @@ private let filter_reuseIdentifier = "EditFilterCell"
 
 class EditFilterViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var image: UIImage?
-    var images: [UIImage?] = []
+    var editImage: UIImage?
     var filterId: String?
     
     @IBOutlet weak var editFilterCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIGraphicsBeginImageContext(CGSizeMake(300, 300))
+        self.image!.drawInRect(CGRectMake(0, 0, 300, 300))
+        self.editImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
         editFilterCollection.dataSource = self
         editFilterCollection.delegate = self
     }
@@ -42,7 +47,7 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         
         // Configure the cell
         
-        let origImage = CIImage(image: image!)
+        let origImage = CIImage(image: self.editImage!)
         
         var filterName = ""
         switch (indexPath.item) {
@@ -62,7 +67,6 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         }
         let newImage = UIImage(CIImage: (filter?.outputImage)!)
         cell.filterImage.image = newImage
-        images.append(newImage)
         return cell
     }
     
@@ -70,7 +74,8 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        self.image = images[indexPath.item]
+        let origImage = CIImage(image: self.image!)
+        
         switch(indexPath.item) {
         case 0: self.filterId = "CIPhotoEffectNoir"
         case 1: self.filterId = "CISepiaTone"
@@ -80,6 +85,13 @@ class EditFilterViewController: UIViewController, UICollectionViewDataSource, UI
         case 5: self.filterId = "CIPhotoEffectTransfer"
         default: break
         }
+        let filter = CIFilter(name: self.filterId!)
+        filter?.setValue(origImage, forKey: kCIInputImageKey)
+        if (indexPath.item == 1 || indexPath.item == 2) {
+            filter?.setValue(0.5, forKey: kCIInputIntensityKey)
+        }
+        self.image = UIImage(CGImage: CIContext(options:nil).createCGImage(filter!.outputImage!, fromRect:filter!.outputImage!.extent))
+        
         performSegueWithIdentifier("unwindFilter", sender: self)
     }
 }

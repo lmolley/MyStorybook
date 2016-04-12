@@ -23,6 +23,17 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
     
     var displayedPages: [Int]!
     
+    var image: UIImage?
+    
+    private var _image: UIImage! {
+        willSet {
+        }
+        
+        didSet {
+            self.image = _image
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         editCollection.dataSource = self
@@ -141,9 +152,19 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
             
             let viewer = segue.destinationViewController as! EditViewController
             viewer.page = story!.pages![selectedIndex]
-            viewer.index = selectedIndex
-            if let imageExist = self.imageThumbnails[displayedPages[selectedIndex]] {
-                viewer.image = imageExist
+            
+            let opts = PHFetchOptions()
+            let result = PHAsset.fetchAssetsWithLocalIdentifiers([viewer.page!.photoId], options: opts)
+            let asset = result.objectAtIndex(0) as! PHAsset
+            let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+            let opts2 = PHImageRequestOptions()
+            opts2.synchronous = true
+            PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFit, options: opts2) { (image, info) -> Void in
+                self._image = image!
+            }
+            
+            if viewer.image != self._image {
+                viewer.image = self._image
                 viewer.origImage = viewer.image
             }
             else {
@@ -154,5 +175,6 @@ class EditSelectViewController: UIViewController, UICollectionViewDataSource, UI
             break
         }
     }
+    
+    
 }
-

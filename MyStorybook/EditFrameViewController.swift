@@ -46,8 +46,8 @@ class EditFrameViewController: UIViewController, UICollectionViewDataSource, UIC
         UIGraphicsBeginImageContextWithOptions((newImage?.size)!, false, 0)
         
         let rect = CGRectMake(0, 0, newImage!.size.width, newImage!.size.height)
-        let borderWidth: CGFloat = 10.0
-        let borderHalf: CGFloat = 5.0
+        let borderWidth: CGFloat = 40.0
+        let borderHalf: CGFloat = 20.0
         let path = UIBezierPath(rect: CGRectInset(rect, borderHalf, borderHalf))
         let context = UIGraphicsGetCurrentContext()
         
