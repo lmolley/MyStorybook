@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Set up the database for the application. Eventually this will call into some FMDB Database implementation.
-        App.database = SampleDumbMockDatabase() // For some really dumb objects.
+        //App.database = SampleDumbMockDatabase() // For some really dumb objects.
         
         // This will import a few moments from the camera roll into an in-memory database.
 //        App.database = DumbMockDatabase()
         
-//        App.database = MyStorybookDatabase();     (App.database as! MyStorybookDatabase).createDB()
+        App.database = MyStorybookDatabase();     (App.database as! MyStorybookDatabase).createDB()
         
 //        ImportMomentsToDatabase(App.database)
         
