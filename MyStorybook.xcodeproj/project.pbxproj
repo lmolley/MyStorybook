@@ -19,6 +19,7 @@
 		5B29FBFB1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFA1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift */; };
 		5B29FBFD1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFC1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift */; };
 		5B29FBFF1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FBFE1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift */; };
+		5B42B9721CBDB1B6000F7D7F /* iOS-Bookshelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B42B9711CBDB1B6000F7D7F /* iOS-Bookshelf.png */; };
 		5B5B17DE1C96052700FF9106 /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */; };
 		5B5B17E01C960C4600FF9106 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */; };
 		5B5B17E21C9610EC00FF9106 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5B17E11C9610EC00FF9106 /* Camera.png */; };
@@ -120,6 +121,7 @@
 		5B29FBFA1C9CA9030042C64C /* EditEmojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B29FBFC1C9CA91A0042C64C /* EditFrameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B29FBFE1C9CA92D0042C64C /* EditFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B42B9711CBDB1B6000F7D7F /* iOS-Bookshelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS-Bookshelf.png"; sourceTree = "<group>"; };
 		5B5B17DD1C96052700FF9106 /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17DF1C960C4600FF9106 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B5B17E11C9610EC00FF9106 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		89E9F54A1C7B641200C812F2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5B42B9711CBDB1B6000F7D7F /* iOS-Bookshelf.png */,
 				8948F4E01CA0AF3C00F0082E /* book_00b300.png */,
 				8948F4E11CA0AF3C00F0082E /* book_00ffff.png */,
 				8948F4E21CA0AF3C00F0082E /* book_0041BF.png */,
@@ -525,6 +528,7 @@
 				B2FA517E1CA08BBC00EBA397 /* Sharing.storyboard in Resources */,
 				8970B1301C7CCCBB005A69F0 /* default.jpg in Resources */,
 				8948F4E91CA0AF3C00F0082E /* book_ff1a1a.png in Resources */,
+				5B42B9721CBDB1B6000F7D7F /* iOS-Bookshelf.png in Resources */,
 				89606B4E1C970688009743D3 /* Icons.xcassets in Resources */,
 				8948F4E71CA0AF3C00F0082E /* book_00ffff.png in Resources */,
 				8948F4EB1CA0AF3C00F0082E /* book_ffff00.png in Resources */,
