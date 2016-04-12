@@ -10,7 +10,6 @@ import UIKit
 import Photos
 
 class EditViewController: UIViewController {
-    var index: Int?
     var page: Page?
     var image: UIImage?
     var origImage: UIImage?
