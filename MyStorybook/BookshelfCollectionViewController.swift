@@ -42,6 +42,9 @@ class BookshelfCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let image = UIImage(named: "iOS-Bookshelf.png")
+        self.view.backgroundColor = UIColor.init(patternImage: image!)
+        self.view.layer.opaque = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }

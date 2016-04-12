@@ -12,11 +12,11 @@ import UIKit
 class MyStorybookDatabase : Database {
     var databasePath = NSString()
     
-    internal var stories: [Story] = []
-    //internal var pages: [Page] = []
     
     func getStories() -> [Story]
     {
+        var stories = [Story]()
+        
         let contactDB = FMDatabase(path: databasePath as String)
         
         if contactDB.open()
@@ -42,13 +42,13 @@ class MyStorybookDatabase : Database {
                     newStory.id = Int(curStoryId)
                 }
                 
-                self.stories.append(newStory)
+                stories.append(newStory)
             }
         }
         
         contactDB.close()
         
-        return self.stories
+        return stories
     }
     
     func getPages(storyId: Int) -> [Page]?
@@ -134,9 +134,9 @@ class MyStorybookDatabase : Database {
         
         if contactDB.open()
         {
-            let insertSQL = "INSERT INTO STORYBOOKS (icon, title) VALUES ('\(story.icon)', '\(story.title)')"
+            let insertSQL = "INSERT INTO STORYBOOKS (icon, title) VALUES (?, ?)"
             
-            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
+            let result = contactDB.executeUpdate(insertSQL, withArgumentsInArray: [story.icon, story.title])
             
             if !result
             {
