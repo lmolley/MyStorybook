@@ -27,7 +27,7 @@ class PhotoSelectViewController:UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? PhotoSelectCollectionViewController
             where segue.identifier == "EmbedSegue" {
@@ -52,6 +52,7 @@ class PhotoSelectViewController:UIViewController {
             // Add to the end the new set of photos from this moment that the user wants.
             main.accepted_image_ids.appendContentsOf(embeddedViewController.selectedPhotoIds)
         }
+
     }
     
 
