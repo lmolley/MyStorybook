@@ -467,17 +467,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xx-TE-ImZ">
-                                <rect key="frame" x="20" y="88" width="520" height="286"/>
+                                <rect key="frame" x="20" y="76" width="520" height="294"/>
                                 <connections>
                                     <segue destination="Gy3-zr-Qjw" kind="embed" identifier="EmbedSegue" id="65A-H0-gQe"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrP-Do-9WK">
-                                <rect key="frame" x="438" y="387" width="102" height="51"/>
+                                <rect key="frame" x="438" y="378" width="102" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="Lnq-8y-ZdF"/>
-                                    <constraint firstAttribute="height" constant="51" id="ln3-pN-2mX"/>
+                                    <constraint firstAttribute="height" constant="60" id="DhL-Nt-lgN"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="replay"/>
@@ -486,7 +485,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kH-hg-g9n">
-                                <rect key="frame" x="438" y="8" width="102" height="72"/>
+                                <rect key="frame" x="438" y="8" width="102" height="60"/>
                                 <color key="backgroundColor" red="0.41176470590000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="✔︎">
@@ -497,7 +496,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dac-LQ-Z4r">
-                                <rect key="frame" x="20" y="8" width="102" height="72"/>
+                                <rect key="frame" x="20" y="8" width="102" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 <state key="normal" title="&lt;">
@@ -511,18 +510,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="6Xx-TE-ImZ" secondAttribute="leading" id="0OX-NY-yif"/>
+                            <constraint firstItem="BrP-Do-9WK" firstAttribute="trailing" secondItem="6Xx-TE-ImZ" secondAttribute="trailing" id="2bg-mg-moP"/>
                             <constraint firstItem="dac-LQ-Z4r" firstAttribute="width" secondItem="2kH-hg-g9n" secondAttribute="width" id="2ck-yZ-IZy"/>
-                            <constraint firstItem="BrP-Do-9WK" firstAttribute="top" secondItem="6Xx-TE-ImZ" secondAttribute="bottom" constant="13" id="ABH-LV-n26"/>
+                            <constraint firstItem="dac-LQ-Z4r" firstAttribute="height" secondItem="2kH-hg-g9n" secondAttribute="height" id="4zQ-qZ-Iag"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2kH-hg-g9n" secondAttribute="trailing" id="K33-29-HBP"/>
                             <constraint firstItem="dac-LQ-Z4r" firstAttribute="top" secondItem="LaK-aD-ghT" secondAttribute="bottom" constant="8" id="QJG-sQ-UAk"/>
-                            <constraint firstItem="dks-gl-iWZ" firstAttribute="top" secondItem="BrP-Do-9WK" secondAttribute="bottom" constant="8" symbolic="YES" id="SWu-yc-OX4"/>
                             <constraint firstItem="6Xx-TE-ImZ" firstAttribute="top" secondItem="dac-LQ-Z4r" secondAttribute="bottom" constant="8" id="ZfT-sF-a0Y"/>
                             <constraint firstItem="6Xx-TE-ImZ" firstAttribute="top" secondItem="2kH-hg-g9n" secondAttribute="bottom" constant="8" symbolic="YES" id="fnR-6W-oYp"/>
                             <constraint firstItem="2kH-hg-g9n" firstAttribute="top" secondItem="LaK-aD-ghT" secondAttribute="bottom" constant="8" symbolic="YES" id="gkY-9K-oQu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="dac-LQ-Z4r" secondAttribute="leading" id="lvv-iS-HMd"/>
-                            <constraint firstItem="BrP-Do-9WK" firstAttribute="trailing" secondItem="6Xx-TE-ImZ" secondAttribute="trailing" id="mYv-1h-o69"/>
-                            <constraint firstItem="BrP-Do-9WK" firstAttribute="leading" secondItem="2kH-hg-g9n" secondAttribute="leading" id="ngJ-xn-WXd"/>
+                            <constraint firstItem="BrP-Do-9WK" firstAttribute="top" secondItem="6Xx-TE-ImZ" secondAttribute="bottom" constant="8" symbolic="YES" id="mH3-Pn-W5m"/>
+                            <constraint firstItem="2kH-hg-g9n" firstAttribute="leading" secondItem="dac-LQ-Z4r" secondAttribute="trailing" constant="316" id="p23-SC-Jtt"/>
+                            <constraint firstItem="BrP-Do-9WK" firstAttribute="height" secondItem="2kH-hg-g9n" secondAttribute="height" id="pHw-yn-ZGr"/>
+                            <constraint firstItem="BrP-Do-9WK" firstAttribute="width" secondItem="2kH-hg-g9n" secondAttribute="width" id="qa8-kC-vn5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Xx-TE-ImZ" secondAttribute="trailing" id="x7F-Ic-rrc"/>
+                            <constraint firstItem="BrP-Do-9WK" firstAttribute="leading" secondItem="2kH-hg-g9n" secondAttribute="leading" id="xqz-RL-mgm"/>
+                            <constraint firstItem="dks-gl-iWZ" firstAttribute="top" secondItem="BrP-Do-9WK" secondAttribute="bottom" constant="8" symbolic="YES" id="xzG-Jt-Q1d"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -536,7 +539,7 @@
             <objects>
                 <collectionViewController id="Gy3-zr-Qjw" customClass="PhotoSelectCollectionViewController" customModule="MyStorybook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Guc-D8-VJI">
-                        <rect key="frame" x="0.0" y="0.0" width="520" height="286"/>
+                        <rect key="frame" x="0.0" y="0.0" width="520" height="294"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KcU-EX-vUH">
