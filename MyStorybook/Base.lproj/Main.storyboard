@@ -49,7 +49,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="goHome" destination="GKE-CW-UMA" eventType="touchUpInside" id="gvN-1g-sGY"/>
+                                    <action selector="goHome:" destination="GKE-CW-UMA" eventType="touchUpInside" id="X6D-nX-LaS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuo-sb-Xvi">

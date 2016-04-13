@@ -30,11 +30,40 @@ class CameraControlViewController : UIViewController {
     var selfiePreviewLayer:AVCaptureVideoPreviewLayer?
     var currentPhotoBeingSaved:String? = nil
     
-    
-    @IBAction func goHome() {
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
+    @IBAction func goHome(sender: UIButton) {
+        //if no photos to save then just go home
+        if current_gopro_images.count == 0 {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+        //otherwise show alert to ask if they would like to save
+        else {
+            let save_alert = UIAlertController(title: "GoPro Photos", message: "Would you like to save your photos from the GoPro to the device?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            save_alert.addAction(UIAlertAction(
+                title: "Save Photos",
+            style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                self.savePhotos()
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                })
+            
+            save_alert.addAction(UIAlertAction(
+                title: "Don't Save Photos",
+            style: UIAlertActionStyle.Destructive) { (action:UIAlertAction) -> Void in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                })
+            
+            save_alert.addAction(UIAlertAction(
+                title: "Cancel",
+            style: UIAlertActionStyle.Cancel) { (action:UIAlertAction) -> Void in
+                })
+            save_alert.modalPresentationStyle = .Popover
+            let ppc = save_alert.popoverPresentationController
+            ppc?.sourceView = sender
+            ppc?.sourceRect = sender.bounds
+            presentViewController(save_alert, animated:true, completion:nil)
+        }
     }
+
     
     var lastTakenPictureFilename:String? {
         didSet {
@@ -98,7 +127,7 @@ class CameraControlViewController : UIViewController {
         }
         else {
             HTTPGet(recordOnCommand){_,_ in}
-//            AudioServicesPlaySystemSound(cameraShutterSound);
+            AudioServicesPlaySystemSound(cameraShutterSound);
             previewView.hidden = true
             spinningCircle.startAnimating()
             spinningCircle.hidden = false
@@ -222,18 +251,20 @@ class CameraControlViewController : UIViewController {
         }
     }
     
-    func saveAnyPhotos(){
-        //check if we're in the middle of saving a photo
-        if currentPhotoBeingSaved != nil {
-            return;
-        }
+    func savePhotos(){
         //check if we don't have any photos to save
         if current_gopro_images.count == 0 {
             return;
         }
-        currentPhotoBeingSaved = current_gopro_images.first!
-        current_gopro_images.removeFirst()
-        getImageFromGoProAndSave(currentPhotoBeingSaved!)
+        if let first_image = current_gopro_images.first {
+            currentPhotoBeingSaved = first_image
+            current_gopro_images.removeFirst()
+            getImageFromGoProAndSave(currentPhotoBeingSaved!)
+        }
+        else {
+            print("error getting first image")
+            return;
+        }
     }
     
     private func getImageFromGoProAndSave(path: String) -> Void {
@@ -243,7 +274,7 @@ class CameraControlViewController : UIViewController {
                 print(error)
             }
             else {
-                UIImageWriteToSavedPhotosAlbum(data.resize(0.5), self, "image:didFinishSavingWithError:contextInfo:", nil)
+                UIImageWriteToSavedPhotosAlbum(data.resize(0.5), self, #selector(CameraControlViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
             }
         }
     }
@@ -252,13 +283,14 @@ class CameraControlViewController : UIViewController {
         guard error == nil else {
             print("error saving image")
             //Error saving image
+            savePhotos()
             return
         }
         //Image saved successfully
         print("successful save and deleting now...")
         HTTPGet(deleteFileCommand + self.currentPhotoBeingSaved!){_,_ in
             print("successful deletion!")
-            self.currentPhotoBeingSaved = nil
+            self.savePhotos()
         }
     }
     
@@ -300,47 +332,5 @@ extension UIImage {
         return result
 }
 }
-extension UIImage {
-    public func imageRotatedByDegrees(degrees: CGFloat, flip: Bool) -> UIImage {
-        let radiansToDegrees: (CGFloat) -> CGFloat = {
-            return $0 * (180.0 / CGFloat(M_PI))
-        }
-        let degreesToRadians: (CGFloat) -> CGFloat = {
-            return $0 / 180.0 * CGFloat(M_PI)
-        }
-        
-        // calculate the size of the rotated view's containing box for our drawing space
-        let rotatedViewBox = UIView(frame: CGRect(origin: CGPointZero, size: size))
-        let t = CGAffineTransformMakeRotation(degreesToRadians(degrees));
-        rotatedViewBox.transform = t
-        let rotatedSize = rotatedViewBox.frame.size
-        
-        // Create the bitmap context
-        UIGraphicsBeginImageContext(rotatedSize)
-        let bitmap = UIGraphicsGetCurrentContext()
-        
-        // Move the origin to the middle of the image so we will rotate and scale around the center.
-        CGContextTranslateCTM(bitmap, rotatedSize.width / 2.0, rotatedSize.height / 2.0);
-        
-        //   // Rotate the image context
-        CGContextRotateCTM(bitmap, degreesToRadians(degrees));
-        
-        // Now, draw the rotated/scaled image into the context
-        var yFlip: CGFloat
-        
-        if(flip){
-            yFlip = CGFloat(-1.0)
-        } else {
-            yFlip = CGFloat(1.0)
-        }
-        
-        CGContextScaleCTM(bitmap, yFlip, -1.0)
-        CGContextDrawImage(bitmap, CGRectMake(-size.width / 2, -size.height / 2, size.width, size.height), CGImage)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-}
+
 
