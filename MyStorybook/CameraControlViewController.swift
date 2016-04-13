@@ -136,7 +136,7 @@ class CameraControlViewController : UIViewController {
             //this is going to call go pro processing 
             //until a new picture is added to the array
             print("before timer")
-            let timer = NSTimer(timeInterval: 2, target: self, selector: #selector(CameraControlViewController.startProcessingWithDelay), userInfo: nil, repeats: false)
+            let timer = NSTimer(timeInterval: 2, target: self, selector: "startProcessingWithDelay", userInfo: nil, repeats: false)
             NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
         }
 
@@ -274,7 +274,7 @@ class CameraControlViewController : UIViewController {
                 print(error)
             }
             else {
-                UIImageWriteToSavedPhotosAlbum(data.resize(0.5), self, #selector(CameraControlViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                UIImageWriteToSavedPhotosAlbum(data.resize(0.5), self, "image:didFinishSavingWithError:contextInfo:", nil)
             }
         }
     }
