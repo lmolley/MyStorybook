@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RFN-0h-Or5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -70,6 +70,9 @@
                                     <action selector="toggleSelfie:" destination="GKE-CW-UMA" eventType="touchUpInside" id="ADw-oC-omh"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mqm-QZ-HPF">
+                                <rect key="frame" x="148" y="291" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,9 +90,11 @@
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="uqg-kR-LeZ" secondAttribute="bottom" constant="8" id="YuG-A3-sqx"/>
                             <constraint firstItem="Vuo-sb-Xvi" firstAttribute="top" secondItem="Ovn-sV-dDF" secondAttribute="bottom" constant="8" symbolic="YES" id="apo-Rw-rDT"/>
                             <constraint firstItem="Hys-ba-KB3" firstAttribute="centerY" secondItem="sTD-NY-Ns2" secondAttribute="centerY" id="fQ8-7x-XAM"/>
+                            <constraint firstItem="mqm-QZ-HPF" firstAttribute="centerY" secondItem="Hys-ba-KB3" secondAttribute="centerY" id="ljr-Vc-24n"/>
                             <constraint firstItem="uqg-kR-LeZ" firstAttribute="leading" secondItem="Hys-ba-KB3" secondAttribute="trailing" constant="8" symbolic="YES" id="n6E-XG-POX"/>
                             <constraint firstItem="Hys-ba-KB3" firstAttribute="width" secondItem="uqg-kR-LeZ" secondAttribute="width" id="oIs-j8-DFB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0a0-Ri-l8s" secondAttribute="leading" id="s2b-Lc-P22"/>
+                            <constraint firstItem="mqm-QZ-HPF" firstAttribute="centerX" secondItem="Hys-ba-KB3" secondAttribute="centerX" id="sK1-nt-9jL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -104,6 +109,7 @@
                     <connections>
                         <outlet property="previewView" destination="Hys-ba-KB3" id="y4T-Bz-9hF"/>
                         <outlet property="shutterButton" destination="uqg-kR-LeZ" id="AoF-Or-cBH"/>
+                        <outlet property="spinningCircle" destination="mqm-QZ-HPF" id="9QG-hb-txz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axG-Tu-64c" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,7 +21,7 @@ let deleteFileCommand = "http://10.5.5.9/gp/gpControl/command/storage/delete?p="
 
 class CameraControlViewController : UIViewController {
     @IBOutlet weak var shutterButton: UIButton!
-    
+    @IBOutlet weak var spinningCircle: UIActivityIndicatorView!
     @IBOutlet weak var previewView: UIImageView!
     var isInSelfieMode:Bool = false
     let captureSession = AVCaptureSession()
@@ -32,6 +32,7 @@ class CameraControlViewController : UIViewController {
     
     
     @IBAction func goHome() {
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -77,8 +78,8 @@ class CameraControlViewController : UIViewController {
             }
         }
         
-        let timer = NSTimer(timeInterval: 5.0, target: self, selector: "saveAnyPhotos", userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+//        let timer = NSTimer(timeInterval: 5.0, target: self, selector: "saveAnyPhotos", userInfo: nil, repeats: true)
+//        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
     func changeToCameraMode() {
@@ -97,12 +98,17 @@ class CameraControlViewController : UIViewController {
         }
         else {
             HTTPGet(recordOnCommand){_,_ in}
-            AudioServicesPlaySystemSound(cameraShutterSound);
+//            AudioServicesPlaySystemSound(cameraShutterSound);
+            previewView.hidden = true
+            spinningCircle.startAnimating()
+            spinningCircle.hidden = false
             //disable shutter button until we have added the photo
             shutterButton.enabled = false
             //this is going to call go pro processing 
             //until a new picture is added to the array
-            self.startGoProProcessing(true)
+            print("before timer")
+            let timer = NSTimer(timeInterval: 2, target: self, selector: #selector(CameraControlViewController.startProcessingWithDelay), userInfo: nil, repeats: false)
+            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
         }
 
         
@@ -154,7 +160,13 @@ class CameraControlViewController : UIViewController {
         
     }
  
-    
+    func startProcessingWithDelay()->Void {
+        print("about to process")
+        startGoProProcessing(true)
+        self.spinningCircle.stopAnimating()
+        self.spinningCircle.hidden = true
+
+    }
     
     func startGoProProcessing(cameFromShutter:Bool) -> Void {
         HTTPGet(getMediaListCommand){
@@ -195,14 +207,15 @@ class CameraControlViewController : UIViewController {
                     //we know we should've added a photo
                     //so keep trying
                     if cameFromShutter && !madeAnUpdate {
-                        
-//                        self.startGoProProcessing(true)
-                        let timer = NSTimer(timeInterval: 1, target: self, selector: "startGoProProcessing", userInfo: nil, repeats: false)
-                        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+                        self.startGoProProcessing(true)
                     }
                     //reenable the shutter button now because we are finished
+                    else {
+                        print("hit this")
+                    self.previewView.hidden = false
                     self.shutterButton.enabled = true
                     return
+                    }
                 }
                 
             }

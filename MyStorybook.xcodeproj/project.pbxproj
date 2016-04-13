@@ -47,7 +47,6 @@
 		89C8FCCF1C99FB4B00534CF6 /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C8FCCE1C99FB4B00534CF6 /* PhotoSelectViewController.swift */; };
 		89E9F5471C7AA97D00C812F2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */; };
 		89F2C1A21CBC89C6008FE55D /* CameraRollHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F2C1A11CBC89C6008FE55D /* CameraRollHeader.swift */; };
-		89F2C1AA1CBD5296008FE55D /* addbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F2C1A91CBD5296008FE55D /* addbook.png */; };
 		B202C2A61CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */; };
 		B202C2A81CA0B23A008615A4 /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202C2A71CA0B23A008615A4 /* MailComposer.swift */; };
 		B23766871CBB5DD3004D5BFB /* PageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23766861CBB5DD3004D5BFB /* PageRenderer.swift */; };
@@ -150,7 +149,6 @@
 		89E9F5461C7AA97D00C812F2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = MyStorybook/SwiftyJSON.swift; sourceTree = "<group>"; };
 		89E9F5481C7B639A00C812F2 /* CameraRollCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollCollectionViewCell.swift; sourceTree = "<group>"; };
 		89F2C1A11CBC89C6008FE55D /* CameraRollHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollHeader.swift; sourceTree = "<group>"; };
-		89F2C1A91CBD5296008FE55D /* addbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbook.png; sourceTree = "<group>"; };
 		B202C2A51CA0A847008615A4 /* EmailFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B202C2A71CA0B23A008615A4 /* MailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
 		B23766861CBB5DD3004D5BFB /* PageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageRenderer.swift; path = Classes/PageRenderer.swift; sourceTree = "<group>"; };
@@ -259,7 +257,7 @@
 		89E9F54A1C7B641200C812F2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				89F2C1A91CBD5296008FE55D /* addbook.png */,
+				5B42B9711CBDB1B6000F7D7F /* iOS-Bookshelf.png */,
 				8948F4E01CA0AF3C00F0082E /* book_00b300.png */,
 				8948F4E11CA0AF3C00F0082E /* book_00ffff.png */,
 				8948F4E21CA0AF3C00F0082E /* book_0041BF.png */,
@@ -534,7 +532,6 @@
 				89606B4E1C970688009743D3 /* Icons.xcassets in Resources */,
 				8948F4E71CA0AF3C00F0082E /* book_00ffff.png in Resources */,
 				8948F4EB1CA0AF3C00F0082E /* book_ffff00.png in Resources */,
-				89F2C1AA1CBD5296008FE55D /* addbook.png in Resources */,
 				8948F4E61CA0AF3C00F0082E /* book_00b300.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
