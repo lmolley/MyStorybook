@@ -200,4 +200,32 @@ class EditViewController: UIViewController {
         }
         viewDidLoad()
     }
+    
+    @IBAction func deleteStorybook(sender: UIButton) {
+        
+        let deleteAlert = UIAlertController(title: "Delete", message: "Delete Storybook?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            //remove story from database
+            App.database.removeStory((self.page?.storyId)!)
+            
+            //popback to bookshelf
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        presentViewController(deleteAlert, animated: true, completion: nil)
+        
+        /*if delete {
+            //remove story from database
+            App.database.removeStory((page?.storyId)!)
+            
+            //popback to bookshelf
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }*/
+    }
+    
 }
