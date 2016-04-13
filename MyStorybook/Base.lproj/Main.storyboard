@@ -130,6 +130,11 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSH-0j-qXp">
                                 <rect key="frame" x="20" y="72" width="560" height="435"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="H7J-In-WYK" kind="embed" id="Lr7-TB-3Lw"/>
                                 </connections>
@@ -171,6 +176,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ig6-IJ-Wpj"/>
+                    <connections>
+                        <outlet property="containerView" destination="HSH-0j-qXp" id="8Go-JA-Nu3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Gt-RI-Anp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

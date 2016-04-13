@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class BookshelfViewController:UIViewController {
+    @IBOutlet weak var containerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
+        containerView.layer.borderColor = UIColor.blackColor().CGColor
     }
 }
