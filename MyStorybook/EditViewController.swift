@@ -70,8 +70,20 @@ class EditViewController: UIViewController {
     }
     
     func createNewEmoji() {
-        let coordX = self.EditPhotoImage.frame.minX
-        let coordY = self.EditPhotoImage.frame.minY
+        let iView = self.EditPhotoImage.frame
+        let iView2 = AVMakeRectWithAspectRatioInsideRect(self.image!.size, self.EditPhotoImage.frame)
+        var imageViewWidthDiffHalf = (iView.size.width - iView2.size.width) / 2
+        if imageViewWidthDiffHalf <= 0 {
+            imageViewWidthDiffHalf = 0
+        }
+        var imageViewHeightDiffHalf = (iView.size.height - iView2.size.height) / 2
+        if imageViewHeightDiffHalf <= 0 {
+            imageViewHeightDiffHalf = 0
+        }
+        let imageViewOriginX = iView.origin.x + imageViewWidthDiffHalf
+        let imageViewOriginY = iView.origin.y - imageViewHeightDiffHalf
+        let coordX = imageViewOriginX
+        let coordY = imageViewOriginY
         let label = UILabel(frame: CGRectMake(coordX, coordY, 100, 100))
         label.text = text
         label.font = label.font.fontWithSize(100)
@@ -93,21 +105,32 @@ class EditViewController: UIViewController {
         if let view = sender.view {
             var send = sender.view?.frame
             let iView = self.EditPhotoImage.frame
-            if (send!.origin.x >= iView.origin.x && ((send?.origin.x)! + send!.size.width <= iView.origin.x + iView.size.width) && send!.origin.y >= iView.origin.y && ((send?.origin.y)! + send!.size.height <= iView.origin.y + iView.size.height)) {
+            let iView2 = AVMakeRectWithAspectRatioInsideRect(self.image!.size, self.EditPhotoImage.frame)
+            var imageViewWidthDiffHalf = (iView.size.width - iView2.size.width) / 2
+            if imageViewWidthDiffHalf <= 0 {
+                imageViewWidthDiffHalf = 0
+            }
+            var imageViewHeightDiffHalf = (iView.size.height - iView2.size.height) / 2
+            if imageViewHeightDiffHalf <= 0 {
+                imageViewHeightDiffHalf = 0
+            }
+            let imageViewOriginX = iView.origin.x + imageViewWidthDiffHalf
+            let imageViewOriginY = iView.origin.y - imageViewHeightDiffHalf
+            if (send!.origin.x >= imageViewOriginX && ((send?.origin.x)! + send!.size.width <= imageViewOriginX + iView2.size.width) && send!.origin.y >= imageViewOriginY && ((send?.origin.y)! + send!.size.height <= imageViewOriginY + iView2.size.height)) {
                 
                 view.center = CGPointMake(view.center.x + translation.x, view.center.y + translation.y)
                 send = sender.view?.frame
-                if (send!.origin.x < iView.origin.x) {
-                    send?.origin.x = iView.origin.x
+                if (send!.origin.x < imageViewOriginX) {
+                    send?.origin.x = imageViewOriginX
                 }
-                if ((send?.origin.x)! + (send?.size.width)! > iView.origin.x + iView.size.width) {
-                    send?.origin.x = iView.origin.x + iView.size.width - (send?.size.width)!
+                if ((send?.origin.x)! + (send?.size.width)! > imageViewOriginX + iView2.size.width) {
+                    send?.origin.x = imageViewOriginX + iView2.size.width - (send?.size.width)!
                 }
                 if (send!.origin.y < iView.origin.y) {
                     send?.origin.y = iView.origin.y
                 }
-                if ((send?.origin.y)! + (send?.size.height)! > iView.origin.y + iView.size.height) {
-                    send?.origin.y = iView.origin.y + iView.size.height - (send?.size.height)!
+                if ((send?.origin.y)! + (send?.size.height)! > imageViewOriginY + iView2.size.height) {
+                    send?.origin.y = imageViewOriginY + iView2.size.height - (send?.size.height)!
                 }
                 sender.view?.frame = send!
             }

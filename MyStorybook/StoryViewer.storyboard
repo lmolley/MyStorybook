@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="seG-VD-cCP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dHF-Xg-Tha">
-                                <rect key="frame" x="90" y="128" width="420" height="412"/>
+                                <rect key="frame" x="90" y="140" width="420" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="Mgy-R2-xCo"/>
                                     <constraint firstAttribute="width" constant="400" id="TNv-CI-83v"/>
@@ -302,7 +302,7 @@
                             <constraint firstItem="TN1-EM-aaG" firstAttribute="centerX" secondItem="3Mu-Cf-y6F" secondAttribute="centerX" id="HwU-dK-d33"/>
                             <constraint firstItem="dHF-Xg-Tha" firstAttribute="leading" secondItem="3Mu-Cf-y6F" secondAttribute="leadingMargin" constant="-11" id="Lyu-Mn-sCc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eox-hm-Ey2" secondAttribute="trailing" constant="-20" id="Poz-ue-LwF"/>
-                            <constraint firstItem="dHF-Xg-Tha" firstAttribute="top" secondItem="Dip-7N-Al4" secondAttribute="bottom" constant="8" id="QOz-nz-N01"/>
+                            <constraint firstItem="dHF-Xg-Tha" firstAttribute="top" secondItem="Dip-7N-Al4" secondAttribute="bottom" constant="20" id="QOz-nz-N01"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eox-hm-Ey2" secondAttribute="trailing" constant="-9" id="TAE-nz-Ajr"/>
                             <constraint firstItem="eJl-eK-TmA" firstAttribute="leading" secondItem="dHF-Xg-Tha" secondAttribute="leading" id="V6k-wm-0TM"/>
                             <constraint firstItem="eox-hm-Ey2" firstAttribute="baseline" secondItem="Dip-7N-Al4" secondAttribute="firstBaseline" id="Vok-bR-lu2"/>
@@ -317,7 +317,7 @@
                             <constraint firstItem="Dip-7N-Al4" firstAttribute="leading" secondItem="3Mu-Cf-y6F" secondAttribute="leadingMargin" constant="-20" id="nhr-Wf-No2"/>
                             <constraint firstItem="dHF-Xg-Tha" firstAttribute="leading" secondItem="3Mu-Cf-y6F" secondAttribute="leadingMargin" constant="-11" id="q7U-Ir-86l"/>
                             <constraint firstItem="Dip-7N-Al4" firstAttribute="baseline" secondItem="eox-hm-Ey2" secondAttribute="firstBaseline" id="vxj-NS-EfJ"/>
-                            <constraint firstItem="eJl-eK-TmA" firstAttribute="top" secondItem="dHF-Xg-Tha" secondAttribute="top" id="yCe-jQ-XG1"/>
+                            <constraint firstItem="eJl-eK-TmA" firstAttribute="top" secondItem="dHF-Xg-Tha" secondAttribute="top" constant="-12" id="yCe-jQ-XG1"/>
                             <constraint firstItem="eox-hm-Ey2" firstAttribute="top" secondItem="mai-06-i3g" secondAttribute="bottom" id="yqH-ov-c6Y"/>
                         </constraints>
                         <variation key="default">
